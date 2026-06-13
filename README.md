@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Real Estate Info World
 
-## Getting Started
+**Premium Dubai real estate databases & verified buyer leads**
 
-First, run the development server:
+Production-ready Next.js 16 website for [realestate-info.world](https://realestate-info.world).
+
+## Features
+
+- Luxury dark enterprise SaaS design (Stripe / Linear / Vercel inspired)
+- Full product suite: Owner Database ($250) + Buyer Leads ($1,200)
+- Reusable PayPal hosted buttons (React components)
+- Premium blurred sample data previews
+- Exit-intent conversion popup + sticky mobile CTAs + floating WhatsApp
+- Full SEO: sitemap, robots, schema (Organization + Product + FAQ)
+- 100% static prerendered + Vercel-ready
+- Fully responsive + Framer Motion animations
+
+## Tech
+
+- Next.js 16 (App Router) + TypeScript + Tailwind 4
+- Framer Motion + Lucide + Sonner
+- PayPal SDK (hosted buttons)
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Build & Deploy
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Deploy to Vercel
 
-## Learn More
+1. Push to GitHub
+2. Import repo at vercel.com
+3. Add custom domain: `realestate-info.world` (and `www` redirect)
+4. Done — all routes are statically optimized.
 
-To learn more about Next.js, take a look at the following resources:
+## Environment / PayPal
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+PayPal SDK is loaded client-side per component using the hosted-buttons flow. No server secrets needed for the current integration.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Custom Domain
 
-## Deploy on Vercel
+Point your DNS (A/AAAA or CNAME) to Vercel and add `realestate-info.world` in the Vercel dashboard.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Pages
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/`
+- `/products`
+- `/products/property-owner-database`
+- `/products/buyer-leads`
+- `/about`
+- `/contact`
+- `/privacy-policy`
+- `/terms`
+- `/refund-policy`
+
+## Contact
+
+- Phone / WhatsApp: +44 75 46 084350
+- Email: info@realestate-info.world
+
+Built as a complete premium SaaS marketing site optimized for trust, conversions, and search visibility.
