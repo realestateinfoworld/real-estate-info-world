@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
@@ -148,10 +149,14 @@ export default function RootLayout({
         <FloatingWhatsApp />
         <FloatingTelegram />
         {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_GA_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+          <Suspense fallback={null}>
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+          </Suspense>
         )}
         {process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_META_PIXEL_ID && (
-          <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID} />
+          <Suspense fallback={null}>
+            <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID} />
+          </Suspense>
         )}
         <Toaster position="top-center" closeButton richColors className="sonner-toast" />
       </body>
