@@ -345,16 +345,49 @@ h1, h2, h3, h4 {
 }
 
 .container {
-  max-width: 1536px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* === TOAST (for sonner) === */
 .sonner-toast {
   font-family: var(--font-geist-sans);
+}
+
+/* ========================================= */
+/* HERO BACKGROUND — Premium cinematic treatment */
+/* Full-width image with responsive crop + subtle blur integration */
+/* Image: Laptop + glowing 3D house model on data analytics dashboard */
+/* ========================================= */
+.hero-bg-image {
+  /* Mobile: center on the beautiful house + laptop glow */
+  object-position: 58% 42%;
+}
+
+@media (min-width: 768px) {
+  .hero-bg-image {
+    /* Tablet: balanced crop showing house and dashboard data */
+    object-position: 62% 38%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-bg-image {
+    /* Desktop cinematic: house + glowing windows prominent on right side of hero,
+       while left side remains clean for the headline + strong light overlays */
+    object-position: 65% 35%;
+  }
+}
+
+/* Glass card inner polish (keeps it feeling expensive and integrated) */
+.hero-glass {
+  box-shadow: 
+    0 10px 38px -14px rgb(0 0 0 / 0.10),
+    0 4px 12px -2px rgb(0 0 0 / 0.06),
+    inset 0 1px 0 0 rgb(255 255 255 / 0.7);
 }
 
 /* Accessibility */

@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Terms of Service" };
+export const metadata: Metadata = { 
+  title: "Terms of Service | Dubai Real Estate Data",
+  description: "Terms for purchasing and using our Dubai Property Owner Database and Dubai Buyer Leads. For Dubai real estate professionals.",
+};
 
 export default function Terms() {
   return (

@@ -75,7 +75,7 @@ export function OwnerButton() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button className="w-full">Buy Owner Database — $250 USD</Button>
+        <Button className="w-full">Buy Owner Database — ${product.price} USD</Button>
       </a>
     );
   }

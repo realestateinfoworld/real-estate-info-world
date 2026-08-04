@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Refund Policy" };
+export const metadata: Metadata = { 
+  title: "Refund Policy | Dubai Property Data",
+  description: "7-day refund policy for the Dubai Property Owner Database and Dubai Buyer Leads.",
+};
 
 export default function RefundPolicy() {
   return (

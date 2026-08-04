@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Privacy Policy" };
+export const metadata: Metadata = { 
+  title: "Privacy Policy | Dubai Real Estate Leads",
+  description: "Privacy policy for Real Estate Info World Dubai property data and buyer leads service.",
+};
 
 export default function PrivacyPolicy() {
   return (

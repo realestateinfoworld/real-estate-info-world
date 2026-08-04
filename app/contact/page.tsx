@@ -28,7 +28,7 @@ export default function ContactPage() {
   return (
     <div className="container py-12 max-w-4xl">
       <h1 className="text-4xl font-semibold tracking-tight">Contact Us</h1>
-      <p className="mt-2 text-[#5a5a5a]">Questions about data, custom requests, or support? Send us a message.</p>
+      <p className="mt-2 text-[#5a5a5a]">Questions about our Dubai Property Owner Database, Dubai Buyer Leads, custom requests, or support for Dubai brokers and agencies? Send us a message.</p>
 
       <div className="mt-8 grid md:grid-cols-5 gap-8">
         <div className="md:col-span-2 space-y-6 text-sm">
@@ -46,12 +46,23 @@ export default function ContactPage() {
               </svg>
               Open WhatsApp
             </a>
+            <a
+              href="https://t.me/realestateinfoworld"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-2 rounded-md bg-[#229ED9] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#1a7bb5]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-1.03-.68-1.61-1.1-2.61-1.79-1.27-.88-1.78-1.38-2.88-2.24-1.29-1-1.05-1.5-.23-2.37.4-.43 2.32-2.13 3.9-3.55.4-.36 1.18-1.07 1.96-1.05.5.01 1.04.32 1.3.58.25.25.37.58.35.92z" />
+              </svg>
+              Telegram
+            </a>
           </div>
           <div>
             <div className="text-[#6b6b6b] text-xs tracking-widest">EMAIL</div>
             <a href={`mailto:${CONTACT.email}`} className="font-medium">{CONTACT.email}</a>
           </div>
-          <div className="text-[#6b6b6b] text-xs pt-2">We usually respond within 4 hours during business days.</div>
+          <div className="text-[#6b6b6b] text-xs pt-2">We usually respond within 1 hours during business days.</div>
         </div>
 
         <form onSubmit={handleSubmit} className="md:col-span-3 space-y-5">

@@ -29,6 +29,7 @@ export function Footer() {
             <div className="space-y-2 text-sm">
               <Link href="/about" className="block text-[#5a5a5a] hover:text-[#3d3d3d]">About</Link>
               <Link href="/contact" className="block text-[#5a5a5a] hover:text-[#3d3d3d]">Contact</Link>
+              <a href="https://t.me/realestateinfoworld" target="_blank" rel="noopener noreferrer" className="block text-[#229ED9] hover:text-[#1a7bb5]">Telegram</a>
               <a
                 href={`https://wa.me/${CONTACT.whatsappRaw}?text=Hello%2C%20I'm%20interested%20in%20your%20Dubai%20real%20estate%20databases.`}
                 target="_blank"
