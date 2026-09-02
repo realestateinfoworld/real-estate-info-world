@@ -101,7 +101,7 @@ export function Hero() {
           }}
         >
           <Badge variant="primary" className="mb-4 text-sm px-3 py-1">
-            July 2026 Data Available
+            August 2026 Data Available
           </Badge>
 
           <h1 className="text-5xl md:text-[56px] font-semibold tracking-[-2.8px] leading-[1.05] text-balance text-[#3d3d3d]">

@@ -11,7 +11,7 @@ import { ArrowLeft, Check } from "lucide-react";
 const product = PRODUCTS.buyerLeads;
 
 export const metadata: Metadata = {
-  title: "Dubai Property Buyer Leads | 10,000+ High-Intent Buyers | July 2026",
+  title: "Dubai Property Buyer Leads | 10,000+ High-Intent Buyers | August 2026",
   description: "Dubai Property Buyer Leads — 10,000+ verified high-intent buyers actively looking in Dubai. Budgets, timelines & contacts included. Perfect for Dubai real estate brokers, consultants & agencies targeting serious purchasers in Dubai Marina, Downtown, Palm Jumeirah and more. $1,200.",
   keywords: ["Dubai Buyer Leads", "Dubai Property Buyer Leads", "Dubai real estate leads", "high-intent Dubai buyers", "Dubai property marketing data"],
 };
@@ -44,7 +44,7 @@ export default function BuyerLeadsPage() {
         />
 
         <div className="lg:col-span-8">
-          <Badge variant="primary" className="mb-3">Premium Product • July 2026</Badge>
+          <Badge variant="primary" className="mb-3">Premium Product • August 2026</Badge>
           
           <h1 className="text-4xl font-semibold tracking-tight">{product.name}</h1>
           <p className="mt-2 text-lg text-[#5a5a5a]">{product.shortDescription}</p>

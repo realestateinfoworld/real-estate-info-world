@@ -20,7 +20,7 @@ export function SamplePreview({ type }: SamplePreviewProps) {
           <div className="text-sm font-semibold">
             {isOwner ? "Dubai Property Owner Database" : "Dubai Property Buyer Leads"} — Sample
           </div>
-          <div className="text-xs text-[#6b6b6b]">July 2026 • Actual format shown</div>
+          <div className="text-xs text-[#6b6b6b]">August 2026 • Actual format shown</div>
         </div>
         <button
           onClick={() => setRevealed(!revealed)}

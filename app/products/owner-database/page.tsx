@@ -9,7 +9,7 @@ import { MetaPixelTracker } from "@/components/MetaPixelTracker";
 import { ArrowLeft, Check } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Dubai Property Owner Database | 1,000,000+ Verified Owners | July 2026",
+  title: "Dubai Property Owner Database | 1,000,000+ Verified Owners | August 2026",
   description: "Dubai Property Owner Database with 1M+ verified owners and direct mobile numbers. Target Dubai real estate brokers' best source for owner leads in Dubai Marina, Palm Jumeirah, Downtown Dubai and 200+ communities. CRM-ready Excel. Instant delivery. $300.",
   keywords: ["Dubai Property Owner Database", "Dubai Property Owner Leads", "Dubai real estate leads", "verified Dubai owners", "Dubai property marketing data"],
 };
@@ -46,7 +46,7 @@ export default function OwnerDatabasePage() {
 
         {/* Main Content */}
         <div className="lg:col-span-8">
-          <Badge variant="primary" className="mb-3">July 2026 Updated</Badge>
+          <Badge variant="primary" className="mb-3">August 2026 Updated</Badge>
           
           <h1 className="text-4xl font-semibold tracking-tight">{product.name}</h1>
           <p className="mt-2 text-lg text-[#5a5a5a]">{product.shortDescription}</p>
