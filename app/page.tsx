@@ -14,15 +14,13 @@ export default function Home() {
       ? `${marketNames.slice(0, -1).join(", ")} and ${marketNames[marketNames.length - 1]}`
       : marketNames[0];
 
-  const flagship = PRODUCTS[0];
-
   return (
     <>
       {/* HERO — Upgraded with professional full-width background image */}
       <Hero />
 
-      {/* PRODUCT OVERVIEW — grouped by market */}
-      <section className="container pb-6">
+      {/* PRODUCT OVERVIEW — every dataset, each card names its market */}
+      <section className="container pt-8 pb-6 md:pt-0">
         <div className="flex items-end justify-between mb-4">
           <div>
             <div className="text-sm font-medium text-[#947f57]">REAL ESTATE DATA PRODUCTS</div>
@@ -178,13 +176,15 @@ export default function Home() {
           Get direct access to property owners and high-intent buyers. Choose your dataset and receive data in 10
           minutes (instant processing available).
         </p>
-        <div className="mt-6 flex justify-center gap-3">
-          <Link href={`/products/${flagship.slug}`}>
-            <Button size="lg">Buy {flagship.shortName} — ${flagship.price.toLocaleString()}</Button>
-          </Link>
-          <Link href="/products">
-            <Button size="lg" variant="outline">Compare All Datasets</Button>
-          </Link>
+        {/* One CTA per dataset, matching the hero */}
+        <div className="mt-6 flex flex-wrap justify-center gap-2">
+          {PRODUCTS.map((product) => (
+            <Link key={product.slug} href={`/products/${product.slug}`}>
+              <Button size="lg" className="px-5">
+                {product.shortName} — ${product.price.toLocaleString()}
+              </Button>
+            </Link>
+          ))}
         </div>
       </section>
     </>

@@ -90,7 +90,7 @@ export function Hero() {
       {/* ========================================= */}
       {/* CONTENT — Exact original text preserved */}
       {/* ========================================= */}
-      <div className="container relative z-20 pt-9 md:pt-12">
+      <div className="container relative z-20 pt-9 pb-14 md:pt-12 md:pb-16">
         <motion.div
           className="max-w-6xl"
           initial={{ opacity: 0, y: 16 }}
