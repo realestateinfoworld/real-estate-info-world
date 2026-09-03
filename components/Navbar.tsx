@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { PRODUCTS } from "@/lib/constants";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -44,11 +45,11 @@ export function Navbar() {
 
         {/* Actions - right aligned */}
         <div className="hidden md:flex items-center gap-3 ml-auto">
-          <Link href="/products/owner-database">
+          <Link href={`/products/${PRODUCTS[0].slug}`}>
             <Button size="lg" className="h-14 px-8 text-base">Get Owner Database</Button>
           </Link>
-          <Link href="/products/buyer-leads">
-            <Button variant="outline" size="lg" className="h-14 px-8 text-base">Get Buyer Leads</Button>
+          <Link href="/products">
+            <Button variant="outline" size="lg" className="h-14 px-8 text-base">All Datasets</Button>
           </Link>
         </div>
 
@@ -82,11 +83,11 @@ export function Navbar() {
               </Link>
             ))}
             <div className="pt-3 flex flex-col gap-2 w-full items-center">
-              <Link href="/products/owner-database" onClick={() => setMobileOpen(false)}>
+              <Link href={`/products/${PRODUCTS[0].slug}`} onClick={() => setMobileOpen(false)}>
                 <Button size="lg" className="w-full h-14 text-base">Get Owner Database</Button>
               </Link>
-              <Link href="/products/buyer-leads" onClick={() => setMobileOpen(false)}>
-                <Button variant="outline" size="lg" className="w-full h-14 text-base">Get Buyer Leads</Button>
+              <Link href="/products" onClick={() => setMobileOpen(false)}>
+                <Button variant="outline" size="lg" className="w-full h-14 text-base">All Datasets</Button>
               </Link>
             </div>
           </div>

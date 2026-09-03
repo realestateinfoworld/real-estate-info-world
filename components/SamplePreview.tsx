@@ -2,25 +2,23 @@
 
 import { useState } from "react";
 import { Eye, Lock } from "lucide-react";
-import { SAMPLE_OWNER_DATA, SAMPLE_BUYER_DATA } from "@/lib/constants";
+import type { Product } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 interface SamplePreviewProps {
-  type: "owner" | "buyer";
+  product: Product;
 }
 
-export function SamplePreview({ type }: SamplePreviewProps) {
+export function SamplePreview({ product }: SamplePreviewProps) {
   const [revealed, setRevealed] = useState(false);
-  const isOwner = type === "owner";
-  const data = isOwner ? SAMPLE_OWNER_DATA : SAMPLE_BUYER_DATA;
+  const { columns, rows, maskedColumn, emphasisColumn } = product.sample;
 
   return (
     <div className="sample-preview relative">
       <div className="flex items-center justify-between px-5 py-3 border-b border-[#c8c8c8]">
         <div>
-          <div className="text-sm font-semibold">
-            {isOwner ? "Dubai Property Owner Database" : "Dubai Property Buyer Leads"} — Sample
-          </div>
-          <div className="text-xs text-[#6b6b6b]">August 2026 • Actual format shown</div>
+          <div className="text-sm font-semibold">{product.name} — Sample</div>
+          <div className="text-xs text-[#6b6b6b]">{product.version} • Actual format shown</div>
         </div>
         <button
           onClick={() => setRevealed(!revealed)}
@@ -35,41 +33,25 @@ export function SamplePreview({ type }: SamplePreviewProps) {
         <table className="sample-table">
           <thead>
             <tr>
-              {isOwner ? (
-                <>
-                  <th>Name</th>
-                  <th>Community</th>
-                  <th>Property</th>
-                  <th>Mobile</th>
-                </>
-              ) : (
-                <>
-                  <th>Buyer</th>
-                  <th>Location</th>
-                  <th>Budget</th>
-                  <th>Interest</th>
-                </>
-              )}
+              {columns.map((column) => (
+                <th key={column}>{column}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {data.map((row, i) => (
-              <tr key={i}>
-                {isOwner ? (
-                  <>
-                    <td className={!revealed ? "blurred-cell" : ""}>{(row as any).name}</td>
-                    <td>{(row as any).community}</td>
-                    <td>{(row as any).type}</td>
-                    <td className="font-medium text-[#3d3d3d]">{(row as any).mobile}</td>
-                  </>
-                ) : (
-                  <>
-                    <td className={!revealed ? "blurred-cell" : ""}>{(row as any).name}</td>
-                    <td>{(row as any).location}</td>
-                    <td className="font-medium">{(row as any).budget}</td>
-                    <td>{(row as any).interest}</td>
-                  </>
-                )}
+            {rows.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row.map((cell, cellIndex) => (
+                  <td
+                    key={cellIndex}
+                    className={cn(
+                      cellIndex === maskedColumn && !revealed && "blurred-cell",
+                      cellIndex === emphasisColumn && "font-medium text-[#3d3d3d]"
+                    )}
+                  >
+                    {cell}
+                  </td>
+                ))}
               </tr>
             ))}
           </tbody>

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 import Image from "next/image";
+import { PRODUCTS } from "@/lib/constants";
 
 export function Hero() {
   const { scrollY } = useScroll();
@@ -21,8 +22,8 @@ export function Hero() {
   }, []);
 
   const trustItems = [
-    "Verified Dubai Property Owners",
-    "High-Intent Dubai Buyers",
+    "Verified Property Owners",
+    "High-Intent Buyers",
     "CRM Ready for Brokers",
     "WhatsApp & Calling Ready",
     "Updated Monthly",
@@ -91,7 +92,7 @@ export function Hero() {
       {/* ========================================= */}
       <div className="container relative z-20 pt-9 md:pt-12">
         <motion.div
-          className="max-w-4xl"
+          className="max-w-6xl"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -101,28 +102,30 @@ export function Hero() {
           }}
         >
           <Badge variant="primary" className="mb-4 text-sm px-3 py-1">
-            August 2026 Data Available
+            September 2026 Data Available
           </Badge>
 
-          <h1 className="text-5xl md:text-[56px] font-semibold tracking-[-2.8px] leading-[1.05] text-balance text-[#3d3d3d]">
-            Dubai Property Owner Database &amp; Buyer Leads for brokers.
+          <h1 className="max-w-4xl text-5xl md:text-[56px] font-semibold tracking-[-2.8px] leading-[1.05] text-balance text-[#3d3d3d]">
+            Property Owner Databases &amp; Buyer Leads for brokers.
           </h1>
 
-          <p className="mt-4 text-xl text-[#5a5a5a]">
-            Verified contacts for Dubai real estate brokers, consultants, and agencies. Owner leads and high-intent buyer leads across Dubai's top communities. CRM-ready Excel. Instant delivery.
+          <p className="mt-4 max-w-4xl text-xl text-[#5a5a5a]">
+            Verified contacts for real estate brokers, consultants, and agencies in Dubai, Miami and California. Owner leads and high-intent buyer leads across each market&apos;s top areas. CRM-ready Excel. Instant delivery.
           </p>
 
-          <div className="flex flex-wrap gap-3 mt-8">
-            <Link href="/products/owner-database">
-              <Button size="lg">Buy Dubai Owner Database — $300</Button>
-            </Link>
-            <Link href="/products">
-              <Button size="lg" variant="outline">Compare All Dubai Data Products</Button>
-            </Link>
+          {/* One CTA per dataset, kept on a single row on desktop */}
+          <div className="flex flex-wrap gap-2 mt-8">
+            {PRODUCTS.map((product) => (
+              <Link key={product.slug} href={`/products/${product.slug}`}>
+                <Button size="lg" className="px-5">
+                  {product.shortName} — ${product.price.toLocaleString()}
+                </Button>
+              </Link>
+            ))}
           </div>
 
-          <div className="mt-6 text-sm text-[#6b6b6b]">
-            Trusted by 240+ Dubai brokerages &amp; agencies • 1,000,000+ verified Dubai owners • 10,000+ Dubai buyer leads • 10-minute instant delivery • PayPal secure
+          <div className="mt-6 max-w-4xl text-sm text-[#6b6b6b]">
+            Trusted by 240+ brokerages &amp; agencies • 1,000,000+ verified Dubai owners • 16,000+ buyer leads across Dubai, Miami &amp; California • 10-minute instant delivery
           </div>
 
           {/* Fast Delivery Trust Badge - Clean SaaS style */}
@@ -137,7 +140,7 @@ export function Hero() {
 
           {/* Buyer Leads Record Count Trust Badge */}
           <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-[#c8c8c8] bg-[#f5f5f5] px-4 py-1.5 text-xs font-medium text-[#3d3d3d] shadow-sm">
-            10,000+ High-Intent Dubai Buyer Leads
+            16,000+ High-Intent Buyer Leads — Dubai, Miami &amp; California
           </div>
 
           {/* Communities Trust Badge - Prominent in hero */}

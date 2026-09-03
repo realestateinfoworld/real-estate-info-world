@@ -9,6 +9,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import FloatingTelegram from "@/components/FloatingTelegram";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { MetaPixel } from "@/components/MetaPixel";
+import { PRODUCTS, MARKETS, MARKET_ORDER } from "@/lib/constants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,21 +30,21 @@ const siteUrl = "https://realestate-info.world";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Real Estate Info World | Dubai Property Owner Database & Buyer Leads",
+    default: "Real Estate Info World | Property Owner Databases & Buyer Leads",
     template: "%s | Real Estate Info World",
   },
-  description: "Dubai Property Owner Database (1M+ verified owners) and Dubai Property Buyer Leads (10k+ high-intent buyers). CRM-ready Excel for Dubai real estate brokers, consultants, agencies & property marketers. Instant delivery.",
+  description: "Verified property owner databases and high-intent buyer leads for real estate brokers, consultants, agencies and property marketers. CRM-ready Excel, instant delivery.",
+  // Site-wide keywords: the base set plus every product's own keywords, deduped.
   keywords: [
-    "Dubai Property Owner Database",
-    "Dubai Property Owner Leads",
-    "Dubai Buyer Leads",
-    "Dubai Real Estate Leads",
-    "Dubai Property Marketing Data",
-    "Dubai real estate database",
-    "verified Dubai property owners",
-    "Dubai real estate CRM data",
-    "Dubai off-market leads",
-    "high-intent Dubai buyers",
+    ...new Set([
+      "Property Owner Database",
+      "Property Owner Leads",
+      "Buyer Leads",
+      "Real Estate Leads",
+      "Property Marketing Data",
+      "real estate CRM data",
+      ...PRODUCTS.flatMap((product) => product.seo.keywords),
+    ]),
   ],
   authors: [{ name: "Real Estate Info World" }],
   creator: "Real Estate Info World",
@@ -53,14 +54,14 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Real Estate Info World",
-    title: "Real Estate Info World | Dubai Property Owner Database & Buyer Leads",
-    description: "Professional Dubai Property Owner Database and high-intent Dubai Buyer Leads for brokers and agencies. CRM-ready. Delivered in minutes.",
+    title: "Real Estate Info World | Property Owner Databases & Buyer Leads",
+    description: "Professional property owner databases and high-intent buyer leads for brokers and agencies. CRM-ready. Delivered in minutes.",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Real Estate Info World | Dubai Property Owner Database & Buyer Leads",
-    description: "Verified Dubai real estate leads and property marketing data for Dubai brokers and consultants.",
+    title: "Real Estate Info World | Property Owner Databases & Buyer Leads",
+    description: "Verified real estate leads and property marketing data for brokers and consultants.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -80,59 +81,44 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Enhanced schema for better SEO targeting Dubai real estate professionals and product keywords
+  // Organization + one Product node per dataset, generated from PRODUCTS so new
+  // markets are picked up automatically.
   const orgSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://realestate-info.world/#organization",
+        "@id": `${siteUrl}/#organization`,
         name: "Real Estate Info World",
-        url: "https://realestate-info.world",
+        url: siteUrl,
         email: "info@realestate-info.world",
         telephone: "+44 75 46 084350",
-        areaServed: {
-          "@type": "City",
-          name: "Dubai",
-          addressCountry: "AE",
-        },
-        description: "Provider of verified Dubai Property Owner Database and high-intent Dubai Buyer Leads for real estate brokers, consultants, and agencies.",
+        areaServed: MARKET_ORDER.map((key) => ({
+          "@type": "AdministrativeArea",
+          name: MARKETS[key].schemaRegion,
+          addressCountry: MARKETS[key].schemaCountry,
+        })),
+        description:
+          "Provider of verified property owner databases and high-intent buyer leads for real estate brokers, consultants, and agencies.",
         sameAs: [],
       },
-      {
+      ...PRODUCTS.map((product) => ({
         "@type": "Product",
-        "@id": "https://realestate-info.world/#owner-database",
-        name: "Dubai Property Owner Database",
-        description: "1,000,000+ verified Dubai property owners with direct mobile numbers. CRM-ready Excel data for Dubai real estate brokers and agencies seeking owner leads and off-market opportunities across 200+ Dubai communities.",
+        "@id": `${siteUrl}/#${product.slug}`,
+        name: product.name,
+        description: product.seo.description,
         brand: {
           "@type": "Brand",
           name: "Real Estate Info World",
         },
         offers: {
           "@type": "Offer",
-          price: "300",
+          price: String(product.price),
           priceCurrency: "USD",
           availability: "https://schema.org/InStock",
-          url: "https://realestate-info.world/products/owner-database",
+          url: `${siteUrl}/products/${product.slug}`,
         },
-      },
-      {
-        "@type": "Product",
-        "@id": "https://realestate-info.world/#buyer-leads",
-        name: "Dubai Property Buyer Leads",
-        description: "10,000+ high-intent Dubai buyer leads with verified contacts, budgets, and timelines. Ideal Dubai real estate marketing data for brokers closing high-value transactions in Dubai Marina, Downtown Dubai, Palm Jumeirah and other prime areas.",
-        brand: {
-          "@type": "Brand",
-          name: "Real Estate Info World",
-        },
-        offers: {
-          "@type": "Offer",
-          price: "1200",
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          url: "https://realestate-info.world/products/buyer-leads",
-        },
-      },
+      })),
     ],
   };
 
