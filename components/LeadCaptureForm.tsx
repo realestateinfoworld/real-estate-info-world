@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { Loader2, Shield } from "lucide-react";
 import { leadSchema, type LeadFormData } from "@/lib/lead-schema";
 import { trackMetaEvent } from "@/lib/metaPixel";
-import { CONTACT } from "@/lib/constants";
+import { MARKETS, type Product } from "@/lib/constants";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -18,15 +18,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
-interface ProductForForm {
-  name: string;
-  /** Absent for datasets sold by enquiry rather than instant checkout */
-  paypalButtonId?: string;
-  price: number;
-}
-
 interface LeadCaptureFormProps {
-  product: ProductForForm;
+  product: Product;
 }
 
 export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
@@ -37,7 +30,7 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
     : null;
   const buildWhatsappUrl = (name?: string) => {
     const intro = name ? `Hello, this is ${name}.` : "Hello,";
-    return `https://wa.me/${CONTACT.salesWhatsappRaw}?text=${encodeURIComponent(
+    return `https://wa.me/${MARKETS[product.market].whatsappRaw}?text=${encodeURIComponent(
       `${intro} I would like to purchase the ${product.name} ($${product.price.toLocaleString()}). Please send me the payment link.`
     )}`;
   };

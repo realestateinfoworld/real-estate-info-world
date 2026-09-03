@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
-import { CONTACT, PRODUCTS } from "@/lib/constants";
+import { usePathname } from "next/navigation";
+import { getMarketForPath, PRODUCTS } from "@/lib/constants";
 
 export function Footer() {
   const year = new Date().getFullYear();
+  const market = getMarketForPath(usePathname());
 
   return (
     <footer className="border-t border-[#c8c8c8] bg-[#e8e8e8]">
@@ -38,7 +42,9 @@ export function Footer() {
               <Link href="/contact" className="block text-[#5a5a5a] hover:text-[#3d3d3d]">Contact</Link>
               <a href="https://t.me/realestateinfoworld" target="_blank" rel="noopener noreferrer" className="block text-[#229ED9] hover:text-[#1a7bb5]">Telegram</a>
               <a
-                href={`https://wa.me/${CONTACT.whatsappRaw}?text=Hello%2C%20I'm%20interested%20in%20your%20real%20estate%20databases.`}
+                href={`https://wa.me/${market.whatsappRaw}?text=${encodeURIComponent(
+                  `Hello, I'm interested in your ${market.name} real estate data.`
+                )}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-[#25D366] hover:text-[#128C7E]"

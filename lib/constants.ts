@@ -3,8 +3,6 @@ export const CONTACT = {
   phoneRaw: "+447546084350",
   whatsapp: "+44 75 46 084350",
   whatsappRaw: "447546084350",
-  /** Sales line used at checkout for datasets sold by enquiry */
-  salesWhatsappRaw: "94774601847",
   email: "info@realestate-info.world",
   telegram: "https://t.me/realestateinfoworld",
 } as const;
@@ -25,6 +23,8 @@ export interface Market {
   schemaRegion: string;
   /** schema.org areaServed: ISO 3166-1 alpha-2 country code */
   schemaCountry: string;
+  /** WhatsApp line that handles enquiries for this market */
+  whatsappRaw: string;
   /** Where record verification is cross-checked, used in the FAQ */
   verificationSource: string;
   /** Areas / communities shown on product pages and /products */
@@ -42,6 +42,7 @@ export const MARKETS: Record<MarketKey, Market> = {
     label: "Dubai, UAE",
     schemaRegion: "Dubai",
     schemaCountry: "AE",
+    whatsappRaw: "447546084350",
     verificationSource: "Dubai Land Department cross-checks",
     areas: [
       "Dubai Marina",
@@ -63,6 +64,7 @@ export const MARKETS: Record<MarketKey, Market> = {
     label: "Miami, FL",
     schemaRegion: "Miami-Dade County",
     schemaCountry: "US",
+    whatsappRaw: "94774601847",
     verificationSource:
       "verification of the Google and social media campaigns each lead was captured from",
     areas: [
@@ -85,6 +87,7 @@ export const MARKETS: Record<MarketKey, Market> = {
     label: "California, USA",
     schemaRegion: "California",
     schemaCountry: "US",
+    whatsappRaw: "94774601847",
     verificationSource:
       "verification of the Google and social media campaigns each lead was captured from",
     areas: [
@@ -433,6 +436,19 @@ export const PRODUCTS: readonly Product[] = [
 
 export function getProduct(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug);
+}
+
+/**
+ * The market a route belongs to. Product pages resolve to their own market;
+ * everything else falls back to Dubai, the site's home market.
+ */
+export function getMarketForPath(pathname: string): Market {
+  const prefix = "/products/";
+  if (pathname.startsWith(prefix)) {
+    const product = getProduct(pathname.slice(prefix.length).split("/")[0]);
+    if (product) return MARKETS[product.market];
+  }
+  return MARKETS.dubai;
 }
 
 export function getMarket(product: Product): Market {
