@@ -92,7 +92,7 @@ export function Hero() {
       {/* ========================================= */}
       <div className="container relative z-20 pt-9 pb-14 md:pt-12 md:pb-16">
         <motion.div
-          className="max-w-6xl"
+          className="max-w-[1340px]"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -110,14 +110,14 @@ export function Hero() {
           </h1>
 
           <p className="mt-4 max-w-4xl text-xl text-[#5a5a5a]">
-            Verified contacts for real estate brokers, consultants, and agencies in Dubai, Miami and California. Owner leads and high-intent buyer leads across each market&apos;s top areas. CRM-ready Excel. Instant delivery.
+            Verified contacts for real estate brokers, consultants, and agencies in Dubai, Miami, California and the UK. Owner leads and high-intent buyer leads across each market&apos;s top areas. CRM-ready Excel. Instant delivery.
           </p>
 
           {/* One CTA per dataset, kept on a single row on desktop */}
           <div className="flex flex-wrap gap-2 mt-8">
             {PRODUCTS.map((product) => (
               <Link key={product.slug} href={`/products/${product.slug}`}>
-                <Button size="lg" className="px-5">
+                <Button size="lg" className="px-4">
                   {product.shortName} — ${product.price.toLocaleString()}
                 </Button>
               </Link>
@@ -125,7 +125,7 @@ export function Hero() {
           </div>
 
           <div className="mt-6 max-w-4xl text-sm text-[#6b6b6b]">
-            Trusted by 240+ brokerages &amp; agencies • 1,000,000+ verified Dubai owners • 16,000+ buyer leads across Dubai, Miami &amp; California • 10-minute instant delivery
+            Trusted by 240+ brokerages &amp; agencies • 1,000,000+ verified Dubai owners • 17,000+ buyer leads across Dubai, Miami, California &amp; the UK • 10-minute instant delivery
           </div>
 
           {/* Fast Delivery Trust Badge - Clean SaaS style */}
@@ -140,7 +140,7 @@ export function Hero() {
 
           {/* Buyer Leads Record Count Trust Badge */}
           <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-[#c8c8c8] bg-[#f5f5f5] px-4 py-1.5 text-xs font-medium text-[#3d3d3d] shadow-sm">
-            16,000+ High-Intent Buyer Leads — Dubai, Miami &amp; California
+            17,000+ High-Intent Buyer Leads — Dubai, Miami, California &amp; UK
           </div>
 
           {/* Communities Trust Badge - Prominent in hero */}

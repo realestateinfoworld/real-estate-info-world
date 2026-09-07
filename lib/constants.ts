@@ -11,7 +11,7 @@ export const CONTACT = {
 /* Markets                                                             */
 /* ------------------------------------------------------------------ */
 
-export type MarketKey = "dubai" | "miami" | "california";
+export type MarketKey = "dubai" | "miami" | "california" | "uk";
 
 export interface Market {
   key: MarketKey;
@@ -104,9 +104,32 @@ export const MARKETS: Record<MarketKey, Market> = {
     areasNote:
       "Target buyers actively searching homes and investment property in Beverly Hills, Malibu, Newport Beach, La Jolla, Santa Monica and other high-value California markets.",
   },
+  uk: {
+    key: "uk",
+    name: "UK",
+    label: "United Kingdom",
+    schemaRegion: "United Kingdom",
+    schemaCountry: "GB",
+    whatsappRaw: "94774601847",
+    verificationSource:
+      "verification of the Rightmove, Zoopla, Google and social media campaigns each lead was captured from",
+    areas: [
+      "Mayfair, London",
+      "Kensington, London",
+      "Chelsea, London",
+      "Notting Hill, London",
+      "Westminster, London",
+      "Hampstead, London",
+      "Canary Wharf, London",
+      "Edinburgh New Town",
+    ],
+    areasMore: "+ The Cotswolds, Manchester City Centre & Surrey",
+    areasNote:
+      "Target buyers actively searching prime London, Edinburgh, Manchester and country property in the Cotswolds and the Home Counties.",
+  },
 };
 
-export const MARKET_ORDER: readonly MarketKey[] = ["dubai", "miami", "california"];
+export const MARKET_ORDER: readonly MarketKey[] = ["dubai", "miami", "california", "uk"];
 
 /* ------------------------------------------------------------------ */
 /* Products                                                            */
@@ -432,6 +455,72 @@ export const PRODUCTS: readonly Product[] = [
       ],
     },
   },
+  {
+    slug: "uk-buyer-leads",
+    name: "UK Real Estate Buyer Leads",
+    shortName: "UK Buyer Leads",
+    type: "buyer",
+    market: "uk",
+    version: "September 2026",
+    price: 750,
+    premium: true,
+    shortDescription:
+      "Real buyers actively searching UK property right now — not recycled lists.",
+    description:
+      "UK Real Estate Buyer Leads: 1,000+ verified buyers actively searching UK property right now. These are not recycled lists — every lead is sourced fresh this month from Rightmove and Zoopla enquiries plus Google and social media campaigns, and comes with a verified email address, mobile and alternate number, buyer nationality, preferred area, property type, bedroom count, estimated budget in GBP and purchase timeframe. Built for UK estate agents, brokers and agencies who want to stop chasing cold contacts and start talking to buyers who are already looking.",
+    features: [
+      "1,000+ high-intent UK buyer leads",
+      "99% verified data — sourced this month",
+      "Estimated budget (GBP) & purchase timeframe per lead",
+      "Verified email, mobile & alternate number",
+      "Mayfair, Kensington, Chelsea, Edinburgh New Town & more",
+      "CRM-ready Excel format",
+      "10 Minutes (Instant Processing Available)",
+    ],
+    stats: [
+      { label: "Leads", value: "1,000+" },
+      { label: "Accuracy", value: "99%" },
+      { label: "Budget Data", value: "Included (GBP)" },
+      { label: "Format", value: "Excel (.xlsx)" },
+    ],
+    comparison: {
+      market: "United Kingdom",
+      bestFor: "Prime London & UK country property conversions",
+      records: "1,000+",
+      accuracy: "99%",
+      coverage: "UK-wide",
+      dataType: "High-Intent UK Buyers",
+      budgetInfo: "Included (Est. Budget GBP)",
+      format: "Excel (.xlsx)",
+      delivery: "10 Minutes (Instant)",
+    },
+    sample: {
+      columns: ["Buyer", "Based In", "Preferred Area", "Property Type", "Est. Budget (GBP)", "Timeframe"],
+      rows: [
+        ["Lina B****", "Germany", "Chelsea, London", "Townhouse", "£3,900,000", "1-3 Months"],
+        ["Leon S****", "Switzerland", "Kensington, London", "Townhouse", "£3,500,000", "1-3 Months"],
+        ["Adam D****", "France", "Canary Wharf, London", "Penthouse", "£1,750,000", "3-6 Months"],
+        ["Mia S****", "United Kingdom", "The Cotswolds", "Country Estate", "£1,500,000", "Just Browsing"],
+        ["Sophia R****", "United Kingdom", "Hampstead, London", "Penthouse", "£800,000", "Immediate (0-30 days)"],
+      ],
+      maskedColumn: 0,
+      emphasisColumn: 4,
+    },
+    seo: {
+      title:
+        "UK Real Estate Buyer Leads | 1,000+ Verified Buyers | September 2026",
+      description:
+        "UK Buyer Leads — 1,000+ verified, high-intent buyers actively searching UK property. Verified emails, phone numbers, estimated budgets in GBP and purchase timeframes across Mayfair, Kensington, Chelsea, Edinburgh New Town, The Cotswolds and more. CRM-ready Excel, $750.",
+      keywords: [
+        "UK Buyer Leads",
+        "UK Real Estate Buyer Leads",
+        "UK property buyer leads",
+        "London property buyer leads",
+        "prime central London leads",
+        "UK estate agent leads",
+      ],
+    },
+  },
 ];
 
 export function getProduct(slug: string): Product | undefined {
@@ -481,9 +570,9 @@ export const FAST_DELIVERY_BADGE =
 /** Headline numbers on the homepage. Update alongside PRODUCTS. */
 export const HOMEPAGE_STATS = [
   { number: "1,000,000+", label: "Verified Property Owners" },
-  { number: "16,000+", label: "High-Intent Buyer Leads" },
+  { number: "17,000+", label: "High-Intent Buyer Leads" },
   { number: "99%", label: "Verified Accuracy" },
-  { number: "3", label: "Markets Covered" },
+  { number: "4", label: "Markets Covered" },
 ] as const;
 
 /**
