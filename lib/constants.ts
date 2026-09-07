@@ -23,8 +23,6 @@ export interface Market {
   schemaRegion: string;
   /** schema.org areaServed: ISO 3166-1 alpha-2 country code */
   schemaCountry: string;
-  /** WhatsApp line that handles enquiries for this market */
-  whatsappRaw: string;
   /** Where record verification is cross-checked, used in the FAQ */
   verificationSource: string;
   /** Areas / communities shown on product pages and /products */
@@ -42,7 +40,6 @@ export const MARKETS: Record<MarketKey, Market> = {
     label: "Dubai, UAE",
     schemaRegion: "Dubai",
     schemaCountry: "AE",
-    whatsappRaw: "447546084350",
     verificationSource: "Dubai Land Department cross-checks",
     areas: [
       "Dubai Marina",
@@ -64,7 +61,6 @@ export const MARKETS: Record<MarketKey, Market> = {
     label: "Miami, FL",
     schemaRegion: "Miami-Dade County",
     schemaCountry: "US",
-    whatsappRaw: "94774601847",
     verificationSource:
       "verification of the Google and social media campaigns each lead was captured from",
     areas: [
@@ -87,7 +83,6 @@ export const MARKETS: Record<MarketKey, Market> = {
     label: "California, USA",
     schemaRegion: "California",
     schemaCountry: "US",
-    whatsappRaw: "94774601847",
     verificationSource:
       "verification of the Google and social media campaigns each lead was captured from",
     areas: [
@@ -110,7 +105,6 @@ export const MARKETS: Record<MarketKey, Market> = {
     label: "United Kingdom",
     schemaRegion: "United Kingdom",
     schemaCountry: "GB",
-    whatsappRaw: "94774601847",
     verificationSource:
       "verification of the Rightmove, Zoopla, Google and social media campaigns each lead was captured from",
     areas: [
@@ -171,11 +165,6 @@ export interface Product {
   market: MarketKey;
   version: string;
   price: number;
-  /**
-   * PayPal hosted button id. Omit for a dataset sold by enquiry rather than
-   * instant checkout — the lead form then routes to WhatsApp follow-up.
-   */
-  paypalButtonId?: string;
   /** Shows the "Premium" badge on the product card */
   premium: boolean;
   shortDescription: string;
@@ -201,7 +190,6 @@ export const PRODUCTS: readonly Product[] = [
     market: "dubai",
     version: "August 2026",
     price: 300,
-    paypalButtonId: "9389L2SZJ2U8Y",
     premium: false,
     shortDescription:
       "Verified Dubai property owners with direct contacts across prime communities.",
@@ -265,7 +253,6 @@ export const PRODUCTS: readonly Product[] = [
     market: "dubai",
     version: "August 2026",
     price: 1200,
-    paypalButtonId: "MBUBJ6QVQ2HHN",
     premium: true,
     shortDescription:
       "High-intent Dubai buyer leads with verified contacts and budgets.",
@@ -561,7 +548,7 @@ export const TRUST_BADGES = [
   "CRM Ready",
   "10 Minutes (Instant Processing)",
   "Market-Focused Data",
-  "PayPal Secure",
+  "Direct WhatsApp Support",
 ] as const;
 
 export const FAST_DELIVERY_BADGE =

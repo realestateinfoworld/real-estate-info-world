@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     // TEMPORARY TESTING MODE — Resend email sending REMOVED
     // 1. Skip email delivery entirely (no Resend call)
     // 2. Log lead details to server console
-    // 3. Return success so the client redirects directly to PayPal
+    // 3. Return success so the client hands off directly to WhatsApp
     // This is for testing only. UI and flow remain unchanged.
     // =====================================================
 
@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     console.log(`  Date:    ${leadDate}`);
     console.log('  (Would have sent email via Resend in production)\n');
 
-    // Always succeed for this test phase → direct PayPal redirect on client
+    // Always succeed for this test phase → direct WhatsApp hand-off on client
     return NextResponse.json(
       {
         success: true,

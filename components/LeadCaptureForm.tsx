@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import { Loader2, Shield } from "lucide-react";
 import { leadSchema, type LeadFormData } from "@/lib/lead-schema";
 import { trackMetaEvent } from "@/lib/metaPixel";
-import { MARKETS, type Product } from "@/lib/constants";
+import { CONTACT, type Product } from "@/lib/constants";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -23,14 +23,11 @@ interface LeadCaptureFormProps {
 }
 
 export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
-  // Datasets without a hosted button are sold by enquiry: the lead is still
-  // captured, then the buyer is handed to WhatsApp for the payment link.
-  const paypalUrl = product.paypalButtonId
-    ? `https://www.paypal.com/ncp/payment/${product.paypalButtonId}`
-    : null;
+  // Every dataset is sold by enquiry: the lead is captured, then the buyer is
+  // handed to WhatsApp for the payment link.
   const buildWhatsappUrl = (name?: string) => {
     const intro = name ? `Hello, this is ${name}.` : "Hello,";
-    return `https://wa.me/${MARKETS[product.market].whatsappRaw}?text=${encodeURIComponent(
+    return `https://wa.me/${CONTACT.whatsappRaw}?text=${encodeURIComponent(
       `${intro} I would like to purchase the ${product.name} ($${product.price.toLocaleString()}). Please send me the payment link.`
     )}`;
   };
@@ -72,7 +69,7 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        // Email failed or other server error — do NOT redirect to PayPal
+        // Email failed or other server error — do NOT hand off to WhatsApp
         throw new Error(result.error || "Failed to submit. Please try again.");
       }
 
@@ -86,20 +83,12 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
         currency: "USD",
       });
 
-      if (paypalUrl) {
-        toast.success("Thank you! Redirecting to secure PayPal checkout...");
+      toast.success("Thank you! Opening WhatsApp...");
 
-        // Small delay so user sees the success state / toast
-        setTimeout(() => {
-          window.location.href = paypalUrl;
-        }, 1350);
-      } else {
-        toast.success("Thank you! Opening WhatsApp...");
-
-        setTimeout(() => {
-          window.location.href = buildWhatsappUrl(formData.fullName);
-        }, 1350);
-      }
+      // Small delay so user sees the success state / toast
+      setTimeout(() => {
+        window.location.href = buildWhatsappUrl(formData.fullName);
+      }, 1350);
     } catch (error: any) {
       console.error("Lead submission error:", error);
       toast.error(error.message || "Something went wrong. Please try again or contact us.");
@@ -117,32 +106,17 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
           <Shield className="h-5 w-5 text-[#947f57]" />
         </div>
         <div className="text-sm font-medium">Thank you.</div>
-        {paypalUrl ? (
-          <>
-            <div className="mt-1 text-xs text-[#6b6b6b]">
-              Redirecting to PayPal secure checkout...
-            </div>
-            <div className="mt-3">
-              <a href={paypalUrl} className="text-xs text-[#947f57] underline hover:no-underline">
-                Click here if you are not redirected automatically
-              </a>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="mt-1 text-xs text-[#6b6b6b]">
-              Opening WhatsApp so we can send your payment link...
-            </div>
-            <div className="mt-3">
-              <a
-                href={buildWhatsappUrl(fullName.trim())}
-                className="text-xs text-[#947f57] underline hover:no-underline"
-              >
-                Click here if WhatsApp does not open automatically
-              </a>
-            </div>
-          </>
-        )}
+        <div className="mt-1 text-xs text-[#6b6b6b]">
+          Opening WhatsApp so we can send your payment link...
+        </div>
+        <div className="mt-3">
+          <a
+            href={buildWhatsappUrl(fullName.trim())}
+            className="text-xs text-[#947f57] underline hover:no-underline"
+          >
+            Click here if WhatsApp does not open automatically
+          </a>
+        </div>
       </div>
     );
   }
@@ -190,11 +164,7 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
       <Button
         type="submit"
         disabled={loading}
-        className={
-          paypalUrl
-            ? "w-full"
-            : "w-full bg-[#25D366] text-white shadow hover:bg-[#1da851]"
-        }
+        className="w-full bg-[#25D366] text-white shadow hover:bg-[#1da851]"
         size="lg"
       >
         {loading ? (
@@ -202,8 +172,6 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
             <Loader2 className="h-4 w-4 animate-spin" />
             Submitting...
           </>
-        ) : paypalUrl ? (
-          "Submit & Continue to PayPal"
         ) : (
           <>
             <WhatsAppIcon className="h-4 w-4" />
@@ -214,11 +182,7 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
 
       <div className="flex items-center justify-center gap-1.5 pt-1 text-[10px] text-[#6b6b6b]">
         <Shield className="h-3 w-3" />
-        <span>
-          {paypalUrl
-            ? "Secure PayPal checkout. Delivery within 10 minutes."
-            : "We send your payment link on WhatsApp. Delivery within 10 minutes."}
-        </span>
+        <span>We send your payment link on WhatsApp. Delivery within 10 minutes.</span>
       </div>
     </form>
   );

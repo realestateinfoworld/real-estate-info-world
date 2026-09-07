@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { getMarketForPath } from "@/lib/constants";
+import { CONTACT, getMarketForPath } from "@/lib/constants";
 
 export default function FloatingWhatsApp() {
   const pathname = usePathname();
@@ -13,7 +13,7 @@ export default function FloatingWhatsApp() {
 
   const market = getMarketForPath(pathname);
   const message = `Hello, I'm interested in your ${market.name} real estate data.`;
-  const waLink = `https://wa.me/${market.whatsappRaw}?text=${encodeURIComponent(message)}`;
+  const waLink = `https://wa.me/${CONTACT.whatsappRaw}?text=${encodeURIComponent(message)}`;
 
   return (
     <a

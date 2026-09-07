@@ -125,7 +125,7 @@ export default async function ProductPage({ params }: Props) {
             <CardContent className="pt-6">
               <div className="text-4xl font-semibold tracking-tighter mb-1">${product.price}</div>
               <div className="text-sm text-[#947f57] font-medium mb-4">
-                One-time • {product.paypalButtonId ? "10 min delivery" : "Payment link on WhatsApp"}
+                One-time • Payment link on WhatsApp
               </div>
 
               <LeadCaptureForm product={product} />
@@ -140,9 +140,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
 
               <div className="text-[10px] text-[#6b6b6b] mt-4 pt-3 border-t">
-                {product.paypalButtonId
-                  ? "7-day guarantee. PayPal secure."
-                  : "7-day guarantee. Payment link sent on WhatsApp."}
+                7-day guarantee. Payment link sent on WhatsApp.
               </div>
             </CardContent>
           </Card>

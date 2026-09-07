@@ -326,11 +326,6 @@ h1, h2, h3, h4 {
   font-variant-numeric: tabular-nums;
 }
 
-/* === PAYPAL WRAPPER === */
-.paypal-wrapper {
-  min-height: 54px;
-}
-
 /* === UTILITIES === */
 .section {
   padding-top: 3.5rem;
