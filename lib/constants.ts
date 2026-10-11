@@ -188,7 +188,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Dubai Owner Database",
     type: "owner",
     market: "dubai",
-    version: "August 2026",
+    version: "September 2026",
     price: 300,
     premium: false,
     shortDescription:
@@ -233,7 +233,7 @@ export const PRODUCTS: readonly Product[] = [
     },
     seo: {
       title:
-        "Dubai Property Owner Database | 1M+ Verified Owners | August 2026",
+        "Dubai Property Owner Database | 1M+ Verified Owners | September 2026",
       description:
         "Dubai Property Owner Database with 1,000,000+ verified owners and direct mobile numbers across 200+ Dubai communities. CRM-ready Excel for Dubai real estate brokers, consultants and property marketers. $300, delivered in 10 minutes.",
       keywords: [
@@ -251,7 +251,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Dubai Buyer Leads",
     type: "buyer",
     market: "dubai",
-    version: "August 2026",
+    version: "September 2026",
     price: 1200,
     premium: true,
     shortDescription:
@@ -296,7 +296,7 @@ export const PRODUCTS: readonly Product[] = [
     },
     seo: {
       title:
-        "Dubai Property Buyer Leads | 10,000+ High-Intent Buyers | August 2026",
+        "Dubai Property Buyer Leads | 10,000+ High-Intent Buyers | September 2026",
       description:
         "Dubai Property Buyer Leads — 10,000+ verified high-intent buyers actively looking in Dubai. Budgets, timelines & contacts included. Perfect for Dubai real estate brokers, consultants & agencies targeting serious purchasers in Dubai Marina, Downtown, Palm Jumeirah and more. $1,200.",
       keywords: [
