@@ -251,7 +251,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Dubai Buyer Leads",
     type: "buyer",
     market: "dubai",
-    version: "September 2026",
+    version: "October 2026",
     price: 1200,
     premium: true,
     shortDescription:
@@ -296,7 +296,7 @@ export const PRODUCTS: readonly Product[] = [
     },
     seo: {
       title:
-        "Dubai Property Buyer Leads | 10,000+ High-Intent Buyers | September 2026",
+        "Dubai Property Buyer Leads | 10,000+ High-Intent Buyers | October 2026",
       description:
         "Dubai Property Buyer Leads — 10,000+ verified high-intent buyers actively looking in Dubai. Budgets, timelines & contacts included. Perfect for Dubai real estate brokers, consultants & agencies targeting serious purchasers in Dubai Marina, Downtown, Palm Jumeirah and more. $1,200.",
       keywords: [
@@ -314,15 +314,15 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Miami Buyer Leads",
     type: "buyer",
     market: "miami",
-    version: "September 2026",
+    version: "October 2026",
     price: 1500,
     premium: true,
     shortDescription:
       "Real buyers actively searching Miami-Dade real estate right now — not recycled lists.",
     description:
-      "Miami Real Estate Buyer Leads: 3,000+ verified buyers actively searching Miami-Dade property right now. These are not recycled lists — every lead is sourced fresh this month from Google and social media campaigns, and comes with a verified email address, phone number, buyer country, target area, property type, bedroom count, estimated budget in USD and purchase timeframe. Built for Miami real estate agents, brokers and agencies who want to stop chasing cold contacts and start talking to buyers who are already looking.",
+      "Miami Real Estate Buyer Leads: 1,500+ verified buyers actively searching Miami-Dade property right now. These are not recycled lists — every lead is sourced fresh this month from Google and social media campaigns, and comes with a verified email address, phone number, buyer country, target area, property type, bedroom count, estimated budget in USD and purchase timeframe. Built for Miami real estate agents, brokers and agencies who want to stop chasing cold contacts and start talking to buyers who are already looking.",
     features: [
-      "3,000+ high-intent Miami buyer leads",
+      "1,500+ high-intent Miami buyer leads",
       "99% verified data — sourced this month",
       "Estimated budget (USD) & purchase timeframe per lead",
       "Verified email address & phone number",
@@ -331,7 +331,7 @@ export const PRODUCTS: readonly Product[] = [
       "10 Minutes (Instant Processing Available)",
     ],
     stats: [
-      { label: "Leads", value: "3,000+" },
+      { label: "Leads", value: "1,500+" },
       { label: "Accuracy", value: "99%" },
       { label: "Budget Data", value: "Included (USD)" },
       { label: "Format", value: "Excel (.xlsx)" },
@@ -339,7 +339,7 @@ export const PRODUCTS: readonly Product[] = [
     comparison: {
       market: "Miami, FL",
       bestFor: "Miami-Dade buyer conversions",
-      records: "3,000+",
+      records: "1,500+",
       accuracy: "99%",
       coverage: "Miami-Dade County",
       dataType: "High-Intent Miami Buyers",
@@ -361,9 +361,9 @@ export const PRODUCTS: readonly Product[] = [
     },
     seo: {
       title:
-        "Miami Real Estate Buyer Leads | 3,000+ Verified Buyers | September 2026",
+        "Miami Real Estate Buyer Leads | 1,500+ Verified Buyers | October 2026",
       description:
-        "Miami Buyer Leads — 3,000+ verified, high-intent buyers actively searching Miami-Dade real estate. Verified emails, phones, estimated budgets and purchase timeframes across Brickell, Edgewater, Coconut Grove, Sunny Isles Beach and more. CRM-ready Excel, $1,500.",
+        "Miami Buyer Leads — 1,500+ verified, high-intent buyers actively searching Miami-Dade real estate. Verified emails, phones, estimated budgets and purchase timeframes across Brickell, Edgewater, Coconut Grove, Sunny Isles Beach and more. CRM-ready Excel, $1,500.",
       keywords: [
         "Miami Buyer Leads",
         "Miami Real Estate Buyer Leads",
@@ -381,7 +381,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "California Buyer Leads",
     type: "buyer",
     market: "california",
-    version: "September 2026",
+    version: "October 2026",
     price: 1500,
     premium: true,
     shortDescription:
@@ -428,7 +428,7 @@ export const PRODUCTS: readonly Product[] = [
     },
     seo: {
       title:
-        "California Real Estate Buyer Leads | 3,000+ Verified Buyers | September 2026",
+        "California Real Estate Buyer Leads | 3,000+ Verified Buyers | October 2026",
       description:
         "California Buyer Leads — 3,000+ verified, high-intent buyers actively searching homes and investment property across California. Verified emails, phones, estimated budgets and purchase timeframes across Beverly Hills, Malibu, Newport Beach, La Jolla and more. CRM-ready Excel, $1,500.",
       keywords: [
@@ -448,7 +448,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "UK Buyer Leads",
     type: "buyer",
     market: "uk",
-    version: "September 2026",
+    version: "October 2026",
     price: 750,
     premium: true,
     shortDescription:
@@ -495,7 +495,7 @@ export const PRODUCTS: readonly Product[] = [
     },
     seo: {
       title:
-        "UK Real Estate Buyer Leads | 1,000+ Verified Buyers | September 2026",
+        "UK Real Estate Buyer Leads | 1,000+ Verified Buyers | October 2026",
       description:
         "UK Buyer Leads — 1,000+ verified, high-intent buyers actively searching UK property. Verified emails, phone numbers, estimated budgets in GBP and purchase timeframes across Mayfair, Kensington, Chelsea, Edinburgh New Town, The Cotswolds and more. CRM-ready Excel, $750.",
       keywords: [
@@ -554,10 +554,13 @@ export const TRUST_BADGES = [
 export const FAST_DELIVERY_BADGE =
   "⚡ Fastest Delivery in the Industry (10-Minute Instant Access Available)";
 
+/** Newest release across PRODUCTS, for site-wide copy. Update alongside PRODUCTS. */
+export const LATEST_RELEASE = "October 2026";
+
 /** Headline numbers on the homepage. Update alongside PRODUCTS. */
 export const HOMEPAGE_STATS = [
   { number: "1,000,000+", label: "Verified Property Owners" },
-  { number: "17,000+", label: "High-Intent Buyer Leads" },
+  { number: "15,500+", label: "High-Intent Buyer Leads" },
   { number: "99%", label: "Verified Accuracy" },
   { number: "4", label: "Markets Covered" },
 ] as const;

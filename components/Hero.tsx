@@ -6,7 +6,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-import { HOMEPAGE_STATS, PRODUCTS, formatMarketList, getMarket } from "@/lib/constants";
+import { HOMEPAGE_STATS, LATEST_RELEASE, PRODUCTS, formatMarketList, getMarket } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -54,7 +54,7 @@ export function Hero() {
             className="inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-gold/[0.07] px-4 py-1.5 text-xs font-medium text-gold-pale backdrop-blur"
           >
             <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-gold" />
-            {PRODUCTS[0].version} data now available
+            {LATEST_RELEASE} data now available
           </motion.div>
 
           <motion.h1

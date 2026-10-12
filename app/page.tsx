@@ -12,6 +12,7 @@ import { Reveal } from "@/components/Reveal";
 import { buttonVariants } from "@/components/ui/button";
 import {
   HOMEPAGE_STATS,
+  LATEST_RELEASE,
   PRODUCTS,
   TESTIMONIALS,
   formatMarketList,
@@ -130,7 +131,7 @@ export default function Home() {
               {
                 icon: Database,
                 title: "Refreshed monthly",
-                body: `Every dataset is updated each month. Current release: ${flagship.version}.`,
+                body: `Every dataset is updated each month. Current release: ${LATEST_RELEASE}.`,
               },
             ].map((item, i) => (
               <Reveal key={item.title} delay={0.08 * (i + 1)} className="md:col-span-6 lg:col-span-3">
