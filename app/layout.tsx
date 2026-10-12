@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { Cinzel, Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -159,6 +160,7 @@ export default function RootLayout({
           </Suspense>
         )}
         <Toaster position="top-center" theme="light" closeButton richColors className="sonner-toast" />
+        <Analytics />
       </body>
     </html>
   );
