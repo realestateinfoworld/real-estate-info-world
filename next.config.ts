@@ -9,8 +9,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-module.exports = {
-  images: {
-    qualities: [75, 80], // 80 add කළා
-  },
-}

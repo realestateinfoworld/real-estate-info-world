@@ -1,13 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 import { leadSchema } from "@/lib/lead-schema";
-
-// NOTE: Resend import + init left in place for easy restore after testing.
-// TEMPORARY TESTING MODE: Email delivery is completely skipped below.
-
-const resend = process.env.RESEND_API_KEY
-  ? new Resend(process.env.RESEND_API_KEY)
-  : null;
+import { dubaiTimestamp, sendNotification } from "@/lib/email";
 
 export async function POST(request: NextRequest) {
   try {
@@ -34,39 +27,21 @@ export async function POST(request: NextRequest) {
     const email = data.email.trim().toLowerCase();
     const productName = data.product;
 
-    // Generate timestamp (Dubai time) for logging
-    const leadDate = new Date().toLocaleString("en-US", {
-      timeZone: "Asia/Dubai",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
+    // The buyer is handed to WhatsApp either way: a failed notification is
+    // logged by sendNotification, but must never block a sale.
+    await sendNotification({
+      subject: "New Lead - Real Estate Info World",
+      replyTo: email,
+      text: [
+        `Name: ${fullName}`,
+        `Email: ${email}`,
+        `Product: ${productName}`,
+        `Date: ${dubaiTimestamp()}`,
+      ].join("\n"),
     });
 
-    // =====================================================
-    // TEMPORARY TESTING MODE — Resend email sending REMOVED
-    // 1. Skip email delivery entirely (no Resend call)
-    // 2. Log lead details to server console
-    // 3. Return success so the client hands off directly to WhatsApp
-    // This is for testing only. UI and flow remain unchanged.
-    // =====================================================
-
-    console.log('\n[LEAD TEST MODE] Lead form submitted — email delivery skipped');
-    console.log(`  Name:    ${fullName}`);
-    console.log(`  Email:   ${email}`);
-    console.log(`  Product: ${productName}`);
-    console.log(`  Date:    ${leadDate}`);
-    console.log('  (Would have sent email via Resend in production)\n');
-
-    // Always succeed for this test phase → direct WhatsApp hand-off on client
-    return NextResponse.json(
-      {
-        success: true,
-      },
-      { status: 200 }
-    );
-  } catch (err: any) {
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (err) {
     console.error("[LEADS API] Unexpected error:", err);
     return NextResponse.json(
       {

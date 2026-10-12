@@ -1,188 +1,210 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Check } from "lucide-react";
 import Image from "next/image";
-import { PRODUCTS } from "@/lib/constants";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
+import { HOMEPAGE_STATS, PRODUCTS, formatMarketList, getMarket } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+
+const ease = [0.22, 1, 0.36, 1] as const;
+
+// The preview card cycles through every buyer-lead dataset.
+const previewProducts = PRODUCTS.filter((p) => p.type === "buyer");
 
 export function Hero() {
-  const { scrollY } = useScroll();
-  
-  // Soft parallax: background moves slightly slower than scroll for premium depth
-  const backgroundY = useTransform(scrollY, [0, 600], [0, -28]);
+  const [active, setActive] = useState(0);
 
-  // Subtle entrance zoom for the cinematic background (Apple/Stripe style)
-  const [hasMounted, setHasMounted] = useState(false);
   useEffect(() => {
-    setHasMounted(true);
+    const id = setInterval(() => setActive((i) => (i + 1) % previewProducts.length), 4500);
+    return () => clearInterval(id);
   }, []);
 
-  const trustItems = [
-    "Verified Property Owners",
-    "High-Intent Buyers",
-    "CRM Ready for Brokers",
-    "WhatsApp & Calling Ready",
-    "Updated Monthly",
-  ];
+  const product = previewProducts[active];
+  const { columns, rows, maskedColumn, emphasisColumn } = product.sample;
+  // Name, where the buyer is from, and budget
+  const shown = [maskedColumn, 1, emphasisColumn];
 
   return (
-    <section 
-      className="relative min-h-screen flex items-center overflow-hidden"
-      aria-label="Hero"
-    >
-      {/* ========================================= */}
-      {/* FULL-WIDTH HERO BACKGROUND LAYERS */}
-      {/* ========================================= */}
-
-      {/* Base background image with subtle blur + zoom + parallax */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y: backgroundY }}
-        initial={{ scale: 1.085, opacity: 0 }}
-        animate={hasMounted ? { scale: 1, opacity: 1 } : {}}
-        transition={{
-          duration: 2.1,
-          ease: [0.22, 1.0, 0.32, 1],
-        }}
-      >
+    <section className="grain relative isolate flex min-h-[100svh] items-center overflow-hidden" aria-label="Hero">
+      {/* Background photo, darkened toward the copy */}
+      <div className="absolute inset-0 -z-10">
         <Image
-          src="/images/hero-background.png"
-          alt="Modern laptop displaying a 3D Dubai property model overlaid on a professional real estate data analytics dashboard"
+          src="/images/hero-background.webp"
+          alt=""
           fill
-          className="hero-bg-image object-cover"
-          style={{ 
-            filter: "blur(1px) brightness(0.97)",
-          }}
-          priority
-          quality={82}
+          preload
           sizes="100vw"
+          className="hero-bg-image object-cover opacity-55"
         />
-      </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/70" />
+        <div className="absolute -top-40 left-1/4 h-[520px] w-[720px] rounded-full bg-gold/10 blur-[120px]" />
+      </div>
 
-      {/* Primary light/white overlay — preserves premium light SaaS aesthetic */}
-      <div 
-        className="absolute inset-0 z-10" 
-        style={{
-          background: "linear-gradient(to right, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.86) 38%, rgba(255,255,255,0.72) 62%, rgba(255,255,255,0.58) 100%)"
-        }} 
-      />
+      <div className="container grid items-center gap-14 pt-32 pb-20 lg:grid-cols-[1.15fr_1fr] lg:gap-10 lg:pt-36 lg:pb-40">
+        {/* Copy */}
+        <div className="min-w-0">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+            className="inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-gold/[0.07] px-4 py-1.5 text-xs font-medium text-gold-pale backdrop-blur"
+          >
+            <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-gold" />
+            {PRODUCTS[0].version} data now available
+          </motion.div>
 
-      {/* Secondary soft gradient for depth and text contrast (top + bottom) */}
-      <div 
-        className="absolute inset-0 z-10" 
-        style={{
-          background: "linear-gradient(to bottom, rgba(255,255,255,0.18) 0%, transparent 28%, transparent 72%, rgba(255,255,255,0.22) 100%)"
-        }} 
-      />
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease, delay: 0.08 }}
+            className="mt-7 font-display text-[3.25rem] leading-[0.98] text-ivory sm:text-7xl xl:text-[5.5rem]"
+          >
+            Verified owners &amp; buyers,{" "}
+            <em className="text-gold-gradient pr-2">ready to call.</em>
+          </motion.h1>
 
-      {/* Very subtle additional side gradient for luxury framing (like high-end real estate sites) */}
-      <div 
-        className="absolute inset-0 z-10" 
-        style={{
-          background: "linear-gradient(to right, rgba(255,255,255,0.15) 0%, transparent 55%)"
-        }} 
-      />
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease, delay: 0.16 }}
+            className="mt-7 max-w-xl text-lg leading-relaxed text-sand"
+          >
+            Property owner databases and high-intent buyer leads for brokers and agencies in{" "}
+            {formatMarketList()}. CRM-ready Excel, delivered in 10 minutes.
+          </motion.p>
 
-      {/* ========================================= */}
-      {/* CONTENT — Exact original text preserved */}
-      {/* ========================================= */}
-      <div className="container relative z-20 pt-9 pb-14 md:pt-12 md:pb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease, delay: 0.24 }}
+            className="mt-10 flex flex-col gap-3 sm:flex-row"
+          >
+            <Link href="/products" className={buttonVariants({ size: "lg" })}>
+              Explore datasets <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="#sample" className={buttonVariants({ variant: "outline", size: "lg" })}>
+              See sample data
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-stone"
+          >
+            <span className="flex items-center gap-2">
+              <Zap className="h-4 w-4 text-gold" /> 10-minute delivery
+            </span>
+            <span className="flex items-center gap-2">
+              <ShieldCheck className="h-4 w-4 text-gold" /> 7-day quality guarantee
+            </span>
+          </motion.div>
+        </div>
+
+        {/* Live sample preview */}
         <motion.div
-          className="max-w-[1340px]"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.72,
-            ease: [0.22, 1.0, 0.32, 1],
-            delay: 0.06,
-          }}
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, ease, delay: 0.3 }}
+          className="relative min-w-0"
         >
-          <Badge variant="primary" className="mb-4 text-sm px-3 py-1">
-            September 2026 Data Available
-          </Badge>
+          <div className="absolute -inset-6 rounded-[2.5rem] bg-gold/10 blur-3xl" aria-hidden="true" />
+          <div className="glass gold-frame relative overflow-hidden rounded-3xl">
+            <div className="flex items-center justify-between border-b border-ivory/[0.06] px-5 py-4">
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-ivory/10" />
+                <span className="h-2.5 w-2.5 rounded-full bg-ivory/10" />
+                <span className="h-2.5 w-2.5 rounded-full bg-ivory/10" />
+              </div>
+              <div className="font-mono text-[11px] text-stone">{product.slug}.xlsx</div>
+            </div>
 
-          <h1 className="max-w-4xl text-5xl md:text-[56px] font-semibold tracking-[-2.8px] leading-[1.05] text-balance text-[#3d3d3d]">
-            Property Owner Databases &amp; Buyer Leads for brokers.
-          </h1>
+            <div className="flex gap-1.5 overflow-x-auto px-5 pt-4" role="tablist" aria-label="Sample market">
+              {previewProducts.map((p, i) => (
+                <button
+                  key={p.slug}
+                  role="tab"
+                  aria-selected={i === active}
+                  onClick={() => setActive(i)}
+                  className={cn(
+                    "whitespace-nowrap rounded-full px-3 py-1 text-xs transition-colors",
+                    i === active
+                      ? "bg-gold/15 text-gold-pale"
+                      : "text-stone hover:text-sand"
+                  )}
+                >
+                  {getMarket(p).name}
+                </button>
+              ))}
+            </div>
 
-          <p className="mt-4 max-w-4xl text-xl text-[#5a5a5a]">
-            Verified contacts for real estate brokers, consultants, and agencies in Dubai, Miami, California and the UK. Owner leads and high-intent buyer leads across each market&apos;s top areas. CRM-ready Excel. Instant delivery.
-          </p>
+            <div className="overflow-x-auto px-2 pt-2 pb-3">
+              <AnimatePresence mode="wait">
+                <motion.table
+                  key={product.slug}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.35 }}
+                  className="sample-table"
+                >
+                  <thead>
+                    <tr>
+                      {shown.map((c) => (
+                        <th key={c} className={cn(c === 1 && "hidden sm:table-cell")}>{columns[c]}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.slice(0, 4).map((row, r) => (
+                      <tr key={r}>
+                        {shown.map((c) => (
+                          <td
+                            key={c}
+                            className={cn(
+                              c === 1 && "hidden sm:table-cell",
+                              c === maskedColumn && "blurred-cell",
+                              c === emphasisColumn && "font-medium text-gold-pale"
+                            )}
+                          >
+                            {row[c]}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </motion.table>
+              </AnimatePresence>
+            </div>
 
-          {/* One CTA per dataset, kept on a single row on desktop */}
-          <div className="flex flex-wrap gap-2 mt-8">
-            {PRODUCTS.map((product) => (
-              <Link key={product.slug} href={`/products/${product.slug}`}>
-                <Button size="lg" className="px-4">
-                  {product.shortName} — ${product.price.toLocaleString()}
-                </Button>
+            <div className="flex items-center justify-between border-t border-ivory/[0.06] px-5 py-3.5 text-xs">
+              <span className="text-stone">
+                {product.stats[0].value} {product.stats[0].label.toLowerCase()} · {product.version}
+              </span>
+              <Link href={`/products/${product.slug}`} className="text-gold hover:text-gold-pale">
+                View dataset →
               </Link>
-            ))}
-          </div>
-
-          <div className="mt-6 max-w-4xl text-sm text-[#6b6b6b]">
-            Trusted by 240+ brokerages &amp; agencies • 1,000,000+ verified Dubai owners • 17,000+ buyer leads across Dubai, Miami, California &amp; the UK • 10-minute instant delivery
-          </div>
-
-          {/* Fast Delivery Trust Badge - Clean SaaS style */}
-          <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#c8c8c8] bg-[#f2f2f2] px-4 py-1.5 text-xs font-medium text-[#5a5a5a]">
-            ⚡ Fastest Delivery in the Industry (10-Minute Instant Access Available)
-          </div>
-
-          {/* Record Count Trust Badge - Prominent in hero */}
-          <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-[#c8c8c8] bg-[#f5f5f5] px-4 py-1.5 text-xs font-medium text-[#3d3d3d] shadow-sm">
-            1,000,000+ Verified Dubai Property Owners
-          </div>
-
-          {/* Buyer Leads Record Count Trust Badge */}
-          <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-[#c8c8c8] bg-[#f5f5f5] px-4 py-1.5 text-xs font-medium text-[#3d3d3d] shadow-sm">
-            17,000+ High-Intent Buyer Leads — Dubai, Miami, California &amp; UK
-          </div>
-
-          {/* Communities Trust Badge - Prominent in hero */}
-          <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-[#c8c8c8] bg-[#f5f5f5] px-4 py-1.5 text-xs font-medium text-[#3d3d3d] shadow-sm">
-            200+ Premium Dubai Communities
+            </div>
           </div>
         </motion.div>
       </div>
 
-      {/* ========================================= */}
-      {/* FLOATING GLASS CARD (right side) — Optional enhancement */}
-      {/* Premium glassmorphism, Apple/Stripe/Sotheby's feel */}
-      {/* ========================================= */}
-      <motion.div
-        className="hero-glass hidden xl:block absolute right-7 2xl:right-10 top-[23%] z-30 w-[268px] rounded-3xl bg-white/68 backdrop-blur-2xl border border-white/65 p-5 text-[#3d3d3d]"
-        initial={{ opacity: 0, y: 12, scale: 0.985 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{
-          duration: 0.8,
-          ease: [0.22, 1.0, 0.32, 1],
-          delay: 0.42,
-        }}
-      >
-        <div className="text-[10px] font-medium tracking-[1.6px] text-[#6b6b6b] mb-3.5 uppercase">
-          Why professionals choose us
-        </div>
-
-        <ul className="space-y-[8.5px] text-[13.2px] leading-tight">
-          {trustItems.map((item, index) => (
-            <li key={index} className="flex items-center gap-2.5">
-              <span className="inline-flex h-[17px] w-[17px] flex-shrink-0 items-center justify-center rounded-full bg-[#e8e0d3]">
-                <Check className="h-2.5 w-2.5 text-[#947f57]" strokeWidth={3.5} />
-              </span>
-              <span className="font-medium text-[#3d3d3d]">{item}</span>
-            </li>
+      {/* Stats strip */}
+      <div className="absolute inset-x-0 bottom-0 hidden border-t border-ivory/[0.06] bg-ink/60 backdrop-blur-md lg:block">
+        <div className="container grid grid-cols-4 divide-x divide-ivory/[0.06]">
+          {HOMEPAGE_STATS.map((stat) => (
+            <div key={stat.label} className="px-6 py-5 first:pl-0">
+              <div className="stat-number font-display text-3xl text-ivory">{stat.number}</div>
+              <div className="mt-0.5 text-xs tracking-wide text-stone">{stat.label}</div>
+            </div>
           ))}
-        </ul>
-
-        <div className="mt-4 pt-3.5 border-t border-white/50 text-[10px] text-[#6b6b6b] leading-snug">
-          Delivered as ready-to-use Excel files within minutes.
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

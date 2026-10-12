@@ -618,3 +618,27 @@ export const TESTIMONIALS = [
     role: "Head of Growth, Apex Estates",
   },
 ];
+
+/** "Dubai, Miami, California and UK" — every market that has a product. */
+export function formatMarketList(): string {
+  const names = getProductsByMarket().map((g) => g.market.name);
+  return names.length > 1
+    ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`
+    : names[0];
+}
+
+/** How a purchase works, shown on the homepage and every product page. */
+export const PURCHASE_STEPS = [
+  {
+    title: "Choose your dataset",
+    body: "Pick the market and data type you need — owner database or high-intent buyer leads.",
+  },
+  {
+    title: "Get your payment link",
+    body: "Enter your name and email. We send a secure payment link straight to you on WhatsApp.",
+  },
+  {
+    title: "Receive your Excel file",
+    body: "Your CRM-ready .xlsx file is delivered within 10 minutes of payment confirmation.",
+  },
+] as const;

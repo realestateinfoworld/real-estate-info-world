@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { Navbar } from "@/components/Navbar";
@@ -22,6 +22,22 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  display: "swap",
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+// Wordmark only, to echo the logo's lettering
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["600"],
   display: "swap",
 });
 
@@ -56,13 +72,11 @@ export const metadata: Metadata = {
     siteName: "Real Estate Info World",
     title: "Real Estate Info World | Property Owner Databases & Buyer Leads",
     description: "Professional property owner databases and high-intent buyer leads for brokers and agencies. CRM-ready. Delivered in minutes.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Real Estate Info World | Property Owner Databases & Buyer Leads",
     description: "Verified real estate leads and property marketing data for brokers and consultants.",
-    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -123,8 +137,8 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#e8e8e8] text-[#3d3d3d]">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} ${cinzel.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-ink text-ivory">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
@@ -144,7 +158,7 @@ export default function RootLayout({
             <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID} />
           </Suspense>
         )}
-        <Toaster position="top-center" closeButton richColors className="sonner-toast" />
+        <Toaster position="top-center" theme="dark" closeButton richColors className="sonner-toast" />
       </body>
     </html>
   );
