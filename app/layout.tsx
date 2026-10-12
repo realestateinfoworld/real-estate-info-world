@@ -158,7 +158,7 @@ export default function RootLayout({
             <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID} />
           </Suspense>
         )}
-        <Toaster position="top-center" theme="dark" closeButton richColors className="sonner-toast" />
+        <Toaster position="top-center" theme="light" closeButton richColors className="sonner-toast" />
       </body>
     </html>
   );

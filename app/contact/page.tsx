@@ -45,7 +45,7 @@ export default function ContactPage() {
                 {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="group flex items-center gap-5 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-gold/40"
               >
-                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold group-hover:text-ink">
+                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold-via group-hover:text-on-gold">
                   <c.icon className="h-5 w-5" />
                 </span>
                 <span className="min-w-0">

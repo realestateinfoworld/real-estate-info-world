@@ -26,7 +26,7 @@ export default function FloatingWhatsApp() {
       <img
         src="/icons/whatsapp.svg"
         alt="Chat on WhatsApp"
-        className="h-14 w-14 rounded-full shadow-[0_12px_30px_-8px_rgb(0_0_0_/_0.7)] ring-1 ring-ivory/10 transition-transform hover:scale-105"
+        className="h-14 w-14 rounded-full shadow-[0_12px_30px_-8px_rgb(0_0_0_/_0.25)] ring-1 ring-ivory/10 transition-transform hover:scale-105"
       />
     </a>
   );
