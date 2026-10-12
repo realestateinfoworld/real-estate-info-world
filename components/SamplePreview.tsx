@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Eye, Lock } from "lucide-react";
+import { Eye, EyeOff, Lock } from "lucide-react";
 import type { Product } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -14,22 +14,22 @@ export function SamplePreview({ product }: SamplePreviewProps) {
   const { columns, rows, maskedColumn, emphasisColumn } = product.sample;
 
   return (
-    <div className="sample-preview relative">
-      <div className="flex items-center justify-between px-5 py-3 border-b border-[#c8c8c8]">
-        <div>
-          <div className="text-sm font-semibold">{product.name} — Sample</div>
-          <div className="text-xs text-[#6b6b6b]">{product.version} • Actual format shown</div>
+    <div className="overflow-hidden rounded-3xl border border-line bg-surface">
+      <div className="flex items-center justify-between gap-4 border-b border-line px-5 py-4">
+        <div className="min-w-0">
+          <div className="truncate text-sm font-medium text-ivory">{product.name} — Sample</div>
+          <div className="text-xs text-stone">{product.version} · Actual format shown</div>
         </div>
         <button
           onClick={() => setRevealed(!revealed)}
-          className="flex items-center gap-1.5 text-xs px-3 py-1 rounded-full border border-[#c8c8c8] hover:bg-[#f2f2f2] transition"
+          className="flex flex-shrink-0 items-center gap-1.5 rounded-full border border-line-strong px-3 py-1.5 text-xs text-sand transition hover:border-gold/50 hover:text-ivory"
         >
-          <Eye className="h-3.5 w-3.5" />
-          {revealed ? "Hide" : "Reveal"} Details
+          {revealed ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
+          {revealed ? "Hide" : "Reveal"} details
         </button>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto px-2">
         <table className="sample-table">
           <thead>
             <tr>
@@ -46,7 +46,7 @@ export function SamplePreview({ product }: SamplePreviewProps) {
                     key={cellIndex}
                     className={cn(
                       cellIndex === maskedColumn && !revealed && "blurred-cell",
-                      cellIndex === emphasisColumn && "font-medium text-[#3d3d3d]"
+                      cellIndex === emphasisColumn && "font-medium text-gold-pale"
                     )}
                   >
                     {cell}
@@ -58,13 +58,9 @@ export function SamplePreview({ product }: SamplePreviewProps) {
         </table>
       </div>
 
-      <div className="preview-overlay text-center">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#c8c8c8] bg-[#f5f5f5] px-4 py-1 text-xs font-medium text-[#5a5a5a] shadow-sm mb-2">
-          <Lock className="h-3.5 w-3.5" /> ACTUAL SAMPLE DATA PREVIEW
-        </div>
-        <p className="text-xs text-[#6b6b6b] max-w-sm mx-auto">
-          Sensitive fields are masked. Full unredacted Excel file delivered after purchase.
-        </p>
+      <div className="flex items-center gap-3 border-t border-line bg-ink-2 px-5 py-4 text-xs text-stone">
+        <Lock className="h-3.5 w-3.5 flex-shrink-0 text-gold" />
+        Sensitive fields are masked. The full, unredacted Excel file is delivered after purchase.
       </div>
     </div>
   );

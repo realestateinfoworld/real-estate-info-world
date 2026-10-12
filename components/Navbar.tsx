@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { Logo } from "@/components/Logo";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { PRODUCTS } from "@/lib/constants";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
+  { href: "/products", label: "Datasets" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -18,24 +18,42 @@ const navLinks = [
 export function Navbar() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <nav className="sticky top-0 z-[999] border-b border-[#c8c8c8] bg-[#e8e8e8]/95 backdrop-blur supports-[backdrop-filter]:bg-[#e8e8e8]/80">
-      <div className="container relative flex h-28 items-center">
-        {/* Logo - left aligned */}
-        <Link href="/" className="flex items-center">
-          <img src="/images/logo.png" alt="Real Estate Info World" className="h-16 w-auto" />
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-[999] transition-all duration-300",
+        scrolled || mobileOpen
+          ? "border-b border-line/80 bg-ink/80 backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
+      )}
+    >
+      <nav className="container flex h-18 md:h-20 items-center justify-between">
+        <Link href="/" aria-label="Real Estate Info World — Home" onClick={() => setMobileOpen(false)}>
+          <Logo />
         </Link>
 
-        {/* Desktop Navigation - absolutely centered for true centering of text */}
-        <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center gap-4">
+        <div className="hidden md:flex items-center gap-1 rounded-full border border-ivory/[0.07] bg-ivory/[0.03] p-1 backdrop-blur">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "nav-link text-lg py-1 px-3",
-                pathname === link.href && "active"
+                "rounded-full px-4 py-2 text-sm transition-colors",
+                isActive(link.href)
+                  ? "bg-ivory/[0.08] text-ivory"
+                  : "text-sand hover:text-ivory"
               )}
             >
               {link.label}
@@ -43,56 +61,48 @@ export function Navbar() {
           ))}
         </div>
 
-        {/* Actions - right aligned */}
-        <div className="hidden md:flex items-center gap-3 ml-auto">
-          <Link href={`/products/${PRODUCTS[0].slug}`}>
-            <Button size="lg" className="h-14 px-8 text-base">Get Owner Database</Button>
-          </Link>
-          <Link href="/products">
-            <Button variant="outline" size="lg" className="h-14 px-8 text-base">All Datasets</Button>
+        <div className="hidden md:block">
+          <Link href="/products" className={buttonVariants({ size: "sm", className: "h-10 px-5" })}>
+            Get the data <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
 
-        {/* Mobile Menu Button - right aligned */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden ml-auto p-2 text-[#5a5a5a]"
-          aria-label="Toggle menu"
+          className="md:hidden -mr-2 p-2 text-ivory"
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-[#c8c8c8] bg-[#e8e8e8]">
-          <div className="container py-4 flex flex-col gap-2 items-center">
+        <div className="md:hidden h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-line bg-ink">
+          <div className="container flex flex-col py-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "px-4 py-4 rounded-md text-lg font-medium text-center w-full",
-                  pathname === link.href
-                    ? "bg-[#e8e8e8] text-[#3d3d3d]"
-                    : "text-[#5a5a5a]"
+                  "border-b border-line py-5 font-display text-3xl",
+                  isActive(link.href) ? "text-gold" : "text-ivory"
                 )}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="pt-3 flex flex-col gap-2 w-full items-center">
-              <Link href={`/products/${PRODUCTS[0].slug}`} onClick={() => setMobileOpen(false)}>
-                <Button size="lg" className="w-full h-14 text-base">Get Owner Database</Button>
-              </Link>
-              <Link href="/products" onClick={() => setMobileOpen(false)}>
-                <Button variant="outline" size="lg" className="w-full h-14 text-base">All Datasets</Button>
-              </Link>
-            </div>
+            <Link
+              href="/products"
+              onClick={() => setMobileOpen(false)}
+              className={buttonVariants({ size: "lg", className: "mt-8 w-full" })}
+            >
+              Get the data <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       )}
-    </nav>
+    </header>
   );
 }

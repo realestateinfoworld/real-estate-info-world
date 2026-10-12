@@ -1,60 +1,60 @@
 import Link from "next/link";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { getMarket, type Product } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
+  featured?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, featured = false }: ProductCardProps) {
   const market = getMarket(product);
 
   return (
-    <Card className="product-card flex flex-col">
-      <CardContent className="pt-6 flex-1">
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <div className="text-[11px] font-medium tracking-wider text-[#947f57] mb-1">
-              {market.label.toUpperCase()}
-            </div>
-            <h3 className="text-xl font-semibold tracking-tight">{product.name}</h3>
-            <p className="text-sm text-[#6b6b6b]">{product.version}</p>
+    <Link
+      href={`/products/${product.slug}`}
+      className={cn(
+        "group relative flex h-full flex-col overflow-hidden rounded-3xl border bg-surface p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-30px_rgb(201_171_114_/_0.35)] md:p-8",
+        featured ? "gold-frame border-transparent" : "border-line hover:border-gold/40"
+      )}
+    >
+      <div
+        className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-gold/0 blur-3xl transition-colors duration-500 group-hover:bg-gold/15"
+        aria-hidden="true"
+      />
+
+      <div className="flex items-start justify-between gap-4">
+        <div className="text-[11px] font-medium tracking-[0.2em] text-gold">
+          {market.label.toUpperCase()}
+        </div>
+        <span className="rounded-full border border-line-strong px-2.5 py-0.5 text-[10px] tracking-wide text-sand">
+          {product.type === "owner" ? "Owner database" : "Buyer leads"}
+        </span>
+      </div>
+
+      <h3 className="mt-5 font-display text-3xl leading-tight text-ivory">{product.name}</h3>
+      <p className="mt-3 text-[15px] leading-relaxed text-sand">{product.shortDescription}</p>
+
+      <ul className="mt-6 mb-8 space-y-2.5 text-sm">
+        {product.features.slice(0, 4).map((feature) => (
+          <li key={feature} className="flex items-start gap-2.5 text-sand">
+            <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold" /> {feature}
+          </li>
+        ))}
+      </ul>
+
+      <div className="mt-auto flex items-end justify-between border-t border-line pt-6">
+        <div>
+          <div className="text-xs text-stone">{product.version} · one-time</div>
+          <div className="stat-number mt-1 font-display text-4xl text-ivory">
+            ${product.price.toLocaleString()}
           </div>
-          {product.premium && <Badge variant="primary">Premium</Badge>}
         </div>
-
-        <div className="mb-5">
-          <span className="text-4xl font-semibold tabular-nums tracking-tighter">${product.price}</span>
-          <span className="text-sm text-[#6b6b6b] ml-1">USD</span>
-        </div>
-
-        <p className="text-[#5a5a5a] text-[15px] mb-6">{product.shortDescription}</p>
-
-        <ul className="space-y-2 text-sm">
-          {product.features.slice(0, 5).map((feature, index) => (
-            <li key={index} className="flex items-start gap-2 text-[#5a5a5a]">
-              <span className="mt-1 text-[#947f57]">•</span> {feature}
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-
-      <CardFooter className="pt-0 pb-6 flex flex-col gap-2">
-        <Link
-          href={`/products/${product.slug}`}
-          className="btn btn-primary w-full justify-center"
-        >
-          View Details <ArrowRight className="h-4 w-4" />
-        </Link>
-        <Link
-          href="/products"
-          className="text-xs text-[#6b6b6b] hover:text-[#3d3d3d]"
-        >
-          Compare all datasets →
-        </Link>
-      </CardFooter>
-    </Card>
+        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-line-strong text-ivory transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
+          <ArrowUpRight className="h-5 w-5" />
+        </span>
+      </div>
+    </Link>
   );
 }

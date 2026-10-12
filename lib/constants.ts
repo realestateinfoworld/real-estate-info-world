@@ -188,7 +188,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Dubai Owner Database",
     type: "owner",
     market: "dubai",
-    version: "August 2026",
+    version: "September 2026",
     price: 300,
     premium: false,
     shortDescription:
@@ -233,7 +233,7 @@ export const PRODUCTS: readonly Product[] = [
     },
     seo: {
       title:
-        "Dubai Property Owner Database | 1M+ Verified Owners | August 2026",
+        "Dubai Property Owner Database | 1M+ Verified Owners | September 2026",
       description:
         "Dubai Property Owner Database with 1,000,000+ verified owners and direct mobile numbers across 200+ Dubai communities. CRM-ready Excel for Dubai real estate brokers, consultants and property marketers. $300, delivered in 10 minutes.",
       keywords: [
@@ -251,7 +251,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Dubai Buyer Leads",
     type: "buyer",
     market: "dubai",
-    version: "August 2026",
+    version: "September 2026",
     price: 1200,
     premium: true,
     shortDescription:
@@ -296,7 +296,7 @@ export const PRODUCTS: readonly Product[] = [
     },
     seo: {
       title:
-        "Dubai Property Buyer Leads | 10,000+ High-Intent Buyers | August 2026",
+        "Dubai Property Buyer Leads | 10,000+ High-Intent Buyers | September 2026",
       description:
         "Dubai Property Buyer Leads — 10,000+ verified high-intent buyers actively looking in Dubai. Budgets, timelines & contacts included. Perfect for Dubai real estate brokers, consultants & agencies targeting serious purchasers in Dubai Marina, Downtown, Palm Jumeirah and more. $1,200.",
       keywords: [
@@ -618,3 +618,27 @@ export const TESTIMONIALS = [
     role: "Head of Growth, Apex Estates",
   },
 ];
+
+/** "Dubai, Miami, California and UK" — every market that has a product. */
+export function formatMarketList(): string {
+  const names = getProductsByMarket().map((g) => g.market.name);
+  return names.length > 1
+    ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`
+    : names[0];
+}
+
+/** How a purchase works, shown on the homepage and every product page. */
+export const PURCHASE_STEPS = [
+  {
+    title: "Choose your dataset",
+    body: "Pick the market and data type you need — owner database or high-intent buyer leads.",
+  },
+  {
+    title: "Get your payment link",
+    body: "Enter your name and email. We send a secure payment link straight to you on WhatsApp.",
+  },
+  {
+    title: "Receive your Excel file",
+    body: "Your CRM-ready .xlsx file is delivered within 10 minutes of payment confirmation.",
+  },
+] as const;

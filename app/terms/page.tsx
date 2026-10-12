@@ -1,14 +1,18 @@
 import { Metadata } from "next";
+import { PageHeader } from "@/components/PageHeader";
 
 export const metadata: Metadata = { 
-  title: "Terms of Service | Dubai Real Estate Data",
-  description: "Terms for purchasing and using our Dubai Property Owner Database and Dubai Buyer Leads. For Dubai real estate professionals.",
+  title: "Terms of Service",
+  description: "Terms for purchasing and using our property owner databases and buyer leads. For real estate professionals.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function Terms() {
   return (
-    <div className="container py-12 max-w-4xl prose prose-slate">
-      <h1>Terms of Service</h1>
+    <>
+      <PageHeader eyebrow="Legal" title="Terms of Service" />
+      <div className="container py-16 md:py-20">
+        <div className="legal max-w-3xl">
 
       <h2>1. Products</h2>
       <p>All databases are digital products delivered electronically (Excel format) within 24 hours of confirmed payment.</p>
@@ -23,6 +27,8 @@ export default function Terms() {
       <p>All transactions are processed securely through PayPal.</p>
 
       <p className="text-sm">Contact: info@realestate-info.world</p>
-    </div>
+        </div>
+      </div>
+    </>
   );
 }

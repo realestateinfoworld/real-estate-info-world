@@ -19,12 +19,12 @@ export default function FloatingTelegram() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on Telegram"
-      className="fixed bottom-28 right-6 z-[60] block"
+      className="fixed bottom-24 right-6 z-[60] block"
     >
       <img
         src="/icons/telegram.svg"
         alt="Chat on Telegram"
-        className="w-16 h-16 shadow-xl transition-all hover:shadow-2xl hover:scale-110 rounded-full"
+        className="h-14 w-14 rounded-full shadow-[0_12px_30px_-8px_rgb(0_0_0_/_0.7)] ring-1 ring-ivory/10 transition-transform hover:scale-105"
       />
     </a>
   );

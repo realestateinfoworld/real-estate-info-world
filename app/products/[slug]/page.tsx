@@ -4,10 +4,13 @@ import { notFound } from "next/navigation";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { SamplePreview } from "@/components/SamplePreview";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { ProductCard } from "@/components/ProductCard";
+import { SectionHeading } from "@/components/SectionHeading";
+import { HowItWorks } from "@/components/HowItWorks";
+import { FaqList } from "@/components/FaqList";
 import { PRODUCTS, getProduct, getMarket, getFaqs } from "@/lib/constants";
 import { MetaPixelTracker } from "@/components/MetaPixelTracker";
-import { ArrowLeft, Check } from "lucide-react";
+import { ArrowLeft, Check, FileSpreadsheet, ShieldCheck, Zap } from "lucide-react";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -46,137 +49,164 @@ export default async function ProductPage({ params }: Props) {
   const faqs = getFaqs(product);
   const isBuyer = product.type === "buyer";
 
+  const others = PRODUCTS.filter((p) => p.slug !== product.slug);
+
   return (
-    <div className="container py-6">
-      <Link href="/products" className="inline-flex items-center text-sm text-[#6b6b6b] mb-4 hover:text-[#3d3d3d]">
-        <ArrowLeft className="h-4 w-4 mr-1" /> Back to Products
-      </Link>
+    <>
+      {/* Meta Pixel Trackers */}
+      <MetaPixelTracker
+        event="ViewContent"
+        parameters={{
+          content_name: product.name,
+          content_category: "Databases",
+          value: product.price,
+          currency: "USD",
+        }}
+      />
+      <MetaPixelTracker
+        event="InitiateCheckout"
+        parameters={{
+          value: product.price,
+          currency: "USD",
+          content_name: product.name,
+        }}
+      />
 
-      <div className="grid lg:grid-cols-12 gap-x-6 gap-y-6">
-        {/* Meta Pixel Trackers */}
-        <MetaPixelTracker
-          event="ViewContent"
-          parameters={{
-            content_name: product.name,
-            content_category: "Databases",
-            value: product.price,
-            currency: "USD",
-          }}
-        />
-        <MetaPixelTracker
-          event="InitiateCheckout"
-          parameters={{
-            value: product.price,
-            currency: "USD",
-            content_name: product.name,
-          }}
-        />
+      {/* Header */}
+      <section className="relative overflow-hidden border-b border-line">
+        <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="gold-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="container relative pt-32 pb-14 md:pt-40 md:pb-16">
+          <Link href="/products" className="inline-flex items-center text-sm text-stone transition-colors hover:text-ivory">
+            <ArrowLeft className="mr-1.5 h-4 w-4" /> All datasets
+          </Link>
 
-        <div className="lg:col-span-8">
-          <Badge variant={product.premium ? "primary" : "outline"} className="mb-3">
-            {product.premium ? "Premium Product" : "Flagship Product"} • {product.version}
-          </Badge>
-
-          <h1 className="text-4xl font-semibold tracking-tight">{product.name}</h1>
-          <p className="mt-2 text-lg text-[#5a5a5a]">{product.shortDescription}</p>
-
-          <p className="text-[#5a5a5a] mt-4">{product.description}</p>
-
-          <div className="mt-6">
-            <h3 className="font-semibold text-sm tracking-wider text-[#6b6b6b] mb-3">WHAT&apos;S INCLUDED</h3>
-            <div className="grid sm:grid-cols-2 gap-x-4 gap-y-2">
-              {product.features.slice(0, 4).map((f, i) => (
-                <div key={i} className="flex items-start gap-2 text-sm">
-                  <Check className="h-4 w-4 mt-0.5 text-[#947f57] flex-shrink-0" /> {f}
-                </div>
-              ))}
-            </div>
+          <div className="mt-8 flex flex-wrap items-center gap-2">
+            <Badge variant="primary">{market.label}</Badge>
+            <Badge>{isBuyer ? "Buyer leads" : "Owner database"}</Badge>
+            <Badge>
+              <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-gold" />
+              {product.version}
+            </Badge>
           </div>
 
-          {/* Areas Covered — market focus for SEO & targeting */}
-          <div className="mt-6">
-            <h3 className="font-semibold text-sm tracking-wider text-[#6b6b6b] mb-3">
-              KEY {market.name.toUpperCase()} AREAS COVERED
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {market.areas.map((area, i) => (
-                <span key={i} className="inline-block rounded border border-[#c8c8c8] bg-[#f8f8f8] px-3 py-1 text-xs font-medium text-[#3d3d3d]">
-                  {area}
-                </span>
-              ))}
-              <span className="inline-block rounded border border-[#c8c8c8] bg-[#f8f8f8] px-3 py-1 text-xs font-medium text-[#6b6b6b]">
-                {market.areasMore}
-              </span>
-            </div>
-            <p className="mt-2 text-xs text-[#6b6b6b]">{market.areasNote}</p>
-          </div>
+          <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[1.02] text-ivory md:text-7xl">
+            {product.name}
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-sand">{product.shortDescription}</p>
 
-          <div className="mt-6">
-            <div className="flex items-center gap-2 mb-3">
-              <h3 className="font-semibold">Sample Data Preview</h3>
-              <Badge variant="outline" className="text-xs">Actual format</Badge>
-            </div>
-            <SamplePreview product={product} />
-          </div>
-        </div>
-
-        <div className="lg:col-span-4">
-          <Card className="sticky top-36 z-40">
-            <CardContent className="pt-6">
-              <div className="text-4xl font-semibold tracking-tighter mb-1">${product.price}</div>
-              <div className="text-sm text-[#947f57] font-medium mb-4">
-                One-time • Payment link on WhatsApp
+          <dl className="mt-10 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
+            {product.stats.map((stat) => (
+              <div key={stat.label} className="bg-ink-2 px-5 py-4">
+                <dt className="text-xs text-stone">{stat.label}</dt>
+                <dd className="stat-number mt-1 font-display text-2xl text-ivory">{stat.value}</dd>
               </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <div className="container py-14 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="min-w-0 space-y-14 lg:col-span-7 xl:col-span-8">
+            <div>
+              <div className="eyebrow">Overview</div>
+              <p className="mt-5 text-[17px] leading-relaxed text-sand">{product.description}</p>
+            </div>
+
+            <div>
+              <div className="eyebrow">What&apos;s included</div>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {product.features.map((f) => (
+                  <li key={f} className="flex items-start gap-3 rounded-2xl border border-line bg-surface p-4 text-[15px] text-sand">
+                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold/15">
+                      <Check className="h-3 w-3 text-gold" strokeWidth={3} />
+                    </span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <div className="eyebrow">Sample data preview</div>
+              <div className="mt-6">
+                <SamplePreview product={product} />
+              </div>
+            </div>
+
+            {/* Areas Covered — market focus for SEO & targeting */}
+            <div>
+              <div className="eyebrow">Key {market.name} areas covered</div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {market.areas.map((area) => (
+                  <span key={area} className="rounded-full border border-line-strong px-3.5 py-1.5 text-sm text-sand">
+                    {area}
+                  </span>
+                ))}
+                <span className="rounded-full px-3.5 py-1.5 text-sm text-stone">{market.areasMore}</span>
+              </div>
+              <p className="mt-4 text-sm text-stone">{market.areasNote}</p>
+            </div>
+          </div>
+
+          {/* Purchase card */}
+          <aside id="buy" className="order-first min-w-0 scroll-mt-24 lg:order-none lg:col-span-5 xl:col-span-4">
+            <div className="glass gold-frame sticky top-28 rounded-3xl p-7">
+              <div className="text-xs tracking-[0.18em] text-stone">ONE-TIME PAYMENT</div>
+              <div className="mt-2 flex items-baseline gap-2">
+                <span className="stat-number font-display text-6xl text-ivory">${product.price.toLocaleString()}</span>
+                <span className="text-sm text-stone">USD</span>
+              </div>
+              <div className="mt-2 mb-7 text-sm text-gold">Payment link sent on WhatsApp</div>
 
               <LeadCaptureForm product={product} />
 
-              <div className="mt-6 text-sm space-y-1 text-[#5a5a5a]">
-                {product.stats.map((stat) => (
-                  <div key={stat.label} className="flex justify-between">
-                    <span>{stat.label}</span>
-                    <span className="font-medium">{stat.value}</span>
+              <div className="mt-7 space-y-3 border-t border-line pt-6 text-sm">
+                {[
+                  { icon: Zap, text: "Delivered within 10 minutes" },
+                  { icon: FileSpreadsheet, text: "CRM-ready Excel (.xlsx)" },
+                  { icon: ShieldCheck, text: "7-day quality guarantee" },
+                ].map((item) => (
+                  <div key={item.text} className="flex items-center gap-3 text-sand">
+                    <item.icon className="h-4 w-4 text-gold" /> {item.text}
                   </div>
                 ))}
               </div>
-
-              <div className="text-[10px] text-[#6b6b6b] mt-4 pt-3 border-t">
-                7-day guarantee. Payment link sent on WhatsApp.
-              </div>
-            </CardContent>
-          </Card>
+            </div>
+          </aside>
         </div>
       </div>
 
-      {/* Cross-sell: other datasets */}
-      {PRODUCTS.length > 1 && (
-        <div className="mt-10">
-          <h2 className="font-semibold text-lg mb-3">Other datasets</h2>
-          <div className="flex flex-wrap gap-2">
-            {PRODUCTS.filter((p) => p.slug !== product.slug).map((p) => (
-              <Link
-                key={p.slug}
-                href={`/products/${p.slug}`}
-                className="inline-block rounded border border-[#c8c8c8] bg-[#f8f8f8] px-4 py-2 text-sm font-medium text-[#3d3d3d] hover:bg-[#f2f2f2]"
-              >
-                {p.name} — ${p.price}
-              </Link>
-            ))}
-          </div>
+      {/* How it works */}
+      <section className="section border-t border-line bg-ink-2">
+        <div className="container">
+          <SectionHeading eyebrow="How it works" title="From order to outreach in three steps." align="center" className="mb-14" />
+          <HowItWorks />
         </div>
-      )}
+      </section>
 
       {/* FAQ */}
-      <div className="mt-8 max-w-2xl">
-        <h2 className="font-semibold text-2xl tracking-tight mb-6">Frequently Asked Questions</h2>
-        <div className="divide-y border-y">
-          {faqs.map((faq, i) => (
-            <div key={i} className="py-5">
-              <div className="font-medium">{faq.question}</div>
-              <div className="text-sm text-[#334155] mt-1.5 pr-4">{faq.answer}</div>
-            </div>
-          ))}
+      <section className="section border-t border-line">
+        <div className="container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <SectionHeading eyebrow="Questions" title="Frequently asked questions" />
+          <FaqList faqs={faqs} />
         </div>
-      </div>
+      </section>
+
+      {/* Cross-sell: other datasets */}
+      {others.length > 0 && (
+        <section className="section border-t border-line">
+          <div className="container">
+            <SectionHeading eyebrow="Explore more" title="Other datasets" className="mb-12" />
+            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+              {others.slice(0, 3).map((p) => (
+                <ProductCard key={p.slug} product={p} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Structured data for rich results */}
       <script
@@ -199,6 +229,6 @@ export default async function ProductPage({ params }: Props) {
           }),
         }}
       />
-    </div>
+    </>
   );
 }
