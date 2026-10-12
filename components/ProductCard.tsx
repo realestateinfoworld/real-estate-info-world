@@ -51,7 +51,7 @@ export function ProductCard({ product, featured = false }: ProductCardProps) {
             ${product.price.toLocaleString()}
           </div>
         </div>
-        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-line-strong text-ivory transition-all duration-300 group-hover:border-gold group-hover:bg-gold group-hover:text-ink">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full border border-line-strong text-ivory transition-all duration-300 group-hover:border-gold-via group-hover:bg-gold-via group-hover:text-on-gold">
           <ArrowUpRight className="h-5 w-5" />
         </span>
       </div>

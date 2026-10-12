@@ -21,8 +21,8 @@ export default function ThankYouPage() {
       <div className="gold-glow pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="container relative pt-36 pb-24 md:pt-44 md:pb-32">
         <div className="mx-auto max-w-xl text-center">
-          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-b from-gold-pale via-gold to-gold-deep shadow-[0_20px_60px_-15px_rgb(201_171_114_/_0.7)]">
-            <Check className="h-9 w-9 text-ink" strokeWidth={2.5} />
+          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-b from-gold-from via-gold-via to-gold-to shadow-[0_20px_60px_-15px_rgb(201_171_114_/_0.7)]">
+            <Check className="h-9 w-9 text-on-gold" strokeWidth={2.5} />
           </div>
 
           <h1 className="font-display text-5xl leading-tight text-ivory md:text-6xl">
