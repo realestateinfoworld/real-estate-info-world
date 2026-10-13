@@ -8,7 +8,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { HowItWorks } from "@/components/HowItWorks";
 import { FaqList } from "@/components/FaqList";
-import { PRODUCTS, getProduct, getMarket, getFaqs } from "@/lib/constants";
+import { MARKETS, MARKET_ORDER, PRODUCTS, getProduct, getMarket, getFaqs } from "@/lib/constants";
 import { getGuideForProduct } from "@/lib/guides";
 import { MetaPixelTracker } from "@/components/MetaPixelTracker";
 import { SITE_NAME, SITE_URL, faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
@@ -21,6 +21,9 @@ type Props = {
 export function generateStaticParams() {
   return PRODUCTS.map((product) => ({ slug: product.slug }));
 }
+
+// Countries we sell into, for the Offer's shipping and return-policy schema.
+const SCHEMA_COUNTRIES = [...new Set(MARKET_ORDER.map((key) => MARKETS[key].schemaCountry))];
 
 // Any slug outside PRODUCTS is a 404 rather than a runtime-rendered page.
 export const dynamicParams = false;
@@ -253,6 +256,29 @@ export default async function ProductPage({ params }: Props) {
                   priceCurrency: "USD",
                   availability: "https://schema.org/InStock",
                   seller: { "@id": `${SITE_URL}/#organization` },
+                  // Digital download: free, same-day "shipping" to every market we sell in.
+                  shippingDetails: {
+                    "@type": "OfferShippingDetails",
+                    shippingRate: { "@type": "MonetaryAmount", value: 0, currency: "USD" },
+                    shippingDestination: SCHEMA_COUNTRIES.map((country) => ({
+                      "@type": "DefinedRegion",
+                      addressCountry: country,
+                    })),
+                    deliveryTime: {
+                      "@type": "ShippingDeliveryTime",
+                      handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "DAY" },
+                      transitTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 0, unitCode: "DAY" },
+                    },
+                  },
+                  // Mirrors /refund-policy: refund requests within 7 days of delivery.
+                  hasMerchantReturnPolicy: {
+                    "@type": "MerchantReturnPolicy",
+                    applicableCountry: SCHEMA_COUNTRIES,
+                    returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    merchantReturnDays: 7,
+                    returnFees: "https://schema.org/FreeReturn",
+                    merchantReturnLink: `${SITE_URL}/refund-policy`,
+                  },
                 },
               },
               {
