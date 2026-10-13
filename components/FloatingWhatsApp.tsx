@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import { CONTACT, getMarketForPath } from "@/lib/constants";
 
 export default function FloatingWhatsApp() {
@@ -23,7 +22,7 @@ export default function FloatingWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className={cn("fixed right-6 z-[60] block", pathname.startsWith("/products/") ? "bottom-24 lg:bottom-6" : "bottom-6")}
+      className="floating-whatsapp fixed right-6 z-[60] block"
     >
       <Image
         src="/icons/whatsapp.svg"

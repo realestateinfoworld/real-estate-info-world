@@ -7,6 +7,9 @@ import { cn } from "@/lib/utils";
 /**
  * Sticky price + buy button for phones. Hidden while the purchase card
  * (#buy) is on screen, so it only appears once the visitor scrolls past it.
+ *
+ * Mirrors its state onto <html data-buy-bar="visible|hidden"> so the footer
+ * and the floating chat buttons can make room for it (see globals.css).
  */
 export function MobileBuyBar({ price, label }: { price: number; label: string }) {
   const [visible, setVisible] = useState(false);
@@ -19,6 +22,14 @@ export function MobileBuyBar({ price, label }: { price: number; label: string })
     });
     observer.observe(target);
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.buyBar = visible ? "visible" : "hidden";
+  }, [visible]);
+
+  useEffect(() => () => {
+    delete document.documentElement.dataset.buyBar;
   }, []);
 
   return (
