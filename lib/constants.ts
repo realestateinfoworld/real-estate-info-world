@@ -175,10 +175,21 @@ export interface Product {
   comparison: Record<ComparisonKey, string>;
   sample: SampleTable;
   seo: {
+    /** Full page title, used as-is. Keep it ≤ 60 chars with the main keyword first. */
     title: string;
+    /** Meta description. Keep it to 140–160 chars. */
     description: string;
     keywords: readonly string[];
   };
+  /** Long-form copy under the product details, one <h2> per section. */
+  guide?: readonly { heading: string; paragraphs: readonly string[] }[];
+  /** Product-specific FAQs, shown ahead of the shared ones from getFaqs. */
+  faqs?: readonly Faq[];
+}
+
+export interface Faq {
+  question: string;
+  answer: string;
 }
 
 export const PRODUCTS: readonly Product[] = [
@@ -232,18 +243,77 @@ export const PRODUCTS: readonly Product[] = [
       emphasisColumn: 3,
     },
     seo: {
-      title:
-        "Dubai Property Owner Database | 1M+ Verified Owners | September 2026",
+      title: "Dubai Property Owner Database 2026 | 1M+ Verified Owners",
       description:
-        "Dubai Property Owner Database with 1,000,000+ verified owners and direct mobile numbers across 200+ Dubai communities. CRM-ready Excel for Dubai real estate brokers, consultants and property marketers. $300, delivered in 10 minutes.",
+        "Dubai property owner database: 1,000,000+ verified owners with direct mobile numbers across 200+ communities. CRM-ready Excel, $300, delivered in 10 minutes.",
       keywords: [
         "Dubai Property Owner Database",
         "Dubai Property Owner Leads",
+        "Dubai property owners list",
+        "Dubai property owner contact numbers",
+        "Dubai landlord database",
         "Dubai real estate database",
         "verified Dubai property owners",
         "Dubai off-market leads",
       ],
     },
+    guide: [
+      {
+        heading: "What is the Dubai Property Owner Database?",
+        paragraphs: [
+          "The Dubai Property Owner Database is a single Excel file listing more than 1,000,000 verified owners of property in Dubai. Every record gives you the owner's name, the community the property sits in, the property type (apartment, villa, townhouse or penthouse) and a direct mobile number — the four things you need to start a listing conversation.",
+          "Records are cross-checked against Dubai Land Department data and the whole file is refreshed every month, so you are calling current owners rather than people who sold two years ago. The release date is shown at the top of this page.",
+        ],
+      },
+      {
+        heading: "Who uses Dubai property owner data",
+        paragraphs: [
+          "Dubai real estate brokers use the database to win exclusive listings and source off-market stock before it reaches Property Finder or Bayut. Leasing teams use it to reach landlords directly, property management companies use it to sign new units, and investment consultants use it to find owners open to a private sale.",
+          "If you work one or two communities, filter the file down to your patch — Dubai Marina, JVC, Business Bay or Palm Jumeirah, for example — and you have a complete owner list for your farm area in seconds.",
+        ],
+      },
+      {
+        heading: "How brokers turn owner data into listings",
+        paragraphs: [
+          "Import the .xlsx into your CRM (HubSpot, Salesforce, Pipedrive or any Dubai real estate CRM) and segment by community and property type. Owners of the same building or villa cluster respond well to a specific message: a recent sale price in their community, a buyer you are holding for their unit type, or a rental valuation.",
+          "Most teams open with a short WhatsApp introduction, follow up by phone and log every outcome in the CRM so no owner is contacted twice by different agents. Follow the UAE's telemarketing rules on permitted calling hours and honour any Do Not Call opt-outs.",
+        ],
+      },
+      {
+        heading: "Dubai communities covered",
+        paragraphs: [
+          "The database covers 200+ Dubai communities, including Dubai Marina, Downtown Dubai, Business Bay, Palm Jumeirah, Jumeirah Village Circle (JVC), Dubai Hills Estate, Arabian Ranches, Emirates Hills and Jumeirah Bay, from high-rise apartments to prime villas.",
+        ],
+      },
+      {
+        heading: "Owner database or buyer leads?",
+        paragraphs: [
+          "Choose the owner database when you need supply — listings, landlords and off-market deals. Choose Dubai Property Buyer Leads when you already have stock and need demand: 10,000+ buyers actively searching in Dubai, with budgets and timelines. Many agencies run both, matching new listings from the owner file to buyers from the leads file.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How many owners are in the Dubai Property Owner Database?",
+        answer:
+          "More than 1,000,000 verified Dubai property owners across 200+ communities, each with a direct mobile number, delivered as one CRM-ready Excel file.",
+      },
+      {
+        question: "How much does the Dubai owner database cost?",
+        answer:
+          "$300 USD as a one-time payment for the full file — no subscription. It is delivered within 10 minutes of payment confirmation.",
+      },
+      {
+        question: "Which Dubai communities does the owner data cover?",
+        answer:
+          "200+ communities including Dubai Marina, Downtown Dubai, Business Bay, Palm Jumeirah, JVC, Dubai Hills Estate, Arabian Ranches and Emirates Hills. Every record lists its community, so you can filter to your area in Excel or your CRM.",
+      },
+      {
+        question: "How often is the Dubai owner data updated?",
+        answer:
+          "The database is refreshed every month and cross-checked against Dubai Land Department data. The current release date is shown on this page.",
+      },
+    ],
   },
   {
     slug: "buyer-leads",
@@ -295,10 +365,9 @@ export const PRODUCTS: readonly Product[] = [
       emphasisColumn: 2,
     },
     seo: {
-      title:
-        "Dubai Property Buyer Leads | 10,000+ High-Intent Buyers | October 2026",
+      title: "Dubai Property Buyer Leads 2026 | 10,000+ Verified Buyers",
       description:
-        "Dubai Property Buyer Leads — 10,000+ verified high-intent buyers actively looking in Dubai. Budgets, timelines & contacts included. Perfect for Dubai real estate brokers, consultants & agencies targeting serious purchasers in Dubai Marina, Downtown, Palm Jumeirah and more. $1,200.",
+        "10,000+ verified Dubai property buyer leads with budgets, timelines and contacts. For brokers selling in Dubai Marina, Downtown & Palm Jumeirah. $1,200, CRM-ready.",
       keywords: [
         "Dubai Buyer Leads",
         "Dubai Property Buyer Leads",
@@ -360,20 +429,77 @@ export const PRODUCTS: readonly Product[] = [
       emphasisColumn: 4,
     },
     seo: {
-      title:
-        "Miami Real Estate Buyer Leads | 1,500+ Verified Buyers | October 2026",
+      title: "Miami Buyer Leads 2026 | 1,500+ Verified Real Estate Buyers",
       description:
-        "Miami Buyer Leads — 1,500+ verified, high-intent buyers actively searching Miami-Dade real estate. Verified emails, phones, estimated budgets and purchase timeframes across Brickell, Edgewater, Coconut Grove, Sunny Isles Beach and more. CRM-ready Excel, $1,500.",
+        "1,500+ verified Miami real estate buyer leads with email, phone, budget & timeframe. Brickell, Edgewater, Sunny Isles & more. Sourced this month. CRM-ready Excel.",
       keywords: [
         "Miami Buyer Leads",
         "Miami Real Estate Buyer Leads",
         "Miami real estate leads",
         "Miami-Dade buyer leads",
+        "Miami luxury buyer leads",
+        "Miami realtor leads",
+        "Florida real estate buyer leads",
         "verified Miami property buyers",
         "Brickell real estate leads",
-        "Miami property marketing data",
       ],
     },
+    guide: [
+      {
+        heading: "What's in the Miami buyer leads file",
+        paragraphs: [
+          "Each of the 1,500+ Miami real estate buyer leads comes with the buyer's name, verified email address, phone number, country, target neighborhood, property type, bedroom count, estimated budget in USD and purchase timeframe — from \"Immediate (0–30 days)\" to \"Just browsing\". That is enough to qualify a buyer before you ever pick up the phone.",
+          "The file is a clean Excel spreadsheet with consistent columns, so it imports straight into Follow Up Boss, kvCORE, HubSpot, Salesforce or whatever CRM your Miami team runs on.",
+        ],
+      },
+      {
+        heading: "Fresh Miami leads, not recycled lists",
+        paragraphs: [
+          "Every lead is sourced this month from Google and social media campaigns targeting people searching for Miami-Dade property. Leads are verified against the campaign they came from, which is why we publish a 99% accuracy standard and back it with a 7-day refund policy.",
+        ],
+      },
+      {
+        heading: "Miami neighborhoods buyers are searching",
+        paragraphs: [
+          "Buyers in the file are looking across Brickell, Edgewater, Coconut Grove, Sunny Isles Beach, South Beach, Coral Gables, Key Biscayne, Bal Harbour, Downtown Miami, Aventura and Wynwood — from luxury condos and penthouses to single-family homes and townhouses. Both US and international buyers are included.",
+        ],
+      },
+      {
+        heading: "How Miami agents convert these buyer leads",
+        paragraphs: [
+          "Start with the \"Immediate\" and \"1–3 months\" buyers, then match each one to listings by neighborhood, property type and budget. Speed matters: contact new leads the same day by email and phone, and keep longer-timeframe buyers in a drip campaign so you are the agent they remember when they are ready.",
+          "Before calling or texting, screen numbers against the National Do Not Call Registry and follow TCPA rules for calls and SMS.",
+        ],
+      },
+      {
+        heading: "Who Miami buyer leads are for",
+        paragraphs: [
+          "Miami realtors, brokerages, luxury condo and pre-construction sales teams, and relocation specialists who would rather talk to buyers who are already looking than chase cold contacts. At $1,500 for 1,500+ leads, each lead costs about $1 — a fraction of a typical pay-per-lead portal.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are Miami buyer leads?",
+        answer:
+          "Contact details for people actively searching to buy property in Miami-Dade right now, sourced this month from Google and social media campaigns. Each lead includes email, phone, target area, property type, budget in USD and purchase timeframe.",
+      },
+      {
+        question: "How much do Miami real estate buyer leads cost?",
+        answer:
+          "$1,500 USD one-time for 1,500+ verified Miami buyer leads — about $1 per lead, with no subscription or per-lead fees.",
+      },
+      {
+        question: "Which Miami areas are the buyers interested in?",
+        answer:
+          "Brickell, Edgewater, Coconut Grove, Sunny Isles Beach, South Beach, Coral Gables, Key Biscayne, Bal Harbour, Downtown Miami, Aventura, Wynwood and more across Miami-Dade County.",
+      },
+      {
+        question: "Can I filter Miami leads by budget or timeframe?",
+        answer:
+          "Yes. Budget, timeframe, area, property type and bedrooms are separate Excel columns, so you can sort and filter in seconds or segment them after importing into your CRM.",
+      },
+    ],
   },
   {
     slug: "california-buyer-leads",
@@ -427,20 +553,77 @@ export const PRODUCTS: readonly Product[] = [
       emphasisColumn: 4,
     },
     seo: {
-      title:
-        "California Real Estate Buyer Leads | 3,000+ Verified Buyers | October 2026",
+      title: "California Buyer Leads 2026 | 3,000+ Verified Home Buyers",
       description:
-        "California Buyer Leads — 3,000+ verified, high-intent buyers actively searching homes and investment property across California. Verified emails, phones, estimated budgets and purchase timeframes across Beverly Hills, Malibu, Newport Beach, La Jolla and more. CRM-ready Excel, $1,500.",
+        "3,000+ verified California real estate buyer leads with email, phone, budget & timeframe. Beverly Hills, Malibu, Newport Beach, La Jolla & more. CRM-ready Excel.",
       keywords: [
         "California Buyer Leads",
         "California Real Estate Buyer Leads",
         "California real estate leads",
-        "verified California property buyers",
+        "California home buyer leads",
+        "California realtor leads",
+        "Los Angeles buyer leads",
         "Beverly Hills real estate leads",
         "Malibu buyer leads",
-        "California property marketing data",
+        "verified California property buyers",
       ],
     },
+    guide: [
+      {
+        heading: "What's in the California buyer leads file",
+        paragraphs: [
+          "Each of the 3,000+ California real estate buyer leads includes the buyer's name, verified email address, phone number, country, target city, property type, bedroom count, estimated budget in USD and purchase timeframe. You know who is ready now and who is six months out before you make the first call.",
+          "Everything arrives in one CRM-ready Excel file with consistent columns, ready to import into Follow Up Boss, kvCORE, HubSpot, Salesforce or any other real estate CRM.",
+        ],
+      },
+      {
+        heading: "Fresh California leads, sourced this month",
+        paragraphs: [
+          "These are not recycled lists. Every lead is sourced this month from Google and social media campaigns targeting people searching for homes and investment property in California, then verified against the campaign it came from. Accuracy is held to a 99% standard and covered by our 7-day refund policy.",
+        ],
+      },
+      {
+        heading: "California cities and coastal markets covered",
+        paragraphs: [
+          "The file is statewide. Buyers are searching in Southern California — Beverly Hills, Malibu, Santa Monica, Pasadena, Newport Beach, Laguna Beach, La Jolla and Del Mar — and in Northern California markets such as Palo Alto. Property types range from single-family homes and villas to luxury condos and penthouses.",
+        ],
+      },
+      {
+        heading: "How California agents convert these buyer leads",
+        paragraphs: [
+          "Filter by city and budget to hand each agent the buyers who fit their listings, and call the \"Immediate\" buyers first. Pair a same-day phone call with a personal email that references the buyer's target city and property type, then nurture longer-timeframe buyers with new listings until they are ready.",
+          "Screen phone numbers against the National Do Not Call Registry and follow TCPA rules before calling or texting, and handle the data in line with California privacy law (CCPA/CPRA).",
+        ],
+      },
+      {
+        heading: "Who California buyer leads are for",
+        paragraphs: [
+          "California realtors, brokerages, luxury and coastal property specialists, new-development sales teams and relocation agents. At $1,500 for 3,000+ leads, each lead costs about 50 cents — far below what most California agents pay per lead on portals and paid ads.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are California buyer leads?",
+        answer:
+          "Contact details for people actively searching to buy homes or investment property in California, sourced this month from Google and social media campaigns. Each lead includes email, phone, target city, property type, budget in USD and purchase timeframe.",
+      },
+      {
+        question: "How much do California real estate buyer leads cost?",
+        answer:
+          "$1,500 USD one-time for 3,000+ verified California buyer leads — about $0.50 per lead, with no subscription or per-lead fees.",
+      },
+      {
+        question: "Which California cities are covered?",
+        answer:
+          "Leads are statewide, including Beverly Hills, Malibu, Santa Monica, Pasadena, Newport Beach, Laguna Beach, La Jolla, Del Mar and Palo Alto.",
+      },
+      {
+        question: "Can I filter California leads by city or budget?",
+        answer:
+          "Yes. Target city, budget, timeframe, property type and bedrooms are separate Excel columns, so you can sort and filter instantly or segment them in your CRM.",
+      },
+    ],
   },
   {
     slug: "uk-buyer-leads",
@@ -494,10 +677,9 @@ export const PRODUCTS: readonly Product[] = [
       emphasisColumn: 4,
     },
     seo: {
-      title:
-        "UK Real Estate Buyer Leads | 1,000+ Verified Buyers | October 2026",
+      title: "UK Property Buyer Leads 2026 | 1,000+ Verified Buyers",
       description:
-        "UK Buyer Leads — 1,000+ verified, high-intent buyers actively searching UK property. Verified emails, phone numbers, estimated budgets in GBP and purchase timeframes across Mayfair, Kensington, Chelsea, Edinburgh New Town, The Cotswolds and more. CRM-ready Excel, $750.",
+        "1,000+ verified UK property buyer leads with email, mobile, GBP budget & timeframe. Mayfair, Kensington, Chelsea, the Cotswolds & more. CRM-ready Excel, $750.",
       keywords: [
         "UK Buyer Leads",
         "UK Real Estate Buyer Leads",
@@ -569,7 +751,7 @@ export const HOMEPAGE_STATS = [
  * FAQ copy tailored to the market of the product page it renders on, so each
  * product page carries market-relevant keywords rather than generic text.
  */
-export function getFaqs(product: Product) {
+export function getFaqs(product: Product): Faq[] {
   const market = MARKETS[product.market];
   const workflow =
     product.type === "owner"
@@ -577,6 +759,7 @@ export function getFaqs(product: Product) {
       : "buyer follow-ups and pipeline tracking";
 
   return [
+    ...(product.faqs ?? []),
     {
       question: "How is the data delivered?",
       answer: `Every ${market.name} real estate data product is delivered via secure download link within 10 minutes of payment confirmation (instant processing available). All files are clean, ready-to-use Microsoft Excel spreadsheets.`,
@@ -598,7 +781,7 @@ export function getFaqs(product: Product) {
       answer:
         "We offer a 7-day refund policy if the data quality does not meet our published standards. Contact us within 7 days of delivery.",
     },
-  ] as const;
+  ];
 }
 
 export const TESTIMONIALS = [

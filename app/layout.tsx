@@ -10,7 +10,8 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import FloatingTelegram from "@/components/FloatingTelegram";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { MetaPixel } from "@/components/MetaPixel";
-import { PRODUCTS, MARKETS, MARKET_ORDER } from "@/lib/constants";
+import { CONTACT, PRODUCTS, MARKETS, MARKET_ORDER } from "@/lib/constants";
+import { SITE_NAME, SITE_URL, jsonLd } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,15 +43,24 @@ const cinzel = Cinzel({
   display: "swap",
 });
 
-const siteUrl = "https://realestate-info.world";
+const siteUrl = SITE_URL;
 
+const siteTitle = "Dubai Property Owner Database & Miami, California Buyer Leads";
+const siteDescription =
+  "Verified Dubai property owner database (1M+ owners) and high-intent Miami, California, Dubai & UK buyer leads. CRM-ready Excel, delivered in 10 minutes.";
+
+// Pages set their own canonical, Open Graph and Twitter tags via pageMetadata()
+// (lib/seo.ts). Nothing here may be page-specific: it is inherited by every
+// route that does not override it, including 404s.
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Real Estate Info World | Property Owner Databases & Buyer Leads",
-    template: "%s | Real Estate Info World",
+    default: siteTitle,
+    template: `%s | ${SITE_NAME}`,
   },
-  description: "Verified property owner databases and high-intent buyer leads for real estate brokers, consultants, agencies and property marketers. CRM-ready Excel, instant delivery.",
+  description: siteDescription,
+  applicationName: SITE_NAME,
+  category: "Real Estate",
   // Site-wide keywords: the base set plus every product's own keywords, deduped.
   keywords: [
     ...new Set([
@@ -69,25 +79,36 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteUrl,
-    siteName: "Real Estate Info World",
-    title: "Real Estate Info World | Property Owner Databases & Buyer Leads",
-    description: "Professional property owner databases and high-intent buyer leads for brokers and agencies. CRM-ready. Delivered in minutes.",
+    siteName: SITE_NAME,
+    title: siteTitle,
+    description: siteDescription,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Real Estate Info World | Property Owner Databases & Buyer Leads",
-    description: "Verified real estate leads and property marketing data for brokers and consultants.",
+    title: siteTitle,
+    description: siteDescription,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   icons: {
     icon: '/favicon.png',
+    apple: '/images/logo-mark.png',
   },
-  alternates: {
-    canonical: siteUrl,
+  // Search Console / Bing Webmaster ownership tokens, set in Vercel env vars.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
   },
 };
 
@@ -96,44 +117,48 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Organization + one Product node per dataset, generated from PRODUCTS so new
-  // markets are picked up automatically.
+  // Site-wide entities only. Each product page carries its own Product,
+  // BreadcrumbList and FAQPage nodes and references the organization by @id.
   const orgSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
         "@id": `${siteUrl}/#organization`,
-        name: "Real Estate Info World",
+        name: SITE_NAME,
         url: siteUrl,
-        email: "info@realestate-info.world",
-        telephone: "+44 75 46 084350",
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/images/logo.png`,
+        },
+        email: CONTACT.email,
+        telephone: CONTACT.phoneRaw,
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          telephone: CONTACT.phoneRaw,
+          email: CONTACT.email,
+          availableLanguage: ["English"],
+        },
         areaServed: MARKET_ORDER.map((key) => ({
           "@type": "AdministrativeArea",
           name: MARKETS[key].schemaRegion,
           addressCountry: MARKETS[key].schemaCountry,
         })),
         description:
-          "Provider of verified property owner databases and high-intent buyer leads for real estate brokers, consultants, and agencies.",
-        sameAs: [],
+          "Provider of the Dubai property owner database and verified, high-intent real estate buyer leads for Dubai, Miami, California and the UK.",
+        knowsAbout: PRODUCTS.map((product) => product.name),
+        sameAs: [CONTACT.telegram],
       },
-      ...PRODUCTS.map((product) => ({
-        "@type": "Product",
-        "@id": `${siteUrl}/#${product.slug}`,
-        name: product.name,
-        description: product.seo.description,
-        brand: {
-          "@type": "Brand",
-          name: "Real Estate Info World",
-        },
-        offers: {
-          "@type": "Offer",
-          price: String(product.price),
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-          url: `${siteUrl}/products/${product.slug}`,
-        },
-      })),
+      {
+        "@type": "WebSite",
+        "@id": `${siteUrl}/#website`,
+        url: siteUrl,
+        name: SITE_NAME,
+        description: siteDescription,
+        publisher: { "@id": `${siteUrl}/#organization` },
+        inLanguage: "en",
+      },
     ],
   };
 
@@ -142,7 +167,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col bg-ink text-ivory">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(orgSchema) }}
         />
         <Navbar />
         <main className="flex-1">{children}</main>

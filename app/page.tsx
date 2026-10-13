@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, Database, FileSpreadsheet, MessageCircle, ShieldCheck, Zap } from "lucide-react";
 import { Hero } from "@/components/Hero";
@@ -18,8 +19,22 @@ import {
   formatMarketList,
   getProductsByMarket,
 } from "@/lib/constants";
+import { GUIDES } from "@/lib/guides";
+import { faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Dubai Property Owner Database & Miami, California Buyer Leads",
+  description:
+    "Verified Dubai property owner database (1M+ owners) and high-intent Miami, California, Dubai & UK buyer leads. CRM-ready Excel, delivered in 10 minutes.",
+  path: "/",
+});
 
 const HOME_FAQS = [
+  {
+    question: "Which real estate data do you offer?",
+    answer:
+      "The Dubai Property Owner Database (1,000,000+ verified owners with direct mobile numbers) plus high-intent buyer leads for Dubai, Miami, California and the UK. Every dataset is refreshed monthly and delivered as a CRM-ready Excel file.",
+  },
   {
     question: "How do I pay?",
     answer:
@@ -194,6 +209,7 @@ export default function Home() {
                       {products.length} dataset{products.length > 1 ? "s" : ""}
                     </span>
                   </div>
+                  <p className="mt-4 text-sm leading-relaxed text-sand">{market.areasNote}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {market.areas.map((area) => (
                       <span key={area} className="rounded-full border border-line-strong px-3 py-1 text-xs text-sand">
@@ -205,7 +221,7 @@ export default function Home() {
                   <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-5">
                     {products.map((p) => (
                       <Link key={p.slug} href={`/products/${p.slug}`} className="text-sm text-gold hover:text-gold-pale">
-                        {p.type === "owner" ? "Owner database" : "Buyer leads"} · ${p.price.toLocaleString()} →
+                        {p.name} · ${p.price.toLocaleString()} →
                       </Link>
                     ))}
                   </div>
@@ -254,6 +270,32 @@ export default function Home() {
         </div>
       </section>
 
+      {/* GUIDES */}
+      <section className="section border-t border-line bg-ink-2">
+        <div className="container">
+          <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <SectionHeading eyebrow="Broker guides" title="Playbooks for finding owners and buyers." />
+            <Link href="/guides" className="flex items-center gap-1.5 whitespace-nowrap text-sm text-gold hover:text-gold-pale">
+              All guides <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {GUIDES.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/guides/${guide.slug}`}
+                className="group flex h-full flex-col rounded-3xl border border-line bg-surface p-7 transition-colors hover:border-gold/40"
+              >
+                <div className="text-xs text-stone">{guide.readingMinutes} min read</div>
+                <h3 className="mt-4 font-display text-2xl leading-tight text-ivory">{guide.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-sand">{guide.excerpt}</p>
+                <span className="mt-6 text-sm text-gold group-hover:text-gold-pale">Read the guide →</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="section border-t border-line">
         <div className="container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
@@ -275,6 +317,13 @@ export default function Home() {
       </section>
 
       <CtaBand />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLd({ "@context": "https://schema.org", ...faqPageSchema(HOME_FAQS) }),
+        }}
+      />
     </>
   );
 }

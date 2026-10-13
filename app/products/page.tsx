@@ -6,20 +6,22 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { HowItWorks } from "@/components/HowItWorks";
 import { CtaBand } from "@/components/CtaBand";
 import { PRODUCTS, COMPARISON_ROWS, formatMarketList } from "@/lib/constants";
+import { SITE_URL, jsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Real Estate Data Products | Owner Databases & Buyer Leads",
+export const metadata: Metadata = pageMetadata({
+  title: "Real Estate Buyer Leads & Property Owner Databases | Compare",
   description:
-    "Compare every Real Estate Info World dataset — verified property owner databases and high-intent buyer leads. All CRM-ready Excel, delivered in 10 minutes. Built for real estate brokers, consultants and agencies.",
+    "Compare the Dubai property owner database with Miami, California, Dubai and UK buyer leads. Verified, CRM-ready Excel files delivered in 10 minutes.",
+  path: "/products",
   keywords: [
-    "Property Owner Database",
-    "Buyer Leads",
-    "Property Owner Leads",
-    "real estate leads",
-    "property marketing data",
+    "real estate buyer leads",
+    "property owner database",
+    "Dubai Property Owner Database",
+    "Miami Buyer Leads",
+    "California Buyer Leads",
+    "real estate leads for sale",
   ],
-  alternates: { canonical: "/products" },
-};
+});
 
 export default function ProductsPage() {
   return (
@@ -98,6 +100,23 @@ export default function ProductsPage() {
       </section>
 
       <CtaBand />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLd({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Real estate datasets",
+            itemListElement: PRODUCTS.map((product, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: product.name,
+              url: `${SITE_URL}/products/${product.slug}`,
+            })),
+          }),
+        }}
+      />
     </>
   );
 }

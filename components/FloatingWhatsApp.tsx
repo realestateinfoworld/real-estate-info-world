@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { CONTACT, getMarketForPath } from "@/lib/constants";
 
@@ -23,8 +24,10 @@ export default function FloatingWhatsApp() {
       aria-label="Chat with us on WhatsApp"
       className="fixed bottom-6 right-6 z-[60] block"
     >
-      <img
+      <Image
         src="/icons/whatsapp.svg"
+        width={56}
+        height={56}
         alt="Chat on WhatsApp"
         className="h-14 w-14 rounded-full shadow-[0_12px_30px_-8px_rgb(0_0_0_/_0.25)] ring-1 ring-ivory/10 transition-transform hover:scale-105"
       />

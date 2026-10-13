@@ -2,13 +2,14 @@ import { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { CtaBand } from "@/components/CtaBand";
 import { HOMEPAGE_STATS, formatMarketList } from "@/lib/constants";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us | Real Estate Data for Brokers & Agencies",
+export const metadata: Metadata = pageMetadata({
+  title: "About Real Estate Info World | Verified Real Estate Data",
   description:
-    "Real Estate Info World provides verified property owner databases and high-intent buyer leads for real estate brokers, property consultants and agencies.",
-  alternates: { canonical: "/about" },
-};
+    "Real Estate Info World supplies the Dubai property owner database and verified buyer leads for Dubai, Miami, California and the UK to brokers and agencies.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

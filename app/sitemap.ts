@@ -1,23 +1,32 @@
 import { MetadataRoute } from "next";
 import { PRODUCTS } from "@/lib/constants";
+import { GUIDES } from "@/lib/guides";
+import { SITE_UPDATED, SITE_URL } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://realestate-info.world";
-  const now = new Date().toISOString();
+  const base = SITE_URL;
+  const lastModified = SITE_UPDATED;
 
   return [
-    { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    { url: `${base}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: base, lastModified, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/products`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     ...PRODUCTS.map((product) => ({
       url: `${base}/products/${product.slug}`,
-      lastModified: now,
+      lastModified,
       changeFrequency: "monthly" as const,
-      priority: 0.85,
+      priority: product.type === "owner" ? 0.95 : 0.9,
     })),
-    { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${base}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.65 },
-    { url: `${base}/privacy-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${base}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${base}/refund-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/guides`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    ...GUIDES.map((guide) => ({
+      url: `${base}/guides/${guide.slug}`,
+      lastModified: guide.updated,
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
+    })),
+    { url: `${base}/about`, lastModified, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/contact`, lastModified, changeFrequency: "yearly", priority: 0.6 },
+    { url: `${base}/privacy-policy`, lastModified, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/terms`, lastModified, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${base}/refund-policy`, lastModified, changeFrequency: "yearly", priority: 0.3 },
   ];
 }

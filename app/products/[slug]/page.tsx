@@ -9,7 +9,9 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { HowItWorks } from "@/components/HowItWorks";
 import { FaqList } from "@/components/FaqList";
 import { PRODUCTS, getProduct, getMarket, getFaqs } from "@/lib/constants";
+import { getGuideForProduct } from "@/lib/guides";
 import { MetaPixelTracker } from "@/components/MetaPixelTracker";
+import { SITE_NAME, SITE_URL, faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
 import { ArrowLeft, Check, FileSpreadsheet, ShieldCheck, Zap } from "lucide-react";
 
 type Props = {
@@ -29,14 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!product) return {};
 
-  return {
+  return pageMetadata({
     title: product.seo.title,
     description: product.seo.description,
-    keywords: [...product.seo.keywords],
-    alternates: {
-      canonical: `/products/${product.slug}`,
-    },
-  };
+    path: `/products/${product.slug}`,
+    keywords: product.seo.keywords,
+  });
 }
 
 export default async function ProductPage({ params }: Props) {
@@ -49,7 +49,9 @@ export default async function ProductPage({ params }: Props) {
   const faqs = getFaqs(product);
   const isBuyer = product.type === "buyer";
 
+  const guide = getGuideForProduct(product.slug);
   const others = PRODUCTS.filter((p) => p.slug !== product.slug);
+  const url = `${SITE_URL}/products/${product.slug}`;
 
   return (
     <>
@@ -110,12 +112,12 @@ export default async function ProductPage({ params }: Props) {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="min-w-0 space-y-14 lg:col-span-7 xl:col-span-8">
             <div>
-              <div className="eyebrow">Overview</div>
+              <h2 className="eyebrow">{product.shortName} overview</h2>
               <p className="mt-5 text-[17px] leading-relaxed text-sand">{product.description}</p>
             </div>
 
             <div>
-              <div className="eyebrow">What&apos;s included</div>
+              <h2 className="eyebrow">What&apos;s included</h2>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {product.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 rounded-2xl border border-line bg-surface p-4 text-[15px] text-sand">
@@ -129,7 +131,7 @@ export default async function ProductPage({ params }: Props) {
             </div>
 
             <div>
-              <div className="eyebrow">Sample data preview</div>
+              <h2 className="eyebrow">{product.shortName} sample</h2>
               <div className="mt-6">
                 <SamplePreview product={product} />
               </div>
@@ -137,7 +139,7 @@ export default async function ProductPage({ params }: Props) {
 
             {/* Areas Covered — market focus for SEO & targeting */}
             <div>
-              <div className="eyebrow">Key {market.name} areas covered</div>
+              <h2 className="eyebrow">Key {market.name} areas covered</h2>
               <div className="mt-6 flex flex-wrap gap-2">
                 {market.areas.map((area) => (
                   <span key={area} className="rounded-full border border-line-strong px-3.5 py-1.5 text-sm text-sand">
@@ -148,6 +150,25 @@ export default async function ProductPage({ params }: Props) {
               </div>
               <p className="mt-4 text-sm text-stone">{market.areasNote}</p>
             </div>
+
+            {product.guide && (
+              <article className="legal border-t border-line pt-4">
+                {product.guide.map((section) => (
+                  <section key={section.heading}>
+                    <h2>{section.heading}</h2>
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </section>
+                ))}
+                {guide && (
+                  <p>
+                    Read our full guide:{" "}
+                    <Link href={`/guides/${guide.slug}`}>{guide.title}</Link>.
+                  </p>
+                )}
+              </article>
+            )}
           </div>
 
           {/* Purchase card */}
@@ -189,7 +210,7 @@ export default async function ProductPage({ params }: Props) {
       {/* FAQ */}
       <section className="section border-t border-line">
         <div className="container grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <SectionHeading eyebrow="Questions" title="Frequently asked questions" />
+          <SectionHeading eyebrow="Questions" title={`${product.shortName} FAQ`} />
           <FaqList faqs={faqs} />
         </div>
       </section>
@@ -198,7 +219,7 @@ export default async function ProductPage({ params }: Props) {
       {others.length > 0 && (
         <section className="section border-t border-line">
           <div className="container">
-            <SectionHeading eyebrow="Explore more" title="Other datasets" className="mb-12" />
+            <SectionHeading eyebrow="Explore more" title="Other real estate datasets" className="mb-12" />
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
               {others.slice(0, 3).map((p) => (
                 <ProductCard key={p.slug} product={p} />
@@ -212,20 +233,38 @@ export default async function ProductPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: jsonLd({
             "@context": "https://schema.org",
-            "@type": "Product",
-            name: product.name,
-            description: product.seo.description,
-            category: isBuyer ? "Real Estate Buyer Leads" : "Real Estate Owner Database",
-            brand: { "@type": "Brand", name: "Real Estate Info World" },
-            offers: {
-              "@type": "Offer",
-              price: product.price,
-              priceCurrency: "USD",
-              availability: "https://schema.org/InStock",
-              url: `https://realestate-info.world/products/${product.slug}`,
-            },
+            "@graph": [
+              {
+                "@type": "Product",
+                "@id": `${url}#product`,
+                name: product.name,
+                description: product.seo.description,
+                url,
+                sku: product.slug,
+                image: `${url}/opengraph-image`,
+                category: isBuyer ? "Real Estate Buyer Leads" : "Real Estate Owner Database",
+                brand: { "@type": "Brand", name: SITE_NAME },
+                offers: {
+                  "@type": "Offer",
+                  url,
+                  price: product.price,
+                  priceCurrency: "USD",
+                  availability: "https://schema.org/InStock",
+                  seller: { "@id": `${SITE_URL}/#organization` },
+                },
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+                  { "@type": "ListItem", position: 2, name: "Datasets", item: `${SITE_URL}/products` },
+                  { "@type": "ListItem", position: 3, name: product.name, item: url },
+                ],
+              },
+              faqPageSchema(faqs),
+            ],
           }),
         }}
       />

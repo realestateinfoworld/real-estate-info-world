@@ -1,12 +1,13 @@
 import { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { CONTACT } from "@/lib/constants";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy Policy | Real Estate Info World",
   description: "Privacy policy for Real Estate Info World property data and buyer leads service.",
-  alternates: { canonical: "/privacy-policy" },
-};
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicy() {
   return (

@@ -1,9 +1,5 @@
 import { Plus } from "lucide-react";
-
-interface Faq {
-  question: string;
-  answer: string;
-}
+import type { Faq } from "@/lib/constants";
 
 export function FaqList({ faqs }: { faqs: readonly Faq[] }) {
   return (

@@ -1,12 +1,13 @@
 import { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { CONTACT } from "@/lib/constants";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Refund Policy",
+export const metadata: Metadata = pageMetadata({
+  title: "Refund Policy | Real Estate Info World",
   description: "7-day refund policy for the property owner databases and buyer leads.",
-  alternates: { canonical: "/refund-policy" },
-};
+  path: "/refund-policy",
+});
 
 export default function RefundPolicy() {
   return (

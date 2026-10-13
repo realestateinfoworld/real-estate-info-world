@@ -3,13 +3,14 @@ import { Mail, MessageCircle, Phone, Send } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
 import { ContactForm } from "@/components/ContactForm";
 import { CONTACT, formatMarketList } from "@/lib/constants";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact Us | Real Estate Data for Brokers & Agencies",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact Real Estate Info World | WhatsApp, Phone & Email",
   description:
-    "Questions about our property owner databases, buyer leads or a custom dataset? Contact Real Estate Info World by WhatsApp, Telegram, phone or email.",
-  alternates: { canonical: "/contact" },
-};
+    "Questions about the Dubai owner database, Miami or California buyer leads, or a custom dataset? Contact us by WhatsApp, Telegram, phone or email.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   const channels = [

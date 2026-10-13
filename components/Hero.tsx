@@ -63,6 +63,10 @@ export function Hero() {
             transition={{ duration: 0.8, ease, delay: 0.08 }}
             className="mt-7 font-display text-[3.25rem] leading-[0.98] text-ivory sm:text-7xl xl:text-[5.5rem]"
           >
+            {/* Keyword line for search engines and screen readers; visually a kicker. */}
+            <span className="mb-5 block font-sans text-sm font-medium tracking-wide text-stone sm:text-base">
+              Dubai Property Owner Database &amp; Miami, California Buyer Leads
+            </span>
             Verified owners &amp; buyers,{" "}
             <em className="text-gold-gradient pr-2">ready to call.</em>
           </motion.h1>

@@ -5,7 +5,7 @@ import { trackMetaEvent } from '@/lib/metaPixel';
 
 interface MetaPixelTrackerProps {
   event: string;
-  parameters?: Record<string, any>;
+  parameters?: Record<string, unknown>;
   triggerOnMount?: boolean;
 }
 
