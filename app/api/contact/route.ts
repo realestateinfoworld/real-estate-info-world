@@ -1,10 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
 import { contactSchema } from "@/lib/contact-schema";
 import { dubaiTimestamp, sendNotification } from "@/lib/email";
+import { isHoneypotFilled } from "@/lib/honeypot";
+import { clientIp, isRateLimited } from "@/lib/rate-limit";
 
 export async function POST(request: NextRequest) {
   try {
-    const parsed = contactSchema.safeParse(await request.json());
+    const ip = clientIp(request);
+    if (isRateLimited(`contact:${ip}`, 5, 10 * 60 * 1000)) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Too many requests. Please wait a few minutes or contact us on WhatsApp.",
+        },
+        { status: 429 }
+      );
+    }
+
+    const body = await request.json();
+
+    // Bot filled the hidden field: answer like a success so it doesn't retry,
+    // but send nothing.
+    if (isHoneypotFilled(body)) {
+      console.warn("[CONTACT API] Honeypot triggered, ignoring submission from", ip);
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
+
+    const parsed = contactSchema.safeParse(body);
 
     if (!parsed.success) {
       return NextResponse.json(

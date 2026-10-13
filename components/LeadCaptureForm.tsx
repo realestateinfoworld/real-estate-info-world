@@ -9,6 +9,8 @@ import { Loader2, Shield } from "lucide-react";
 import { leadSchema, type LeadFormData } from "@/lib/lead-schema";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGaEvent } from "@/lib/gtag";
+import { HONEYPOT_FIELD } from "@/lib/honeypot";
+import { HoneypotField } from "@/components/HoneypotField";
 import { CONTACT, type Product } from "@/lib/constants";
 
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -40,6 +42,7 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const honeypot = String(new FormData(e.currentTarget).get(HONEYPOT_FIELD) ?? "");
 
     // Client-side validation (name + email only)
     const formData: LeadFormData = {
@@ -64,7 +67,7 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, [HONEYPOT_FIELD]: honeypot }),
       });
 
       const result = await response.json();
@@ -77,13 +80,14 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
       // Success: lead accepted (team notified via Resend, no database storage)
       setSubmitted(true);
 
-      // Track qualified pre-payment lead (for analytics/retargeting)
-      trackMetaEvent("Lead", {
+      // Track qualified pre-payment lead (for analytics/retargeting).
+      // Skipped for bots that filled the honeypot, so they don't inflate conversions.
+      if (!honeypot) trackMetaEvent("Lead", {
         content_name: product.name,
         value: product.price,
         currency: "USD",
       });
-      trackGaEvent("generate_lead", {
+      if (!honeypot) trackGaEvent("generate_lead", {
         currency: "USD",
         value: product.price,
         lead_source: "product_page",
@@ -132,7 +136,8 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3.5" noValidate>
+    <form onSubmit={handleSubmit} className="relative space-y-3.5" noValidate>
+      <HoneypotField />
       <div className="space-y-3">
         {/* Full Name */}
         <div>
