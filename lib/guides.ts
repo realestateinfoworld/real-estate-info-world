@@ -539,6 +539,234 @@ export const GUIDES: readonly Guide[] = [
       },
     ],
   },
+  {
+    slug: "dubai-marina-property-owners",
+    title: "How to Reach Dubai Marina Property Owners",
+    seo: {
+      title: "Dubai Marina Property Owners: How to Win Listings (2026)",
+      description:
+        "How brokers find and contact Dubai Marina property owners in 2026 — tower farming, landlord outreach, holiday-home owners and owner databases — plus the rules.",
+      keywords: [
+        "Dubai Marina property owners",
+        "Dubai Marina landlords",
+        "Dubai Marina owner database",
+        "Dubai Marina listings",
+        "contact property owners Dubai Marina",
+      ],
+    },
+    excerpt:
+      "Dubai Marina is one of the busiest apartment markets in the city. Here's how brokers reach its owners — tower by tower — and turn them into listings.",
+    productSlug: "owner-database",
+    published: "2026-10-13",
+    updated: "2026-10-13",
+    readingMinutes: 6,
+    sections: [
+      {
+        heading: "Why Dubai Marina is worth farming",
+        paragraphs: [
+          "Dubai Marina is a waterfront community of high-rise apartment towers, built around a man-made canal with direct access to JBR beach. It is one of Dubai's most traded communities for both sales and rentals, with a deep mix of end-users, long-term investors and holiday-home owners. High turnover means a steady flow of owners deciding to sell, re-let or switch agents — if you are the broker they already know.",
+        ],
+      },
+      {
+        heading: "Who owns property in Dubai Marina",
+        paragraphs: ["Most Marina owners fall into one of three groups, and each responds to a different message:"],
+        bullets: [
+          "Investor landlords, often living abroad, who care about rental yield, tenant quality and hassle-free management.",
+          "Holiday-home owners letting short term, who care about occupancy, nightly rates and their holiday-home permit from Dubai's Department of Economy and Tourism.",
+          "Owner-occupiers who may be upgrading to a villa community, and want a realistic sale price and a smooth move.",
+        ],
+      },
+      {
+        heading: "Farm the Marina tower by tower",
+        paragraphs: [
+          "Don't market to \"Dubai Marina\" as a whole — pick five to ten towers and become the expert on them. Track every sale and rental, know the service charges and the views on each stack, and send owners in those buildings specific updates: \"A 2-bed on the 30th floor of your tower just rented for X\" is far more compelling than a generic market report.",
+        ],
+      },
+      {
+        heading: "Messages that win Dubai Marina listings",
+        paragraphs: ["Match the offer to the owner:"],
+        bullets: [
+          "Landlords: a current rental valuation, a pre-qualified tenant and a promise to handle Ejari registration and renewals.",
+          "Holiday-home owners: a comparison of their short-term income against a long-term let or a sale at today's prices.",
+          "Sellers: recent sale prices in their tower and a buyer you are already holding for their unit type.",
+        ],
+      },
+      {
+        heading: "Get Dubai Marina owners' contact details",
+        paragraphs: [
+          "Owner contact details aren't public, so most brokers combine tower farming with a verified owner database. Our [Dubai Property Owner Database](/products/owner-database) covers 1,000,000+ owners across 200+ communities, including Dubai Marina, with direct mobile numbers. Filter the Excel file to Dubai Marina and you have your farm list in seconds. It costs $300, one-time, delivered within 10 minutes.",
+        ],
+      },
+      {
+        heading: "Rules to follow",
+        paragraphs: [
+          "Hold a valid RERA broker licence, sign a Form A before marketing a unit and get a Trakheesi permit for every advert. The UAE's 2024 telemarketing rules limit marketing calls to 9am–6pm from company-registered numbers and require you to respect the Do Not Call Registry.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do I find property owners in Dubai Marina?",
+        answer:
+          "Farm a handful of towers, work portal \"by owner\" listings, build relationships with building managers, and use a verified owner database filtered to Dubai Marina for direct mobile numbers.",
+      },
+      {
+        question: "Does the Dubai owner database include Dubai Marina?",
+        answer:
+          "Yes. Dubai Marina is one of the 200+ communities covered. Every record lists its community, so you can filter the Excel file to Dubai Marina only.",
+      },
+      {
+        question: "What do Dubai Marina landlords want from a broker?",
+        answer:
+          "Reliable tenants, a realistic rental valuation and someone to handle Ejari registration and renewals — or, for holiday-home owners, a clear comparison of short-term income against a long-term let or sale.",
+      },
+    ],
+  },
+  {
+    slug: "miami-luxury-condo-buyers",
+    title: "How to Find Luxury Condo Buyers in Miami",
+    seo: {
+      title: "Miami Luxury Condo Buyers: Brickell, Edgewater & Sunny Isles",
+      description:
+        "Where to find luxury condo buyers in Brickell, Edgewater, Sunny Isles Beach and Miami Beach in 2026 — and what they ask about before they buy.",
+      keywords: [
+        "Miami luxury condo buyers",
+        "Brickell condo buyers",
+        "Edgewater condo buyers",
+        "Sunny Isles condo buyers",
+        "Miami condo leads",
+        "Miami luxury real estate leads",
+      ],
+    },
+    excerpt:
+      "Who is buying luxury condos in Brickell, Edgewater and Sunny Isles Beach, where to find them, and what they ask before they sign.",
+    productSlug: "miami-buyer-leads",
+    published: "2026-10-13",
+    updated: "2026-10-13",
+    readingMinutes: 6,
+    sections: [
+      {
+        heading: "Who buys luxury condos in Miami",
+        paragraphs: [
+          "Miami's luxury condo market draws three main groups: buyers relocating from higher-tax states (Florida has no state income tax), international buyers from Latin America, Canada, Europe and the Middle East, and investors buying pre-construction units in new towers. Many are buying a second home and decide remotely, so they expect fast, detailed answers and video tours.",
+        ],
+      },
+      {
+        heading: "Brickell, Edgewater and Sunny Isles Beach",
+        paragraphs: [
+          "Brickell is Miami's financial district, with high-rise condos popular with professionals and investors. Edgewater, along Biscayne Bay just north of downtown, attracts buyers who want bay views and new towers. Sunny Isles Beach, between Miami Beach and Fort Lauderdale, is known for oceanfront branded residences and is especially popular with international buyers. Knowing which of these a buyer is targeting tells you their priorities — city life, bay views or the beach.",
+        ],
+      },
+      {
+        heading: "What Miami condo buyers ask before they buy",
+        paragraphs: ["Be ready with answers on:"],
+        bullets: [
+          "Association fees and the building's reserves. Since Florida's post-Surfside condo safety laws, buyers ask about milestone inspections, structural reserve studies and any planned special assessments.",
+          "Rental rules: minimum lease terms and whether short-term rentals are allowed in the building.",
+          "For pre-construction: the deposit schedule, completion date and what happens to deposits held in escrow.",
+          "Insurance costs and flood zone, especially for waterfront towers.",
+        ],
+      },
+      {
+        heading: "Where to find luxury condo buyers",
+        paragraphs: [
+          "Portal enquiries, developer launch events, international referral networks and targeted Google and social ads all work, but they take time or budget. A verified buyer lead list gets you talking to active buyers today: our [Miami Real Estate Buyer Leads](/products/miami-buyer-leads) file has 1,500+ buyers sourced this month, each with target neighborhood (including Brickell, Edgewater and Sunny Isles Beach), property type, estimated budget in USD and timeframe. Filter to \"Luxury Condo\" and your neighborhoods and start with the \"Immediate\" buyers.",
+        ],
+      },
+      {
+        heading: "Rules to follow",
+        paragraphs: [
+          "Scrub numbers against the federal National Do Not Call Registry and Florida's own Do Not Call list, follow the TCPA and the Florida Telephone Solicitation Act for calls and texts, and the CAN-SPAM Act for email. Since August 2024, NAR rules require a written buyer agreement before touring a property with a buyer.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Where do luxury condo buyers in Miami come from?",
+        answer:
+          "Mostly from other US states (Florida has no state income tax), plus Latin America, Canada, Europe and the Middle East, and investors buying pre-construction units.",
+      },
+      {
+        question: "What do Miami condo buyers ask about most?",
+        answer:
+          "Association fees and building reserves (including milestone inspections and special assessments since Florida's post-Surfside laws), rental rules, insurance and flood zone, and deposit schedules for pre-construction.",
+      },
+      {
+        question: "Can I filter Miami buyer leads to luxury condos in Brickell?",
+        answer:
+          "Yes. Target area and property type are separate Excel columns, so you can filter to Luxury Condo in Brickell, Edgewater or Sunny Isles Beach in seconds.",
+      },
+    ],
+  },
+  {
+    slug: "los-angeles-buyer-leads",
+    title: "How to Get Real Estate Buyer Leads in Los Angeles",
+    seo: {
+      title: "Los Angeles Real Estate Buyer Leads: 2026 Agent Guide",
+      description:
+        "How Los Angeles agents find serious buyers in 2026 — Beverly Hills, Santa Monica, Malibu and Pasadena — plus Measure ULA and the rules for contacting leads.",
+      keywords: [
+        "Los Angeles buyer leads",
+        "Los Angeles real estate leads",
+        "LA realtor leads",
+        "Beverly Hills buyer leads",
+        "Santa Monica buyer leads",
+        "Malibu buyer leads",
+      ],
+    },
+    excerpt:
+      "Where LA agents find buyers ready to move in Beverly Hills, Santa Monica, Malibu and Pasadena — and what high-end LA buyers need to know before they offer.",
+    productSlug: "california-buyer-leads",
+    published: "2026-10-13",
+    updated: "2026-10-13",
+    readingMinutes: 6,
+    sections: [
+      {
+        heading: "The Los Angeles buyer market",
+        paragraphs: [
+          "Greater Los Angeles is a patchwork of separate cities and neighborhoods, each with its own buyers: Beverly Hills for estates and prestige, Santa Monica for coastal city living, Malibu for oceanfront homes, Pasadena for character homes and families. Buyers include entertainment and tech professionals, relocating families, international buyers and investors. Prices are high, so every serious buyer is contested by several agents.",
+        ],
+      },
+      {
+        heading: "What high-end LA buyers need to know",
+        paragraphs: ["Help buyers understand costs that are specific to LA:"],
+        bullets: [
+          "Measure ULA: since April 2023 the City of Los Angeles adds a transfer tax on sales above roughly $5 million, with a higher rate above roughly $10 million (thresholds are adjusted each year). It applies to properties inside City of LA limits — not in separate cities such as Beverly Hills, Santa Monica or Malibu, which have their own rules.",
+          "Wildfire risk and home insurance availability, especially in hillside and coastal areas.",
+          "Property tax under Proposition 13: about 1% of the purchase price plus local assessments, reset on purchase.",
+        ],
+      },
+      {
+        heading: "Where to find LA buyers",
+        paragraphs: [
+          "Portal enquiries (Zillow, Realtor.com, Redfin), open houses, relocation companies and entertainment-industry business managers are all strong sources, as are targeted ads for specific neighborhoods. To add active buyers quickly, our [California Real Estate Buyer Leads](/products/california-buyer-leads) file has 3,000+ buyers sourced this month across the state — including Beverly Hills, Santa Monica, Malibu and Pasadena — each with target city, property type, estimated budget in USD and timeframe. Filter to your LA neighborhoods and call the \"Immediate\" buyers first.",
+        ],
+      },
+      {
+        heading: "Rules for contacting LA buyers",
+        paragraphs: [
+          "Scrub numbers against the National Do Not Call Registry and follow the TCPA for calls and texts. California requires your name and DRE licence number on first-point-of-contact marketing, personal data must be handled under the CCPA/CPRA, and since August 2024 NAR rules require a written buyer agreement before touring a home with a buyer.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Where do Los Angeles agents get buyer leads?",
+        answer:
+          "From Zillow, Realtor.com and Redfin enquiries, open houses, relocation companies, business managers in the entertainment industry, neighborhood-targeted ads and verified buyer lead lists.",
+      },
+      {
+        question: "Does Measure ULA apply in Beverly Hills or Santa Monica?",
+        answer:
+          "No. Measure ULA applies to sales within City of Los Angeles limits. Beverly Hills, Santa Monica and Malibu are separate cities with their own transfer tax rules.",
+      },
+      {
+        question: "Do your California buyer leads include Los Angeles areas?",
+        answer:
+          "Yes. The statewide file includes buyers targeting Beverly Hills, Santa Monica, Malibu and Pasadena, and target city is a separate column you can filter on.",
+      },
+    ],
+  },
 ];
 
 export function getGuide(slug: string): Guide | undefined {
