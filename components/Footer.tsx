@@ -77,7 +77,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-line pt-8 text-xs text-stone md:flex-row">
+        {/* pr-20 keeps this line clear of the floating chat buttons (right-6, w-14). */}
+        <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-line pt-8 pr-20 text-xs text-stone md:flex-row md:items-center">
           <div>© {year} Real Estate Info World. All rights reserved.</div>
           <div>{MARKET_ORDER.map((key) => MARKETS[key].label).join(" · ")}</div>
         </div>
