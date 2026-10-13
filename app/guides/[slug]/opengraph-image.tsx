@@ -23,18 +23,18 @@ export default async function GuideOpengraphImage({ params }: { params: Promise<
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "radial-gradient(circle at 20% 0%, #f1e4c8 0%, #faf7f1 60%)",
-          color: "#1d1a15",
+          background: "radial-gradient(circle at 15% 0%, #12403a 0%, #0a1628 55%)",
+          color: "#ffffff",
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div style={{ width: 14, height: 14, borderRadius: 7, background: "#a3854f" }} />
-          <div style={{ fontSize: 24, letterSpacing: 6, color: "#87693a" }}>REAL ESTATE INFO WORLD · GUIDE</div>
+          <div style={{ width: 14, height: 14, borderRadius: 7, background: "#10b981" }} />
+          <div style={{ fontSize: 24, letterSpacing: 6, color: "#34d399" }}>REAL ESTATE INFO WORLD · GUIDE</div>
         </div>
         <div style={{ display: "flex", fontSize: 80, lineHeight: 1.05, fontWeight: 600, letterSpacing: -2 }}>
           {guide.title}
         </div>
-        <div style={{ display: "flex", borderTop: "1px solid #d5cab4", paddingTop: 28, fontSize: 24, color: "#5a5345" }}>
+        <div style={{ display: "flex", borderTop: "1px solid rgba(255,255,255,0.15)", paddingTop: 28, fontSize: 24, color: "#c5cfdd" }}>
           {`${guide.readingMinutes} min read · 2026 edition`}
         </div>
       </div>

@@ -34,10 +34,11 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-[999] transition-all duration-300",
+        // Navy on every page, so the logo and links read the same everywhere.
+        "theme-dark fixed inset-x-0 top-0 z-[999] transition-all duration-300",
         scrolled || mobileOpen
-          ? "border-b border-line/80 bg-ink/80 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent"
+          ? "border-b border-line bg-ink/90 shadow-[0_10px_30px_-15px_rgb(0_0_0_/_0.5)] backdrop-blur-xl"
+          : "border-b border-transparent bg-ink"
       )}
     >
       <nav className="container flex h-18 md:h-20 items-center justify-between">
@@ -87,8 +88,8 @@ export function Navbar() {
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={cn(
-                  "border-b border-line py-5 font-display text-3xl",
-                  isActive(link.href) ? "text-gold" : "text-ivory"
+                  "border-b border-line py-5 font-display text-2xl",
+                  isActive(link.href) ? "text-brand" : "text-ivory"
                 )}
               >
                 {link.label}

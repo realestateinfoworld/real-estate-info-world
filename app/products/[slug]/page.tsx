@@ -8,11 +8,12 @@ import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
 import { HowItWorks } from "@/components/HowItWorks";
 import { FaqList } from "@/components/FaqList";
-import { MARKETS, MARKET_ORDER, PRODUCTS, getProduct, getMarket, getFaqs } from "@/lib/constants";
+import { MARKETS, MARKET_ORDER, PRODUCTS, getProduct, getMarket, getFaqs, getUnitPriceLabel } from "@/lib/constants";
+import { MobileBuyBar } from "@/components/MobileBuyBar";
 import { getGuideForProduct } from "@/lib/guides";
 import { MetaPixelTracker } from "@/components/MetaPixelTracker";
 import { SITE_NAME, SITE_URL, faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
-import { ArrowLeft, Check, FileSpreadsheet, ShieldCheck, Zap } from "lucide-react";
+import { ArrowLeft, Check, FileSpreadsheet, Lock, ShieldCheck, Zap } from "lucide-react";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -78,9 +79,9 @@ export default async function ProductPage({ params }: Props) {
       />
 
       {/* Header */}
-      <section className="relative overflow-hidden border-b border-line">
+      <section className="theme-dark relative overflow-hidden">
         <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
-        <div className="gold-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="brand-glow pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container relative pt-32 pb-14 md:pt-40 md:pb-16">
           <Link href="/products" className="inline-flex items-center text-sm text-stone transition-colors hover:text-ivory">
             <ArrowLeft className="mr-1.5 h-4 w-4" /> All datasets
@@ -90,12 +91,12 @@ export default async function ProductPage({ params }: Props) {
             <Badge variant="primary">{market.label}</Badge>
             <Badge>{isBuyer ? "Buyer leads" : "Owner database"}</Badge>
             <Badge>
-              <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-gold" />
+              <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-brand" />
               {product.version}
             </Badge>
           </div>
 
-          <h1 className="mt-6 max-w-4xl font-display text-5xl leading-[1.02] text-ivory md:text-7xl">
+          <h1 className="mt-6 max-w-4xl font-display text-4xl leading-[1.05] text-ivory md:text-6xl">
             {product.name}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-sand">{product.shortDescription}</p>
@@ -124,8 +125,8 @@ export default async function ProductPage({ params }: Props) {
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {product.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 rounded-2xl border border-line bg-surface p-4 text-[15px] text-sand">
-                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold/15">
-                      <Check className="h-3 w-3 text-gold" strokeWidth={3} />
+                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand/15">
+                      <Check className="h-3 w-3 text-brand" strokeWidth={3} />
                     </span>
                     {f}
                   </li>
@@ -176,13 +177,18 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Purchase card */}
           <aside id="buy" className="order-first min-w-0 scroll-mt-24 lg:order-none lg:col-span-5 xl:col-span-4">
-            <div className="glass gold-frame sticky top-28 rounded-3xl p-7">
+            <div className="glass brand-frame sticky top-28 rounded-3xl p-7">
               <div className="text-xs tracking-[0.18em] text-stone">ONE-TIME PAYMENT</div>
               <div className="mt-2 flex items-baseline gap-2">
-                <span className="stat-number font-display text-6xl text-ivory">${product.price.toLocaleString()}</span>
+                <span className="stat-number font-display text-5xl text-ivory">${product.price.toLocaleString()}</span>
                 <span className="text-sm text-stone">USD</span>
               </div>
-              <div className="mt-2 mb-7 text-sm text-gold">Payment link sent on WhatsApp</div>
+              <div className="mt-3 mb-7 flex flex-wrap items-center gap-2">
+                <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand">
+                  {getUnitPriceLabel(product)}
+                </span>
+                <span className="text-xs text-stone">No subscription</span>
+              </div>
 
               <LeadCaptureForm product={product} />
 
@@ -191,9 +197,10 @@ export default async function ProductPage({ params }: Props) {
                   { icon: Zap, text: "Delivered within 10 minutes" },
                   { icon: FileSpreadsheet, text: "CRM-ready Excel (.xlsx)" },
                   { icon: ShieldCheck, text: "7-day quality guarantee" },
+                  { icon: Lock, text: "Secure payment link sent on WhatsApp" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-center gap-3 text-sand">
-                    <item.icon className="h-4 w-4 text-gold" /> {item.text}
+                    <item.icon className="h-4 w-4 text-brand" /> {item.text}
                   </div>
                 ))}
               </div>
@@ -231,6 +238,8 @@ export default async function ProductPage({ params }: Props) {
           </div>
         </section>
       )}
+
+      <MobileBuyBar price={product.price} label={product.shortName} />
 
       {/* Structured data for rich results */}
       <script

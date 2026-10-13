@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, Database, FileSpreadsheet, MessageCircle, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Check, Database, FileSpreadsheet, MessageCircle, Quote, RotateCcw, ShieldCheck, Zap } from "lucide-react";
 import { Hero } from "@/components/Hero";
 import { AreasMarquee } from "@/components/AreasMarquee";
 import { ProductGrid } from "@/components/ProductGrid";
@@ -84,12 +84,12 @@ export default function Home() {
               eyebrow="The datasets"
               title={
                 <>
-                  Choose your market. <em className="text-gold-gradient">Start calling today.</em>
+                  Choose your market. <em className="text-brand-gradient">Start calling today.</em>
                 </>
               }
               description={`Owner databases and buyer leads across ${formatMarketList()}, each one verified and delivered as a CRM-ready Excel file.`}
             />
-            <Link href="/products" className="flex items-center gap-1.5 whitespace-nowrap text-sm text-gold hover:text-gold-pale">
+            <Link href="/products" className="flex items-center gap-1.5 whitespace-nowrap text-sm text-brand hover:text-brand-pale">
               Compare all datasets <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -99,7 +99,7 @@ export default function Home() {
 
       {/* WHY US — bento */}
       <section className="section relative border-y border-line bg-ink-2">
-        <div className="gold-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="brand-glow pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container relative">
           <SectionHeading
             eyebrow="Why brokers choose us"
@@ -110,10 +110,10 @@ export default function Home() {
 
           <div className="grid gap-4 md:grid-cols-12">
             <Reveal className="md:col-span-12 lg:col-span-6 lg:row-span-2">
-              <div className="gold-frame relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-surface p-8 md:p-10">
+              <div className="brand-frame relative flex h-full flex-col justify-between overflow-hidden rounded-3xl bg-surface p-8 md:p-10">
                 <div className="grid-lines pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
                 <div className="relative">
-                  <ShieldCheck className="h-8 w-8 text-gold" />
+                  <ShieldCheck className="h-8 w-8 text-brand" />
                   <h3 className="mt-6 text-2xl font-medium text-ivory">Verified at source</h3>
                   <p className="mt-3 max-w-md text-[15px] leading-relaxed text-sand">
                     Owner records are cross-checked against official property records; buyer leads are validated
@@ -121,7 +121,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="relative mt-12">
-                  <div className="stat-number font-display text-8xl leading-none text-gold-gradient md:text-9xl">99%</div>
+                  <div className="stat-number font-display text-7xl leading-none text-brand-gradient md:text-8xl">99%</div>
                   <div className="mt-2 text-sm text-stone">Verified accuracy across every dataset</div>
                 </div>
               </div>
@@ -150,8 +150,8 @@ export default function Home() {
               },
             ].map((item, i) => (
               <Reveal key={item.title} delay={0.08 * (i + 1)} className="md:col-span-6 lg:col-span-3">
-                <div className="h-full rounded-3xl border border-line bg-surface p-7 transition-colors hover:border-gold/30">
-                  <item.icon className="h-6 w-6 text-gold" />
+                <div className="h-full rounded-3xl border border-line bg-surface p-7 transition-colors hover:border-brand/30">
+                  <item.icon className="h-6 w-6 text-brand" />
                   <h3 className="mt-5 text-lg font-medium text-ivory">{item.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-sand">{item.body}</p>
                 </div>
@@ -173,8 +173,8 @@ export default function Home() {
             <ul className="mt-8 space-y-3 text-[15px] text-sand">
               {flagship.features.slice(0, 4).map((feature) => (
                 <li key={feature} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-gold/15">
-                    <Check className="h-3 w-3 text-gold" strokeWidth={3} />
+                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand/15">
+                    <Check className="h-3 w-3 text-brand" strokeWidth={3} />
                   </span>
                   {feature}
                 </li>
@@ -188,6 +188,27 @@ export default function Home() {
             <SamplePreview product={flagship} />
           </Reveal>
         </div>
+      </section>
+
+      {/* GUARANTEE */}
+      <section className="container pb-20 md:pb-28">
+        <Reveal>
+          <div className="grid items-center gap-8 rounded-3xl border border-brand/25 bg-brand/[0.05] p-8 md:grid-cols-[auto_1fr_auto] md:p-10">
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-b from-brand-from to-brand-to text-on-brand shadow-[0_14px_30px_-12px_rgb(16_185_129_/_0.7)]">
+              <ShieldCheck className="h-8 w-8" />
+            </div>
+            <div>
+              <h2 className="font-display text-2xl text-ivory md:text-3xl">7-day quality guarantee</h2>
+              <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-sand">
+                If your file doesn&apos;t meet our published data standards, contact us within 7 days of delivery
+                for a full refund. You only pay for data you can actually use.
+              </p>
+            </div>
+            <Link href="/refund-policy" className="flex items-center gap-1.5 whitespace-nowrap text-sm font-semibold text-brand hover:text-brand-pale">
+              <RotateCcw className="h-4 w-4" /> Read the refund policy
+            </Link>
+          </div>
+        </Reveal>
       </section>
 
       {/* COVERAGE */}
@@ -204,7 +225,7 @@ export default function Home() {
               <Reveal key={market.key} delay={i * 0.06}>
                 <div className="h-full rounded-3xl border border-line bg-surface p-7 md:p-8">
                   <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="font-display text-3xl text-ivory">{market.label}</h3>
+                    <h3 className="font-display text-2xl text-ivory">{market.label}</h3>
                     <span className="text-xs text-stone">
                       {products.length} dataset{products.length > 1 ? "s" : ""}
                     </span>
@@ -220,7 +241,7 @@ export default function Home() {
                   </div>
                   <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-5">
                     {products.map((p) => (
-                      <Link key={p.slug} href={`/products/${p.slug}`} className="text-sm text-gold hover:text-gold-pale">
+                      <Link key={p.slug} href={`/products/${p.slug}`} className="text-sm text-brand hover:text-brand-pale">
                         {p.name} · ${p.price.toLocaleString()} →
                       </Link>
                     ))}
@@ -257,7 +278,7 @@ export default function Home() {
             {TESTIMONIALS.map((t, i) => (
               <Reveal key={t.name} delay={i * 0.08} className="h-full">
                 <figure className="flex h-full flex-col rounded-3xl border border-line bg-surface p-8">
-                  <div className="font-display text-6xl leading-none text-gold/40" aria-hidden="true">“</div>
+                  <Quote className="h-7 w-7 text-brand/50" aria-hidden="true" />
                   <blockquote className="mt-2 flex-1 text-[15px] leading-relaxed text-sand">{t.quote}</blockquote>
                   <figcaption className="mt-8 border-t border-line pt-5 text-sm">
                     <div className="font-medium text-ivory">{t.name}</div>
@@ -275,7 +296,7 @@ export default function Home() {
         <div className="container">
           <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading eyebrow="Broker guides" title="Playbooks for finding owners and buyers." />
-            <Link href="/guides" className="flex items-center gap-1.5 whitespace-nowrap text-sm text-gold hover:text-gold-pale">
+            <Link href="/guides" className="flex items-center gap-1.5 whitespace-nowrap text-sm text-brand hover:text-brand-pale">
               All guides <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -284,12 +305,12 @@ export default function Home() {
               <Link
                 key={guide.slug}
                 href={`/guides/${guide.slug}`}
-                className="group flex h-full flex-col rounded-3xl border border-line bg-surface p-7 transition-colors hover:border-gold/40"
+                className="group flex h-full flex-col rounded-3xl border border-line bg-surface p-7 transition-colors hover:border-brand/40"
               >
                 <div className="text-xs text-stone">{guide.readingMinutes} min read</div>
-                <h3 className="mt-4 font-display text-2xl leading-tight text-ivory">{guide.title}</h3>
+                <h3 className="mt-4 font-display text-xl leading-tight text-ivory">{guide.title}</h3>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-sand">{guide.excerpt}</p>
-                <span className="mt-6 text-sm text-gold group-hover:text-gold-pale">Read the guide →</span>
+                <span className="mt-6 text-sm text-brand group-hover:text-brand-pale">Read the guide →</span>
               </Link>
             ))}
           </div>
@@ -305,7 +326,7 @@ export default function Home() {
             description={
               <>
                 Something else on your mind?{" "}
-                <Link href="/contact" className="text-gold underline underline-offset-4 hover:text-gold-pale">
+                <Link href="/contact" className="text-brand underline underline-offset-4 hover:text-brand-pale">
                   Talk to us
                 </Link>
                 .

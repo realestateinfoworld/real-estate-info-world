@@ -18,7 +18,7 @@ export default function AboutPage() {
         eyebrow="About us"
         title={
           <>
-            Built by people who <em className="text-gold-gradient">know the market.</em>
+            Built by people who <em className="text-brand-gradient">know the market.</em>
           </>
         }
         description={`Verified property owner data and high-intent buyer leads for real estate professionals in ${formatMarketList()}.`}

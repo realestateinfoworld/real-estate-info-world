@@ -7,10 +7,10 @@ export function FaqList({ faqs }: { faqs: readonly Faq[] }) {
       {faqs.map((faq) => (
         <details key={faq.question} className="faq-item group">
           <summary className="flex items-center justify-between gap-6 py-6 text-left">
-            <span className="text-base font-medium text-ivory transition-colors group-hover:text-gold-pale md:text-lg">
+            <span className="text-base font-medium text-ivory transition-colors group-hover:text-brand-pale md:text-lg">
               {faq.question}
             </span>
-            <span className="faq-icon flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-line-strong text-gold transition-transform duration-300">
+            <span className="faq-icon flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-line-strong text-brand transition-transform duration-300">
               <Plus className="h-4 w-4" />
             </span>
           </summary>

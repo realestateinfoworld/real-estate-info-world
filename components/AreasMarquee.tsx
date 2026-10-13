@@ -10,9 +10,9 @@ export function AreasMarquee() {
         {[0, 1].map((copy) => (
           <div key={copy} className="flex shrink-0 items-center">
             {areas.map((area) => (
-              <span key={`${copy}-${area}`} className="flex items-center whitespace-nowrap px-6 font-display text-xl text-sand/80 md:text-2xl">
+              <span key={`${copy}-${area}`} className="flex items-center whitespace-nowrap px-6 text-base font-semibold text-stone md:text-lg">
                 {area}
-                <span className="ml-12 text-gold/60">✦</span>
+                <span className="ml-12 text-brand/50">●</span>
               </span>
             ))}
           </div>

@@ -44,9 +44,9 @@ export default function ContactPage() {
                 key={c.label}
                 href={c.href}
                 {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group flex items-center gap-5 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-gold/40"
+                className="group flex items-center gap-5 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-brand/40"
               >
-                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gold/10 text-gold transition-colors group-hover:bg-gold-via group-hover:text-on-gold">
+                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand transition-colors group-hover:bg-brand-via group-hover:text-on-brand">
                   <c.icon className="h-5 w-5" />
                 </span>
                 <span className="min-w-0">

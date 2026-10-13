@@ -58,14 +58,14 @@ export default async function GuidePage({ params }: Props) {
 
   return (
     <>
-      <section className="relative overflow-hidden border-b border-line">
+      <section className="theme-dark relative overflow-hidden">
         <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
-        <div className="gold-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="brand-glow pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container relative pt-32 pb-14 md:pt-40 md:pb-16">
           <Link href="/guides" className="inline-flex items-center text-sm text-stone transition-colors hover:text-ivory">
             <ArrowLeft className="mr-1.5 h-4 w-4" /> All guides
           </Link>
-          <h1 className="mt-8 max-w-4xl font-display text-5xl leading-[1.02] text-ivory md:text-7xl">{guide.title}</h1>
+          <h1 className="mt-8 max-w-4xl font-display text-4xl leading-[1.05] text-ivory md:text-6xl">{guide.title}</h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-sand">{guide.excerpt}</p>
           <div className="mt-6 text-sm text-stone">
             Updated <time dateTime={guide.updated}>{dateFormat.format(new Date(guide.updated))}</time> ·{" "}
@@ -100,13 +100,13 @@ export default async function GuidePage({ params }: Props) {
 
           {/* The dataset this guide recommends */}
           <aside className="min-w-0 lg:col-span-5 xl:col-span-4">
-            <div className="glass gold-frame sticky top-28 rounded-3xl p-7">
+            <div className="glass brand-frame sticky top-28 rounded-3xl p-7">
               <div className="text-xs tracking-[0.18em] text-stone">RECOMMENDED DATASET</div>
-              <div className="mt-3 font-display text-3xl leading-tight text-ivory">{product.name}</div>
+              <div className="mt-3 font-display text-2xl leading-tight text-ivory">{product.name}</div>
               <ul className="mt-6 space-y-2.5 text-sm">
                 {product.features.slice(0, 4).map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5 text-sand">
-                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-gold" /> {feature}
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand" /> {feature}
                   </li>
                 ))}
               </ul>
@@ -138,7 +138,7 @@ export default async function GuidePage({ params }: Props) {
                 <Link
                   key={g.slug}
                   href={`/guides/${g.slug}`}
-                  className="group rounded-3xl border border-line bg-surface p-7 transition-colors hover:border-gold/40"
+                  className="group rounded-3xl border border-line bg-surface p-7 transition-colors hover:border-brand/40"
                 >
                   <h3 className="font-display text-2xl leading-tight text-ivory">{g.title}</h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-sand">{g.excerpt}</p>
