@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, Database, FileSpreadsheet, MessageCircle, ShieldCheck, Zap } from "lucide-react";
 import { Hero } from "@/components/Hero";
@@ -18,8 +19,21 @@ import {
   formatMarketList,
   getProductsByMarket,
 } from "@/lib/constants";
+import { faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Dubai Property Owner Database & Miami, California Buyer Leads",
+  description:
+    "Verified Dubai property owner database (1M+ owners) and high-intent Miami, California, Dubai & UK buyer leads. CRM-ready Excel, delivered in 10 minutes.",
+  path: "/",
+});
 
 const HOME_FAQS = [
+  {
+    question: "Which real estate data do you offer?",
+    answer:
+      "The Dubai Property Owner Database (1,000,000+ verified owners with direct mobile numbers) plus high-intent buyer leads for Dubai, Miami, California and the UK. Every dataset is refreshed monthly and delivered as a CRM-ready Excel file.",
+  },
   {
     question: "How do I pay?",
     answer:
@@ -194,6 +208,7 @@ export default function Home() {
                       {products.length} dataset{products.length > 1 ? "s" : ""}
                     </span>
                   </div>
+                  <p className="mt-4 text-sm leading-relaxed text-sand">{market.areasNote}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {market.areas.map((area) => (
                       <span key={area} className="rounded-full border border-line-strong px-3 py-1 text-xs text-sand">
@@ -205,7 +220,7 @@ export default function Home() {
                   <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 border-t border-line pt-5">
                     {products.map((p) => (
                       <Link key={p.slug} href={`/products/${p.slug}`} className="text-sm text-gold hover:text-gold-pale">
-                        {p.type === "owner" ? "Owner database" : "Buyer leads"} · ${p.price.toLocaleString()} →
+                        {p.name} · ${p.price.toLocaleString()} →
                       </Link>
                     ))}
                   </div>
@@ -275,6 +290,13 @@ export default function Home() {
       </section>
 
       <CtaBand />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLd({ "@context": "https://schema.org", ...faqPageSchema(HOME_FAQS) }),
+        }}
+      />
     </>
   );
 }

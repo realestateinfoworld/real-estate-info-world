@@ -1,12 +1,13 @@
 import { Metadata } from "next";
 import { PageHeader } from "@/components/PageHeader";
 import { CONTACT } from "@/lib/constants";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
+export const metadata: Metadata = pageMetadata({
+  title: "Terms of Service | Real Estate Info World",
   description: "Terms for purchasing and using our property owner databases and buyer leads. For real estate professionals.",
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 
 export default function Terms() {
   return (
