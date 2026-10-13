@@ -20,11 +20,13 @@ const geistSans = Geist({
   display: "swap",
 });
 
+// Sample tables only, below the fold: not worth a preload on every page.
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   display: "swap",
+  preload: false,
 });
 
 // Headlines
@@ -41,6 +43,7 @@ const cinzel = Cinzel({
   subsets: ["latin"],
   weight: ["600"],
   display: "swap",
+  preload: false,
 });
 
 const siteUrl = SITE_URL;

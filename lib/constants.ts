@@ -374,8 +374,60 @@ export const PRODUCTS: readonly Product[] = [
         "Dubai real estate leads",
         "high-intent Dubai buyers",
         "Dubai property marketing data",
+        "Dubai investor leads",
+        "Dubai real estate buyer database",
       ],
     },
+    guide: [
+      {
+        heading: "What's in the Dubai buyer leads file",
+        paragraphs: [
+          "Each of the 10,000+ Dubai property buyer leads lists the buyer's name, verified contact details, where they are based, the Dubai community they are interested in, their budget in AED and their buying timeline. The average budget across the file is AED 4.2M+, so you are talking to buyers who can transact at the top end of the market.",
+          "The file is a CRM-ready Excel spreadsheet with consistent columns, so it imports straight into your Dubai real estate CRM.",
+        ],
+      },
+      {
+        heading: "International and local Dubai buyers",
+        paragraphs: [
+          "Dubai's buyer pool is global. The file mixes UAE residents with international buyers from markets such as the UK, the US, India and Europe, many of them investors looking at Palm Jumeirah, Downtown Dubai, Emirates Hills, Business Bay and Dubai Marina. Knowing where a buyer is based tells you the best time zone to call and which questions to expect — from financing to the UAE Golden Visa.",
+        ],
+      },
+      {
+        heading: "How Dubai brokers convert these buyer leads",
+        paragraphs: [
+          "Sort by timeline and budget, and call the buyers who are ready to move first. Match each one to two or three listings in the community they asked about and send them on WhatsApp with floor plans and a short video. Once a buyer engages, sign a RERA Form B buyer agreement before you start viewings.",
+          "Keep longer-timeline buyers on a regular WhatsApp or email update with new launches and price movements in their target community — Dubai buyers often take months to decide and buy from the agent who stayed in touch.",
+        ],
+      },
+      {
+        heading: "Who Dubai buyer leads are for",
+        paragraphs: [
+          "Dubai brokerages, off-plan and secondary-market sales teams, and developers' sales agents who have stock and need serious buyers. At $1,200 for 10,000+ leads, each lead costs about 12 cents. If you need listings rather than buyers, see the Dubai Property Owner Database.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are Dubai property buyer leads?",
+        answer:
+          "Contact details for people actively looking to buy property in Dubai, with their budget, target community and buying timeline, delivered as one CRM-ready Excel file.",
+      },
+      {
+        question: "How much do Dubai buyer leads cost?",
+        answer:
+          "$1,200 USD one-time for 10,000+ verified Dubai buyer leads — about $0.12 per lead, with no subscription.",
+      },
+      {
+        question: "Are the buyers local or international?",
+        answer:
+          "Both. The file mixes UAE residents with international buyers from markets such as the UK, the US, India and Europe, and lists where each buyer is based.",
+      },
+      {
+        question: "What budgets do the Dubai buyers have?",
+        answer:
+          "Every lead includes a budget in AED. The average across the file is AED 4.2M+, with buyers looking from apartments in Business Bay to villas on Palm Jumeirah and in Emirates Hills.",
+      },
+    ],
   },
   {
     slug: "miami-buyer-leads",
@@ -687,8 +739,55 @@ export const PRODUCTS: readonly Product[] = [
         "London property buyer leads",
         "prime central London leads",
         "UK estate agent leads",
+        "UK property buyers list",
+        "prime London buyer leads",
       ],
     },
+    guide: [
+      {
+        heading: "What's in the UK buyer leads file",
+        paragraphs: [
+          "Each of the 1,000+ UK property buyer leads includes the buyer's name, verified email, mobile and alternate number, nationality, preferred area, property type, bedroom count, estimated budget in GBP and purchase timeframe — from \"Immediate (0–30 days)\" to \"Just browsing\".",
+          "Everything arrives in one CRM-ready Excel file, ready to import into Reapit, Alto, Street, HubSpot or any other estate agency CRM.",
+        ],
+      },
+      {
+        heading: "Where the UK leads come from",
+        paragraphs: [
+          "Leads are sourced fresh every month from Rightmove and Zoopla enquiries plus Google and social media campaigns targeting people searching for UK property, then verified against the source they came from. They are not recycled lists.",
+        ],
+      },
+      {
+        heading: "Prime London and country markets covered",
+        paragraphs: [
+          "Buyers are searching prime central London — Mayfair, Kensington, Chelsea, Notting Hill, Westminster, Hampstead and Canary Wharf — as well as Edinburgh New Town, Manchester city centre, the Cotswolds and Surrey. Both UK-based and international buyers are included, with budgets from under £1M to multi-million-pound townhouses and country estates.",
+        ],
+      },
+      {
+        heading: "How UK agents convert these buyer leads",
+        paragraphs: [
+          "Call the \"Immediate\" and \"1–3 months\" buyers first and match them to listings by area, property type and budget. International buyers often want a video viewing before they fly in, so have walkthroughs ready.",
+          "Before calling, screen numbers against the Telephone Preference Service (TPS), and follow UK GDPR and PECR rules for marketing emails and texts.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are UK property buyer leads?",
+        answer:
+          "Contact details for people actively searching to buy UK property, sourced this month from Rightmove and Zoopla enquiries and Google and social media campaigns, with budget in GBP and purchase timeframe.",
+      },
+      {
+        question: "How much do UK buyer leads cost?",
+        answer:
+          "$750 USD one-time for 1,000+ verified UK buyer leads — about $0.75 per lead, with no subscription.",
+      },
+      {
+        question: "Which UK areas do the buyers want?",
+        answer:
+          "Prime central London (Mayfair, Kensington, Chelsea, Notting Hill, Westminster, Hampstead, Canary Wharf), Edinburgh New Town, Manchester city centre, the Cotswolds and Surrey.",
+      },
+    ],
   },
 ];
 

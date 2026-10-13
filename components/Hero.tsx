@@ -46,62 +46,37 @@ export function Hero() {
       </div>
 
       <div className="container grid items-center gap-14 pt-32 pb-20 lg:grid-cols-[1.15fr_1fr] lg:gap-10 lg:pt-36 lg:pb-40">
-        {/* Copy */}
+        {/* Copy — static on purpose: the H1 is the LCP element, so it must not wait for JS */}
         <div className="min-w-0">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease }}
-            className="inline-flex items-center gap-2.5 rounded-full border border-brand/30 bg-brand/10 px-4 py-1.5 text-xs font-semibold text-brand-pale backdrop-blur"
-          >
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-brand/30 bg-brand/10 px-4 py-1.5 text-xs font-semibold text-brand-pale backdrop-blur">
             <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-brand" />
             {LATEST_RELEASE} data — live now
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease, delay: 0.08 }}
-            className="mt-7 font-display text-[2.9rem] leading-[1.02] text-ivory sm:text-6xl xl:text-[4.6rem]"
-          >
+          <h1 className="mt-7 font-display text-[2.9rem] leading-[1.02] text-ivory sm:text-6xl xl:text-[4.6rem]">
             {/* Keyword line for search engines and screen readers; visually a kicker. */}
             <span className="mb-5 block font-sans text-sm font-medium tracking-normal text-stone sm:text-base">
               Dubai Property Owner Database &amp; Miami, California Buyer Leads
             </span>
             Verified owners &amp; buyers,{" "}
             <em className="text-brand-gradient">ready to call today.</em>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease, delay: 0.16 }}
-            className="mt-7 max-w-xl text-lg leading-relaxed text-sand"
-          >
+          <p className="mt-7 max-w-xl text-lg leading-relaxed text-sand">
             Property owner databases and high-intent buyer leads for brokers and agencies in{" "}
             {formatMarketList()}. CRM-ready Excel, delivered in 10 minutes.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease, delay: 0.24 }}
-            className="mt-10 flex flex-col gap-3 sm:flex-row"
-          >
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Link href="/products" className={buttonVariants({ size: "lg" })}>
               Browse datasets — from ${Math.min(...PRODUCTS.map((p) => p.price))} <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="#sample" className={buttonVariants({ variant: "outline", size: "lg" })}>
               See sample data
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-sm text-sand"
-          >
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-sm text-sand">
             <span className="flex items-center gap-2">
               <Zap className="h-4 w-4 text-brand" /> Delivered in 10 minutes
             </span>
@@ -111,7 +86,7 @@ export function Hero() {
             <span className="flex items-center gap-2">
               <BadgeCheck className="h-4 w-4 text-brand" /> 99% verified accuracy
             </span>
-          </motion.div>
+          </div>
         </div>
 
         {/* Live sample preview */}

@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { contactSchema } from "@/lib/contact-schema";
 import { trackMetaEvent } from "@/lib/metaPixel";
+import { trackGaEvent } from "@/lib/gtag";
 
 export function ContactForm() {
   const [loading, setLoading] = useState(false);
@@ -45,6 +46,7 @@ export function ContactForm() {
 
       // Track Contact event
       trackMetaEvent("Contact");
+      trackGaEvent("generate_lead", { lead_source: "contact_form" });
       form.reset();
     } catch (error) {
       console.error("Contact submission error:", error);

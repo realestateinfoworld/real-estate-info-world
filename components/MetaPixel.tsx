@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 
@@ -17,9 +17,15 @@ interface MetaPixelProps {
 export function MetaPixel({ pixelId }: MetaPixelProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const isFirstRender = useRef(true);
 
-  // Track PageView on route changes (App Router)
+  // Track PageView on client-side route changes (App Router). The first
+  // PageView is sent by the snippet below, so skip the initial render.
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     if (typeof window === 'undefined' || !window.fbq) return;
 
     window.fbq('track', 'PageView');
@@ -27,11 +33,7 @@ export function MetaPixel({ pixelId }: MetaPixelProps) {
 
   return (
     <>
-      <Script
-        id="meta-pixel-script"
-        strategy="afterInteractive"
-        src={`https://connect.facebook.net/en_US/fbevents.js`}
-      />
+      {/* The standard snippet defines a queueing fbq() stub and loads fbevents.js async. */}
       <Script
         id="meta-pixel-init"
         strategy="afterInteractive"

@@ -10,6 +10,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { FaqList } from "@/components/FaqList";
 import { MARKETS, MARKET_ORDER, PRODUCTS, getProduct, getMarket, getFaqs, getUnitPriceLabel } from "@/lib/constants";
 import { MobileBuyBar } from "@/components/MobileBuyBar";
+import { GaEvent } from "@/components/GaEvent";
 import { getGuideForProduct } from "@/lib/guides";
 import { MetaPixelTracker } from "@/components/MetaPixelTracker";
 import { SITE_NAME, SITE_URL, faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
@@ -75,6 +76,23 @@ export default async function ProductPage({ params }: Props) {
           value: product.price,
           currency: "USD",
           content_name: product.name,
+        }}
+      />
+
+      <GaEvent
+        name="view_item"
+        params={{
+          currency: "USD",
+          value: product.price,
+          items: [
+            {
+              item_id: product.slug,
+              item_name: product.name,
+              item_category: isBuyer ? "Buyer leads" : "Owner database",
+              item_category2: market.name,
+              price: product.price,
+            },
+          ],
         }}
       />
 

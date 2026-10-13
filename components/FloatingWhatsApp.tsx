@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { trackGaEvent } from "@/lib/gtag";
 import { CONTACT, getMarketForPath } from "@/lib/constants";
 
 export default function FloatingWhatsApp() {
@@ -21,6 +22,7 @@ export default function FloatingWhatsApp() {
       href={waLink}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackGaEvent("chat_click", { channel: "whatsapp", page_path: pathname })}
       aria-label="Chat with us on WhatsApp"
       className="floating-whatsapp fixed right-6 z-[60] block"
     >
