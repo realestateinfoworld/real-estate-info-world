@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { CONTACT } from "@/lib/constants";
 
@@ -21,8 +22,10 @@ export default function FloatingTelegram() {
       aria-label="Chat with us on Telegram"
       className="fixed bottom-24 right-6 z-[60] block"
     >
-      <img
+      <Image
         src="/icons/telegram.svg"
+        width={56}
+        height={56}
         alt="Chat on Telegram"
         className="h-14 w-14 rounded-full shadow-[0_12px_30px_-8px_rgb(0_0_0_/_0.25)] ring-1 ring-ivory/10 transition-transform hover:scale-105"
       />

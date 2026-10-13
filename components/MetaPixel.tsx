@@ -6,7 +6,7 @@ import Script from 'next/script';
 
 declare global {
   interface Window {
-    fbq: any;
+    fbq?: (...args: unknown[]) => void;
   }
 }
 

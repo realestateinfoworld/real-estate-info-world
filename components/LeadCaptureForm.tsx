@@ -89,9 +89,11 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
       setTimeout(() => {
         window.location.href = buildWhatsappUrl(formData.fullName);
       }, 1350);
-    } catch (error: any) {
+    } catch (error) {
       console.error("Lead submission error:", error);
-      toast.error(error.message || "Something went wrong. Please try again or contact us.");
+      toast.error(
+        (error instanceof Error && error.message) || "Something went wrong. Please try again or contact us."
+      );
     } finally {
       setLoading(false);
     }
