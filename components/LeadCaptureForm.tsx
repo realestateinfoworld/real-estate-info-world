@@ -11,7 +11,8 @@ import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGaEvent } from "@/lib/gtag";
 import { HONEYPOT_FIELD } from "@/lib/honeypot";
 import { HoneypotField } from "@/components/HoneypotField";
-import { CONTACT, type Product } from "@/lib/constants";
+import type { Product } from "@/lib/constants";
+import { purchaseWhatsappUrl } from "@/lib/whatsapp";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -28,12 +29,7 @@ interface LeadCaptureFormProps {
 export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
   // Every dataset is sold by enquiry: the lead is captured, then the buyer is
   // handed to WhatsApp for the payment link.
-  const buildWhatsappUrl = (name?: string) => {
-    const intro = name ? `Hello, this is ${name}.` : "Hello,";
-    return `https://wa.me/${CONTACT.whatsappRaw}?text=${encodeURIComponent(
-      `${intro} I would like to purchase the ${product.name} ($${product.price.toLocaleString()}). Please send me the payment link.`
-    )}`;
-  };
+  const buildWhatsappUrl = (name?: string) => purchaseWhatsappUrl(product, name);
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");

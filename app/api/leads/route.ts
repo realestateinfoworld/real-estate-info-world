@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { leadSchema } from "@/lib/lead-schema";
-import { dubaiTimestamp, sendNotification } from "@/lib/email";
+import { dubaiTimestamp, sendLeadConfirmation, sendNotification } from "@/lib/email";
+import { PRODUCTS } from "@/lib/constants";
 import { isHoneypotFilled } from "@/lib/honeypot";
 import { clientIp, isRateLimited } from "@/lib/rate-limit";
 
@@ -47,18 +48,24 @@ export async function POST(request: NextRequest) {
     const email = data.email.trim().toLowerCase();
     const productName = data.product;
 
-    // The buyer is handed to WhatsApp either way: a failed notification is
-    // logged by sendNotification, but must never block a sale.
-    await sendNotification({
-      subject: "New Lead - Real Estate Info World",
-      replyTo: email,
-      text: [
-        `Name: ${fullName}`,
-        `Email: ${email}`,
-        `Product: ${productName}`,
-        `Date: ${dubaiTimestamp()}`,
-      ].join("\n"),
-    });
+    // The schema only accepts real product names, so this always resolves.
+    const product = PRODUCTS.find((p) => p.name === productName)!;
+
+    // The buyer is handed to WhatsApp either way: a failed email is logged by
+    // the sender, but must never block a sale.
+    await Promise.all([
+      sendNotification({
+        subject: "New Lead - Real Estate Info World",
+        replyTo: email,
+        text: [
+          `Name: ${fullName}`,
+          `Email: ${email}`,
+          `Product: ${productName}`,
+          `Date: ${dubaiTimestamp()}`,
+        ].join("\n"),
+      }),
+      sendLeadConfirmation({ to: email, fullName, product }),
+    ]);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {

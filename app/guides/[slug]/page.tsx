@@ -54,7 +54,10 @@ export default async function GuidePage({ params }: Props) {
   if (!product) notFound();
 
   const url = `${SITE_URL}/guides/${guide.slug}`;
-  const others = GUIDES.filter((g) => g.slug !== guide.slug);
+  // Guides selling the same dataset first, then the rest; four at most.
+  const others = GUIDES.filter((g) => g.slug !== guide.slug)
+    .sort((a, b) => Number(b.productSlug === guide.productSlug) - Number(a.productSlug === guide.productSlug))
+    .slice(0, 4);
 
   return (
     <>
