@@ -19,6 +19,7 @@ import {
   formatMarketList,
   getProductsByMarket,
 } from "@/lib/constants";
+import { GUIDES } from "@/lib/guides";
 import { faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -264,6 +265,32 @@ export default function Home() {
                   </figcaption>
                 </figure>
               </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* GUIDES */}
+      <section className="section border-t border-line bg-ink-2">
+        <div className="container">
+          <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <SectionHeading eyebrow="Broker guides" title="Playbooks for finding owners and buyers." />
+            <Link href="/guides" className="flex items-center gap-1.5 whitespace-nowrap text-sm text-gold hover:text-gold-pale">
+              All guides <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3">
+            {GUIDES.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/guides/${guide.slug}`}
+                className="group flex h-full flex-col rounded-3xl border border-line bg-surface p-7 transition-colors hover:border-gold/40"
+              >
+                <div className="text-xs text-stone">{guide.readingMinutes} min read</div>
+                <h3 className="mt-4 font-display text-2xl leading-tight text-ivory">{guide.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-sand">{guide.excerpt}</p>
+                <span className="mt-6 text-sm text-gold group-hover:text-gold-pale">Read the guide →</span>
+              </Link>
             ))}
           </div>
         </div>

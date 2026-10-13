@@ -9,6 +9,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { HowItWorks } from "@/components/HowItWorks";
 import { FaqList } from "@/components/FaqList";
 import { PRODUCTS, getProduct, getMarket, getFaqs } from "@/lib/constants";
+import { getGuideForProduct } from "@/lib/guides";
 import { MetaPixelTracker } from "@/components/MetaPixelTracker";
 import { SITE_NAME, SITE_URL, faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
 import { ArrowLeft, Check, FileSpreadsheet, ShieldCheck, Zap } from "lucide-react";
@@ -48,6 +49,7 @@ export default async function ProductPage({ params }: Props) {
   const faqs = getFaqs(product);
   const isBuyer = product.type === "buyer";
 
+  const guide = getGuideForProduct(product.slug);
   const others = PRODUCTS.filter((p) => p.slug !== product.slug);
   const url = `${SITE_URL}/products/${product.slug}`;
 
@@ -159,6 +161,12 @@ export default async function ProductPage({ params }: Props) {
                     ))}
                   </section>
                 ))}
+                {guide && (
+                  <p>
+                    Read our full guide:{" "}
+                    <Link href={`/guides/${guide.slug}`}>{guide.title}</Link>.
+                  </p>
+                )}
               </article>
             )}
           </div>

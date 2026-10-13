@@ -56,6 +56,22 @@ RESEND_API_KEY=
 
 Copy `.env.example` → `.env.local` for local development. No database is used for leads.
 
+### SEO
+
+```bash
+# Search Console / Bing Webmaster ownership tokens (the content="" value of
+# their HTML-tag verification method). Rendered as <meta> tags site-wide.
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=
+NEXT_PUBLIC_BING_SITE_VERIFICATION=
+```
+
+After each production deploy, run `npm run indexnow` to ask Bing (and other
+IndexNow engines) to recrawl every URL in the sitemap. The key file lives in
+`public/` and must stay in sync with `scripts/indexnow.mjs`.
+
+Guides live in `lib/guides.ts`; product copy and SEO fields in `lib/constants.ts`.
+Bump `SITE_UPDATED` in `lib/seo.ts` when page content changes.
+
 ## Lead Capture Flow
 
 Before any user can reach PayPal checkout they **must** submit a simple lead form (Name + Email only):
