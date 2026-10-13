@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { trackGaEvent } from "@/lib/gtag";
 import { CONTACT } from "@/lib/constants";
 
 export default function FloatingTelegram() {
@@ -19,6 +20,7 @@ export default function FloatingTelegram() {
       href={tgLink}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackGaEvent("chat_click", { channel: "telegram", page_path: pathname })}
       aria-label="Chat with us on Telegram"
       className="floating-telegram fixed right-6 z-[60] block"
     >

@@ -349,6 +349,196 @@ export const GUIDES: readonly Guide[] = [
       },
     ],
   },
+  {
+    slug: "how-to-find-property-buyers-in-dubai",
+    title: "How to Find Property Buyers in Dubai",
+    seo: {
+      title: "How to Find Property Buyers in Dubai (2026 Broker Guide)",
+      description:
+        "Where Dubai brokers find serious property buyers in 2026 — portals, international roadshows, off-plan launches and buyer lead lists — and how to convert them.",
+      keywords: [
+        "how to find property buyers in Dubai",
+        "Dubai property buyers",
+        "Dubai buyer leads",
+        "Dubai real estate leads",
+        "Dubai property investors",
+        "Dubai real estate lead generation",
+      ],
+    },
+    excerpt:
+      "Where Dubai brokers find buyers who are ready to transact — portals, international investors, off-plan launches and buyer lead lists — and how to turn them into deals.",
+    productSlug: "buyer-leads",
+    published: "2026-10-13",
+    updated: "2026-10-13",
+    readingMinutes: 7,
+    sections: [
+      {
+        heading: "Who is buying property in Dubai",
+        paragraphs: [
+          "Dubai's buyers are unusually international. Alongside UAE residents upgrading or buying their first home, a large share of demand comes from overseas investors — from the UK, Europe, India, Russia, China and the wider Gulf — buying for rental yield, capital growth or residency. Property investors can qualify for the UAE Golden Visa with property worth AED 2 million or more, which keeps high-budget demand strong.",
+          "That means your buyers are often in another time zone, comparing several brokers at once and expecting fast answers on WhatsApp.",
+        ],
+      },
+      {
+        heading: "1. Portal enquiries",
+        paragraphs: [
+          "Property Finder, Bayut and Dubizzle generate most online buyer enquiries in Dubai. They are high volume, but the same buyer often contacts several agents, so the broker who replies first — with the right floor plan, price and a short video — usually wins.",
+        ],
+      },
+      {
+        heading: "2. Off-plan launches and developer events",
+        paragraphs: [
+          "Off-plan launches from developers draw investors who are already committed to Dubai. Registering as a sales partner gives you launch access, payment plans and marketing material to take to your buyers.",
+        ],
+      },
+      {
+        heading: "3. International roadshows and exhibitions",
+        paragraphs: [
+          "Property exhibitions such as Cityscape Dubai, and overseas roadshows in London, Mumbai and other source markets, put you in front of investors face to face. They are expensive, but a single high-value buyer can cover the cost.",
+        ],
+      },
+      {
+        heading: "4. Social media and paid ads",
+        paragraphs: [
+          "Instagram, TikTok, YouTube and Google ads targeted at investors in your source markets build a pipeline of buyers who already know your name. Every Dubai property ad needs a valid Trakheesi permit, so plan campaigns around listings you have permits for.",
+        ],
+      },
+      {
+        heading: "5. Verified buyer lead lists",
+        paragraphs: [
+          "A buyer lead list gives you thousands of active buyers in one go. Our [Dubai Property Buyer Leads](/products/buyer-leads) file contains 10,000+ verified buyers with their budgets, target communities and timelines, with an average budget of AED 4.2M+. At $1,200 for the file, each lead costs about 12 cents.",
+        ],
+      },
+      {
+        heading: "How to convert Dubai buyer leads",
+        paragraphs: ["The process that turns enquiries into transactions:"],
+        bullets: [
+          "Reply within minutes on WhatsApp with two or three listings that match the buyer's budget and community.",
+          "Qualify early: cash or mortgage, end-use or investment, and whether residency (Golden Visa) matters to them.",
+          "Offer video viewings for overseas buyers and schedule in-person viewings around their next visit to Dubai.",
+          "Sign a RERA Form B buyer agreement before viewings, and use a Form F (MOU) once a price is agreed.",
+          "Keep long-timeline buyers on regular updates about new launches in their target community.",
+        ],
+      },
+      {
+        heading: "Rules to follow when contacting buyers",
+        paragraphs: [
+          "Brokers must hold a valid RERA licence and advertise only with a Trakheesi permit. The UAE's 2024 telemarketing rules limit marketing calls to 9am–6pm, require calls from numbers registered to the company and require you to respect the Do Not Call Registry (DNCR). For buyers outside the UAE, follow the marketing and privacy rules of the country they live in.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Where do Dubai brokers find property buyers?",
+        answer:
+          "From Property Finder, Bayut and Dubizzle enquiries, off-plan launches, property exhibitions and overseas roadshows, social media and paid ads, referrals and verified buyer lead lists.",
+      },
+      {
+        question: "What budget do Dubai property buyers have?",
+        answer:
+          "It varies widely, but investor demand is strong at the top end: our Dubai buyer leads file has an average budget of AED 4.2M+. Property worth AED 2 million or more can also qualify a buyer for the UAE Golden Visa.",
+      },
+      {
+        question: "How much do Dubai buyer leads cost?",
+        answer:
+          "Our Dubai Property Buyer Leads file is $1,200 for 10,000+ verified buyers — about 12 cents per lead.",
+      },
+    ],
+  },
+  {
+    slug: "uk-property-buyer-leads",
+    title: "How to Get Property Buyer Leads in the UK",
+    seo: {
+      title: "How to Get Property Buyer Leads in the UK (2026 Guide)",
+      description:
+        "How UK estate agents find serious buyers in 2026 — Rightmove and Zoopla, international buyers, relocation and buyer lead lists — plus TPS and PECR rules.",
+      keywords: [
+        "UK property buyer leads",
+        "how to get buyer leads UK",
+        "estate agent leads UK",
+        "London property buyer leads",
+        "prime central London buyers",
+        "UK real estate leads",
+      ],
+    },
+    excerpt:
+      "How UK estate agents find buyers who are ready to move — from Rightmove and Zoopla to international buyers and lead lists — and the TPS and PECR rules to follow.",
+    productSlug: "uk-buyer-leads",
+    published: "2026-10-13",
+    updated: "2026-10-13",
+    readingMinutes: 6,
+    sections: [
+      {
+        heading: "Why UK buyer leads are competitive",
+        paragraphs: [
+          "Most UK buyers start on Rightmove, Zoopla and OnTheMarket and register with several agents in the same area. In prime London, where a single sale can be worth millions, every serious buyer is contested — so agents who win have more than one source of buyers and a fast, personal follow-up.",
+        ],
+      },
+      {
+        heading: "1. Portal enquiries",
+        paragraphs: [
+          "Rightmove, Zoopla and OnTheMarket enquiries remain the backbone of most agencies' buyer pipelines. They are reliable but shared: reply quickly, qualify the buyer's position (chain-free, mortgage in principle, cash) and book the viewing in the first call.",
+        ],
+      },
+      {
+        heading: "2. Your applicant database and past clients",
+        paragraphs: [
+          "Every past applicant, vendor and landlord is a potential buyer. Keep your applicant list clean and up to date, and call your best applicants before a new instruction goes live on the portals.",
+        ],
+      },
+      {
+        heading: "3. International buyers",
+        paragraphs: [
+          "Prime London attracts buyers from Europe, the Middle East, Asia and North America. Non-UK residents pay an extra 2% stamp duty surcharge, so they tend to be well-advised, decisive buyers who value agents who understand their position and can run video viewings.",
+        ],
+      },
+      {
+        heading: "4. Buying agents and relocation companies",
+        paragraphs: [
+          "Buying agents and corporate relocation firms bring motivated, pre-qualified buyers. A good relationship with a few of them can give you buyers before your listings reach the portals.",
+        ],
+      },
+      {
+        heading: "5. Verified buyer lead lists",
+        paragraphs: [
+          "Our [UK Real Estate Buyer Leads](/products/uk-buyer-leads) file contains 1,000+ buyers sourced this month from Rightmove and Zoopla enquiries and Google and social media campaigns, each with a verified email, mobile and alternate number, nationality, preferred area, property type, bedrooms, estimated budget in GBP and timeframe. At $750 for the file, each lead costs about 75 cents.",
+        ],
+      },
+      {
+        heading: "How to convert UK buyer leads",
+        paragraphs: ["The steps that turn leads into offers:"],
+        bullets: [
+          "Call new leads the same day and qualify their position: chain-free, mortgage agreed in principle, or cash.",
+          "Match each buyer to listings by area, property type and budget, and book viewings on the first call.",
+          "Offer video viewings to international and out-of-town buyers.",
+          "Keep longer-timeframe buyers on property alerts for their preferred area.",
+        ],
+      },
+      {
+        heading: "Rules for contacting buyers in the UK",
+        paragraphs: [
+          "Screen phone numbers against the Telephone Preference Service (TPS) before making marketing calls, and follow UK GDPR and the Privacy and Electronic Communications Regulations (PECR) for marketing emails and texts. Estate agents must also belong to an approved redress scheme — The Property Ombudsman or the Property Redress Scheme — and carry out anti-money laundering checks.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Where do UK estate agents get buyer leads?",
+        answer:
+          "From Rightmove, Zoopla and OnTheMarket enquiries, their own applicant databases and past clients, international buyers, buying agents, relocation companies and verified buyer lead lists.",
+      },
+      {
+        question: "How much do UK property buyer leads cost?",
+        answer:
+          "Our UK Real Estate Buyer Leads file is $750 for 1,000+ verified buyers — about 75 cents per lead, with no subscription.",
+      },
+      {
+        question: "Do I need to check the TPS before calling buyers?",
+        answer:
+          "Yes. For unsolicited marketing calls in the UK you must screen numbers against the Telephone Preference Service and respect any opt-outs.",
+      },
+    ],
+  },
 ];
 
 export function getGuide(slug: string): Guide | undefined {

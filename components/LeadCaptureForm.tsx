@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { Loader2, Shield } from "lucide-react";
 import { leadSchema, type LeadFormData } from "@/lib/lead-schema";
 import { trackMetaEvent } from "@/lib/metaPixel";
+import { trackGaEvent } from "@/lib/gtag";
 import { CONTACT, type Product } from "@/lib/constants";
 
 function WhatsAppIcon({ className }: { className?: string }) {
@@ -81,6 +82,13 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
         content_name: product.name,
         value: product.price,
         currency: "USD",
+      });
+      trackGaEvent("generate_lead", {
+        currency: "USD",
+        value: product.price,
+        lead_source: "product_page",
+        item_id: product.slug,
+        item_name: product.name,
       });
 
       toast.success("Thank you! Opening WhatsApp...");
