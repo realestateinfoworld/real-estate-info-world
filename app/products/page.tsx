@@ -30,7 +30,7 @@ export default function ProductsPage() {
         eyebrow="Data products"
         title={
           <>
-            Every dataset, <em className="text-gold-gradient">one place.</em>
+            Every dataset, <em className="text-brand-gradient">one place.</em>
           </>
         }
         description={`Focused datasets for real estate brokers, property consultants and agencies across ${formatMarketList()}. Every product is a clean, ready-to-use Excel file for your CRM and marketing.`}
@@ -53,7 +53,7 @@ export default function ProductsPage() {
                   </th>
                   {PRODUCTS.map((product) => (
                     <th key={product.slug} className="p-5 text-left align-bottom font-medium">
-                      <Link href={`/products/${product.slug}`} className="text-ivory hover:text-gold">
+                      <Link href={`/products/${product.slug}`} className="text-ivory hover:text-brand">
                         {product.name}
                       </Link>
                     </th>
@@ -73,7 +73,7 @@ export default function ProductsPage() {
                   <td className="sticky left-0 bg-surface p-5 text-stone">Price</td>
                   {PRODUCTS.map((product) => (
                     <td key={product.slug} className="p-5">
-                      <span className="stat-number font-display text-2xl text-gold-pale">
+                      <span className="stat-number font-display text-2xl text-brand-pale">
                         ${product.price.toLocaleString()}
                       </span>
                     </td>
@@ -84,7 +84,7 @@ export default function ProductsPage() {
           </div>
           <p className="mt-6 text-center text-sm text-stone">
             Need a custom dataset or larger volume?{" "}
-            <Link href="/contact" className="text-gold underline underline-offset-4 hover:text-gold-pale">
+            <Link href="/contact" className="text-brand underline underline-offset-4 hover:text-brand-pale">
               Contact us
             </Link>
             .

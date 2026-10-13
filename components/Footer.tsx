@@ -13,7 +13,7 @@ export function Footer() {
   const linkClass = "block text-sand transition-colors hover:text-ivory";
 
   return (
-    <footer className="relative border-t border-line bg-ink-2">
+    <footer className="theme-dark relative">
       <div className="container py-16">
         <div className="grid grid-cols-2 gap-y-12 gap-x-8 md:grid-cols-12">
           <div className="col-span-2 md:col-span-4">
@@ -23,10 +23,10 @@ export function Footer() {
             </p>
             <div className="mt-6 space-y-2 text-sm">
               <a href={`tel:${CONTACT.phoneRaw}`} className="flex items-center gap-2 text-sand hover:text-ivory">
-                <Phone className="h-4 w-4 text-gold" /> {CONTACT.phone}
+                <Phone className="h-4 w-4 text-brand" /> {CONTACT.phone}
               </a>
               <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 text-sand hover:text-ivory">
-                <Mail className="h-4 w-4 text-gold" /> {CONTACT.email}
+                <Mail className="h-4 w-4 text-brand" /> {CONTACT.email}
               </a>
             </div>
           </div>
@@ -39,7 +39,7 @@ export function Footer() {
                   {product.name}
                 </Link>
               ))}
-              <Link href="/products" className="block text-gold hover:text-gold-pale">
+              <Link href="/products" className="block text-brand hover:text-brand-pale">
                 Compare all →
               </Link>
             </div>

@@ -8,12 +8,14 @@ export function HowItWorks() {
         <li key={step.title}>
           <Reveal delay={i * 0.1} className="h-full">
             <div className="relative h-full overflow-hidden rounded-3xl border border-line bg-surface p-8">
-              <div className="font-display text-7xl leading-none text-gold/20">0{i + 1}</div>
-              <h3 className="mt-6 text-xl font-medium text-ivory">{step.title}</h3>
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-b from-brand-from to-brand-to font-display text-lg text-on-brand shadow-[0_10px_25px_-10px_rgb(16_185_129_/_0.7)]">
+                {i + 1}
+              </div>
+              <h3 className="mt-6 text-xl font-semibold text-ivory">{step.title}</h3>
               <p className="mt-3 text-[15px] leading-relaxed text-sand">{step.body}</p>
               {i < PURCHASE_STEPS.length - 1 && (
                 <div
-                  className="absolute top-14 right-8 hidden h-px w-16 bg-gradient-to-r from-gold/50 to-transparent md:block"
+                  className="absolute top-14 right-8 hidden h-px w-16 bg-gradient-to-r from-brand/50 to-transparent md:block"
                   aria-hidden="true"
                 />
               )}

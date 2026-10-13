@@ -18,11 +18,11 @@ export default function ThankYouPage() {
   return (
     <section className="relative overflow-hidden">
       <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div className="gold-glow pointer-events-none absolute inset-0" aria-hidden="true" />
+      <div className="brand-glow pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="container relative pt-36 pb-24 md:pt-44 md:pb-32">
         <div className="mx-auto max-w-xl text-center">
-          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-b from-gold-from via-gold-via to-gold-to shadow-[0_20px_60px_-15px_rgb(201_171_114_/_0.7)]">
-            <Check className="h-9 w-9 text-on-gold" strokeWidth={2.5} />
+          <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-b from-brand-from via-brand-via to-brand-to shadow-[0_20px_60px_-15px_rgb(16_185_129_/_0.7)]">
+            <Check className="h-9 w-9 text-on-brand" strokeWidth={2.5} />
           </div>
 
           <h1 className="font-display text-5xl leading-tight text-ivory md:text-6xl">
@@ -30,7 +30,7 @@ export default function ThankYouPage() {
           </h1>
           <p className="mt-4 text-lg text-sand">Our team will contact you shortly.</p>
 
-          <div className="glass gold-frame mt-10 rounded-3xl p-7 text-left">
+          <div className="glass brand-frame mt-10 rounded-3xl p-7 text-left">
             <div className="text-xs tracking-[0.18em] text-stone">DELIVERY TIME</div>
             <div className="mt-2 font-display text-3xl text-ivory">Within 10 Minutes — 24 Hours</div>
             <p className="mt-3 text-sm leading-relaxed text-sand">
@@ -50,7 +50,7 @@ export default function ThankYouPage() {
 
           <p className="mt-10 text-xs text-stone">
             Questions? Email{" "}
-            <a href={`mailto:${CONTACT.email}`} className="text-gold underline underline-offset-4">
+            <a href={`mailto:${CONTACT.email}`} className="text-brand underline underline-offset-4">
               {CONTACT.email}
             </a>{" "}
             or WhatsApp {CONTACT.whatsapp}

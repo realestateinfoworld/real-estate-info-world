@@ -22,7 +22,7 @@ export function SamplePreview({ product }: SamplePreviewProps) {
         </div>
         <button
           onClick={() => setRevealed(!revealed)}
-          className="flex flex-shrink-0 items-center gap-1.5 rounded-full border border-line-strong px-3 py-1.5 text-xs text-sand transition hover:border-gold/50 hover:text-ivory"
+          className="flex flex-shrink-0 items-center gap-1.5 rounded-full border border-line-strong px-3 py-1.5 text-xs text-sand transition hover:border-brand/50 hover:text-ivory"
         >
           {revealed ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
           {revealed ? "Hide" : "Reveal"} details
@@ -46,7 +46,7 @@ export function SamplePreview({ product }: SamplePreviewProps) {
                     key={cellIndex}
                     className={cn(
                       cellIndex === maskedColumn && !revealed && "blurred-cell",
-                      cellIndex === emphasisColumn && "font-medium text-gold-pale"
+                      cellIndex === emphasisColumn && "font-medium text-brand-pale"
                     )}
                   >
                     {cell}
@@ -59,7 +59,7 @@ export function SamplePreview({ product }: SamplePreviewProps) {
       </div>
 
       <div className="flex items-center gap-3 border-t border-line bg-ink-2 px-5 py-4 text-xs text-stone">
-        <Lock className="h-3.5 w-3.5 flex-shrink-0 text-gold" />
+        <Lock className="h-3.5 w-3.5 flex-shrink-0 text-brand" />
         Sensitive fields are masked. The full, unredacted Excel file is delivered after purchase.
       </div>
     </div>

@@ -828,3 +828,19 @@ export const PURCHASE_STEPS = [
     body: "Your CRM-ready .xlsx file is delivered within 10 minutes of payment confirmation.",
   },
 ] as const;
+
+/** Record count from the first stat, e.g. "1,500+" → 1500. */
+export function getRecordCount(product: Product): number {
+  return Number(product.stats[0].value.replace(/[^0-9]/g, ""));
+}
+
+/**
+ * What one record costs, as a selling point: "≈ $1.00 per lead" for buyer
+ * leads, "Under 1¢ per owner" for the owner database.
+ */
+export function getUnitPriceLabel(product: Product): string {
+  const unit = product.price / getRecordCount(product);
+  const noun = product.type === "owner" ? "owner" : "lead";
+  if (unit < 0.01) return `Under 1¢ per ${noun}`;
+  return `≈ $${unit.toFixed(2)} per ${noun}`;
+}

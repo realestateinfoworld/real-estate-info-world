@@ -29,12 +29,12 @@ export function ProductGrid() {
             className={cn(
               "flex items-center gap-2 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-colors",
               market === f.key
-                ? "border-gold/50 bg-gold/10 text-gold-pale"
-                : "border-line-strong text-sand hover:border-gold/30 hover:text-ivory"
+                ? "border-ivory bg-ivory font-semibold text-ink"
+                : "border-line-strong text-sand hover:border-ivory/40 hover:text-ivory"
             )}
           >
             {f.label}
-            <span className="text-xs text-stone">{f.count}</span>
+            <span className={cn("text-xs", market === f.key ? "text-ink/60" : "text-stone")}>{f.count}</span>
           </button>
         ))}
       </div>

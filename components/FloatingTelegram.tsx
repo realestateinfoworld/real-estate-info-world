@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 import { CONTACT } from "@/lib/constants";
 
 export default function FloatingTelegram() {
@@ -20,7 +21,7 @@ export default function FloatingTelegram() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on Telegram"
-      className="fixed bottom-24 right-6 z-[60] block"
+      className={cn("fixed right-6 z-[60] block", pathname.startsWith("/products/") ? "bottom-42 lg:bottom-24" : "bottom-24")}
     >
       <Image
         src="/icons/telegram.svg"

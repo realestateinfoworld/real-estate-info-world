@@ -104,8 +104,8 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
   if (submitted) {
     return (
       <div className="py-3 text-center">
-        <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-gold/15">
-          <Shield className="h-5 w-5 text-gold" />
+        <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-brand/15">
+          <Shield className="h-5 w-5 text-brand" />
         </div>
         <div className="text-sm font-medium text-ivory">Thank you.</div>
         <div className="mt-1 text-xs text-stone">
@@ -114,7 +114,7 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
         <div className="mt-3">
           <a
             href={buildWhatsappUrl(fullName.trim())}
-            className="text-xs text-gold underline underline-offset-4 hover:text-gold-pale"
+            className="text-xs text-brand underline underline-offset-4 hover:text-brand-pale"
           >
             Click here if WhatsApp does not open automatically
           </a>
@@ -129,7 +129,7 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
         {/* Full Name */}
         <div>
           <Label htmlFor="fullName" className="mb-2 block text-xs">
-            Full Name <span className="text-gold">*</span>
+            Full Name <span className="text-brand">*</span>
           </Label>
           <Input
             id="fullName"
@@ -146,7 +146,7 @@ export function LeadCaptureForm({ product }: LeadCaptureFormProps) {
         {/* Email */}
         <div>
           <Label htmlFor="email" className="mb-2 block text-xs">
-            Email Address <span className="text-gold">*</span>
+            Email Address <span className="text-brand">*</span>
           </Label>
           <Input
             id="email"
