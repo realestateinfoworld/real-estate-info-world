@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { PRODUCTS } from "@/lib/constants";
 
 // Minimal lead schema for pre-payment capture (Name + Email only, no storage)
 export const leadSchema = z.object({
@@ -10,7 +11,10 @@ export const leadSchema = z.object({
     .string()
     .email("Please enter a valid email address")
     .max(160, "Email is too long"),
-  product: z.string().min(1, "Product is required"),
+  // Only real product names, so a bot can't put arbitrary text in the email.
+  product: z
+    .string()
+    .refine((name) => PRODUCTS.some((p) => p.name === name), "Unknown product"),
 });
 
 export type LeadFormData = z.infer<typeof leadSchema>;

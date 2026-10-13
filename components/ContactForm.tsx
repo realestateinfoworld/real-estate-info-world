@@ -9,6 +9,8 @@ import { Label } from "@/components/ui/label";
 import { contactSchema } from "@/lib/contact-schema";
 import { trackMetaEvent } from "@/lib/metaPixel";
 import { trackGaEvent } from "@/lib/gtag";
+import { HONEYPOT_FIELD } from "@/lib/honeypot";
+import { HoneypotField } from "@/components/HoneypotField";
 
 export function ContactForm() {
   const [loading, setLoading] = useState(false);
@@ -16,6 +18,7 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
+    const honeypot = String(new FormData(form).get(HONEYPOT_FIELD) ?? "");
 
     const validation = contactSchema.safeParse(
       Object.fromEntries(new FormData(form))
@@ -33,7 +36,7 @@ export function ContactForm() {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validation.data),
+        body: JSON.stringify({ ...validation.data, [HONEYPOT_FIELD]: honeypot }),
       });
 
       const result = await response.json();
@@ -45,8 +48,10 @@ export function ContactForm() {
       toast.success("Thank you. We'll reply within a few hours.");
 
       // Track Contact event
-      trackMetaEvent("Contact");
-      trackGaEvent("generate_lead", { lead_source: "contact_form" });
+      if (!honeypot) {
+        trackMetaEvent("Contact");
+        trackGaEvent("generate_lead", { lead_source: "contact_form" });
+      }
       form.reset();
     } catch (error) {
       console.error("Contact submission error:", error);
@@ -61,7 +66,8 @@ export function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+    <form onSubmit={handleSubmit} className="relative space-y-5" noValidate>
+      <HoneypotField />
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name">Full name</Label>
