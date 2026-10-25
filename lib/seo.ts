@@ -8,7 +8,7 @@ export const SITE_NAME = "Real Estate Info World";
  * A fixed date (rather than build time) keeps the signal honest for crawlers.
  * Update when page copy or datasets change.
  */
-export const SITE_UPDATED = "2026-10-13";
+export const SITE_UPDATED = "2026-10-25";
 
 interface PageSeo {
   /** Full <title>, used as-is (the root template is skipped). Aim for ≤ 60 chars. */

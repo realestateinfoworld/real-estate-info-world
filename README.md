@@ -126,6 +126,9 @@ Point your DNS (A/AAAA or CNAME) to Vercel and add `realestate-info.world` in th
 - `/products`
 - `/products/owner-database`
 - `/products/buyer-leads`
+- `/guides` + `/guides/[slug]` (16 guides, see `lib/guides.ts`)
+- `/llms.txt` — plain-text site map for AI answer engines, generated from
+  `lib/constants.ts` + `lib/guides.ts` so it cannot drift
 - `/thank-you`
 - `/about`
 - `/contact`

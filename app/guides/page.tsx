@@ -9,7 +9,7 @@ import { SITE_URL, jsonLd, pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Real Estate Lead Generation Guides for Brokers | 2026",
   description:
-    "Practical guides for brokers: how to find property owners in Dubai and how to get real estate buyer leads in Miami and California in 2026.",
+    "Practical guides for brokers: finding property owners in Dubai's communities, what real estate leads cost, where to buy them, and cold calling scripts that work.",
   path: "/guides",
 });
 
