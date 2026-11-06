@@ -199,7 +199,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Dubai Owner Database",
     type: "owner",
     market: "dubai",
-    version: "September 2026",
+    version: "October 2026",
     price: 300,
     premium: false,
     shortDescription:
