@@ -836,7 +836,7 @@ export const FAST_DELIVERY_BADGE =
   "⚡ Fastest Delivery in the Industry (10-Minute Instant Access Available)";
 
 /** Newest release across PRODUCTS, for site-wide copy. Update alongside PRODUCTS. */
-export const LATEST_RELEASE = "November 2026";
+export const LATEST_RELEASE = "October 2026";
 
 /** Headline numbers on the homepage. Update alongside PRODUCTS. */
 export const HOMEPAGE_STATS = [
