@@ -199,7 +199,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Dubai Owner Database",
     type: "owner",
     market: "dubai",
-    version: "September 2026",
+    version: "October 2026",
     price: 300,
     premium: false,
     shortDescription:
@@ -321,7 +321,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Dubai Buyer Leads",
     type: "buyer",
     market: "dubai",
-    version: "October 2026",
+    version: "November 2026",
     price: 1200,
     premium: true,
     shortDescription:
@@ -435,7 +435,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "Miami Buyer Leads",
     type: "buyer",
     market: "miami",
-    version: "October 2026",
+    version: "November 2026",
     price: 1500,
     premium: true,
     shortDescription:
@@ -559,7 +559,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "California Buyer Leads",
     type: "buyer",
     market: "california",
-    version: "October 2026",
+    version: "November 2026",
     price: 1500,
     premium: true,
     shortDescription:
@@ -683,7 +683,7 @@ export const PRODUCTS: readonly Product[] = [
     shortName: "UK Buyer Leads",
     type: "buyer",
     market: "uk",
-    version: "October 2026",
+    version: "November 2026",
     price: 750,
     premium: true,
     shortDescription:
@@ -836,7 +836,7 @@ export const FAST_DELIVERY_BADGE =
   "⚡ Fastest Delivery in the Industry (10-Minute Instant Access Available)";
 
 /** Newest release across PRODUCTS, for site-wide copy. Update alongside PRODUCTS. */
-export const LATEST_RELEASE = "October 2026";
+export const LATEST_RELEASE = "November 2026";
 
 /** Headline numbers on the homepage. Update alongside PRODUCTS. */
 export const HOMEPAGE_STATS = [
