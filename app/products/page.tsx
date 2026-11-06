@@ -106,14 +106,27 @@ export default function ProductsPage() {
         dangerouslySetInnerHTML={{
           __html: jsonLd({
             "@context": "https://schema.org",
-            "@type": "ItemList",
-            name: "Real estate datasets",
-            itemListElement: PRODUCTS.map((product, i) => ({
-              "@type": "ListItem",
-              position: i + 1,
-              name: product.name,
-              url: `${SITE_URL}/products/${product.slug}`,
-            })),
+            "@graph": [
+              {
+                "@type": "ItemList",
+                name: "Real estate datasets",
+                itemListElement: PRODUCTS.map((product, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  name: product.name,
+                  url: `${SITE_URL}/products/${product.slug}`,
+                })),
+              },
+              // Completes the chain the detail pages already declare, so the
+              // index can show breadcrumbs in search results too.
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+                  { "@type": "ListItem", position: 2, name: "Datasets", item: `${SITE_URL}/products` },
+                ],
+              },
+            ],
           }),
         }}
       />

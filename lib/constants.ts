@@ -367,7 +367,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "Dubai Property Buyer Leads 2026 | 10,000+ Verified Buyers",
       description:
-        "10,000+ verified Dubai property buyer leads with budgets, timelines and contacts. For brokers selling in Dubai Marina, Downtown & Palm Jumeirah. $1,200, CRM-ready.",
+        "10,000+ verified Dubai property buyer leads with budgets, timelines and contacts. For brokers in Dubai Marina, Downtown & Palm Jumeirah. $1,200, CRM-ready.",
       keywords: [
         "Dubai Buyer Leads",
         "Dubai Property Buyer Leads",
@@ -483,7 +483,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "Miami Buyer Leads 2026 | 1,500+ Verified Real Estate Buyers",
       description:
-        "1,500+ verified Miami real estate buyer leads with email, phone, budget & timeframe. Brickell, Edgewater, Sunny Isles & more. Sourced this month. CRM-ready Excel.",
+        "1,500+ verified Miami real estate buyer leads with email, phone, budget & timeframe. Brickell, Edgewater, Sunny Isles & more. CRM-ready Excel.",
       keywords: [
         "Miami Buyer Leads",
         "Miami Real Estate Buyer Leads",
@@ -607,7 +607,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "California Buyer Leads 2026 | 3,000+ Verified Home Buyers",
       description:
-        "3,000+ verified California real estate buyer leads with email, phone, budget & timeframe. Beverly Hills, Malibu, Newport Beach, La Jolla & more. CRM-ready Excel.",
+        "3,000+ verified California real estate buyer leads with email, phone, budget & timeframe. Beverly Hills, Malibu, La Jolla & more. CRM-ready Excel.",
       keywords: [
         "California Buyer Leads",
         "California Real Estate Buyer Leads",

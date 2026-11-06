@@ -773,7 +773,7 @@ export const GUIDES: readonly Guide[] = [
     seo: {
       title: "How Much Do Real Estate Leads Cost? (2026 Price Guide)",
       description:
-        "What real estate leads actually cost in 2026 — portal pricing, Google and Meta ad costs, referral splits and bought lists — and how to work out your real cost per deal.",
+        "What real estate leads cost in 2026 — portal pricing, Google and Meta ads, referral splits and bought lists — and how to work out your real cost per deal.",
       keywords: [
         "how much do real estate leads cost",
         "real estate lead cost",
@@ -1301,7 +1301,7 @@ export const GUIDES: readonly Guide[] = [
     slug: "jvc-property-owners",
     title: "How to Reach JVC Property Owners",
     seo: {
-      title: "JVC Property Owners: Winning Listings in Dubai's Busiest Community",
+      title: "JVC Property Owners: How to Win Listings (2026)",
       description:
         "How brokers reach Jumeirah Village Circle property owners in 2026 — the yield investors, first-time landlords and handover-stage owners behind JVC's volume.",
       keywords: [
@@ -1498,7 +1498,7 @@ export const GUIDES: readonly Guide[] = [
     seo: {
       title: "Real Estate Cold Calling Scripts for Agents (2026)",
       description:
-        "Cold calling scripts for real estate agents in 2026 — owner, landlord, expired and buyer openers, objection handling, and the rules on calling in the US, UK and UAE.",
+        "Cold calling scripts for real estate agents — owner, landlord, expired and buyer openers, objection handling, and the calling rules in the US, UK and UAE.",
       keywords: [
         "real estate cold calling scripts",
         "cold calling scripts for real estate agents",

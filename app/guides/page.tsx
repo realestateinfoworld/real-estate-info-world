@@ -9,7 +9,7 @@ import { SITE_URL, jsonLd, pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Real Estate Lead Generation Guides for Brokers | 2026",
   description:
-    "Practical guides for brokers: finding property owners in Dubai's communities, what real estate leads cost, where to buy them, and cold calling scripts that work.",
+    "Practical guides for brokers: finding property owners in Dubai's communities, what real estate leads cost, where to buy them, and cold calling scripts.",
   path: "/guides",
 });
 
@@ -52,14 +52,27 @@ export default function GuidesPage() {
         dangerouslySetInnerHTML={{
           __html: jsonLd({
             "@context": "https://schema.org",
-            "@type": "ItemList",
-            name: "Real estate lead generation guides",
-            itemListElement: GUIDES.map((guide, i) => ({
-              "@type": "ListItem",
-              position: i + 1,
-              name: guide.title,
-              url: `${SITE_URL}/guides/${guide.slug}`,
-            })),
+            "@graph": [
+              {
+                "@type": "ItemList",
+                name: "Real estate lead generation guides",
+                itemListElement: GUIDES.map((guide, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  name: guide.title,
+                  url: `${SITE_URL}/guides/${guide.slug}`,
+                })),
+              },
+              // Completes the chain the guide pages already declare, so the
+              // index can show breadcrumbs in search results too.
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+                  { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE_URL}/guides` },
+                ],
+              },
+            ],
           }),
         }}
       />
