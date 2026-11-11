@@ -420,6 +420,12 @@ export const TOOLS: readonly Tool[] = [
         ],
       },
       {
+        heading: "Work in your own currency",
+        paragraphs: [
+          "Commission is earned in dirhams in Dubai and in pounds in the UK, while our datasets are priced in US dollars. Pick a Dubai dataset and the calculator switches to AED, converting the list price at the dirham's fixed rate of 3.6725 to the dollar. For pounds, enter today's exchange rate. Every result is then shown in the currency you are paid in.",
+        ],
+      },
+      {
         heading: "Cost per lead is not the number that matters",
         paragraphs: [
           "A list at $1 a lead that nobody answers is more expensive than one at $20 a lead that does. Compare sources on cost per conversation and cost per deal instead. Our guide to [how much real estate leads cost](/guides/how-much-do-real-estate-leads-cost) compares portals, paid ads and lead lists on that basis.",
