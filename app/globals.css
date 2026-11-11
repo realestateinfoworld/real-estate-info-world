@@ -72,6 +72,26 @@
   color: var(--color-ivory);
 }
 
+/* Back to the page's light tokens for a card inside a navy band (forms, the
+   spreadsheet preview). Mirrors the @theme values above. */
+.theme-light {
+  --color-ink: #ffffff;
+  --color-ink-2: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f4f8;
+  --color-line: #e4e9f0;
+  --color-line-strong: #cdd5e0;
+
+  --color-ivory: #0b1424;
+  --color-sand: #475467;
+  --color-stone: #667085;
+
+  --color-brand: #047857;
+  --color-brand-pale: #065f46;
+
+  color: var(--color-ivory);
+}
+
 html {
   color-scheme: light;
   scroll-behavior: smooth;
@@ -232,48 +252,72 @@ h1 em, h2 em, h3 em {
   color: var(--color-stone);
 }
 
-/* === SAMPLE DATA TABLE === */
-.sample-table {
-  width: 100%;
-  font-family: var(--font-geist-mono);
-  font-size: 0.8rem;
-  border-collapse: collapse;
-}
-
-.sample-table th {
-  color: var(--color-stone);
-  font-weight: 500;
-  text-align: left;
-  padding: 0.85rem 1.1rem;
-  font-size: 0.66rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  border-bottom: 1px solid var(--color-line);
-  white-space: nowrap;
-}
-
-.sample-table td {
-  padding: 0.85rem 1.1rem;
-  border-bottom: 1px solid var(--color-line);
-  color: var(--color-sand);
-  white-space: nowrap;
-}
-
-.sample-table tbody tr {
-  transition: background-color 0.15s ease;
-}
-
-.sample-table tbody tr:hover {
-  background-color: rgb(16 185 129 / 0.06);
-}
-
-.sample-table tr:last-child td {
-  border-bottom: none;
-}
-
+/* === MASKED PREVIEW CELLS === */
 .blurred-cell {
   filter: blur(5px);
   user-select: none;
+}
+
+/* === SPREADSHEET PREVIEW (components/SheetPreview.tsx) === */
+.sheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-geist-mono);
+  font-size: 0.8rem;
+  color: var(--color-sand);
+}
+
+.sheet-table th,
+.sheet-table td {
+  border-right: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sheet-table tr > :last-child {
+  border-right: none;
+}
+
+/* Row numbers and column letters: the grey gutters of a spreadsheet */
+.sheet-table tr > th:first-child,
+.sheet-table .sheet-letters th {
+  background: var(--color-surface-2);
+  color: var(--color-stone);
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.3rem 0.6rem;
+}
+
+.sheet-table tr > th:first-child {
+  width: 2.25rem;
+}
+
+.sheet-table .sheet-header th:not(:first-child) {
+  background: #e8f5ee;
+  color: #0b5a34;
+  font-family: var(--font-geist-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.sheet-table tbody tr:hover td {
+  background: rgb(16 185 129 / 0.06);
+}
+
+.sheet-table tbody tr:last-child > * {
+  border-bottom: none;
+}
+
+.animate-sheet-in {
+  animation: sheet-in 0.35s ease both;
+}
+
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
 }
 
 /* === FAQ (native details/summary) === */

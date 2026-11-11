@@ -120,6 +120,12 @@ export default async function GuidePage({ params }: Props) {
               <Link href={`/products/${product.slug}`} className={buttonVariants({ className: "mt-6 w-full" })}>
                 Get the {product.shortName} <ArrowRight className="h-4 w-4" />
               </Link>
+              <Link
+                href={`/free-sample?dataset=${product.slug}`}
+                className={buttonVariants({ variant: "secondary", className: "mt-3 w-full" })}
+              >
+                Get a free sample first
+              </Link>
             </div>
           </aside>
         </div>

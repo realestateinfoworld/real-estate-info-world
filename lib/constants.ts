@@ -245,7 +245,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "Dubai Property Owner Database 2026 | 1M+ Verified Owners",
       description:
-        "Dubai property owner database: 1,000,000+ verified owners with direct mobile numbers across 200+ communities. CRM-ready Excel, $300, delivered in 10 minutes.",
+        "Dubai property owner database: 1,000,000+ verified owners with direct mobile numbers across 200+ communities. CRM-ready Excel, $300. Free sample available.",
       keywords: [
         "Dubai Property Owner Database",
         "Dubai Property Owner Leads",
@@ -367,7 +367,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "Dubai Property Buyer Leads 2026 | 10,000+ Verified Buyers",
       description:
-        "10,000+ verified Dubai property buyer leads with budgets, timelines and contacts. For brokers selling in Dubai Marina, Downtown & Palm Jumeirah. $1,200, CRM-ready.",
+        "10,000+ verified Dubai property buyer leads with budgets, timelines and contacts. Dubai Marina, Downtown & Palm Jumeirah. $1,200. Free sample available.",
       keywords: [
         "Dubai Buyer Leads",
         "Dubai Property Buyer Leads",
@@ -483,7 +483,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "Miami Buyer Leads 2026 | 1,500+ Verified Real Estate Buyers",
       description:
-        "1,500+ verified Miami real estate buyer leads with email, phone, budget & timeframe. Brickell, Edgewater, Sunny Isles & more. Sourced this month. CRM-ready Excel.",
+        "1,500+ verified Miami real estate buyer leads with email, phone, budget & timeframe. Brickell, Edgewater, Sunny Isles & more. $1,500. Free sample available.",
       keywords: [
         "Miami Buyer Leads",
         "Miami Real Estate Buyer Leads",
@@ -607,7 +607,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "California Buyer Leads 2026 | 3,000+ Verified Home Buyers",
       description:
-        "3,000+ verified California real estate buyer leads with email, phone, budget & timeframe. Beverly Hills, Malibu, Newport Beach, La Jolla & more. CRM-ready Excel.",
+        "3,000+ verified California buyer leads with email, phone, budget & timeframe. Beverly Hills, Malibu, Newport Beach, La Jolla & more. Free sample available.",
       keywords: [
         "California Buyer Leads",
         "California Real Estate Buyer Leads",
@@ -731,7 +731,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "UK Property Buyer Leads 2026 | 1,000+ Verified Buyers",
       description:
-        "1,000+ verified UK property buyer leads with email, mobile, GBP budget & timeframe. Mayfair, Kensington, Chelsea, the Cotswolds & more. CRM-ready Excel, $750.",
+        "1,000+ verified UK property buyer leads with email, mobile, GBP budget & timeframe. Mayfair, Kensington, Chelsea & more. $750. Free sample available.",
       keywords: [
         "UK Buyer Leads",
         "UK Real Estate Buyer Leads",
@@ -860,6 +860,15 @@ export function getFaqs(product: Product): Faq[] {
   return [
     ...(product.faqs ?? []),
     {
+      question: `Can I get a free sample of the ${product.shortName}?`,
+      answer: `Yes. Request a free sample on this page and we send you real records from the current ${product.name} file, in the same Excel columns as the full dataset, by email or WhatsApp. No payment or card is needed.`,
+    },
+    {
+      question: "How do I pay?",
+      answer:
+        "By credit or debit card, or in USDT. Enter your name and email in the order box and we send you a secure payment link on WhatsApp.",
+    },
+    {
       question: "How is the data delivered?",
       answer: `Every ${market.name} real estate data product is delivered via secure download link within 10 minutes of payment confirmation (instant processing available). All files are clean, ready-to-use Microsoft Excel spreadsheets.`,
     },
@@ -915,12 +924,12 @@ export function formatMarketList(): string {
 /** How a purchase works, shown on the homepage and every product page. */
 export const PURCHASE_STEPS = [
   {
-    title: "Choose your dataset",
-    body: "Pick the market and data type you need — owner database or high-intent buyer leads.",
+    title: "Check a free sample",
+    body: "Request a sample of any dataset and see real records, in the real Excel columns, before you spend anything.",
   },
   {
-    title: "Get your payment link",
-    body: "Enter your name and email. We send a secure payment link straight to you on WhatsApp.",
+    title: "Pay by card or USDT",
+    body: "Enter your name and email on the dataset page. We send a secure payment link straight to you on WhatsApp.",
   },
   {
     title: "Receive your Excel file",

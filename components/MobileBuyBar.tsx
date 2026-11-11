@@ -45,13 +45,22 @@ export function MobileBuyBar({ price, label }: { price: number; label: string })
           <div className="truncate text-xs text-stone">{label}</div>
           <div className="stat-number font-display text-2xl text-ivory">${price.toLocaleString()}</div>
         </div>
-        <a
-          href="#buy"
-          tabIndex={visible ? 0 : -1}
-          className="flex h-11 items-center gap-2 rounded-full bg-gradient-to-b from-brand-from to-brand-to px-6 text-sm font-semibold text-on-brand"
-        >
-          Buy now <ArrowRight className="h-4 w-4" />
-        </a>
+        <div className="flex flex-shrink-0 items-center gap-2">
+          <a
+            href="#sample"
+            tabIndex={visible ? 0 : -1}
+            className="flex h-11 items-center rounded-full border border-line-strong px-4 text-sm font-semibold text-ivory"
+          >
+            Free sample
+          </a>
+          <a
+            href="#buy"
+            tabIndex={visible ? 0 : -1}
+            className="flex h-11 items-center gap-2 rounded-full bg-gradient-to-b from-brand-from to-brand-to px-5 text-sm font-semibold text-on-brand"
+          >
+            Buy now <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </div>
   );

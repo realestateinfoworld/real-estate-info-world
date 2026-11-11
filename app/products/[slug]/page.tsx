@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
-import { SamplePreview } from "@/components/SamplePreview";
+import { SheetPreview } from "@/components/SheetPreview";
+import { SampleRequestForm } from "@/components/SampleRequestForm";
 import { Badge } from "@/components/ui/badge";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -155,7 +156,39 @@ export default async function ProductPage({ params }: Props) {
             <div>
               <h2 className="eyebrow">{product.shortName} sample</h2>
               <div className="mt-6">
-                <SamplePreview product={product} />
+                <SheetPreview products={[product]} />
+              </div>
+
+              {/* Free sample: the low-commitment step for visitors not ready to buy */}
+              <div
+                id="sample"
+                className="mt-6 grid scroll-mt-28 gap-8 rounded-3xl border border-brand/25 bg-brand/[0.05] p-7 md:grid-cols-2 md:p-8"
+              >
+                <div>
+                  <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand">
+                    FREE · NO CARD NEEDED
+                  </div>
+                  <h3 className="mt-4 font-display text-2xl leading-tight text-ivory">
+                    Check real records before you buy
+                  </h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-sand">
+                    Get a free sample of the {product.name}: real records from the {product.version} file, in
+                    the same Excel columns as the full dataset.
+                  </p>
+                  <ul className="mt-5 space-y-2.5 text-sm text-sand">
+                    {["Sent by email or WhatsApp", "Usually within a few hours", "No payment or card details"].map(
+                      (point) => (
+                        <li key={point} className="flex items-center gap-2.5">
+                          <span className="flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-brand/15">
+                            <Check className="h-2.5 w-2.5 text-brand" strokeWidth={3.5} />
+                          </span>
+                          {point}
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </div>
+                <SampleRequestForm product={product} source="product" />
               </div>
             </div>
 
@@ -210,12 +243,19 @@ export default async function ProductPage({ params }: Props) {
 
               <LeadCaptureForm product={product} />
 
+              <a
+                href="#sample"
+                className="mt-4 block text-center text-sm font-semibold text-brand hover:text-brand-pale"
+              >
+                Not ready to buy? Get a free sample first →
+              </a>
+
               <div className="mt-7 space-y-3 border-t border-line pt-6 text-sm">
                 {[
                   { icon: Zap, text: "Delivered within 10 minutes" },
                   { icon: FileSpreadsheet, text: "CRM-ready Excel (.xlsx)" },
                   { icon: ShieldCheck, text: "7-day quality guarantee" },
-                  { icon: Lock, text: "Secure payment link sent on WhatsApp" },
+                  { icon: Lock, text: "Pay by card or USDT via a secure link" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-center gap-3 text-sand">
                     <item.icon className="h-4 w-4 text-brand" /> {item.text}
