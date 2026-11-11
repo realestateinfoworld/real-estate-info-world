@@ -21,8 +21,8 @@ const PROMISES = [
  */
 export function Hero() {
   return (
-    <section className="theme-dark grain relative isolate overflow-hidden" aria-label="Hero">
-      {/* Background photo, washed into navy toward the copy */}
+    <section className="theme-tint grain relative isolate overflow-hidden border-b border-line" aria-label="Hero">
+      {/* Background photo, washed out to a faint texture behind the copy */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/hero-background.webp"
@@ -30,10 +30,8 @@ export function Hero() {
           fill
           preload
           sizes="100vw"
-          className="hero-bg-image object-cover opacity-25"
+          className="hero-bg-image object-cover opacity-[0.07]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/95 to-ink/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/80" />
         <div className="absolute -top-40 left-1/4 h-[520px] w-[720px] rounded-full bg-brand-deep/15 blur-[120px]" />
         <div className="grid-lines absolute inset-0 opacity-60" />
       </div>
@@ -86,8 +84,8 @@ export function Hero() {
 
         {/* Free-sample form */}
         <div id="hero-sample" className="relative min-w-0 scroll-mt-28">
-          <div className="absolute -inset-6 rounded-[2.5rem] bg-brand-deep/20 blur-3xl" aria-hidden="true" />
-          <div className="theme-light relative rounded-3xl bg-surface p-7 shadow-[0_40px_90px_-30px_rgb(0_0_0_/_0.6)] md:p-8">
+          <div className="absolute -inset-6 rounded-[2.5rem] bg-brand-deep/15 blur-3xl" aria-hidden="true" />
+          <div className="brand-frame relative rounded-3xl bg-surface p-7 shadow-[0_40px_90px_-40px_rgb(10_22_40_/_0.35)] md:p-8">
             <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand">
               FREE · NO CARD NEEDED
             </div>
@@ -101,8 +99,8 @@ export function Hero() {
       </div>
 
       {/* Stats strip */}
-      <div className="border-t border-ivory/[0.06] bg-ink/60 backdrop-blur-md">
-        <dl className="container grid grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-ivory/[0.06]">
+      <div className="border-t border-line bg-ink/70 backdrop-blur-md">
+        <dl className="container grid grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-line">
           {HOMEPAGE_STATS.map((stat) => (
             <div key={stat.label} className="py-5 lg:px-6 lg:first:pl-0">
               <dd className="stat-number font-display text-2xl text-ivory">{stat.number}</dd>

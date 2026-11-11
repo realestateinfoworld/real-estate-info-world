@@ -2,8 +2,9 @@
 
 /* ================================================================== */
 /* THEME                                                               */
-/* Crisp white pages, deep navy bands (.theme-dark) and an emerald     */
-/* brand accent that keeps every call to action unmistakable.          */
+/* Light throughout: white pages, soft mint bands (.theme-tint) behind  */
+/* the hero and page headers, navy text and an emerald accent that     */
+/* keeps every call to action unmistakable.                            */
 /* ================================================================== */
 
 @theme inline {
@@ -15,7 +16,7 @@
 
 @theme {
   /* Token names are roles: "ink" is the page background, "ivory" the main text,
-     "sand" body copy and "stone" muted copy. .theme-dark redefines them. */
+     "sand" body copy and "stone" muted copy. */
   --color-ink: #ffffff;
   --color-ink-2: #f5f7fa;
   --color-surface: #ffffff;
@@ -52,44 +53,10 @@
   }
 }
 
-/* Deep navy band: hero, page headers, navbar, CTA and footer. */
-.theme-dark {
-  --color-ink: #0a1628;
-  --color-ink-2: #0e1d34;
-  --color-surface: #12223b;
-  --color-surface-2: #182b48;
-  --color-line: rgb(255 255 255 / 0.09);
-  --color-line-strong: rgb(255 255 255 / 0.17);
-
-  --color-ivory: #ffffff;
-  --color-sand: #c5cfdd;
-  --color-stone: #8c9ab0;
-
-  --color-brand: #34d399;
-  --color-brand-pale: #6ee7b7;
-
-  background-color: var(--color-ink);
-  color: var(--color-ivory);
-}
-
-/* Back to the page's light tokens for a card inside a navy band (forms, the
-   spreadsheet preview). Mirrors the @theme values above. */
-.theme-light {
-  --color-ink: #ffffff;
-  --color-ink-2: #f5f7fa;
-  --color-surface: #ffffff;
-  --color-surface-2: #f1f4f8;
-  --color-line: #e4e9f0;
-  --color-line-strong: #cdd5e0;
-
-  --color-ivory: #0b1424;
-  --color-sand: #475467;
-  --color-stone: #667085;
-
-  --color-brand: #047857;
-  --color-brand-pale: #065f46;
-
-  color: var(--color-ivory);
+/* Soft mint-to-white band behind the hero and page headers: sets those
+   sections apart from the white page without a dark block. */
+.theme-tint {
+  background: linear-gradient(180deg, #ecf8f2 0%, #f6fbf9 55%, #ffffff 100%);
 }
 
 html {
@@ -379,7 +346,7 @@ h1 em, h2 em, h3 em {
   object-position: 62% 40%;
 }
 
-/* Film grain to keep large navy areas from banding */
+/* Film grain to keep large flat areas from banding */
 .grain::after {
   content: "";
   position: absolute;

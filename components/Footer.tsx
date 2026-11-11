@@ -13,7 +13,7 @@ export function Footer() {
   const linkClass = "block text-sand transition-colors hover:text-ivory";
 
   return (
-    <footer className="theme-dark relative">
+    <footer className="relative border-t border-line bg-ink-2">
       <div className="container py-16">
         <div className="grid grid-cols-2 gap-y-12 gap-x-8 md:grid-cols-12">
           <div className="col-span-2 md:col-span-4">

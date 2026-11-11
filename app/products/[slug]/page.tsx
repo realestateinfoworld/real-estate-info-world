@@ -98,7 +98,7 @@ export default async function ProductPage({ params }: Props) {
       />
 
       {/* Header */}
-      <section className="theme-dark relative overflow-hidden">
+      <section className="theme-tint relative overflow-hidden border-b border-line">
         <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="brand-glow pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container relative pt-32 pb-14 md:pt-40 md:pb-16">

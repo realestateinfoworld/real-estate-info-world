@@ -79,7 +79,7 @@ export default function FreeSamplePage() {
   return (
     <>
       {/* Header with the form beside it, so the request is possible without scrolling */}
-      <section className="theme-dark relative overflow-hidden">
+      <section className="theme-tint relative overflow-hidden border-b border-line">
         <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="brand-glow pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container relative grid items-center gap-12 pt-32 pb-16 lg:grid-cols-[1.2fr_0.8fr] lg:gap-14 lg:pt-40 lg:pb-20">
@@ -97,7 +97,7 @@ export default function FreeSamplePage() {
           </div>
 
           <div className="relative min-w-0">
-            <div className="theme-light relative rounded-3xl bg-surface p-7 shadow-[0_40px_90px_-30px_rgb(0_0_0_/_0.6)] md:p-8">
+            <div className="brand-frame relative rounded-3xl bg-surface p-7 shadow-[0_40px_90px_-40px_rgb(10_22_40_/_0.35)] md:p-8">
               <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand">
                 FREE · NO CARD NEEDED
               </div>

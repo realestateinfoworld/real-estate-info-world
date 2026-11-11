@@ -35,7 +35,7 @@ export function MobileBuyBar({ price, label }: { price: number; label: string })
   return (
     <div
       className={cn(
-        "theme-dark fixed inset-x-0 bottom-0 z-[70] border-t border-line px-4 py-3 shadow-[0_-10px_30px_-10px_rgb(0_0_0_/_0.4)] transition-transform duration-300 lg:hidden",
+        "fixed inset-x-0 bottom-0 z-[70] border-t border-line bg-ink px-4 py-3 shadow-[0_-10px_30px_-12px_rgb(10_22_40_/_0.25)] transition-transform duration-300 lg:hidden",
         visible ? "translate-y-0" : "translate-y-full"
       )}
       aria-hidden={!visible}

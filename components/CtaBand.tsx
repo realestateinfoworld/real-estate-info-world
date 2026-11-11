@@ -6,7 +6,7 @@ import { CONTACT } from "@/lib/constants";
 export function CtaBand() {
   return (
     <section className="container pb-24 md:pb-32">
-      <div className="theme-dark brand-frame relative overflow-hidden rounded-[2rem] px-6 py-16 text-center md:px-16 md:py-24">
+      <div className="theme-tint brand-frame relative overflow-hidden rounded-[2rem] px-6 py-16 text-center md:px-16 md:py-24">
         <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
         <div
           className="pointer-events-none absolute -top-32 left-1/2 h-80 w-[640px] -translate-x-1/2 rounded-full bg-brand-deep/25 blur-[100px]"

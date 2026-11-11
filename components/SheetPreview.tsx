@@ -20,8 +20,7 @@ function fileName(product: Product): string {
 
 /**
  * The product, shown as what it is: a spreadsheet. Column letters, row
- * numbers, a filter header row and sheet tabs along the bottom. Always light,
- * like the real file, whatever section it sits in.
+ * numbers, a filter header row and sheet tabs along the bottom.
  */
 export function SheetPreview({ products, autoCycle = false, className }: SheetPreviewProps) {
   const [active, setActive] = useState(0);
@@ -39,7 +38,7 @@ export function SheetPreview({ products, autoCycle = false, className }: SheetPr
   return (
     <div
       className={cn(
-        "theme-light overflow-hidden rounded-2xl border border-line-strong bg-surface shadow-[0_40px_90px_-40px_rgb(10_22_40_/_0.55)]",
+        "overflow-hidden rounded-2xl border border-line-strong bg-surface shadow-[0_40px_90px_-40px_rgb(10_22_40_/_0.4)]",
         className
       )}
     >
