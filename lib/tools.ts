@@ -34,6 +34,89 @@ export interface Tool {
 
 export const TOOLS: readonly Tool[] = [
   {
+    slug: "real-estate-commission-calculator",
+    title: "Real Estate Commission Calculator",
+    seo: {
+      title: "Real Estate Commission Calculator 2026 | Seller Net Sheet",
+      description:
+        "Free real estate commission calculator: see what the listing and buyer's agents are paid on any sale price, the total commission and the seller's net proceeds.",
+      keywords: [
+        "real estate commission calculator",
+        "realtor commission calculator",
+        "how much do realtors make per house",
+        "commission on a $500,000 house",
+        "seller net proceeds calculator",
+        "real estate agent fees calculator",
+      ],
+    },
+    excerpt:
+      "Enter a sale price and the commission rates to see what each agent is paid, the total commission, and what the seller keeps after closing costs and the mortgage.",
+    productSlug: "miami-buyer-leads",
+    updated: "2026-11-11",
+    sections: [
+      {
+        heading: "How real estate commission is calculated",
+        paragraphs: [
+          "Commission is a percentage of the sale price, set in the agreements each agent signs with their client. The listing agent's rate is in the listing agreement with the seller. The buyer's agent's rate is in their written agreement with the buyer, and the seller may agree to pay some or all of it as part of the deal.",
+          "Multiply the sale price by each rate and add the two together for the total. On a $500,000 sale with 2.5% to each side, that is $12,500 to the listing agent, $12,500 to the buyer's agent and $25,000 in total.",
+        ],
+      },
+      {
+        heading: "Commission on common sale prices",
+        paragraphs: [
+          "Total commission has often fallen between 5% and 6% of the price, though every rate is negotiable and many sales close below that. At 5% and 6% in total:",
+        ],
+        bullets: [
+          "$300,000 home: $15,000 at 5%, $18,000 at 6%.",
+          "$400,000 home: $20,000 at 5%, $24,000 at 6%.",
+          "$500,000 home: $25,000 at 5%, $30,000 at 6%.",
+          "$750,000 home: $37,500 at 5%, $45,000 at 6%.",
+          "$1,000,000 home: $50,000 at 5%, $60,000 at 6%.",
+        ],
+      },
+      {
+        heading: "What changed in August 2024",
+        paragraphs: [
+          "Under the National Association of Realtors settlement, offers of compensation to buyer's agents are no longer made on the MLS, and a buyer's agent needs a written agreement with the buyer, stating their pay, before touring a home. A seller can still offer to cover the buyer's agent, but it is now agreed sale by sale. Enter 0 in the buyer's agent field if the buyer is paying their own agent.",
+        ],
+      },
+      {
+        heading: "From commission to the seller's net",
+        paragraphs: [
+          "Commission is usually the largest selling cost, but not the only one. Title and escrow fees, transfer taxes and the remaining mortgage balance all come out of the proceeds at closing. Transfer tax depends on the state: see the [Florida documentary stamp tax calculator](/tools/florida-documentary-stamp-tax-calculator) and the [California and Los Angeles transfer tax calculator](/tools/california-transfer-tax-calculator).",
+        ],
+      },
+      {
+        heading: "For agents: what the commission means for you",
+        paragraphs: [
+          "The commission on the settlement statement is not what an agent takes home. Referral fees, the brokerage split and per-deal fees come out first; the [commission split calculator](/tools/real-estate-commission-split-calculator) works out your share and how many closings your income goal takes.",
+          "Every closing starts with a buyer. Our [Miami](/products/miami-buyer-leads) and [California](/products/california-buyer-leads) buyer leads list buyers with their target area, budget and timeframe, and you can [check a free sample](/free-sample) before you buy. For more ways to fill the pipeline, read [how to get real estate leads](/guides/how-to-get-real-estate-leads).",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do you calculate real estate commission?",
+        answer:
+          "Multiply the sale price by the commission rate. Do it once for the listing agent and once for the buyer's agent, then add the two for the total commission.",
+      },
+      {
+        question: "How much commission does a realtor make on a $500,000 house?",
+        answer:
+          "At 2.5% per side, each agent's brokerage is paid $12,500, for $25,000 in total. The agent's own take-home is lower once the brokerage split and fees are taken out.",
+      },
+      {
+        question: "Who pays the real estate commission?",
+        answer:
+          "The seller pays the listing agent from the sale proceeds. The buyer's agent is paid under their agreement with the buyer, either by the buyer or by the seller if the seller agrees to cover it.",
+      },
+      {
+        question: "Is real estate commission negotiable?",
+        answer: "Yes. No law or association sets commission rates; they are agreed between each agent and their client.",
+      },
+    ],
+  },
+  {
     slug: "dubai-dld-fees-calculator",
     title: "Dubai DLD Fees Calculator",
     seo: {
@@ -182,11 +265,13 @@ export const TOOLS: readonly Tool[] = [
     slug: "florida-documentary-stamp-tax-calculator",
     title: "Florida Documentary Stamp Tax Calculator",
     seo: {
-      title: "Florida Doc Stamps Calculator 2026 | Miami-Dade Rates",
+      title: "Florida Documentary Stamp Tax & Transfer Tax Calculator 2026",
       description:
-        "Free Florida documentary stamp tax calculator with Miami-Dade rates: deed stamps, the Miami-Dade surtax, mortgage stamps and intangible tax on any sale.",
+        "Free Florida documentary stamp tax and transfer tax calculator with Miami-Dade rates: deed stamps, the surtax, mortgage stamps and intangible tax on any sale.",
       keywords: [
+        "documentary stamp tax Florida",
         "Florida documentary stamp tax calculator",
+        "Florida transfer tax calculator",
         "Florida doc stamps calculator",
         "Miami-Dade doc stamps",
         "Miami-Dade surtax",
@@ -209,6 +294,13 @@ export const TOOLS: readonly Tool[] = [
           "Deeds in Miami-Dade County: $0.60 per $100, plus a $0.45 per $100 surtax on transfers of anything other than a single-family residence.",
           "Mortgages and notes: $0.35 per $100 of the loan amount.",
           "Intangible tax on a new mortgage: 0.2% of the loan amount (2 mills per dollar).",
+        ],
+      },
+      {
+        heading: "Florida's transfer tax is the documentary stamp tax",
+        paragraphs: [
+          "Florida has no separate real estate transfer tax. The documentary stamp tax on the deed is the state's transfer tax, so a Florida transfer tax calculator and a doc stamps calculator work out the same figure: the price, rounded up to the next $100, times the rate per $100.",
+          "On a $450,000 sale outside Miami-Dade, that is 4,500 × $0.70 = $3,150. Any part of $100 counts in full, so a $450,050 sale is taxed as if it were $450,100.",
         ],
       },
       {
@@ -238,6 +330,11 @@ export const TOOLS: readonly Tool[] = [
           "$0.70 per $100 of the sale price in every county except Miami-Dade, where the rate is $0.60 per $100 plus a $0.45 surtax on property other than a single-family residence.",
       },
       {
+        question: "Does Florida have a real estate transfer tax?",
+        answer:
+          "Yes: it is called the documentary stamp tax. Florida charges it on the deed when property is sold, at $0.70 per $100 of the price, or $0.60 per $100 in Miami-Dade plus a surtax on property other than a single-family home.",
+      },
+      {
         question: "How much are doc stamps on a $500,000 house in Florida?",
         answer: "$3,500 in most Florida counties, and $3,000 on a single-family home or condo in Miami-Dade.",
       },
@@ -254,15 +351,17 @@ export const TOOLS: readonly Tool[] = [
   },
   {
     slug: "california-transfer-tax-calculator",
-    title: "California Transfer Tax Calculator",
+    title: "California & Los Angeles Transfer Tax Calculator",
     seo: {
-      title: "California Transfer Tax Calculator 2026 | County & City",
+      title: "California & Los Angeles Transfer Tax Calculator 2026",
       description:
         "Free California documentary transfer tax calculator: the $1.10 per $1,000 county tax plus city taxes such as Los Angeles. See the cost on any sale price.",
       keywords: [
         "California transfer tax calculator",
         "California documentary transfer tax",
+        "Los Angeles transfer tax",
         "Los Angeles transfer tax calculator",
+        "LA city transfer tax",
         "county transfer tax California",
         "who pays transfer tax in California",
         "Measure ULA",
@@ -279,6 +378,13 @@ export const TOOLS: readonly Tool[] = [
         bullets: [
           "County documentary transfer tax: $0.55 per $500 of the sale price, or any part of $500, which is $1.10 per $1,000. It applies in every county.",
           "City transfer tax: most cities add nothing, but some charter cities charge their own. The City of Los Angeles adds $4.50 per $1,000, for $5.60 per $1,000 in total.",
+        ],
+      },
+      {
+        heading: "Los Angeles transfer tax: a worked example",
+        paragraphs: [
+          "Choose the City of Los Angeles preset to add the city's $4.50 per $1,000 to the county's $1.10. On a $1,200,000 sale that is $1,320 in county tax and $5,400 in city tax, $6,720 in total, before any Measure ULA.",
+          "Los Angeles County's tax applies everywhere in the county, but only property inside the City of Los Angeles pays the city tax. A home in an unincorporated area, or in a city without its own transfer tax, pays the $1.10 per $1,000 county tax alone.",
         ],
       },
       {

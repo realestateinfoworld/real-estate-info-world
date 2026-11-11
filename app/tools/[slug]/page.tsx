@@ -12,6 +12,7 @@ import { CommissionSplitCalculator } from "@/components/tools/CommissionSplitCal
 import { DldFeesCalculator } from "@/components/tools/DldFeesCalculator";
 import { FloridaDocStampsCalculator } from "@/components/tools/FloridaDocStampsCalculator";
 import { LeadRoiCalculator } from "@/components/tools/LeadRoiCalculator";
+import { RealEstateCommissionCalculator } from "@/components/tools/RealEstateCommissionCalculator";
 import { buttonVariants } from "@/components/ui/button";
 import { getProduct } from "@/lib/constants";
 import { SITE_NAME, SITE_URL, faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
@@ -23,6 +24,7 @@ type Props = {
 
 /** The interactive part of each tool, by slug. */
 const CALCULATORS: Record<string, React.ComponentType> = {
+  "real-estate-commission-calculator": RealEstateCommissionCalculator,
   "dubai-dld-fees-calculator": DldFeesCalculator,
   "dubai-real-estate-commission-calculator": CommissionCalculator,
   "florida-documentary-stamp-tax-calculator": FloridaDocStampsCalculator,

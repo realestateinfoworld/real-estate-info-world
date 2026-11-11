@@ -9,12 +9,14 @@ import { PRODUCTS, COMPARISON_ROWS, formatMarketList } from "@/lib/constants";
 import { SITE_URL, jsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Real Estate Buyer Leads & Property Owner Databases | Compare",
+  title: "Buy Real Estate Leads | Buyer Leads & Owner Databases",
   description:
-    "Compare the Dubai property owner database with Miami, California, Dubai and UK buyer leads. Verified, CRM-ready Excel files delivered in 10 minutes.",
+    "Buy real estate buyer leads for Miami, California, Dubai and the UK, or the Dubai property owner database. Verified Excel files delivered in 10 minutes.",
   path: "/products",
   keywords: [
+    "buy real estate leads",
     "real estate buyer leads",
+    "purchase real estate leads",
     "property owner database",
     "Dubai Property Owner Database",
     "Miami Buyer Leads",
@@ -27,10 +29,10 @@ export default function ProductsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Data products"
+        eyebrow="Buy real estate leads"
         title={
           <>
-            Every dataset, <em className="text-brand-gradient">one place.</em>
+            Real estate buyer leads, <em className="text-brand-gradient">yours to keep.</em>
           </>
         }
         description={`Focused datasets for real estate brokers, property consultants and agencies across ${formatMarketList()}. Every product is a clean, ready-to-use Excel file for your CRM and marketing.`}

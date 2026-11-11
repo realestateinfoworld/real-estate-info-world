@@ -245,7 +245,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "Dubai Property Owner Database 2026 | 1M+ Verified Owners",
       description:
-        "Dubai property owner database: 1,000,000+ verified owners with direct mobile numbers across 200+ communities. CRM-ready Excel, $300. Free sample available.",
+        "Dubai property owner database: 1,000,000+ verified owners with direct mobiles in 200+ communities. Dubai real estate database for brokers. $300. Free sample.",
       keywords: [
         "Dubai Property Owner Database",
         "Dubai Property Owner Leads",
@@ -261,7 +261,7 @@ export const PRODUCTS: readonly Product[] = [
       {
         heading: "What is the Dubai Property Owner Database?",
         paragraphs: [
-          "The Dubai Property Owner Database is a single Excel file listing more than 1,000,000 verified owners of property in Dubai. Every record gives you the owner's name, the community the property sits in, the property type (apartment, villa, townhouse or penthouse) and a direct mobile number — the four things you need to start a listing conversation.",
+          "The Dubai Property Owner Database is a Dubai real estate database in a single Excel file, listing more than 1,000,000 verified owners of property in Dubai. Every record gives you the owner's name, the community the property sits in, the property type (apartment, villa, townhouse or penthouse) and a direct mobile number — the four things you need to start a listing conversation.",
           "Records are cross-checked against Dubai Land Department data and the whole file is refreshed every month, so you are calling current owners rather than people who sold two years ago. The release date is shown at the top of this page.",
         ],
       },

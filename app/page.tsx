@@ -19,6 +19,7 @@ import {
   getProductsByMarket,
 } from "@/lib/constants";
 import { GUIDES } from "@/lib/guides";
+import { TOOLS } from "@/lib/tools";
 import { faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -306,6 +307,22 @@ export default function Home() {
                 <span className="mt-6 text-sm text-brand group-hover:text-brand-pale">Read the guide →</span>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-12 flex flex-col gap-4 border-t border-line pt-10 md:flex-row md:items-baseline md:gap-8">
+            <h3 className="shrink-0 text-sm font-semibold text-ivory">Free calculators</h3>
+            <ul className="flex flex-wrap gap-2">
+              {TOOLS.map((tool) => (
+                <li key={tool.slug}>
+                  <Link
+                    href={`/tools/${tool.slug}`}
+                    className="inline-block rounded-full border border-line-strong px-3.5 py-1.5 text-sm text-sand transition-colors hover:border-brand/40 hover:text-ivory"
+                  >
+                    {tool.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
