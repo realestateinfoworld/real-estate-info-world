@@ -92,6 +92,7 @@ The lowest-commitment action on the site, offered in the homepage hero, on every
 1. Visitor picks a dataset and enters an email (WhatsApp number optional) in `SampleRequestForm`.
 2. `POST /api/sample` emails the team a **"New SAMPLE request"** notification and sends the visitor a confirmation with a WhatsApp shortcut.
 3. The team sends the sample **by hand** (email or WhatsApp). Nothing is downloaded from the site.
+4. One follow-up email is scheduled with Resend (`scheduledAt`) for `SAMPLE_FOLLOW_UP_HOURS` (48) later: it asks whether the sample arrived and links to the full dataset. No database or cron is involved. It is only scheduled when the team notification was sent.
 
 If the team notification cannot be sent, the visitor sees an error and is pointed to WhatsApp, since nobody would know to send the sample. The form shares the honeypot and rate limit used by the other forms.
 

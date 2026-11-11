@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PRODUCTS } from "@/lib/constants";
-import { dubaiTimestamp, sendNotification, sendSampleConfirmation } from "@/lib/email";
+import {
+  SAMPLE_FOLLOW_UP_HOURS,
+  dubaiTimestamp,
+  scheduleSampleFollowUp,
+  sendNotification,
+  sendSampleConfirmation,
+} from "@/lib/email";
 import { isHoneypotFilled } from "@/lib/honeypot";
 import { clientIp, isRateLimited } from "@/lib/rate-limit";
 import { sampleSchema } from "@/lib/sample-schema";
@@ -52,6 +58,7 @@ export async function POST(request: NextRequest) {
         replyTo: email,
         text: [
           "Someone asked for a free sample. Send it to them by email or WhatsApp.",
+          `They get an automatic follow-up email in ${SAMPLE_FOLLOW_UP_HOURS} hours asking whether it arrived, so send it before then.`,
           "",
           `Dataset: ${product.name}`,
           `Email: ${email}`,
@@ -73,6 +80,10 @@ export async function POST(request: NextRequest) {
         { status: 502 }
       );
     }
+
+    // Only once the team knows about the request: the follow-up asks whether
+    // the sample arrived. A failure to schedule it is logged, never shown.
+    await scheduleSampleFollowUp({ to: email, product });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {
