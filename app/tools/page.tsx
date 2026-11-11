@@ -9,7 +9,7 @@ import { TOOLS } from "@/lib/tools";
 export const metadata: Metadata = pageMetadata({
   title: "Free Real Estate Calculators for Brokers & Agents | 2026",
   description:
-    "Free calculators for real estate brokers: Dubai DLD fees, Dubai commission on sales and rentals, and lead ROI with cost per deal. No sign-up needed.",
+    "Free calculators for brokers and agents: Dubai DLD fees and commission, Florida doc stamps, California transfer tax, commission split and lead ROI.",
   path: "/tools",
 });
 
@@ -23,7 +23,7 @@ export default function ToolsPage() {
             Free calculators for brokers. <em className="text-brand-gradient">No sign-up.</em>
           </>
         }
-        description="Quote buying costs, work out your commission and check whether a lead list pays for itself."
+        description="For Dubai, Miami and California: quote taxes and buying costs, work out your commission and check whether a lead list pays for itself."
       />
 
       <section className="container py-16 md:py-20">

@@ -6,8 +6,11 @@ import { FaqList } from "@/components/FaqList";
 import { RichText } from "@/components/RichText";
 import { SectionHeading } from "@/components/SectionHeading";
 import { CtaBand } from "@/components/CtaBand";
+import { CaliforniaTransferTaxCalculator } from "@/components/tools/CaliforniaTransferTaxCalculator";
 import { CommissionCalculator } from "@/components/tools/CommissionCalculator";
+import { CommissionSplitCalculator } from "@/components/tools/CommissionSplitCalculator";
 import { DldFeesCalculator } from "@/components/tools/DldFeesCalculator";
+import { FloridaDocStampsCalculator } from "@/components/tools/FloridaDocStampsCalculator";
 import { LeadRoiCalculator } from "@/components/tools/LeadRoiCalculator";
 import { buttonVariants } from "@/components/ui/button";
 import { getProduct } from "@/lib/constants";
@@ -22,6 +25,9 @@ type Props = {
 const CALCULATORS: Record<string, React.ComponentType> = {
   "dubai-dld-fees-calculator": DldFeesCalculator,
   "dubai-real-estate-commission-calculator": CommissionCalculator,
+  "florida-documentary-stamp-tax-calculator": FloridaDocStampsCalculator,
+  "california-transfer-tax-calculator": CaliforniaTransferTaxCalculator,
+  "real-estate-commission-split-calculator": CommissionSplitCalculator,
   "real-estate-lead-roi-calculator": LeadRoiCalculator,
 };
 
@@ -137,15 +143,15 @@ export default async function ToolPage({ params }: Props) {
       <section className="section border-t border-line bg-ink-2">
         <div className="container">
           <SectionHeading eyebrow="More free tools" title="Other calculators for brokers" className="mb-12" />
-          <div className="grid gap-5 md:grid-cols-2">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {others.map((t) => (
               <Link
                 key={t.slug}
                 href={`/tools/${t.slug}`}
                 className="group rounded-3xl border border-line bg-surface p-7 transition-colors hover:border-brand/40"
               >
-                <h3 className="font-display text-2xl leading-tight text-ivory">{t.title}</h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-sand">{t.excerpt}</p>
+                <h3 className="font-display text-xl leading-tight text-ivory">{t.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-sand">{t.excerpt}</p>
               </Link>
             ))}
           </div>

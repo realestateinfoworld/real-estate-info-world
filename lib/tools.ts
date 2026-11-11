@@ -179,6 +179,213 @@ export const TOOLS: readonly Tool[] = [
     ],
   },
   {
+    slug: "florida-documentary-stamp-tax-calculator",
+    title: "Florida Documentary Stamp Tax Calculator",
+    seo: {
+      title: "Florida Doc Stamps Calculator 2026 | Miami-Dade Rates",
+      description:
+        "Free Florida documentary stamp tax calculator with Miami-Dade rates: deed stamps, the Miami-Dade surtax, mortgage stamps and intangible tax on any sale.",
+      keywords: [
+        "Florida documentary stamp tax calculator",
+        "Florida doc stamps calculator",
+        "Miami-Dade doc stamps",
+        "Miami-Dade surtax",
+        "Florida intangible tax calculator",
+        "Florida transfer tax",
+      ],
+    },
+    excerpt:
+      "Work out Florida's documentary stamp tax on a sale, including Miami-Dade's own rate and surtax, plus the mortgage stamps and intangible tax a buyer pays.",
+    productSlug: "miami-buyer-leads",
+    updated: "2026-11-11",
+    sections: [
+      {
+        heading: "Florida documentary stamp tax rates",
+        paragraphs: [
+          "Florida charges documentary stamp tax when property changes hands and when a mortgage is recorded. Each rate applies per $100, and any part of $100 counts as a full $100:",
+        ],
+        bullets: [
+          "Deeds: $0.70 per $100 of the sale price in every county except Miami-Dade.",
+          "Deeds in Miami-Dade County: $0.60 per $100, plus a $0.45 per $100 surtax on transfers of anything other than a single-family residence.",
+          "Mortgages and notes: $0.35 per $100 of the loan amount.",
+          "Intangible tax on a new mortgage: 0.2% of the loan amount (2 mills per dollar).",
+        ],
+      },
+      {
+        heading: "How Miami-Dade is different",
+        paragraphs: [
+          "Miami-Dade is the one Florida county with its own deed rate. The base rate is lower, at $0.60 per $100, but a $0.45 surtax is added when the property is not a single-family residence, which brings commercial, multi-family and land transfers to $1.05 per $100.",
+          "Florida's Department of Revenue counts a condominium unit as a single-family residence for this purpose, so a typical home or condo sale in Brickell, Edgewater or Sunny Isles Beach pays $0.60 per $100 with no surtax.",
+        ],
+      },
+      {
+        heading: "Who pays documentary stamps in Florida",
+        paragraphs: [
+          "By custom the seller pays the stamps on the deed, and the buyer pays the stamps and the intangible tax on their new mortgage. The contract can assign them differently, so check it before you quote a net figure. On an $800,000 home in Miami-Dade bought with a $600,000 loan, that is $4,800 for the seller and $3,300 for the buyer.",
+        ],
+      },
+      {
+        heading: "For Miami agents: quote the numbers, then find the buyers",
+        paragraphs: [
+          "Sellers decide faster when they see their costs in writing, and buyers trust the agent who explains theirs. If you need more buyers to work with, our [Miami Real Estate Buyer Leads](/products/miami-buyer-leads) file has 1,500+ buyers with their target neighborhood, budget and timeframe; [check a free sample](/free-sample?dataset=miami-buyer-leads) first, or read [how to get buyer leads in Miami](/guides/miami-real-estate-buyer-leads).",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How much are documentary stamps on a deed in Florida?",
+        answer:
+          "$0.70 per $100 of the sale price in every county except Miami-Dade, where the rate is $0.60 per $100 plus a $0.45 surtax on property other than a single-family residence.",
+      },
+      {
+        question: "How much are doc stamps on a $500,000 house in Florida?",
+        answer: "$3,500 in most Florida counties, and $3,000 on a single-family home or condo in Miami-Dade.",
+      },
+      {
+        question: "Who pays doc stamps in Florida, the buyer or the seller?",
+        answer:
+          "By custom the seller pays the stamps on the deed and the buyer pays the stamps and intangible tax on the mortgage. The contract can change that.",
+      },
+      {
+        question: "What is the intangible tax on a Florida mortgage?",
+        answer: "0.2% of the loan amount, paid once when the mortgage is recorded, on top of $0.35 per $100 in mortgage stamps.",
+      },
+    ],
+  },
+  {
+    slug: "california-transfer-tax-calculator",
+    title: "California Transfer Tax Calculator",
+    seo: {
+      title: "California Transfer Tax Calculator 2026 | County & City",
+      description:
+        "Free California documentary transfer tax calculator: the $1.10 per $1,000 county tax plus city taxes such as Los Angeles. See the cost on any sale price.",
+      keywords: [
+        "California transfer tax calculator",
+        "California documentary transfer tax",
+        "Los Angeles transfer tax calculator",
+        "county transfer tax California",
+        "who pays transfer tax in California",
+        "Measure ULA",
+      ],
+    },
+    excerpt:
+      "Work out California's documentary transfer tax on a sale: the county tax that applies statewide, plus a city tax where there is one, such as the City of Los Angeles.",
+    productSlug: "california-buyer-leads",
+    updated: "2026-11-11",
+    sections: [
+      {
+        heading: "California transfer tax rates",
+        paragraphs: ["Transfer tax in California has up to two layers:"],
+        bullets: [
+          "County documentary transfer tax: $0.55 per $500 of the sale price, or any part of $500, which is $1.10 per $1,000. It applies in every county.",
+          "City transfer tax: most cities add nothing, but some charter cities charge their own. The City of Los Angeles adds $4.50 per $1,000, for $5.60 per $1,000 in total.",
+        ],
+      },
+      {
+        heading: "Measure ULA in the City of Los Angeles",
+        paragraphs: [
+          "Since April 2023 the City of Los Angeles has charged a further tax, Measure ULA, on high-value sales: 4% above a threshold of roughly $5 million and 5.5% above roughly $10 million. The thresholds are adjusted every July, so this calculator leaves ULA out; check the current figures with the Los Angeles Office of Finance.",
+          "ULA applies only inside the City of Los Angeles. Beverly Hills, Santa Monica and Malibu are separate cities with their own rules.",
+        ],
+      },
+      {
+        heading: "Who pays transfer tax in California",
+        paragraphs: [
+          "It is negotiable and set by the purchase contract. By custom the seller pays the county tax in most of the state, and customs for city taxes vary from place to place, so confirm with your escrow or title officer before you quote a seller's net.",
+        ],
+      },
+      {
+        heading: "For California agents: more buyers for your listings",
+        paragraphs: [
+          "Our [California Real Estate Buyer Leads](/products/california-buyer-leads) file has 3,000+ buyers statewide with their target city, budget and timeframe. [Check a free sample](/free-sample?dataset=california-buyer-leads) first, or read [how to get buyer leads in Los Angeles](/guides/los-angeles-buyer-leads).",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the documentary transfer tax in California?",
+        answer:
+          "Every county charges $0.55 per $500 of the sale price, which is $1.10 per $1,000. Some cities add their own transfer tax on top.",
+      },
+      {
+        question: "How much is transfer tax in Los Angeles?",
+        answer:
+          "In the City of Los Angeles it is $5.60 per $1,000: $1.10 county tax plus $4.50 city tax. Sales above roughly $5 million also pay Measure ULA.",
+      },
+      {
+        question: "How much is transfer tax on a $1,000,000 home in California?",
+        answer: "The county tax is $1,100. In the City of Los Angeles the city tax adds $4,500, for $5,600 in total.",
+      },
+      {
+        question: "Who pays transfer tax in California?",
+        answer:
+          "It is negotiable. By custom the seller pays the county tax in most of the state; customs for city taxes vary.",
+      },
+    ],
+  },
+  {
+    slug: "real-estate-commission-split-calculator",
+    title: "Real Estate Commission Split Calculator",
+    seo: {
+      title: "Real Estate Commission Split Calculator | Agent Take-Home",
+      description:
+        "Free commission split calculator for real estate agents: gross commission, referral fee, brokerage split and fees, and the deals you need for your income goal.",
+      keywords: [
+        "real estate commission split calculator",
+        "real estate agent commission calculator",
+        "agent take home calculator",
+        "commission split with broker",
+        "how many deals do I need real estate",
+        "real estate referral fee calculator",
+      ],
+    },
+    excerpt:
+      "See what one closing puts in your pocket after the referral fee, the brokerage split and per-deal fees, and how many deals a year your income goal takes.",
+    productSlug: "california-buyer-leads",
+    updated: "2026-11-11",
+    sections: [
+      {
+        heading: "How an agent's take-home is worked out",
+        paragraphs: ["The commission on a closing passes through several hands before it reaches you:"],
+        bullets: [
+          "Gross commission: the sale price times the rate in your listing or buyer agreement.",
+          "Referral fee: a share paid to a referring agent or lead source, usually taken off the top.",
+          "Brokerage split: the brokerage keeps its share of what is left.",
+          "Per-deal fees: transaction, E&O or franchise fees your brokerage charges on each closing.",
+        ],
+      },
+      {
+        heading: "Commission is negotiable",
+        paragraphs: [
+          "No law or association sets commission rates. Since August 2024, offers of compensation to buyer's agents are no longer made on the MLS, and an agent working with a buyer needs a written buyer agreement that states their compensation before touring a home. Use the rate in your own agreement.",
+        ],
+      },
+      {
+        heading: "From take-home to pipeline",
+        paragraphs: [
+          "Once you know what a closing is worth, the income goal becomes a number of deals, and deals become a number of conversations. The [lead ROI calculator](/tools/real-estate-lead-roi-calculator) works that backwards from a lead list.",
+          "If the pipeline is short of buyers, we sell verified buyer leads for [Miami](/products/miami-buyer-leads) and [California](/products/california-buyer-leads), each with a target area, budget and timeframe, and a [free sample](/free-sample) to check first.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How is a real estate commission split calculated?",
+        answer:
+          "Take the gross commission, subtract any referral fee, multiply what is left by your split percentage, then subtract your brokerage's per-deal fees.",
+      },
+      {
+        question: "What is a typical commission split for a real estate agent?",
+        answer:
+          "It varies by brokerage and by how much an agent produces. Newer agents often keep a smaller share, experienced agents keep more, and some brokerages charge a flat fee or an annual cap instead of a percentage.",
+      },
+      {
+        question: "Does a referral fee come out before the brokerage split?",
+        answer: "Usually, yes: the referral fee is taken off the gross commission first. Check your brokerage's policy.",
+      },
+    ],
+  },
+  {
     slug: "real-estate-lead-roi-calculator",
     title: "Real Estate Lead ROI Calculator",
     seo: {

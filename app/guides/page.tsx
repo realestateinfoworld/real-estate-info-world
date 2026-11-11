@@ -53,7 +53,8 @@ export default function GuidesPage() {
           <div>
             <h2 className="font-display text-2xl text-ivory">Free calculators for brokers</h2>
             <p className="mt-2 text-[15px] leading-relaxed text-sand">
-              Dubai DLD fees, Dubai commission and lead ROI. No sign-up needed.
+              Dubai DLD fees, Florida doc stamps, California transfer tax, commission and lead ROI. No sign-up
+              needed.
             </p>
           </div>
           <span className="whitespace-nowrap text-sm font-semibold text-brand group-hover:text-brand-pale">
