@@ -8,8 +8,9 @@ import { CONTACT, getMarketForPath } from "@/lib/constants";
 export default function FloatingWhatsApp() {
   const pathname = usePathname();
 
-  // Remove from home page as per request
-  if (pathname === "/") {
+  // Not on the home page (as requested) or on calculators, where they would
+  // sit on top of the result figures on a phone.
+  if (pathname === "/" || pathname.startsWith("/tools/")) {
     return null;
   }
 

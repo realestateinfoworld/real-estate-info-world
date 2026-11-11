@@ -1,6 +1,7 @@
 import { CONTACT, MARKETS, MARKET_ORDER, PRODUCTS } from "@/lib/constants";
 import { GUIDES } from "@/lib/guides";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
+import { TOOLS } from "@/lib/tools";
 
 /**
  * /llms.txt — a plain-text map of the site for AI assistants and answer
@@ -18,6 +19,10 @@ export function GET() {
 
   const guides = GUIDES.map(
     (guide) => `- [${guide.title}](${SITE_URL}/guides/${guide.slug}): ${guide.excerpt}`,
+  ).join("\n");
+
+  const tools = TOOLS.map(
+    (tool) => `- [${tool.title}](${SITE_URL}/tools/${tool.slug}): ${tool.excerpt}`,
   ).join("\n");
 
   const markets = MARKET_ORDER.map((key) => {
@@ -45,6 +50,10 @@ ${products}
 ## Markets covered
 
 ${markets}
+
+## Free tools
+
+${tools}
 
 ## Guides
 

@@ -8,8 +8,8 @@ import { CONTACT } from "@/lib/constants";
 export default function FloatingTelegram() {
   const pathname = usePathname();
 
-  // Remove from home page to match WhatsApp behavior
-  if (pathname === "/") {
+  // Hidden on the same pages as the WhatsApp button.
+  if (pathname === "/" || pathname.startsWith("/tools/")) {
     return null;
   }
 
