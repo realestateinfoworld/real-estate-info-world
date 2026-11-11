@@ -45,6 +45,24 @@ export default function GuidesPage() {
         </div>
       </section>
 
+      <section className="container pb-16 md:pb-20">
+        <Link
+          href="/tools"
+          className="group flex flex-col justify-between gap-4 rounded-3xl border border-brand/25 bg-brand/[0.05] p-7 transition-colors hover:border-brand/50 md:flex-row md:items-center md:p-8"
+        >
+          <div>
+            <h2 className="font-display text-2xl text-ivory">Free calculators for brokers</h2>
+            <p className="mt-2 text-[15px] leading-relaxed text-sand">
+              Dubai DLD fees, Florida doc stamps, California transfer tax, commission and lead ROI. No sign-up
+              needed.
+            </p>
+          </div>
+          <span className="whitespace-nowrap text-sm font-semibold text-brand group-hover:text-brand-pale">
+            Open the free tools →
+          </span>
+        </Link>
+      </section>
+
       <CtaBand />
 
       <script

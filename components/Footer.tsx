@@ -50,6 +50,7 @@ export function Footer() {
             <div className="space-y-2.5 text-sm">
               <Link href="/about" className={linkClass}>About</Link>
               <Link href="/guides" className={linkClass}>Guides</Link>
+              <Link href="/tools" className={linkClass}>Free tools</Link>
               <Link href="/contact" className={linkClass}>Contact</Link>
               <a
                 href={`https://wa.me/${CONTACT.whatsappRaw}?text=${encodeURIComponent(

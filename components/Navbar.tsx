@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/products", label: "Datasets" },
   { href: "/guides", label: "Guides" },
+  { href: "/tools", label: "Free tools" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -46,7 +47,7 @@ export function Navbar() {
           <Logo />
         </Link>
 
-        <div className="hidden md:flex items-center gap-1 rounded-full border border-ivory/[0.07] bg-ivory/[0.03] p-1 backdrop-blur">
+        <div className="hidden lg:flex items-center gap-1 rounded-full border border-ivory/[0.07] bg-ivory/[0.03] p-1 backdrop-blur">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -63,7 +64,7 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link href="/free-sample" className={buttonVariants({ size: "sm", className: "h-10 px-5" })}>
             Free sample <ArrowUpRight className="h-4 w-4" />
           </Link>
@@ -71,7 +72,7 @@ export function Navbar() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden -mr-2 p-2 text-ivory"
+          className="lg:hidden -mr-2 p-2 text-ivory"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
         >
@@ -80,7 +81,7 @@ export function Navbar() {
       </nav>
 
       {mobileOpen && (
-        <div className="md:hidden h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-line bg-ink">
+        <div className="lg:hidden h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-line bg-ink md:h-[calc(100dvh-5rem)]">
           <div className="container flex flex-col py-6">
             {navLinks.map((link) => (
               <Link
