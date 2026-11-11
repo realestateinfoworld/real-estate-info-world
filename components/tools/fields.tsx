@@ -14,15 +14,16 @@ export function parseNumber(value: string): number {
 }
 
 /**
- * "AED 80,000", "$750", "-$750". Amounts under 100 keep their cents
+ * "AED 80,000", "$750", "-£750". Amounts under 100 keep their cents
  * ("$7.50"), so a small per-lead cost isn't rounded into something else.
+ * Symbols sit against the number; currency codes take a space.
  */
 export function formatMoney(amount: number, currency: string): string {
   const abs = Math.abs(amount);
   const digits = abs > 0 && abs < 100 ? 2 : 0;
   const number = abs.toLocaleString("en-US", { minimumFractionDigits: digits, maximumFractionDigits: digits });
   const sign = amount < 0 ? "-" : "";
-  return currency === "$" ? `${sign}$${number}` : `${sign}${currency} ${number}`;
+  return currency.length === 1 ? `${sign}${currency}${number}` : `${sign}${currency} ${number}`;
 }
 
 interface NumberFieldProps {
