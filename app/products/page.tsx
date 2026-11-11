@@ -11,10 +11,12 @@ import { SITE_URL, jsonLd, pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Buy Real Estate Leads | Buyer Leads & Owner Databases",
   description:
-    "Buy real estate buyer leads for Miami, California, Dubai and the UK, or the Dubai property owner database. Verified Excel files delivered in 10 minutes.",
+    "Buy real estate leads: buyer leads for Miami, California, Dubai and the UK, and the Dubai property owner database. Verified Excel files in 10 minutes.",
   path: "/products",
   keywords: [
+    "real estate leads",
     "buy real estate leads",
+    "best real estate leads",
     "real estate buyer leads",
     "purchase real estate leads",
     "property owner database",

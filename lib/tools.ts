@@ -39,9 +39,11 @@ export const TOOLS: readonly Tool[] = [
     seo: {
       title: "Real Estate Commission Calculator 2026 | Seller Net Sheet",
       description:
-        "Free real estate commission calculator: see what the listing and buyer's agents are paid on any sale price, the total commission and the seller's net proceeds.",
+        "Real estate agent commission calculator: what the listing and buyer's agents are paid on any sale price, the total commission and the seller's net proceeds.",
       keywords: [
         "real estate commission calculator",
+        "real estate agent commission calculator",
+        "real estate broker commission calculator",
         "realtor commission calculator",
         "how much do realtors make per house",
         "commission on a $500,000 house",
