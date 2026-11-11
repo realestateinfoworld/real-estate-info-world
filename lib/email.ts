@@ -167,19 +167,88 @@ function emailButton(href: string, label: string): string {
   return `<p style="margin:0 0 24px"><a href="${href}" style="display:inline-block;background:#059669;color:#ffffff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px 28px;border-radius:999px">${label}</a></p>`;
 }
 
+/** How long after a sample request the one follow-up email goes out. */
+export const SAMPLE_FOLLOW_UP_HOURS = 48;
+
+/**
+ * One follow-up, scheduled with Resend at request time so no database or cron
+ * is needed: checks the sample arrived and links to the full dataset. Like
+ * the other customer emails it carries no visitor-supplied text.
+ */
+export async function scheduleSampleFollowUp({
+  to,
+  product,
+}: {
+  to: string;
+  product: Product;
+}): Promise<boolean> {
+  const scheduledAt = new Date(Date.now() + SAMPLE_FOLLOW_UP_HOURS * 60 * 60 * 1000).toISOString();
+  return send({ to, replyTo: CONTACT.email, scheduledAt, ...sampleFollowUpEmail(product) });
+}
+
+/** Subject, text and HTML of the sample follow-up (pure, for testing). */
+export function sampleFollowUpEmail(product: Product): {
+  subject: string;
+  text: string;
+  html: string;
+} {
+  // Tagged so GA shows which orders the follow-up brought back.
+  const productUrl = `https://realestate-info.world/products/${product.slug}?utm_source=email&utm_medium=followup&utm_campaign=free_sample#buy`;
+  const whatsappUrl = sampleWhatsappUrl(product);
+  const price = `$${product.price.toLocaleString()} USD`;
+  const size = `${product.stats[0].value} ${product.stats[0].label.toLowerCase()}`;
+
+  const text = [
+    "Hi,",
+    "",
+    `A couple of days ago you asked for a free sample of the ${product.name}.`,
+    "",
+    `If it hasn't reached you, reply to this email or message us on WhatsApp and we'll send it again: ${whatsappUrl}`,
+    "",
+    `If the data looks right, the full file has ${size} for ${price} one-time. Pay by card or USDT; it's delivered within 10 minutes of payment confirmation and covered by a 7-day quality guarantee.`,
+    "",
+    `Get the full ${product.shortName}: ${productUrl}`,
+    "",
+    "This is the only follow-up we'll send about this request. If you've already ordered, please ignore it.",
+    "",
+    "Real Estate Info World",
+    "https://realestate-info.world",
+  ].join("\n");
+
+  const html = emailShell(`
+          <p style="margin:0 0 16px;font-size:16px">Hi,</p>
+          <p style="margin:0 0 16px;font-size:16px;line-height:1.5">A couple of days ago you asked for a free sample of the <strong>${escapeHtml(product.name)}</strong>.</p>
+          <p style="margin:0 0 16px;font-size:16px;line-height:1.5">If it hasn't reached you, reply to this email or <a href="${whatsappUrl}" style="color:#047857">message us on WhatsApp</a> and we'll send it again.</p>
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.5">If the data looks right, the full file has <strong>${escapeHtml(size)}</strong> for <strong>${escapeHtml(price)}</strong> one-time. Pay by card or USDT; it's delivered within 10 minutes of payment confirmation and covered by a 7-day quality guarantee.</p>
+          ${emailButton(productUrl, `Get the full ${escapeHtml(product.shortName)}`)}
+          <p style="margin:0;font-size:14px;color:#475467">This is the only follow-up we'll send about this request. If you've already ordered, please ignore it.</p>`);
+
+  return { subject: `Did your ${product.shortName} sample arrive?`, text, html };
+}
+
 async function send({
   to,
   subject,
   text,
   html,
   replyTo,
-}: Notification & { to: string; html?: string }): Promise<boolean> {
+  scheduledAt,
+}: Notification & { to: string; html?: string; scheduledAt?: string }): Promise<boolean> {
   if (!resend) {
     console.error(`[EMAIL] RESEND_API_KEY is not set; email to ${to} not sent:\n` + text);
     return false;
   }
 
-  const { error } = await resend.emails.send({ from: FROM, to, subject, text, html, replyTo });
+  const { error } = await resend.emails.send({
+    from: FROM,
+    to,
+    subject,
+    text,
+    html,
+    replyTo,
+    // ISO time for a delayed send; omitted for an immediate one.
+    ...(scheduledAt && { scheduledAt }),
+  });
 
   if (error) {
     console.error(`[EMAIL] Resend failed sending to ${to}:`, error, "\n" + text);
