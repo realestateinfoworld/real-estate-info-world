@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 import { CONTACT, type Product } from "@/lib/constants";
-import { purchaseWhatsappUrl } from "@/lib/whatsapp";
+import { purchaseWhatsappUrl, sampleWhatsappUrl } from "@/lib/whatsapp";
 
 const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
@@ -70,7 +70,7 @@ export function leadConfirmationEmail(
     "",
     `Thanks for your request for the ${product.name} (${price}, one-time).`,
     "",
-    "Next step: message us on WhatsApp and we'll send your secure payment link. Your Excel file is delivered within 10 minutes of payment confirmation.",
+    "Next step: message us on WhatsApp and we'll send your secure payment link (card or USDT). Your Excel file is delivered within 10 minutes of payment confirmation.",
     "",
     `Message us on WhatsApp: ${whatsappUrl}`,
     "",
@@ -82,27 +82,89 @@ export function leadConfirmationEmail(
     "https://realestate-info.world",
   ].join("\n");
 
-  const html = `<!doctype html>
+  const html = emailShell(`
+          <p style="margin:0 0 16px;font-size:16px">${escapeHtml(greeting)}</p>
+          <p style="margin:0 0 16px;font-size:16px;line-height:1.5">Thanks for your request for the <strong>${escapeHtml(product.name)}</strong> (${escapeHtml(price)}, one-time).</p>
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.5">Next step: message us on WhatsApp and we'll send your secure payment link (card or USDT). Your Excel file is delivered within <strong>10 minutes</strong> of payment confirmation.</p>
+          ${emailButton(whatsappUrl, "Get my payment link on WhatsApp")}
+          <p style="margin:0 0 8px;font-size:14px;color:#475467">Every purchase is covered by our 7-day quality guarantee.</p>
+          <p style="margin:0;font-size:14px;color:#475467">Questions? Just reply to this email.</p>`);
+
+  return { subject: `Your ${product.shortName} request: next step`, text, html };
+}
+
+/**
+ * Confirmation to someone who asked for a free sample: what they asked for,
+ * when to expect it and a WhatsApp button to get it faster. Like the buyer
+ * confirmation it carries no visitor-supplied text at all.
+ */
+export async function sendSampleConfirmation({
+  to,
+  product,
+}: {
+  to: string;
+  product: Product;
+}): Promise<boolean> {
+  return send({ to, replyTo: CONTACT.email, ...sampleConfirmationEmail(product) });
+}
+
+/** Subject, text and HTML of the sample confirmation (pure, for testing). */
+export function sampleConfirmationEmail(product: Product): {
+  subject: string;
+  text: string;
+  html: string;
+} {
+  const whatsappUrl = sampleWhatsappUrl(product);
+  const productUrl = `https://realestate-info.world/products/${product.slug}`;
+  const price = `$${product.price.toLocaleString()} USD`;
+
+  const text = [
+    "Hi,",
+    "",
+    `We received your request for a free sample of the ${product.name}.`,
+    "",
+    "We'll send the sample to this email address, usually within a few hours. It contains real records from the current file, in the same Excel columns as the full dataset.",
+    "",
+    `Want it faster? Message us on WhatsApp: ${whatsappUrl}`,
+    "",
+    `Full dataset: ${productUrl} (${price} one-time, pay by card or USDT, 7-day quality guarantee).`,
+    "",
+    "Questions? Just reply to this email.",
+    "",
+    "Real Estate Info World",
+    "https://realestate-info.world",
+  ].join("\n");
+
+  const html = emailShell(`
+          <p style="margin:0 0 16px;font-size:16px">Hi,</p>
+          <p style="margin:0 0 16px;font-size:16px;line-height:1.5">We received your request for a <strong>free sample</strong> of the <strong>${escapeHtml(product.name)}</strong>.</p>
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.5">We'll send the sample to this email address, usually within a few hours. It contains real records from the current file, in the same Excel columns as the full dataset.</p>
+          ${emailButton(whatsappUrl, "Get my sample faster on WhatsApp")}
+          <p style="margin:0 0 8px;font-size:14px;color:#475467">Full dataset: <a href="${productUrl}" style="color:#047857">${escapeHtml(product.name)}</a>, ${escapeHtml(price)} one-time. Pay by card or USDT. 7-day quality guarantee.</p>
+          <p style="margin:0;font-size:14px;color:#475467">Questions? Just reply to this email.</p>`);
+
+  return { subject: `Your free ${product.shortName} sample is on its way`, text, html };
+}
+
+/** Branded wrapper shared by every customer-facing email. */
+function emailShell(inner: string): string {
+  return `<!doctype html>
 <html><body style="margin:0;background:#f5f7fa;font-family:Arial,Helvetica,sans-serif;color:#0b1424">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f5f7fa;padding:24px 12px">
     <tr><td align="center">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden">
         <tr><td style="background:#0a1628;padding:20px 28px;color:#ffffff;font-size:14px;letter-spacing:3px;font-weight:bold">REAL ESTATE INFO WORLD</td></tr>
-        <tr><td style="padding:28px">
-          <p style="margin:0 0 16px;font-size:16px">${escapeHtml(greeting)}</p>
-          <p style="margin:0 0 16px;font-size:16px;line-height:1.5">Thanks for your request for the <strong>${escapeHtml(product.name)}</strong> (${escapeHtml(price)}, one-time).</p>
-          <p style="margin:0 0 24px;font-size:16px;line-height:1.5">Next step: message us on WhatsApp and we'll send your secure payment link. Your Excel file is delivered within <strong>10 minutes</strong> of payment confirmation.</p>
-          <p style="margin:0 0 24px"><a href="${whatsappUrl}" style="display:inline-block;background:#059669;color:#ffffff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px 28px;border-radius:999px">Get my payment link on WhatsApp</a></p>
-          <p style="margin:0 0 8px;font-size:14px;color:#475467">Every purchase is covered by our 7-day quality guarantee.</p>
-          <p style="margin:0;font-size:14px;color:#475467">Questions? Just reply to this email.</p>
+        <tr><td style="padding:28px">${inner}
         </td></tr>
         <tr><td style="padding:16px 28px;border-top:1px solid #e4e9f0;font-size:12px;color:#667085">Real Estate Info World · <a href="https://realestate-info.world" style="color:#047857">realestate-info.world</a></td></tr>
       </table>
     </td></tr>
   </table>
 </body></html>`;
+}
 
-  return { subject: `Your ${product.shortName} request: next step`, text, html };
+function emailButton(href: string, label: string): string {
+  return `<p style="margin:0 0 24px"><a href="${href}" style="display:inline-block;background:#059669;color:#ffffff;text-decoration:none;font-weight:bold;font-size:16px;padding:14px 28px;border-radius:999px">${label}</a></p>`;
 }
 
 async function send({

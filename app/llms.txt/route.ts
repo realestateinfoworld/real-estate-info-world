@@ -54,6 +54,7 @@ ${guides}
 
 - [Home](${SITE_URL}/)
 - [All datasets](${SITE_URL}/products)
+- [Free sample](${SITE_URL}/free-sample): request a free sample of any dataset before buying
 - [All guides](${SITE_URL}/guides)
 - [About](${SITE_URL}/about)
 - [Contact](${SITE_URL}/contact)

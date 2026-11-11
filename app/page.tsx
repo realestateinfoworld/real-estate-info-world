@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, Database, FileSpreadsheet, MessageCircle, Quote, RotateCcw, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Database, FileSpreadsheet, MessageCircle, Quote, RotateCcw, ShieldCheck, Zap } from "lucide-react";
 import { Hero } from "@/components/Hero";
 import { AreasMarquee } from "@/components/AreasMarquee";
 import { ProductGrid } from "@/components/ProductGrid";
-import { SamplePreview } from "@/components/SamplePreview";
+import { SheetPreview } from "@/components/SheetPreview";
 import { SectionHeading } from "@/components/SectionHeading";
 import { HowItWorks } from "@/components/HowItWorks";
 import { FaqList } from "@/components/FaqList";
@@ -12,7 +12,6 @@ import { CtaBand } from "@/components/CtaBand";
 import { Reveal } from "@/components/Reveal";
 import { buttonVariants } from "@/components/ui/button";
 import {
-  HOMEPAGE_STATS,
   LATEST_RELEASE,
   PRODUCTS,
   TESTIMONIALS,
@@ -25,7 +24,7 @@ import { faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
 export const metadata: Metadata = pageMetadata({
   title: "Dubai Property Owner Database & Miami, California Buyer Leads",
   description:
-    "Verified Dubai property owner database (1M+ owners) and high-intent Miami, California, Dubai & UK buyer leads. CRM-ready Excel, delivered in 10 minutes.",
+    "Verified Dubai property owner database (1M+ owners) and Miami, California, Dubai & UK buyer leads. Free sample, CRM-ready Excel, delivered in 10 minutes.",
   path: "/",
 });
 
@@ -36,9 +35,14 @@ const HOME_FAQS = [
       "The Dubai Property Owner Database (1,000,000+ verified owners with direct mobile numbers) plus high-intent buyer leads for Dubai, Miami, California and the UK. Every dataset is refreshed monthly and delivered as a CRM-ready Excel file.",
   },
   {
+    question: "Can I see the data before I buy?",
+    answer:
+      "Yes. Request a free sample of any dataset and we send you real records from the current file, in the same Excel columns as the full dataset, by email or WhatsApp. No payment or card is needed.",
+  },
+  {
     question: "How do I pay?",
     answer:
-      "Enter your name and email on the dataset page and we send you a secure payment link on WhatsApp. Once payment is confirmed, your file is on its way.",
+      "By credit or debit card, or in USDT. Enter your name and email on the dataset page and we send you a secure payment link on WhatsApp. Once payment is confirmed, your file is on its way.",
   },
   {
     question: "How fast is delivery?",
@@ -59,25 +63,41 @@ const HOME_FAQS = [
 
 export default function Home() {
   const marketGroups = getProductsByMarket();
-  const flagship = PRODUCTS[0];
 
   return (
     <>
       <Hero />
-      <AreasMarquee />
 
-      {/* Stats — the hero strip covers desktop */}
-      <section className="container grid grid-cols-2 gap-px overflow-hidden py-12 lg:hidden">
-        {HOMEPAGE_STATS.map((stat) => (
-          <div key={stat.label} className="py-4">
-            <div className="stat-number font-display text-4xl text-ivory">{stat.number}</div>
-            <div className="mt-1 text-xs text-stone">{stat.label}</div>
+      {/* THE FILE */}
+      <section id="sample" className="section scroll-mt-20 border-b border-line bg-ink-2">
+        <div className="container">
+          <SectionHeading
+            eyebrow="See exactly what you get"
+            title={
+              <>
+                This is the file. <em className="text-brand-gradient">Real columns, real format.</em>
+              </>
+            }
+            description="Every dataset is one clean Excel file. Switch tabs to see each one. Names are masked here; your free sample shows real records."
+            align="center"
+            className="mb-12"
+          />
+          <Reveal className="mx-auto max-w-5xl">
+            <SheetPreview products={PRODUCTS} autoCycle />
+          </Reveal>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link href="/free-sample" className={buttonVariants({ size: "lg" })}>
+              Get a free sample <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link href="/products" className={buttonVariants({ variant: "secondary", size: "lg" })}>
+              See datasets &amp; prices
+            </Link>
           </div>
-        ))}
+        </div>
       </section>
 
       {/* DATASETS */}
-      <section className="section pt-8 lg:pt-28">
+      <section className="section">
         <div className="container">
           <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <SectionHeading
@@ -97,8 +117,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* HOW IT WORKS */}
+      <section className="section border-y border-line bg-ink-2">
+        <div className="container">
+          <SectionHeading
+            eyebrow="How it works"
+            title="From free sample to outreach in three steps."
+            align="center"
+            className="mb-14"
+          />
+          <HowItWorks />
+        </div>
+      </section>
+
       {/* WHY US — bento */}
-      <section className="section relative border-y border-line bg-ink-2">
+      <section className="section relative">
         <div className="brand-glow pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container relative">
           <SectionHeading
@@ -161,35 +194,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SAMPLE */}
-      <section id="sample" className="section scroll-mt-20">
-        <div className="container grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr]">
-          <Reveal className="min-w-0">
-            <SectionHeading
-              eyebrow="See exactly what you get"
-              title="Real columns. Real format. No surprises."
-              description="This is the actual layout of the file you receive — the same columns, ready to import. Sensitive fields are masked in the preview only."
-            />
-            <ul className="mt-8 space-y-3 text-[15px] text-sand">
-              {flagship.features.slice(0, 4).map((feature) => (
-                <li key={feature} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand/15">
-                    <Check className="h-3 w-3 text-brand" strokeWidth={3} />
-                  </span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <Link href={`/products/${flagship.slug}`} className={buttonVariants({ className: "mt-10" })}>
-              Get the {flagship.shortName} <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Reveal>
-          <Reveal delay={0.1} className="min-w-0">
-            <SamplePreview product={flagship} />
-          </Reveal>
-        </div>
-      </section>
-
       {/* GUARANTEE */}
       <section className="container pb-20 md:pb-28">
         <Reveal>
@@ -211,8 +215,10 @@ export default function Home() {
         </Reveal>
       </section>
 
+      <AreasMarquee />
+
       {/* COVERAGE */}
-      <section className="section border-t border-line">
+      <section className="section">
         <div className="container">
           <SectionHeading
             eyebrow="Coverage"
@@ -250,19 +256,6 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* HOW IT WORKS */}
-      <section className="section border-t border-line bg-ink-2">
-        <div className="container">
-          <SectionHeading
-            eyebrow="How it works"
-            title="From order to outreach in three steps."
-            align="center"
-            className="mb-14"
-          />
-          <HowItWorks />
         </div>
       </section>
 

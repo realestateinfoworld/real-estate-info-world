@@ -11,7 +11,7 @@ interface PageHeaderProps {
 /** Top-of-page header for inner pages; clears the fixed navbar. */
 export function PageHeader({ eyebrow, title, description, children, className }: PageHeaderProps) {
   return (
-    <section className={cn("theme-dark relative overflow-hidden", className)}>
+    <section className={cn("theme-tint relative overflow-hidden border-b border-line", className)}>
       <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="brand-glow pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="container relative pt-36 pb-16 md:pt-44 md:pb-20">

@@ -2,8 +2,9 @@
 
 /* ================================================================== */
 /* THEME                                                               */
-/* Crisp white pages, deep navy bands (.theme-dark) and an emerald     */
-/* brand accent that keeps every call to action unmistakable.          */
+/* Light throughout: white pages, soft mint bands (.theme-tint) behind  */
+/* the hero and page headers, navy text and an emerald accent that     */
+/* keeps every call to action unmistakable.                            */
 /* ================================================================== */
 
 @theme inline {
@@ -15,7 +16,7 @@
 
 @theme {
   /* Token names are roles: "ink" is the page background, "ivory" the main text,
-     "sand" body copy and "stone" muted copy. .theme-dark redefines them. */
+     "sand" body copy and "stone" muted copy. */
   --color-ink: #ffffff;
   --color-ink-2: #f5f7fa;
   --color-surface: #ffffff;
@@ -52,24 +53,10 @@
   }
 }
 
-/* Deep navy band: hero, page headers, navbar, CTA and footer. */
-.theme-dark {
-  --color-ink: #0a1628;
-  --color-ink-2: #0e1d34;
-  --color-surface: #12223b;
-  --color-surface-2: #182b48;
-  --color-line: rgb(255 255 255 / 0.09);
-  --color-line-strong: rgb(255 255 255 / 0.17);
-
-  --color-ivory: #ffffff;
-  --color-sand: #c5cfdd;
-  --color-stone: #8c9ab0;
-
-  --color-brand: #34d399;
-  --color-brand-pale: #6ee7b7;
-
-  background-color: var(--color-ink);
-  color: var(--color-ivory);
+/* Soft mint-to-white band behind the hero and page headers: sets those
+   sections apart from the white page without a dark block. */
+.theme-tint {
+  background: linear-gradient(180deg, #ecf8f2 0%, #f6fbf9 55%, #ffffff 100%);
 }
 
 html {
@@ -232,48 +219,72 @@ h1 em, h2 em, h3 em {
   color: var(--color-stone);
 }
 
-/* === SAMPLE DATA TABLE === */
-.sample-table {
-  width: 100%;
-  font-family: var(--font-geist-mono);
-  font-size: 0.8rem;
-  border-collapse: collapse;
-}
-
-.sample-table th {
-  color: var(--color-stone);
-  font-weight: 500;
-  text-align: left;
-  padding: 0.85rem 1.1rem;
-  font-size: 0.66rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  border-bottom: 1px solid var(--color-line);
-  white-space: nowrap;
-}
-
-.sample-table td {
-  padding: 0.85rem 1.1rem;
-  border-bottom: 1px solid var(--color-line);
-  color: var(--color-sand);
-  white-space: nowrap;
-}
-
-.sample-table tbody tr {
-  transition: background-color 0.15s ease;
-}
-
-.sample-table tbody tr:hover {
-  background-color: rgb(16 185 129 / 0.06);
-}
-
-.sample-table tr:last-child td {
-  border-bottom: none;
-}
-
+/* === MASKED PREVIEW CELLS === */
 .blurred-cell {
   filter: blur(5px);
   user-select: none;
+}
+
+/* === SPREADSHEET PREVIEW (components/SheetPreview.tsx) === */
+.sheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-geist-mono);
+  font-size: 0.8rem;
+  color: var(--color-sand);
+}
+
+.sheet-table th,
+.sheet-table td {
+  border-right: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sheet-table tr > :last-child {
+  border-right: none;
+}
+
+/* Row numbers and column letters: the grey gutters of a spreadsheet */
+.sheet-table tr > th:first-child,
+.sheet-table .sheet-letters th {
+  background: var(--color-surface-2);
+  color: var(--color-stone);
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.3rem 0.6rem;
+}
+
+.sheet-table tr > th:first-child {
+  width: 2.25rem;
+}
+
+.sheet-table .sheet-header th:not(:first-child) {
+  background: #e8f5ee;
+  color: #0b5a34;
+  font-family: var(--font-geist-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.sheet-table tbody tr:hover td {
+  background: rgb(16 185 129 / 0.06);
+}
+
+.sheet-table tbody tr:last-child > * {
+  border-bottom: none;
+}
+
+.animate-sheet-in {
+  animation: sheet-in 0.35s ease both;
+}
+
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
 }
 
 /* === FAQ (native details/summary) === */
@@ -335,7 +346,7 @@ h1 em, h2 em, h3 em {
   object-position: 62% 40%;
 }
 
-/* Film grain to keep large navy areas from banding */
+/* Film grain to keep large flat areas from banding */
 .grain::after {
   content: "";
   position: absolute;

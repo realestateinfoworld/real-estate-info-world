@@ -34,11 +34,11 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        // Navy on every page, so the logo and links read the same everywhere.
-        "theme-dark fixed inset-x-0 top-0 z-[999] transition-all duration-300",
+        // Same bar on every page: clear over the tinted headers, white once scrolled.
+        "fixed inset-x-0 top-0 z-[999] transition-all duration-300",
         scrolled || mobileOpen
-          ? "border-b border-line bg-ink/90 shadow-[0_10px_30px_-15px_rgb(0_0_0_/_0.5)] backdrop-blur-xl"
-          : "border-b border-transparent bg-ink"
+          ? "border-b border-line bg-ink/95 shadow-[0_10px_30px_-18px_rgb(10_22_40_/_0.25)] backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent"
       )}
     >
       <nav className="container flex h-18 md:h-20 items-center justify-between">
@@ -64,8 +64,8 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:block">
-          <Link href="/products" className={buttonVariants({ size: "sm", className: "h-10 px-5" })}>
-            Get the data <ArrowUpRight className="h-4 w-4" />
+          <Link href="/free-sample" className={buttonVariants({ size: "sm", className: "h-10 px-5" })}>
+            Free sample <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
 
@@ -96,11 +96,11 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              href="/products"
+              href="/free-sample"
               onClick={() => setMobileOpen(false)}
               className={buttonVariants({ size: "lg", className: "mt-8 w-full" })}
             >
-              Get the data <ArrowUpRight className="h-4 w-4" />
+              Get a free sample <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
         </div>

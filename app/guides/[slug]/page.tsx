@@ -61,7 +61,7 @@ export default async function GuidePage({ params }: Props) {
 
   return (
     <>
-      <section className="theme-dark relative overflow-hidden">
+      <section className="theme-tint relative overflow-hidden border-b border-line">
         <div className="grid-lines pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="brand-glow pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="container relative pt-32 pb-14 md:pt-40 md:pb-16">
@@ -119,6 +119,12 @@ export default async function GuidePage({ params }: Props) {
               </div>
               <Link href={`/products/${product.slug}`} className={buttonVariants({ className: "mt-6 w-full" })}>
                 Get the {product.shortName} <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                href={`/free-sample?dataset=${product.slug}`}
+                className={buttonVariants({ variant: "secondary", className: "mt-3 w-full" })}
+              >
+                Get a free sample first
               </Link>
             </div>
           </aside>

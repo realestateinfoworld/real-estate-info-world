@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: product.type === "owner" ? 0.95 : 0.9,
     })),
+    { url: `${base}/free-sample`, lastModified, changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/guides`, lastModified, changeFrequency: "weekly", priority: 0.7 },
     ...GUIDES.map((guide) => ({
       url: `${base}/guides/${guide.slug}`,

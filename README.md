@@ -85,6 +85,16 @@ Before any user can reach PayPal checkout they **must** submit a simple lead for
 
 If the email fails to send, an error is shown and the user is **not** redirected to PayPal.
 
+## Free Sample Flow
+
+The lowest-commitment action on the site, offered in the homepage hero, on every product page (`#sample`), on guide pages and at `/free-sample`:
+
+1. Visitor picks a dataset and enters an email (WhatsApp number optional) in `SampleRequestForm`.
+2. `POST /api/sample` emails the team a **"New SAMPLE request"** notification and sends the visitor a confirmation with a WhatsApp shortcut.
+3. The team sends the sample **by hand** (email or WhatsApp). Nothing is downloaded from the site.
+
+If the team notification cannot be sent, the visitor sees an error and is pointed to WhatsApp, since nobody would know to send the sample. The form shares the honeypot and rate limit used by the other forms.
+
 Products:
 - Dubai Property Owner Database ($300)
 - Dubai Property Buyer Leads ($1,200)

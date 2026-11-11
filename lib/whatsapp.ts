@@ -7,3 +7,10 @@ export function purchaseWhatsappUrl(product: Product, name?: string): string {
     `${intro} I would like to purchase the ${product.name} ($${product.price.toLocaleString()}). Please send me the payment link.`
   )}`;
 }
+
+/** wa.me link that opens a chat asking for the free sample of a product. */
+export function sampleWhatsappUrl(product: Product): string {
+  return `https://wa.me/${CONTACT.whatsappRaw}?text=${encodeURIComponent(
+    `Hello, I requested a free sample of the ${product.name}. Please send it here.`
+  )}`;
+}
