@@ -36,6 +36,98 @@ export interface Guide {
 
 export const GUIDES: readonly Guide[] = [
   {
+    slug: "pay-at-closing-real-estate-leads",
+    title: "Pay at Closing Real Estate Leads: What They Really Cost",
+    seo: {
+      title: "Pay at Closing Real Estate Leads: Real Cost in 2026",
+      description:
+        "How pay at closing real estate leads work, what the 25–40% referral fee costs per deal, and when buying a lead list outright costs less. With worked numbers.",
+      keywords: [
+        "pay at closing real estate leads",
+        "best pay at closing real estate leads",
+        "free real estate leads pay at closing",
+        "real estate leads no upfront cost",
+        "pay per closing real estate leads",
+        "referral fee real estate leads",
+      ],
+    },
+    excerpt:
+      "Pay at closing leads cost nothing upfront and a large share of every commission later. Here is how the model works, what it costs per deal, and when a one-time lead list is cheaper.",
+    productSlug: "miami-buyer-leads",
+    published: "2026-11-11",
+    updated: "2026-11-11",
+    readingMinutes: 7,
+    sections: [
+      {
+        heading: "How pay at closing leads work",
+        paragraphs: [
+          "A pay at closing program sends you buyer or seller enquiries for free and takes a referral fee from your commission when the deal closes. If the lead never closes, you pay nothing. The programs are usually run by portals, brokerages and referral networks that generate enquiries through their own websites and ads, then pass them to partner agents in each area.",
+          "The referral fee is commonly between 25% and 40% of your side of the commission, set in a referral agreement you sign before you receive any leads. It is paid broker to broker at closing, so your brokerage has to sign up too.",
+        ],
+      },
+      {
+        heading: "What a pay at closing lead costs per deal",
+        paragraphs: [
+          "\"Free\" describes when you pay, not how much. On a $500,000 sale with a 2.5% commission, your side is $12,500. A 35% referral fee takes $4,375 of it before your brokerage split. Close ten of those deals in a year and the program has cost $43,750.",
+          "Use the [commission split calculator](/tools/real-estate-commission-split-calculator) with your own referral fee to see your take-home on a typical deal, and the [real estate commission calculator](/tools/real-estate-commission-calculator) to work out the commission on any price.",
+        ],
+      },
+      {
+        heading: "What you usually agree to",
+        paragraphs: ["Read the referral agreement closely. Common terms include:"],
+        bullets: [
+          "A fee on any deal with the referred client for a set period, often a year or more, including a second purchase or a sale.",
+          "Response-time rules: answer each lead within minutes, or it goes to the next agent.",
+          "Conversion targets and regular status updates in the provider's app; agents who fall behind get fewer leads.",
+          "Approval of your brokerage, which has to sign and pay the fee.",
+          "Leads that the provider may also send to other partner agents.",
+        ],
+      },
+      {
+        heading: "When pay at closing makes sense",
+        paragraphs: [
+          "It suits new agents with no budget, agents moving into a new area, and teams that want enquiries without upfront risk. Because the leads come from people asking about a home right now, they can close quickly if you answer fast.",
+          "It suits agents less well once they close deals regularly. The fee scales with every deal, so the more you close, the more you pay, and the client relationship stays tied to the program's terms.",
+        ],
+      },
+      {
+        heading: "Pay at closing or buy a lead list?",
+        paragraphs: [
+          "A lead list turns the cost around: you pay once, upfront, and keep the whole commission on every deal it produces. Our [Miami Real Estate Buyer Leads](/products/miami-buyer-leads) cost $1,500 for the file. With a $12,500 commission, one closed deal pays for the list and every further deal is yours in full. Under a 35% referral fee, the same single deal would cost $4,375.",
+          "The trade-off is that you start the conversation yourself, so a list rewards agents who call quickly and follow up. Many agents run both: pay at closing for live enquiries, and a list they own to keep the pipeline full. The [lead ROI calculator](/tools/real-estate-lead-roi-calculator) works out the break-even for any list.",
+        ],
+      },
+      {
+        heading: "Test before you commit to either",
+        paragraphs: [
+          "Ask a pay at closing program for its fee, how long it applies, and whether leads are exclusive, in writing. Ask a list seller for a sample. We send [free samples](/free-sample) of our buyer leads for [Miami](/products/miami-buyer-leads), [California](/products/california-buyer-leads), [Dubai](/products/buyer-leads) and the [UK](/products/uk-buyer-leads), so you can call real records before you pay. For every other way to fill a pipeline, read [how to get real estate leads](/guides/how-to-get-real-estate-leads).",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are pay at closing real estate leads?",
+        answer:
+          "Leads you receive for free, in exchange for a referral fee paid from your commission if the deal closes. If the lead does not close, you pay nothing.",
+      },
+      {
+        question: "How much is the referral fee on pay at closing leads?",
+        answer:
+          "Commonly 25% to 40% of your side of the commission, set in the referral agreement. On a $12,500 commission, 35% is $4,375 per deal.",
+      },
+      {
+        question: "Are pay at closing leads really free?",
+        answer:
+          "They cost nothing upfront, but every closed deal pays a share of its commission, so they are often the most expensive source for an agent who closes many deals.",
+      },
+      {
+        question: "Is it cheaper to buy a lead list than to pay at closing?",
+        answer:
+          "Once you close more than one or two deals from it, usually yes: a list is paid for once and you keep the whole commission. A referral fee is paid on every deal.",
+      },
+    ],
+  },
+  {
     slug: "how-to-get-real-estate-leads",
     title: "How to Get Real Estate Leads",
     seo: {
