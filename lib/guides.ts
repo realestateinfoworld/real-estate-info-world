@@ -36,6 +36,130 @@ export interface Guide {
 
 export const GUIDES: readonly Guide[] = [
   {
+    slug: "how-to-get-real-estate-leads",
+    title: "How to Get Real Estate Leads",
+    seo: {
+      title: "How to Get Real Estate Leads in 2026: 9 Ways That Work",
+      description:
+        "How to get real estate leads in 2026: your sphere, open houses, farming, portals, ads, content, referrals and buying lead lists, with what each one costs.",
+      keywords: [
+        "how to get real estate leads",
+        "how to get leads in real estate",
+        "real estate lead generation",
+        "how to get buyer leads",
+        "how to get listings as a new agent",
+        "real estate leads for new agents",
+      ],
+    },
+    excerpt:
+      "Nine ways agents get real estate leads, from free ones such as your sphere and open houses to paid ones such as portals, ads and lead lists, and how to choose between them.",
+    productSlug: "miami-buyer-leads",
+    published: "2026-11-11",
+    updated: "2026-11-11",
+    readingMinutes: 9,
+    sections: [
+      {
+        heading: "Pick channels by what you have more of: time or money",
+        paragraphs: [
+          "Every lead source trades time against money. Your sphere, open houses and door-knocking cost almost nothing but hours. Portals, ads and lead lists cost money but put more conversations in front of you each week. New agents usually have more time than budget, so they start with the free channels; busy teams buy volume so their hours go into appointments.",
+          "Whatever you choose, judge it on cost per closed deal, not cost per lead. The [lead ROI calculator](/tools/real-estate-lead-roi-calculator) works that out from your own numbers.",
+        ],
+      },
+      {
+        heading: "1. Your sphere of influence",
+        paragraphs: [
+          "Friends, family, past colleagues and past clients are the cheapest leads you will ever have, because they already trust you. Put every one of them in your CRM, tell them you sell real estate, and stay in touch with something useful: a local market update each month, a call on the anniversary of a purchase.",
+          "Ask directly for referrals. Most people are happy to pass on a name; they just need to be reminded that you want it.",
+        ],
+      },
+      {
+        heading: "2. Open houses",
+        paragraphs: [
+          "An open house is a room full of people who are thinking about moving. Many visitors are not ready for that home, but they will buy or sell something within a year. Ask every visitor to sign in, follow up within 24 hours, and offer something they can't get online, such as a list of homes coming to market next month.",
+          "If you have no listings of your own, offer to host open houses for busy agents in your office.",
+        ],
+      },
+      {
+        heading: "3. Geographic farming",
+        paragraphs: [
+          "Choose one neighborhood or building and become the agent everyone there knows: send a market report every month, knock on doors, sponsor a local event. Farming is slow, often six months to a year before it pays, but it builds a steady supply of listings that portals cannot take away.",
+          "An owner list makes farming far quicker. In Dubai, our [Property Owner Database](/products/owner-database) gives you every owner in a community with a direct mobile number; see [how to find property owners in Dubai](/guides/how-to-find-property-owners-in-dubai).",
+        ],
+      },
+      {
+        heading: "4. Expired and for-sale-by-owner listings",
+        paragraphs: [
+          "Owners whose listing expired, and owners trying to sell without an agent, have already shown they want to sell. They are also called by many agents, so the agent with the clearest plan wins: explain in one sentence why the home didn't sell and what you would change.",
+          "Check the do-not-call rules before you dial. Our [cold calling scripts](/guides/real-estate-cold-calling-scripts) cover what to say on the first call.",
+        ],
+      },
+      {
+        heading: "5. Property portals",
+        paragraphs: [
+          "Zillow and Realtor.com in the US, Rightmove and Zoopla in the UK, and Property Finder and Bayut in the UAE sell placement in front of people already searching. It is the fastest way to get live buyer enquiries, but you pay every month, leads are often shared with other agents, and they convert only if you answer within minutes.",
+        ],
+      },
+      {
+        heading: "6. Paid ads on Google, Facebook and Instagram",
+        paragraphs: [
+          "Ads let you choose the area, the price band and the audience, and the leads are exclusive to you. Google captures people searching right now; Facebook and Instagram reach people before they search. Start with a small daily budget, send traffic to one landing page with one offer, and track cost per appointment before you scale.",
+        ],
+      },
+      {
+        heading: "7. Content, SEO and social media",
+        paragraphs: [
+          "Neighborhood guides, market updates, short videos of homes and honest answers to common questions bring in leads for years after you publish them. It is the slowest channel to start, and the cheapest once it works. Pick one platform you will actually post on every week, and a Google Business Profile so locals can find and review you.",
+        ],
+      },
+      {
+        heading: "8. Referrals from other professionals",
+        paragraphs: [
+          "Mortgage brokers, divorce and probate lawyers, financial planners, builders and relocation managers all meet people before they call an agent. Offer to send them business too, and agree how referrals will work, in line with the rules on referral fees in your state or country.",
+        ],
+      },
+      {
+        heading: "9. Buy a lead list",
+        paragraphs: [
+          "A lead list gives you hundreds or thousands of contacts on day one, for a one-time price instead of a monthly fee, and every record is yours to work as long as the data holds up. You start the conversation yourself, so it rewards teams that call quickly and follow up consistently.",
+          "We sell buyer leads for [Miami](/products/miami-buyer-leads), [California](/products/california-buyer-leads), [Dubai](/products/buyer-leads) and the [UK](/products/uk-buyer-leads), each with the buyer's target area, budget and timeframe, plus the [Dubai Property Owner Database](/products/owner-database) for listings. [Ask for a free sample](/free-sample) and call those records before you pay; our guides to [where to buy real estate leads](/guides/where-to-buy-real-estate-leads) and [how much real estate leads cost](/guides/how-much-do-real-estate-leads-cost) cover what to check with any provider.",
+        ],
+      },
+      {
+        heading: "Follow-up is where leads become deals",
+        paragraphs: ["Most leads are lost after the first contact, not before it. Whatever the source:"],
+        bullets: [
+          "Reply within five minutes where you can. The first agent to answer usually gets the appointment.",
+          "Log every lead and every conversation in one CRM, so nobody is called twice or forgotten.",
+          "Plan for several touches across phone, text, WhatsApp and email, spread over weeks, not one call.",
+          "Measure deals per source each quarter, then move budget and hours to the sources that close.",
+          "Contact people lawfully: screen against do-not-call registers, honour opt-outs and follow the calling-hour rules where you work.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do new real estate agents get leads?",
+        answer:
+          "Most start with free channels that cost time rather than money: telling their sphere of influence, hosting open houses for other agents, farming one neighborhood and calling expired listings. Paid portals, ads and lead lists come in once there is a budget and a follow-up routine.",
+      },
+      {
+        question: "What is the best way to get real estate leads?",
+        answer:
+          "There is no single best source. Referrals and your sphere convert best but are limited in number; portals and ads give live enquiries for a monthly cost; lead lists give the most contacts for a one-time price. Track cost per closed deal and keep the sources that win.",
+      },
+      {
+        question: "How can I get real estate leads for free?",
+        answer:
+          "Your sphere of influence, past clients, open houses, door-knocking in a farm area, social media and a Google Business Profile all cost time rather than money.",
+      },
+      {
+        question: "Is it worth buying real estate leads?",
+        answer:
+          "It can be, if one commission is worth many times the price and you have the time to call and follow up. Test a free sample first and work out your break-even with a lead ROI calculator.",
+      },
+    ],
+  },
+  {
     slug: "how-to-find-property-owners-in-dubai",
     title: "How to Find Property Owners in Dubai",
     seo: {
