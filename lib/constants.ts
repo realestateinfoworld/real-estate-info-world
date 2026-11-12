@@ -313,6 +313,21 @@ export const PRODUCTS: readonly Product[] = [
         answer:
           "The database is refreshed every month and cross-checked against Dubai Land Department data. The current release date is shown on this page.",
       },
+      {
+        question: "Is there a Dubai real estate database with owner phone numbers?",
+        answer:
+          "Yes. The Dubai Land Department does not publish owners' contact details, but this database lists 1,000,000+ Dubai property owners with a direct mobile number, the community and the property type on every record.",
+      },
+      {
+        question: "Can I get the owners of just one Dubai community?",
+        answer:
+          "The file covers all 200+ communities for one price of $300. Filter the Community column in Excel or your CRM to work just Dubai Marina, JVC, Dubai Hills Estate or any other area.",
+      },
+      {
+        question: "Can I use the owner data to find off-market property in Dubai?",
+        answer:
+          "Yes. Most owners in the file have not listed their property, so you can reach them before they go to a portal, with a buyer you are holding or a valuation for their community.",
+      },
     ],
   },
   {
