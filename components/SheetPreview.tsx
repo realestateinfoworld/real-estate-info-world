@@ -48,7 +48,7 @@ export function SheetPreview({ products, autoCycle = false, className }: SheetPr
           <FileSpreadsheet className="h-4 w-4 flex-shrink-0" />
           <span className="truncate font-mono text-xs">{fileName(product)}</span>
         </div>
-        <span className="flex-shrink-0 rounded bg-white/15 px-2 py-0.5 text-[10px] font-semibold tracking-wide">
+        <span className="flex-shrink-0 rounded bg-black/25 px-2 py-0.5 text-[10px] font-semibold tracking-wide">
           {product.version.toUpperCase()}
         </span>
       </div>

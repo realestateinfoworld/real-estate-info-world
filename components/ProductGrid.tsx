@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { ProductCard } from "@/components/ProductCard";
 import { PRODUCTS, getProductsByMarket, type MarketKey } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -39,22 +38,15 @@ export function ProductGrid() {
         ))}
       </div>
 
-      <motion.div layout className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        <AnimatePresence mode="popLayout">
-          {products.map((product) => (
-            <motion.div
-              key={product.slug}
-              layout
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ProductCard product={product} featured={product.slug === PRODUCTS[0].slug} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+      {/* Keyed by the filter so the cards fade in again when it changes: a CSS
+          animation, so the grid needs no animation library. */}
+      <div key={market} className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {products.map((product) => (
+          <div key={product.slug} className="animate-card-in">
+            <ProductCard product={product} featured={product.slug === PRODUCTS[0].slug} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

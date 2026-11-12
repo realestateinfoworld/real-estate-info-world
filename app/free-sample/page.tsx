@@ -98,7 +98,7 @@ export default function FreeSamplePage() {
 
           <div className="relative min-w-0">
             <div className="brand-frame relative rounded-3xl bg-surface p-7 shadow-[0_40px_90px_-40px_rgb(10_22_40_/_0.35)] md:p-8">
-              <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand">
+              <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand-pale">
                 FREE · NO CARD NEEDED
               </div>
               <h2 className="mt-4 font-display text-2xl leading-tight text-ivory">Request your free sample</h2>

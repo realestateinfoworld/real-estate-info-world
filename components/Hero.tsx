@@ -86,7 +86,7 @@ export function Hero() {
         <div id="hero-sample" className="relative min-w-0 scroll-mt-28">
           <div className="absolute -inset-6 rounded-[2.5rem] bg-brand-deep/15 blur-3xl" aria-hidden="true" />
           <div className="brand-frame relative rounded-3xl bg-surface p-7 shadow-[0_40px_90px_-40px_rgb(10_22_40_/_0.35)] md:p-8">
-            <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand">
+            <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand-pale">
               FREE · NO CARD NEEDED
             </div>
             <h2 className="mt-4 font-display text-2xl leading-tight text-ivory">Get a free sample</h2>

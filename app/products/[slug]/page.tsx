@@ -166,7 +166,7 @@ export default async function ProductPage({ params }: Props) {
                 className="mt-6 grid scroll-mt-28 gap-8 rounded-3xl border border-brand/25 bg-brand/[0.05] p-7 md:grid-cols-2 md:p-8"
               >
                 <div>
-                  <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand">
+                  <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand-pale">
                     FREE · NO CARD NEEDED
                   </div>
                   <h3 className="mt-4 font-display text-2xl leading-tight text-ivory">
