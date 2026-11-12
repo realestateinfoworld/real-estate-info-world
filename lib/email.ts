@@ -123,9 +123,9 @@ export function sampleConfirmationEmail(product: Product): {
     "",
     `We received your request for a free sample of the ${product.name}.`,
     "",
-    "We'll send the sample to this email address, usually within a few hours. It contains real records from the current file, in the same Excel columns as the full dataset.",
+    "We'll send the sample to your WhatsApp number, usually within a few hours. It contains real records from the current file, in the same Excel columns as the full dataset.",
     "",
-    `Want it faster? Message us on WhatsApp: ${whatsappUrl}`,
+    `Want it right now? Message us on WhatsApp: ${whatsappUrl}`,
     "",
     `Full dataset: ${productUrl} (${price} one-time, pay by card or USDT, 7-day quality guarantee).`,
     "",
@@ -138,8 +138,8 @@ export function sampleConfirmationEmail(product: Product): {
   const html = emailShell(`
           <p style="margin:0 0 16px;font-size:16px">Hi,</p>
           <p style="margin:0 0 16px;font-size:16px;line-height:1.5">We received your request for a <strong>free sample</strong> of the <strong>${escapeHtml(product.name)}</strong>.</p>
-          <p style="margin:0 0 24px;font-size:16px;line-height:1.5">We'll send the sample to this email address, usually within a few hours. It contains real records from the current file, in the same Excel columns as the full dataset.</p>
-          ${emailButton(whatsappUrl, "Get my sample faster on WhatsApp")}
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.5">We'll send the sample to your WhatsApp number, usually within a few hours. It contains real records from the current file, in the same Excel columns as the full dataset.</p>
+          ${emailButton(whatsappUrl, "Message us on WhatsApp")}
           <p style="margin:0 0 8px;font-size:14px;color:#475467">Full dataset: <a href="${productUrl}" style="color:#047857">${escapeHtml(product.name)}</a>, ${escapeHtml(price)} one-time. Pay by card or USDT. 7-day quality guarantee.</p>
           <p style="margin:0;font-size:14px;color:#475467">Questions? Just reply to this email.</p>`);
 
@@ -203,7 +203,7 @@ export function sampleFollowUpEmail(product: Product): {
     "",
     `A couple of days ago you asked for a free sample of the ${product.name}.`,
     "",
-    `If it hasn't reached you, reply to this email or message us on WhatsApp and we'll send it again: ${whatsappUrl}`,
+    `If it hasn't reached you on WhatsApp, message us there and we'll send it again: ${whatsappUrl}`,
     "",
     `If the data looks right, the full file has ${size} for ${price} one-time. Pay by card or USDT; it's delivered within 10 minutes of payment confirmation and covered by a 7-day quality guarantee.`,
     "",
@@ -218,7 +218,7 @@ export function sampleFollowUpEmail(product: Product): {
   const html = emailShell(`
           <p style="margin:0 0 16px;font-size:16px">Hi,</p>
           <p style="margin:0 0 16px;font-size:16px;line-height:1.5">A couple of days ago you asked for a free sample of the <strong>${escapeHtml(product.name)}</strong>.</p>
-          <p style="margin:0 0 16px;font-size:16px;line-height:1.5">If it hasn't reached you, reply to this email or <a href="${whatsappUrl}" style="color:#047857">message us on WhatsApp</a> and we'll send it again.</p>
+          <p style="margin:0 0 16px;font-size:16px;line-height:1.5">If it hasn't reached you on WhatsApp, <a href="${whatsappUrl}" style="color:#047857">message us there</a> and we'll send it again.</p>
           <p style="margin:0 0 24px;font-size:16px;line-height:1.5">If the data looks right, the full file has <strong>${escapeHtml(size)}</strong> for <strong>${escapeHtml(price)}</strong> one-time. Pay by card or USDT; it's delivered within 10 minutes of payment confirmation and covered by a 7-day quality guarantee.</p>
           ${emailButton(productUrl, `Get the full ${escapeHtml(product.shortName)}`)}
           <p style="margin:0;font-size:14px;color:#475467">This is the only follow-up we'll send about this request. If you've already ordered, please ignore it.</p>`);

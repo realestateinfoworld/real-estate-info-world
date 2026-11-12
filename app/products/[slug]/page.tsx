@@ -176,7 +176,7 @@ export default async function ProductPage({ params }: Props) {
                     the same Excel columns as the full dataset.
                   </p>
                   <ul className="mt-5 space-y-2.5 text-sm text-sand">
-                    {["Sent by email or WhatsApp", "Usually within a few hours", "No payment or card details"].map(
+                    {["Sent to your WhatsApp", "Usually within a few hours", "No payment or card details"].map(
                       (point) => (
                         <li key={point} className="flex items-center gap-2.5">
                           <span className="flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-brand/15">

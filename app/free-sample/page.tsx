@@ -40,7 +40,7 @@ const SAMPLE_FAQS = [
   {
     question: "How fast will I get it?",
     answer:
-      "We send samples by email or WhatsApp, usually within a few hours. Add your WhatsApp number, or message us after you submit the form, to get it faster.",
+      "We send every sample on WhatsApp, usually within a few hours, so you can ask us anything about the data in the same chat. For it right away, message us on WhatsApp after you submit the form.",
   },
   {
     question: "Can I get a sample of more than one dataset?",

@@ -861,7 +861,7 @@ export function getFaqs(product: Product): Faq[] {
     ...(product.faqs ?? []),
     {
       question: `Can I get a free sample of the ${product.shortName}?`,
-      answer: `Yes. Request a free sample on this page and we send you real records from the current ${product.name} file, in the same Excel columns as the full dataset, by email or WhatsApp. No payment or card is needed.`,
+      answer: `Yes. Request a free sample on this page and we send you real records from the current ${product.name} file, in the same Excel columns as the full dataset, on WhatsApp. No payment or card is needed.`,
     },
     {
       question: "How do I pay?",

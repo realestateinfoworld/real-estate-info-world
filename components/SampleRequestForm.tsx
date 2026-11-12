@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, useSyncExternalStore } from "react";
+import { useEffect, useId, useMemo, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { ArrowRight, Check, Loader2, Lock } from "lucide-react";
 import { toast } from "sonner";
@@ -12,6 +12,16 @@ import { PRODUCTS, type Product } from "@/lib/constants";
 import { trackGaEvent } from "@/lib/gtag";
 import { HONEYPOT_FIELD } from "@/lib/honeypot";
 import { trackMetaEvent } from "@/lib/metaPixel";
+import {
+  MARKET_COUNTRY,
+  countryOptions,
+  dialCode,
+  flag,
+  formatInternational,
+  isCountryCode,
+  toInternational,
+  type CountryCode,
+} from "@/lib/phone";
 import { sampleSchema } from "@/lib/sample-schema";
 import { sampleWhatsappUrl } from "@/lib/whatsapp";
 
@@ -26,15 +36,24 @@ interface SampleRequestFormProps {
 }
 
 /**
- * Free-sample request: the lowest-commitment step on the site. The team gets
- * an email and sends the sample by hand; the visitor gets a confirmation and
- * a WhatsApp shortcut.
+ * Free-sample request: the lowest-commitment step on the site. The visitor
+ * leaves a WhatsApp number; the team gets an email with a link that opens a
+ * chat with them, and sends the sample there by hand. The country code is
+ * preselected from the visitor's IP, so they only type their own number.
  */
 export function SampleRequestForm({ product: fixedProduct, source }: SampleRequestFormProps) {
   const id = useId();
   const [chosen, setChosen] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
+  // Country picked by the visitor, and the one their IP points to.
+  const [pickedCountry, setPickedCountry] = useState<CountryCode | null>(null);
+  const [ipCountry, setIpCountry] = useState<CountryCode | null>(null);
+  // Country names come from the runtime's Intl data, which differs between the
+  // server and browsers: build the full list in the browser only, and render
+  // just the selected code on the server so hydration matches.
+  const hydrated = useSyncExternalStore(subscribeToNothing, () => true, () => false);
+  const countries = useMemo(() => (hydrated ? countryOptions() : []), [hydrated]);
   const [loading, setLoading] = useState(false);
   const [sentTo, setSentTo] = useState<string | null>(null);
 
@@ -51,12 +70,36 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
     PRODUCTS.find((p) => p.slug === (chosen ?? linked)) ??
     PRODUCTS[0];
   const slug = product.slug;
+  // Until the IP lookup answers (and wherever it can't), assume the dataset's market.
+  const country = pickedCountry ?? ipCountry ?? MARKET_COUNTRY[product.market];
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/geo")
+      .then((response) => response.json())
+      .then(({ country: detected }) => {
+        if (active && isCountryCode(detected)) setIpCountry(detected);
+      })
+      // Without a lookup the market's country stays selected.
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // Clear an error left over from an earlier attempt.
+    toast.dismiss();
     const honeypot = String(new FormData(e.currentTarget).get(HONEYPOT_FIELD) ?? "");
 
-    const validation = sampleSchema.safeParse({ email, whatsapp, product: slug });
+    const international = toInternational(whatsapp, country);
+    if (!international) {
+      toast.error(`Please check your WhatsApp number for ${dialCode(country)}.`);
+      return;
+    }
+
+    const validation = sampleSchema.safeParse({ whatsapp: international, email, product: slug });
     if (!validation.success) {
       const firstError = Object.values(validation.error.flatten().fieldErrors)[0]?.[0];
       toast.error(firstError || "Please check your details and try again.");
@@ -77,7 +120,7 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
         throw new Error(result.error || "Failed to send. Please try again.");
       }
 
-      setSentTo(validation.data.email);
+      setSentTo(formatInternational(validation.data.whatsapp));
 
       // Skipped for bots that filled the honeypot, so they don't inflate conversions.
       if (!honeypot) {
@@ -108,8 +151,8 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
         </div>
         <div className="mt-4 font-display text-xl text-ivory">Sample requested</div>
         <p className="mt-2 text-sm leading-relaxed text-sand">
-          We&apos;ll send your {product.shortName} sample to <strong className="text-ivory">{sentTo}</strong>,
-          usually within a few hours.
+          We&apos;ll send your {product.shortName} sample on WhatsApp to{" "}
+          <strong className="text-ivory">{sentTo}</strong>, usually within a few hours.
         </p>
         <a
           href={sampleWhatsappUrl(product)}
@@ -118,7 +161,7 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
           onClick={() => trackGaEvent("chat_click", { channel: "whatsapp", page_path: `sample:${source}` })}
           className={buttonVariants({ className: "mt-5 w-full" })}
         >
-          Get it faster on WhatsApp <ArrowRight className="h-4 w-4" />
+          Want it now? Message us on WhatsApp <ArrowRight className="h-4 w-4" />
         </a>
         <Link
           href={`/products/${product.slug}`}
@@ -156,8 +199,63 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
       )}
 
       <div>
+        <Label htmlFor={`${id}-country`} className="mb-2 block text-xs">
+          Your country
+        </Label>
+        <select
+          id={`${id}-country`}
+          data-country-select
+          value={country}
+          onChange={(e) => isCountryCode(e.target.value) && setPickedCountry(e.target.value)}
+          disabled={loading}
+          className="input h-11 py-0 text-sm"
+        >
+          {countries.length === 0 ? (
+            <option value={country}>
+              {flag(country)} {dialCode(country)}
+            </option>
+          ) : (
+            countries.map((option) => (
+              <option key={option.code} value={option.code}>
+                {option.label}
+              </option>
+            ))
+          )}
+        </select>
+        {ipCountry && !pickedCountry && (
+          <p className="mt-1.5 text-xs text-stone">Picked from your location. Change it if it&apos;s wrong.</p>
+        )}
+      </div>
+
+      <div>
+        <Label htmlFor={`${id}-whatsapp`} className="mb-2 block text-xs">
+          WhatsApp number <span className="text-brand">*</span>
+        </Label>
+        <div className="relative">
+          <span
+            data-country-code
+            className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center text-sm text-stone"
+          >
+            {dialCode(country)}
+          </span>
+          <Input
+            id={`${id}-whatsapp`}
+            type="tel"
+            inputMode="tel"
+            value={whatsapp}
+            onChange={(e) => setWhatsapp(e.target.value)}
+            placeholder="Your number"
+            required
+            autoComplete="tel-national"
+            disabled={loading}
+            style={{ paddingLeft: `${1.6 + dialCode(country).length * 0.55}rem` }}
+          />
+        </div>
+      </div>
+
+      <div>
         <Label htmlFor={`${id}-email`} className="mb-2 block text-xs">
-          Email address <span className="text-brand">*</span>
+          Email address <span className="font-normal text-stone">(optional)</span>
         </Label>
         <Input
           id={`${id}-email`}
@@ -165,23 +263,7 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@company.com"
-          required
           autoComplete="email"
-          disabled={loading}
-        />
-      </div>
-
-      <div>
-        <Label htmlFor={`${id}-whatsapp`} className="mb-2 block text-xs">
-          WhatsApp number <span className="font-normal text-stone">(optional, to get it faster)</span>
-        </Label>
-        <Input
-          id={`${id}-whatsapp`}
-          type="tel"
-          value={whatsapp}
-          onChange={(e) => setWhatsapp(e.target.value)}
-          placeholder="+971 50 123 4567"
-          autoComplete="tel"
           disabled={loading}
         />
       </div>
@@ -193,14 +275,14 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
           </>
         ) : (
           <>
-            Send me the free sample <ArrowRight className="h-4 w-4" />
+            Send the sample to my WhatsApp <ArrowRight className="h-4 w-4" />
           </>
         )}
       </Button>
 
       <p className="flex items-center justify-center gap-1.5 pt-1 text-center text-[11px] text-stone">
         <Lock className="h-3 w-3 flex-shrink-0" />
-        No payment, no card. Sent by email or WhatsApp, usually within a few hours.
+        No payment, no card. Sent on WhatsApp, usually within a few hours.
       </p>
     </form>
   );

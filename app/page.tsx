@@ -38,7 +38,7 @@ const HOME_FAQS = [
   {
     question: "Can I see the data before I buy?",
     answer:
-      "Yes. Request a free sample of any dataset and we send you real records from the current file, in the same Excel columns as the full dataset, by email or WhatsApp. No payment or card is needed.",
+      "Yes. Request a free sample of any dataset and we send you real records from the current file, in the same Excel columns as the full dataset, on WhatsApp. No payment or card is needed.",
   },
   {
     question: "How do I pay?",
