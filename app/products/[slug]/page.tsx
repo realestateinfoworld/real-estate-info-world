@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
 import { SheetPreview } from "@/components/SheetPreview";
 import { SampleRequestForm } from "@/components/SampleRequestForm";
+import { DUBAI_COMMUNITY_LINKS, communityGuideSlug } from "@/lib/community-guides";
 import { Badge } from "@/components/ui/badge";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -196,15 +197,48 @@ export default async function ProductPage({ params }: Props) {
             <div>
               <h2 className="eyebrow">Key {market.name} areas covered</h2>
               <div className="mt-6 flex flex-wrap gap-2">
-                {market.areas.map((area) => (
-                  <span key={area} className="rounded-full border border-line-strong px-3.5 py-1.5 text-sm text-sand">
-                    {area}
-                  </span>
-                ))}
+                {market.areas.map((area) => {
+                  const slug = product.type === "owner" ? communityGuideSlug(area) : undefined;
+                  const chip = "rounded-full border border-line-strong px-3.5 py-1.5 text-sm text-sand";
+                  return slug ? (
+                    <Link
+                      key={area}
+                      href={`/guides/${slug}`}
+                      className={`${chip} transition-colors hover:border-brand/40 hover:text-ivory`}
+                    >
+                      {area}
+                    </Link>
+                  ) : (
+                    <span key={area} className={chip}>
+                      {area}
+                    </span>
+                  );
+                })}
                 <span className="rounded-full px-3.5 py-1.5 text-sm text-stone">{market.areasMore}</span>
               </div>
               <p className="mt-4 text-sm text-stone">{market.areasNote}</p>
             </div>
+
+            {product.type === "owner" && product.market === "dubai" && (
+              <div>
+                <h2 className="eyebrow">Dubai property owners by community</h2>
+                <p className="mt-4 text-[15px] leading-relaxed text-sand">
+                  How to reach owners and win listings in each community, with the owner data filtered to it:
+                </p>
+                <ul className="mt-5 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+                  {DUBAI_COMMUNITY_LINKS.map((community) => (
+                    <li key={community.slug}>
+                      <Link
+                        href={`/guides/${community.slug}`}
+                        className="text-sm text-brand underline-offset-4 hover:text-brand-pale hover:underline"
+                      >
+                        {community.name} property owners
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {product.guide && (
               <article className="legal border-t border-line pt-4">

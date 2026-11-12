@@ -1,4 +1,5 @@
 import type { Faq } from "@/lib/constants";
+import { COMMUNITY_GUIDES } from "@/lib/community-guides";
 
 /**
  * Long-form guides under /guides. Each one targets an informational search
@@ -34,7 +35,7 @@ export interface Guide {
   faqs: readonly Faq[];
 }
 
-export const GUIDES: readonly Guide[] = [
+const CORE_GUIDES: readonly Guide[] = [
   {
     slug: "pay-at-closing-real-estate-leads",
     title: "Pay at Closing Real Estate Leads: What They Really Cost",
@@ -1847,6 +1848,9 @@ export const GUIDES: readonly Guide[] = [
     ],
   },
 ];
+
+/** Every guide: the core ones first (the homepage shows the first six), then one per Dubai community. */
+export const GUIDES: readonly Guide[] = [...CORE_GUIDES, ...COMMUNITY_GUIDES];
 
 export function getGuide(slug: string): Guide | undefined {
   return GUIDES.find((g) => g.slug === slug);
