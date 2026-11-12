@@ -10,8 +10,9 @@ import {
 import { isHoneypotFilled } from "@/lib/honeypot";
 import { clientIp, isRateLimited } from "@/lib/rate-limit";
 import { sampleSchema } from "@/lib/sample-schema";
+import { chatWithVisitorUrl } from "@/lib/whatsapp";
 
-/** Free-sample request: notify the team, who send the sample by hand. */
+/** Free-sample request: notify the team, who send the sample by hand on WhatsApp. */
 export async function POST(request: NextRequest) {
   try {
     const ip = clientIp(request);
@@ -47,26 +48,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const email = parsed.data.email.toLowerCase();
-    const whatsapp = parsed.data.whatsapp || "";
+    const whatsapp = parsed.data.whatsapp;
+    const email = parsed.data.email?.toLowerCase() || "";
     // The schema only accepts real product slugs, so this always resolves.
     const product = PRODUCTS.find((p) => p.slug === parsed.data.product)!;
 
     const [notified] = await Promise.all([
       sendNotification({
-        subject: `New SAMPLE request - ${product.shortName}`,
-        replyTo: email,
+        subject: `New SAMPLE request - ${product.shortName} - WhatsApp ${whatsapp}`,
+        replyTo: email || undefined,
         text: [
-          "Someone asked for a free sample. Send it to them by email or WhatsApp.",
-          `They get an automatic follow-up email in ${SAMPLE_FOLLOW_UP_HOURS} hours asking whether it arrived, so send it before then.`,
+          "Someone asked for a free sample. Send it to them on WhatsApp, and ask whether they want the full file.",
+          "",
+          `Open the chat with them (message ready to send): ${chatWithVisitorUrl(whatsapp, product)}`,
           "",
           `Dataset: ${product.name}`,
-          `Email: ${email}`,
-          `WhatsApp: ${whatsapp || "-"}`,
+          `WhatsApp: ${whatsapp}`,
+          `Email: ${email || "-"}`,
           `Date: ${dubaiTimestamp()}`,
+          ...(email
+            ? [
+                "",
+                `They also get an automatic follow-up email in ${SAMPLE_FOLLOW_UP_HOURS} hours asking whether the sample arrived, so send it before then.`,
+              ]
+            : []),
         ].join("\n"),
       }),
-      sendSampleConfirmation({ to: email, product }),
+      email ? sendSampleConfirmation({ to: email, product }) : Promise.resolve(true),
     ]);
 
     // Nobody can send the sample if the team never hears about the request,
@@ -83,7 +91,7 @@ export async function POST(request: NextRequest) {
 
     // Only once the team knows about the request: the follow-up asks whether
     // the sample arrived. A failure to schedule it is logged, never shown.
-    await scheduleSampleFollowUp({ to: email, product });
+    if (email) await scheduleSampleFollowUp({ to: email, product });
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (err) {

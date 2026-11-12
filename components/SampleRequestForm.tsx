@@ -26,9 +26,9 @@ interface SampleRequestFormProps {
 }
 
 /**
- * Free-sample request: the lowest-commitment step on the site. The team gets
- * an email and sends the sample by hand; the visitor gets a confirmation and
- * a WhatsApp shortcut.
+ * Free-sample request: the lowest-commitment step on the site. The visitor
+ * leaves a WhatsApp number; the team gets an email with a link that opens a
+ * chat with them, and sends the sample there by hand.
  */
 export function SampleRequestForm({ product: fixedProduct, source }: SampleRequestFormProps) {
   const id = useId();
@@ -54,9 +54,11 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // Clear an error left over from an earlier attempt.
+    toast.dismiss();
     const honeypot = String(new FormData(e.currentTarget).get(HONEYPOT_FIELD) ?? "");
 
-    const validation = sampleSchema.safeParse({ email, whatsapp, product: slug });
+    const validation = sampleSchema.safeParse({ whatsapp, email, product: slug });
     if (!validation.success) {
       const firstError = Object.values(validation.error.flatten().fieldErrors)[0]?.[0];
       toast.error(firstError || "Please check your details and try again.");
@@ -77,7 +79,7 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
         throw new Error(result.error || "Failed to send. Please try again.");
       }
 
-      setSentTo(validation.data.email);
+      setSentTo(validation.data.whatsapp);
 
       // Skipped for bots that filled the honeypot, so they don't inflate conversions.
       if (!honeypot) {
@@ -108,8 +110,8 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
         </div>
         <div className="mt-4 font-display text-xl text-ivory">Sample requested</div>
         <p className="mt-2 text-sm leading-relaxed text-sand">
-          We&apos;ll send your {product.shortName} sample to <strong className="text-ivory">{sentTo}</strong>,
-          usually within a few hours.
+          We&apos;ll send your {product.shortName} sample on WhatsApp to{" "}
+          <strong className="text-ivory">{sentTo}</strong>, usually within a few hours.
         </p>
         <a
           href={sampleWhatsappUrl(product)}
@@ -118,7 +120,7 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
           onClick={() => trackGaEvent("chat_click", { channel: "whatsapp", page_path: `sample:${source}` })}
           className={buttonVariants({ className: "mt-5 w-full" })}
         >
-          Get it faster on WhatsApp <ArrowRight className="h-4 w-4" />
+          Want it now? Message us on WhatsApp <ArrowRight className="h-4 w-4" />
         </a>
         <Link
           href={`/products/${product.slug}`}
@@ -156,24 +158,8 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
       )}
 
       <div>
-        <Label htmlFor={`${id}-email`} className="mb-2 block text-xs">
-          Email address <span className="text-brand">*</span>
-        </Label>
-        <Input
-          id={`${id}-email`}
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@company.com"
-          required
-          autoComplete="email"
-          disabled={loading}
-        />
-      </div>
-
-      <div>
         <Label htmlFor={`${id}-whatsapp`} className="mb-2 block text-xs">
-          WhatsApp number <span className="font-normal text-stone">(optional, to get it faster)</span>
+          WhatsApp number, with country code <span className="text-brand">*</span>
         </Label>
         <Input
           id={`${id}-whatsapp`}
@@ -181,7 +167,23 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
           value={whatsapp}
           onChange={(e) => setWhatsapp(e.target.value)}
           placeholder="+971 50 123 4567"
+          required
           autoComplete="tel"
+          disabled={loading}
+        />
+      </div>
+
+      <div>
+        <Label htmlFor={`${id}-email`} className="mb-2 block text-xs">
+          Email address <span className="font-normal text-stone">(optional)</span>
+        </Label>
+        <Input
+          id={`${id}-email`}
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@company.com"
+          autoComplete="email"
           disabled={loading}
         />
       </div>
@@ -193,14 +195,14 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
           </>
         ) : (
           <>
-            Send me the free sample <ArrowRight className="h-4 w-4" />
+            Send the sample to my WhatsApp <ArrowRight className="h-4 w-4" />
           </>
         )}
       </Button>
 
       <p className="flex items-center justify-center gap-1.5 pt-1 text-center text-[11px] text-stone">
         <Lock className="h-3 w-3 flex-shrink-0" />
-        No payment, no card. Sent by email or WhatsApp, usually within a few hours.
+        No payment, no card. Sent on WhatsApp, usually within a few hours.
       </p>
     </form>
   );
