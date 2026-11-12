@@ -33,8 +33,9 @@ export function dialCode(country: CountryCode): string {
 export function countryOptions(): { code: CountryCode; label: string }[] {
   const names = new Intl.DisplayNames(["en"], { type: "region" });
   return getCountries()
-    .map((code) => ({ code, label: `${names.of(code) ?? code} (${dialCode(code)})` }))
-    .sort((a, b) => a.label.localeCompare(b.label));
+    .map((code) => ({ code, name: names.of(code) ?? code }))
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map(({ code, name }) => ({ code, label: `${flag(code)} ${name} (${dialCode(code)})` }));
 }
 
 /**

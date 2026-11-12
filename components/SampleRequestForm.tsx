@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { ArrowRight, Check, ChevronDown, Loader2, Lock } from "lucide-react";
+import { ArrowRight, Check, Loader2, Lock } from "lucide-react";
 import { toast } from "sonner";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -199,40 +199,45 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
       )}
 
       <div>
+        <Label htmlFor={`${id}-country`} className="mb-2 block text-xs">
+          Your country
+        </Label>
+        <select
+          id={`${id}-country`}
+          data-country-select
+          value={country}
+          onChange={(e) => isCountryCode(e.target.value) && setPickedCountry(e.target.value)}
+          disabled={loading}
+          className="input h-11 py-0 text-sm"
+        >
+          {countries.length === 0 ? (
+            <option value={country}>
+              {flag(country)} {dialCode(country)}
+            </option>
+          ) : (
+            countries.map((option) => (
+              <option key={option.code} value={option.code}>
+                {option.label}
+              </option>
+            ))
+          )}
+        </select>
+        {ipCountry && !pickedCountry && (
+          <p className="mt-1.5 text-xs text-stone">Picked from your location. Change it if it&apos;s wrong.</p>
+        )}
+      </div>
+
+      <div>
         <Label htmlFor={`${id}-whatsapp`} className="mb-2 block text-xs">
           WhatsApp number <span className="text-brand">*</span>
         </Label>
-        <div className="flex gap-2">
-          {/* The native select opens the phone's own picker; the label over it
-              shows just the flag and code, so the row stays narrow. */}
-          <div className="relative shrink-0">
-            <div
-              aria-hidden="true"
-              data-country-code
-              className="input flex h-11 items-center gap-1.5 py-0 pr-2.5 pl-3 text-sm whitespace-nowrap"
-            >
-              <span>{flag(country)}</span>
-              <span className="text-ivory">{dialCode(country)}</span>
-              <ChevronDown className="h-3.5 w-3.5 text-stone" />
-            </div>
-            <select
-              aria-label="Country code"
-              value={country}
-              onChange={(e) => isCountryCode(e.target.value) && setPickedCountry(e.target.value)}
-              disabled={loading}
-              className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
-            >
-              {countries.length === 0 ? (
-                <option value={country}>{dialCode(country)}</option>
-              ) : (
-                countries.map((option) => (
-                  <option key={option.code} value={option.code}>
-                    {option.label}
-                  </option>
-                ))
-              )}
-            </select>
-          </div>
+        <div className="relative">
+          <span
+            data-country-code
+            className="pointer-events-none absolute inset-y-0 left-3.5 flex items-center text-sm text-stone"
+          >
+            {dialCode(country)}
+          </span>
           <Input
             id={`${id}-whatsapp`}
             type="tel"
@@ -243,6 +248,7 @@ export function SampleRequestForm({ product: fixedProduct, source }: SampleReque
             required
             autoComplete="tel-national"
             disabled={loading}
+            style={{ paddingLeft: `${1.6 + dialCode(country).length * 0.55}rem` }}
           />
         </div>
       </div>
