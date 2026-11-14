@@ -151,7 +151,7 @@ export default function RootLayout({
         description:
           "Provider of the Dubai property owner database and verified, high-intent real estate buyer leads for Dubai, Miami, California and the UK.",
         knowsAbout: PRODUCTS.map((product) => product.name),
-        sameAs: [CONTACT.telegram],
+        sameAs: [CONTACT.telegram, CONTACT.instagram],
       },
       {
         "@type": "WebSite",

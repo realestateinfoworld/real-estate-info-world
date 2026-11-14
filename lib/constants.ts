@@ -5,6 +5,7 @@ export const CONTACT = {
   whatsappRaw: "447546084350",
   email: "info@realestate-info.world",
   telegram: "https://t.me/realestateinfoworld",
+  instagram: "https://www.instagram.com/realestateinfo.world/",
 } as const;
 
 /* ------------------------------------------------------------------ */
