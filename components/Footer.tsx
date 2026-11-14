@@ -65,6 +65,9 @@ export function Footer() {
               <a href={CONTACT.telegram} target="_blank" rel="noopener noreferrer" className={linkClass}>
                 Telegram
               </a>
+              <a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                Instagram
+              </a>
             </div>
           </div>
 
