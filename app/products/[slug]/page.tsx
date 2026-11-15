@@ -174,7 +174,7 @@ export default async function ProductPage({ params }: Props) {
                   </h3>
                   <p className="mt-3 text-[15px] leading-relaxed text-sand">
                     Get a free sample of the {product.name}: real records from the {product.version} file, in
-                    the same Excel columns as the full dataset.
+                    the same Excel layout as the full dataset. Contact details come with the full file.
                   </p>
                   <ul className="mt-5 space-y-2.5 text-sm text-sand">
                     {["Sent to your WhatsApp", "Usually within a few hours", "No payment or card details"].map(

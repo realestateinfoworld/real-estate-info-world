@@ -101,7 +101,7 @@ const CORE_GUIDES: readonly Guide[] = [
       {
         heading: "Test before you commit to either",
         paragraphs: [
-          "Ask a pay at closing program for its fee, how long it applies, and whether leads are exclusive, in writing. Ask a list seller for a sample. We send [free samples](/free-sample) of our buyer leads for [Miami](/products/miami-buyer-leads), [California](/products/california-buyer-leads), [Dubai](/products/buyer-leads) and the [UK](/products/uk-buyer-leads), so you can call real records before you pay. For every other way to fill a pipeline, read [how to get real estate leads](/guides/how-to-get-real-estate-leads).",
+          "Ask a pay at closing program for its fee, how long it applies, and whether leads are exclusive, in writing. Ask a list seller for a sample. We send [free samples](/free-sample) of our buyer leads for [Miami](/products/miami-buyer-leads), [California](/products/california-buyer-leads), [Dubai](/products/buyer-leads) and the [UK](/products/uk-buyer-leads), so you can check real records before you pay. For every other way to fill a pipeline, read [how to get real estate leads](/guides/how-to-get-real-estate-leads).",
         ],
       },
     ],
@@ -214,7 +214,7 @@ const CORE_GUIDES: readonly Guide[] = [
         heading: "9. Buy a lead list",
         paragraphs: [
           "A lead list gives you hundreds or thousands of contacts on day one, for a one-time price instead of a monthly fee, and every record is yours to work as long as the data holds up. You start the conversation yourself, so it rewards teams that call quickly and follow up consistently.",
-          "We sell buyer leads for [Miami](/products/miami-buyer-leads), [California](/products/california-buyer-leads), [Dubai](/products/buyer-leads) and the [UK](/products/uk-buyer-leads), each with the buyer's target area, budget and timeframe, plus the [Dubai Property Owner Database](/products/owner-database) for listings. [Ask for a free sample](/free-sample) and call those records before you pay; our guides to [where to buy real estate leads](/guides/where-to-buy-real-estate-leads) and [how much real estate leads cost](/guides/how-much-do-real-estate-leads-cost) cover what to check with any provider.",
+          "We sell buyer leads for [Miami](/products/miami-buyer-leads), [California](/products/california-buyer-leads), [Dubai](/products/buyer-leads) and the [UK](/products/uk-buyer-leads), each with the buyer's target area, budget and timeframe, plus the [Dubai Property Owner Database](/products/owner-database) for listings. [Ask for a free sample](/free-sample) and check the records before you pay; our guides to [where to buy real estate leads](/guides/where-to-buy-real-estate-leads) and [how much real estate leads cost](/guides/how-much-do-real-estate-leads-cost) cover what to check with any provider.",
         ],
       },
       {

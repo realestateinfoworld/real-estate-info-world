@@ -64,7 +64,7 @@ There are two ways:
 
 > Hi [name], I saw your listings in [area] on Property Finder. We supply the Dubai Property Owner Database: 1M+ verified owners with direct mobile numbers across 200+ communities, cross-checked against DLD records.
 >
-> Shall I send you a free sample for [area] here on WhatsApp? Call a few owners and judge it yourself.
+> Shall I send you a free sample for [area] here on WhatsApp? You'll see the owners, buildings and units we cover before you pay.
 
 ### Dubai: LinkedIn connection note (under 300 characters)
 
@@ -86,7 +86,7 @@ There are two ways:
 >
 > I noticed your listings in [area]. We supply verified [Miami / California] real estate buyer leads. Each record includes the buyer's target neighborhood, property type, budget and purchase timeframe, sourced fresh this month.
 >
-> Instead of a pitch, I'd rather send you a free sample so you can call a few and judge for yourself. Tap the link below and I'll send it to you on WhatsApp right away:
+> Instead of a pitch, I'd rather send you a free sample so you can see our coverage of your area for yourself. Tap the link below and I'll send it to you on WhatsApp right away:
 >
 > https://wa.me/447546084350?text=Hi%2C%20please%20send%20me%20the%20free%20sample.
 >
@@ -116,7 +116,7 @@ There are two ways:
 ## 5. On WhatsApp: from sample to sale
 
 **When you send the sample:**
-> Hi [name], here's your free sample of the [file name]. They're real records from this month's file, in the same Excel columns as the full dataset. Call a few and see how they respond. Any questions, just ask here.
+> Hi [name], here's your free sample of the [file name]. They're real records from this month's file (owner names, buildings, units and sizes), in the same Excel layout as the full file. Phone, mobile and email come with the full file. Any questions, just ask here.
 
 **Same day, a few hours later:**
 > Did the file open OK? Is [area] the main area you work, or should I check other areas for you too?

@@ -548,7 +548,7 @@ export const TOOLS: readonly Tool[] = [
       {
         heading: "Test the data before you spend",
         paragraphs: [
-          "The surest way to estimate your reach rate is to call real records. Every dataset we sell has a [free sample](/free-sample): the [Dubai Property Owner Database](/products/owner-database) and buyer leads for [Dubai](/products/buyer-leads), [Miami](/products/miami-buyer-leads), [California](/products/california-buyer-leads) and the [UK](/products/uk-buyer-leads).",
+          "Check the records before you buy: every dataset we sell has a [free sample](/free-sample) showing its fields and its coverage of your area: the [Dubai Property Owner Database](/products/owner-database) and buyer leads for [Dubai](/products/buyer-leads), [Miami](/products/miami-buyer-leads), [California](/products/california-buyer-leads) and the [UK](/products/uk-buyer-leads).",
         ],
       },
     ],

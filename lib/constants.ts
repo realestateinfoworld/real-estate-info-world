@@ -233,12 +233,12 @@ export const PRODUCTS: readonly Product[] = [
       delivery: "10 Minutes (Instant)",
     },
     sample: {
-      columns: ["Name", "Community", "Property", "Mobile"],
+      columns: ["Owner", "Building", "Unit", "Mobile"],
       rows: [
-        ["M. Al-Suwaidi", "Palm Jumeirah", "Villa", "+971 50 3•• ••45"],
-        ["L. Thompson", "Emirates Hills", "Villa", "+971 55 8•• ••12"],
-        ["R. Patel", "Downtown Dubai", "Apartment", "+971 52 4•• ••99"],
-        ["S. Al-Maktoum", "Jumeirah Bay", "Penthouse", "+971 50 1•• ••73"],
+        ["M. Al-Suwaidi", "Address Bay", "2104", "+971 50 3•• ••45"],
+        ["L. Thompson", "Al Fattan Marine Tower", "1507", "+971 55 8•• ••12"],
+        ["R. Patel", "Address Fountain Views", "3302", "+971 52 4•• ••99"],
+        ["S. Al-Maktoum", "Address Dubai Marina", "1810", "+971 50 1•• ••73"],
       ],
       maskedColumn: 0,
       emphasisColumn: 3,
@@ -262,7 +262,7 @@ export const PRODUCTS: readonly Product[] = [
       {
         heading: "What is the Dubai Property Owner Database?",
         paragraphs: [
-          "The Dubai Property Owner Database is a Dubai real estate database in a single Excel file, listing more than 1,000,000 verified owners of property in Dubai. Every record gives you the owner's name, the community the property sits in, the property type (apartment, villa, townhouse or penthouse) and a direct mobile number — the four things you need to start a listing conversation.",
+          "The Dubai Property Owner Database is a Dubai real estate database in a single Excel file, listing more than 1,000,000 verified owners of property in Dubai. Every record gives you the owner's name, the area, building and unit, the number of rooms and the size, plus the owner's phone, mobile and email: everything you need to start a listing conversation about a specific unit.",
           "Records are cross-checked against Dubai Land Department data and the whole file is refreshed every month, so you are calling current owners rather than people who sold two years ago. The release date is shown at the top of this page.",
         ],
       },
@@ -307,7 +307,7 @@ export const PRODUCTS: readonly Product[] = [
       {
         question: "Which Dubai communities does the owner data cover?",
         answer:
-          "200+ communities including Dubai Marina, Downtown Dubai, Business Bay, Palm Jumeirah, JVC, Dubai Hills Estate, Arabian Ranches and Emirates Hills. Every record lists its community, so you can filter to your area in Excel or your CRM.",
+          "200+ communities including Dubai Marina, Downtown Dubai, Business Bay, Palm Jumeirah, JVC, Dubai Hills Estate, Arabian Ranches and Emirates Hills. Every record lists its area, building and unit, so you can filter to your area, or a single tower, in Excel or your CRM.",
       },
       {
         question: "How often is the Dubai owner data updated?",
@@ -877,7 +877,7 @@ export function getFaqs(product: Product): Faq[] {
     ...(product.faqs ?? []),
     {
       question: `Can I get a free sample of the ${product.shortName}?`,
-      answer: `Yes. Request a free sample on this page and we send you real records from the current ${product.name} file, in the same Excel columns as the full dataset, on WhatsApp. No payment or card is needed.`,
+      answer: `Yes. Request a free sample on this page and we send you real records from the current ${product.name} file, in the same Excel layout as the full dataset, on WhatsApp. Contact details come with the full file. No payment or card is needed.`,
     },
     {
       question: "How do I pay?",

@@ -35,7 +35,7 @@ const SAMPLE_FAQS = [
   {
     question: "What is in the free sample?",
     answer:
-      "A short extract of real records from the current release, in exactly the same Excel columns as the full file, so you can judge the data quality and test the import into your CRM.",
+      "Real records from the current release for the area you choose, in the same Excel layout as the full file: for the owner database, owner names with their buildings, units, rooms and sizes. Contact details (phone, mobile and email) are kept for the full file, so the sample shows you the coverage and the format before you pay.",
   },
   {
     question: "How fast will I get it?",
@@ -90,8 +90,8 @@ export default function FreeSamplePage() {
               <em className="text-brand-gradient">Check it before you buy.</em>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-sand">
-              Real records from the current release, in the same Excel columns as the full dataset. No
-              payment, no card.
+              Real records from the current release, in the same Excel layout as the full file. Contact
+              details come with the full file. No payment, no card.
             </p>
             <Steps className="mt-9 hidden lg:grid" />
           </div>
