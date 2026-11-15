@@ -42,7 +42,7 @@ function communityGuide(spec: CommunitySpec): Guide {
         heading: `Getting ${spec.name} owners' contact details`,
         paragraphs: [
           "Owner contact details are not public in Dubai, and the Dubai Land Department does not let you look up who owns a unit. A verified list is the practical starting point.",
-          `Our [Dubai Property Owner Database](/products/owner-database) covers ${spec.name} among its 200+ communities, with a direct mobile number, the community and the property type on every record, so you can filter the Excel file to ${spec.name} ${spec.propertyTypes} and start calling the same day. It is $300 one-time and delivered within 10 minutes; [get a free sample on WhatsApp](/free-sample?dataset=owner-database) first.`,
+          `Our [Dubai Property Owner Database](/products/owner-database) covers ${spec.name} among its 200+ communities, with the building, unit, rooms and size and the owner's phone, mobile and email on every record, so you can filter the Excel file to ${spec.name} ${spec.propertyTypes} building by building and start calling the same day. It is $300 one-time and delivered within 10 minutes; [get a free sample on WhatsApp](/free-sample?dataset=owner-database) first.`,
           `For the wider playbook, read [how to find property owners in Dubai](/guides/how-to-find-property-owners-in-dubai). Nearby guides: ${spec.related}.`,
         ],
       },
@@ -57,7 +57,7 @@ function communityGuide(spec: CommunitySpec): Guide {
       ...spec.faqs,
       {
         question: `Does the Dubai owner database include ${spec.name}?`,
-        answer: `Yes. ${spec.name} is one of the 200+ communities covered. Every record carries its community and property type, so you can filter the Excel file to ${spec.name} ${spec.propertyTypes}.`,
+        answer: `Yes. ${spec.name} is one of the 200+ communities covered. Every record carries its area, building and unit, so you can filter the Excel file to ${spec.name} ${spec.propertyTypes} and work it building by building.`,
       },
     ],
   };

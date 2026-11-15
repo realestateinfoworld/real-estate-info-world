@@ -91,7 +91,7 @@ export function Hero() {
             </div>
             <h2 className="mt-4 font-display text-2xl leading-tight text-ivory">Get a free sample</h2>
             <p className="mt-2 mb-6 text-sm leading-relaxed text-sand">
-              Real records from the current file, in the same Excel columns as the full dataset.
+              Real records from the current file, in the same Excel layout. Contacts come with the full file.
             </p>
             <SampleRequestForm source="hero" />
           </div>
