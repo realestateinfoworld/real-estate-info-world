@@ -15,6 +15,7 @@ interface Notification {
   subject: string;
   text: string;
   replyTo?: string;
+  attachments?: { filename: string; content: Buffer }[];
 }
 
 /**
@@ -25,12 +26,14 @@ export async function sendNotification({
   subject,
   text,
   replyTo,
+  attachments,
 }: Notification): Promise<boolean> {
   return send({
     to: process.env.NOTIFICATION_EMAIL ?? CONTACT.email,
     subject,
     text,
     replyTo,
+    attachments,
   });
 }
 
@@ -146,6 +149,48 @@ export function sampleConfirmationEmail(product: Product): {
   return { subject: `Your free ${product.shortName} sample is on its way`, text, html };
 }
 
+/**
+ * Confirmation to a buyer who paid in crypto and sent their proof: the file
+ * follows once the payment is confirmed. No visitor-supplied text appears in it.
+ */
+export async function sendCryptoProofConfirmation({
+  to,
+  product,
+}: {
+  to: string;
+  product: Product;
+}): Promise<boolean> {
+  return send({ to, replyTo: CONTACT.email, ...cryptoProofConfirmationEmail(product) });
+}
+
+/** Subject, text and HTML of the crypto proof confirmation (pure, for testing). */
+export function cryptoProofConfirmationEmail(product: Product): {
+  subject: string;
+  text: string;
+  html: string;
+} {
+  const whatsappUrl = `https://wa.me/${CONTACT.whatsappRaw}`;
+  const text = [
+    "Hi,",
+    "",
+    `We received your payment proof for the ${product.name}.`,
+    "",
+    "As soon as the payment is confirmed on the blockchain, we send your file to this email address, usually within 10 minutes.",
+    "",
+    `Questions? Reply to this email or message us on WhatsApp: ${whatsappUrl}`,
+    "",
+    "Real Estate Info World",
+    "https://realestate-info.world",
+  ].join("\n");
+  const html = emailShell(`
+          <p style="margin:0 0 16px;font-size:16px">Hi,</p>
+          <p style="margin:0 0 16px;font-size:16px;line-height:1.5">We received your payment proof for the <strong>${escapeHtml(product.name)}</strong>.</p>
+          <p style="margin:0 0 24px;font-size:16px;line-height:1.5">As soon as the payment is confirmed on the blockchain, we send your file to this email address, usually within 10 minutes.</p>
+          ${emailButton(whatsappUrl, "Message us on WhatsApp")}
+          <p style="margin:0;font-size:14px;color:#475467">Questions? Just reply to this email.</p>`);
+  return { subject: `Payment proof received: ${product.shortName}`, text, html };
+}
+
 /** Branded wrapper shared by every customer-facing email. */
 function emailShell(inner: string): string {
   return `<!doctype html>
@@ -233,6 +278,7 @@ async function send({
   html,
   replyTo,
   scheduledAt,
+  attachments,
 }: Notification & { to: string; html?: string; scheduledAt?: string }): Promise<boolean> {
   if (!resend) {
     console.error(`[EMAIL] RESEND_API_KEY is not set; email to ${to} not sent:\n` + text);
@@ -248,6 +294,7 @@ async function send({
     replyTo,
     // ISO time for a delayed send; omitted for an immediate one.
     ...(scheduledAt && { scheduledAt }),
+    ...(attachments?.length && { attachments }),
   });
 
   if (error) {
