@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import QRCode from "qrcode";
 import { CryptoCheckout } from "@/components/CryptoCheckout";
-import { LeadCaptureForm } from "@/components/LeadCaptureForm";
+import { CryptoSection, PaymentChooser, PaymentMethodProvider } from "@/components/PaymentMethod";
 import { CRYPTO_WALLETS } from "@/lib/crypto";
 import { SheetPreview } from "@/components/SheetPreview";
 import { SampleRequestForm } from "@/components/SampleRequestForm";
@@ -19,7 +19,7 @@ import { GaEvent } from "@/components/GaEvent";
 import { getGuideForProduct } from "@/lib/guides";
 import { MetaPixelTracker } from "@/components/MetaPixelTracker";
 import { SITE_NAME, SITE_URL, faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
-import { ArrowLeft, Check, FileSpreadsheet, Lock, ShieldCheck, Wallet, Zap } from "lucide-react";
+import { ArrowLeft, Check, FileSpreadsheet, Lock, ShieldCheck, Zap } from "lucide-react";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -146,6 +146,7 @@ export default async function ProductPage({ params }: Props) {
         </div>
       </section>
 
+      <PaymentMethodProvider>
       <div className="container py-14 md:py-20">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="min-w-0 space-y-14 lg:col-span-7 xl:col-span-8">
@@ -289,14 +290,7 @@ export default async function ProductPage({ params }: Props) {
                 <span className="text-xs text-stone">No subscription</span>
               </div>
 
-              <LeadCaptureForm product={product} />
-
-              <a
-                href="#pay-crypto"
-                className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-full border border-line-strong text-sm font-semibold text-ivory transition-colors hover:border-brand/50"
-              >
-                <Wallet className="h-4 w-4 text-brand" /> Pay with crypto now · USDT, BTC, ETH, SOL
-              </a>
+              <PaymentChooser product={product} />
 
               <a
                 href="#sample"
@@ -323,7 +317,7 @@ export default async function ProductPage({ params }: Props) {
       </div>
 
       {/* Direct crypto payment */}
-      <section id="pay-crypto" className="section scroll-mt-20 border-t border-line">
+      <CryptoSection>
         <div className="container">
           <SectionHeading
             eyebrow="Pay with crypto"
@@ -337,7 +331,8 @@ export default async function ProductPage({ params }: Props) {
           />
           <CryptoCheckout product={product} wallets={cryptoWallets} />
         </div>
-      </section>
+      </CryptoSection>
+      </PaymentMethodProvider>
 
       {/* How it works */}
       <section className="section border-t border-line bg-ink-2">
