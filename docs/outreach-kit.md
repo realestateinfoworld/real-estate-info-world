@@ -29,7 +29,7 @@ There are two ways:
 
 ## 2. Where to find people
 
-### Dubai brokers (Owner Database $300, Dubai Buyer Leads $1,200)
+### Dubai brokers (Owner Database $200, Dubai Buyer Leads $1,200)
 - **Property Finder and Bayut:** open any listing and you'll see the agent's name, agency and WhatsApp number. Agents with lots of listings are active, so they're the best targets.
 - **LinkedIn:** search for "real estate broker Dubai", "property consultant Dubai" or "RERA broker".
 - **Dubai REST app / DLD broker directory:** an official list of registered brokers.
