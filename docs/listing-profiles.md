@@ -22,7 +22,7 @@ Use the same name, website, email and phone on every listing. Google trusts a bu
 
 > Real Estate Info World provides verified real estate data for agents, brokers and agencies.
 >
-> - **Dubai Property Owner Database:** 1,000,000+ owners across 200+ communities, with direct mobile numbers, cross-checked against Dubai Land Department records. $300.
+> - **Dubai Property Owner Database:** 1,000,000+ owners across 200+ communities, with direct mobile numbers, cross-checked against Dubai Land Department records. $200.
 > - **Buyer leads:** high-intent buyers for Miami ($1,500), California ($1,500), Dubai ($1,200) and the UK ($750). Each lead has a target area, budget and purchase timeframe.
 >
 > Every dataset is refreshed monthly and delivered as a CRM-ready Excel file within 10 minutes of payment. You can pay by card or USDT, and a 7-day refund policy applies. Free samples of every file are sent on WhatsApp: request one at realestate-info.world/free-sample.

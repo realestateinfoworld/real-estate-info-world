@@ -323,7 +323,7 @@ const CORE_GUIDES: readonly Guide[] = [
         heading: "7. Work a verified owner database",
         paragraphs: [
           "The fastest way to reach owners at scale is a verified owner database: one file listing owners by community and property type, with direct mobile numbers. Instead of waiting months for farming to pay off, you can filter to your community today and start calling.",
-          "Our [Dubai Property Owner Database](/products/owner-database) covers 1,000,000+ verified owners across 200+ communities, cross-checked against Dubai Land Department data and refreshed monthly. It costs $300 as a one-time payment and is delivered as a CRM-ready Excel file within 10 minutes.",
+          "Our [Dubai Property Owner Database](/products/owner-database) covers 1,000,000+ verified owners across 200+ communities, cross-checked against Dubai Land Department data and refreshed monthly. It costs $200 as a one-time payment and is delivered as a CRM-ready Excel file within 10 minutes.",
         ],
       },
       {
@@ -811,7 +811,7 @@ const CORE_GUIDES: readonly Guide[] = [
       {
         heading: "Get Dubai Marina owners' contact details",
         paragraphs: [
-          "Owner contact details aren't public, so most brokers combine tower farming with a verified owner database. Our [Dubai Property Owner Database](/products/owner-database) covers 1,000,000+ owners across 200+ communities, including Dubai Marina, with direct mobile numbers. Filter the Excel file to Dubai Marina and you have your farm list in seconds. It costs $300, one-time, delivered within 10 minutes.",
+          "Owner contact details aren't public, so most brokers combine tower farming with a verified owner database. Our [Dubai Property Owner Database](/products/owner-database) covers 1,000,000+ owners across 200+ communities, including Dubai Marina, with direct mobile numbers. Filter the Excel file to Dubai Marina and you have your farm list in seconds. It costs $200, one-time, delivered within 10 minutes.",
         ],
       },
       {
@@ -1044,7 +1044,7 @@ const CORE_GUIDES: readonly Guide[] = [
         paragraphs: [
           "The fourth option is to buy the contact data outright and do your own outreach. You pay once for a file, and every contact in it is yours to work for as long as the data stays accurate. The economics are completely different from per-lead pricing: a dataset priced in the hundreds or low thousands, divided across thousands of records, lands at cents per contact rather than tens or hundreds of dollars.",
           "The trade-off is that you supply the effort. Nobody in a bought file has raised a hand for you specifically — buyer datasets collect people who enquired about property in a market, and owner datasets list people who hold title. You still have to call, qualify and nurture. The upside is that the cost does not scale with your ambition: working a file harder costs you time, not more budget.",
-          "Our [buyer lead datasets](/products) are priced this way — a one-time payment for a CRM-ready Excel file covering Dubai, Miami, California or the UK, with the [Dubai Property Owner Database](/products/owner-database) at $300 for the owner side.",
+          "Our [buyer lead datasets](/products) are priced this way — a one-time payment for a CRM-ready Excel file covering Dubai, Miami, California or the UK, with the [Dubai Property Owner Database](/products/owner-database) at $200 for the owner side.",
         ],
       },
       {
@@ -1177,7 +1177,7 @@ const CORE_GUIDES: readonly Guide[] = [
       {
         heading: "Where our datasets fit",
         paragraphs: [
-          "We sell the fourth model. The [Dubai Property Owner Database](/products/owner-database) is a one-time $300 file of 1,000,000+ verified owners across 200+ communities, cross-checked against Dubai Land Department records — built for brokers chasing listings.",
+          "We sell the fourth model. The [Dubai Property Owner Database](/products/owner-database) is a one-time $200 file of 1,000,000+ verified owners across 200+ communities, cross-checked against Dubai Land Department records — built for brokers chasing listings.",
           "On the buyer side, we publish separate datasets of high-intent enquirers for [Dubai](/products/buyer-leads), [Miami](/products/miami-buyer-leads), [California](/products/california-buyer-leads) and the [UK](/products/uk-buyer-leads). All of them arrive as CRM-ready Excel files within 10 minutes of payment, so you can test one against whatever you are paying per lead today.",
         ],
       },
@@ -1284,7 +1284,7 @@ const CORE_GUIDES: readonly Guide[] = [
         heading: "How brokers actually build owner lists",
         paragraphs: [
           "Since the registry will not give you a prospecting list, brokers build one from the methods in our guide on [how to find property owners in Dubai](/guides/how-to-find-property-owners-in-dubai) — farming a community, working \"by owner\" portal listings, building relationships with building managers, and running valuation-led ads that get owners to come to them.",
-          "The fastest route at scale is a commercial owner database. Ours — the [Dubai Property Owner Database](/products/owner-database) — covers 1,000,000+ verified owners across 200+ communities with direct mobile numbers, cross-checked against DLD records and refreshed monthly. It is $300 one-time and arrives as a CRM-ready Excel file within 10 minutes, filterable by community and property type.",
+          "The fastest route at scale is a commercial owner database. Ours — the [Dubai Property Owner Database](/products/owner-database) — covers 1,000,000+ verified owners across 200+ communities with direct mobile numbers, cross-checked against DLD records and refreshed monthly. It is $200 one-time and arrives as a CRM-ready Excel file within 10 minutes, filterable by community and property type.",
           "To be clear about what that is: it is a commercial dataset cross-referenced against public DLD transaction records, not access to the DLD's internal systems. Nobody can sell you that.",
         ],
       },
@@ -1385,7 +1385,7 @@ const CORE_GUIDES: readonly Guide[] = [
         paragraphs: [
           "Owner contact details are not public in Dubai, and the Dubai Land Department's verification service works from an identified person to their property, not from a villa to its owner — see our guide to the [Dubai Land Department owner search](/guides/dubai-land-department-owner-search) for what it can and cannot do.",
           "Most brokers working the Palm combine three things: a verified owner list to start from, relentless attention to who is transacting, and relationships with the concierge and property management teams who hear first when an owner is unhappy or relocating.",
-          "Our [Dubai Property Owner Database](/products/owner-database) includes Palm Jumeirah among its 200+ communities, with direct mobile numbers and the community and property type on every record — so you can filter to Palm villas or Shoreline apartments specifically rather than calling the whole island. $300 one-time, delivered as a CRM-ready Excel file within 10 minutes.",
+          "Our [Dubai Property Owner Database](/products/owner-database) includes Palm Jumeirah among its 200+ communities, with direct mobile numbers and the community and property type on every record — so you can filter to Palm villas or Shoreline apartments specifically rather than calling the whole island. $200 one-time, delivered as a CRM-ready Excel file within 10 minutes.",
         ],
       },
       {
@@ -1479,7 +1479,7 @@ const CORE_GUIDES: readonly Guide[] = [
         heading: "Getting Business Bay owners' contact details",
         paragraphs: [
           "Dubai does not publish owner contact details, and the Dubai Land Department's verification service cannot be used to look up who owns a given unit. So most brokers pair tower farming with a verified owner list.",
-          "Our [Dubai Property Owner Database](/products/owner-database) covers Business Bay among its 200+ communities, with direct mobile numbers and the community and property type on every record. Filter the Excel file to Business Bay studios and one-beds and you have a farm list sized for a calling week. $300 one-time, delivered within 10 minutes.",
+          "Our [Dubai Property Owner Database](/products/owner-database) covers Business Bay among its 200+ communities, with direct mobile numbers and the community and property type on every record. Filter the Excel file to Business Bay studios and one-beds and you have a farm list sized for a calling week. $200 one-time, delivered within 10 minutes.",
           "For the wider playbook, see [how to find property owners in Dubai](/guides/how-to-find-property-owners-in-dubai).",
         ],
       },
@@ -1577,7 +1577,7 @@ const CORE_GUIDES: readonly Guide[] = [
         heading: "Getting JVC owners' contact details",
         paragraphs: [
           "Owner contact details are not public in Dubai, and the Dubai Land Department cannot be searched by unit to find an owner. For a community with this many owners, that makes a verified list the only practical starting point.",
-          "Our [Dubai Property Owner Database](/products/owner-database) covers JVC among its 200+ communities, with direct mobile numbers and the community and property type on each record — so you can filter to JVC apartments or JVC townhouses and build a calling list by building type. $300 one-time, CRM-ready Excel, delivered within 10 minutes.",
+          "Our [Dubai Property Owner Database](/products/owner-database) covers JVC among its 200+ communities, with direct mobile numbers and the community and property type on each record — so you can filter to JVC apartments or JVC townhouses and build a calling list by building type. $200 one-time, CRM-ready Excel, delivered within 10 minutes.",
           "Pair it with the broader methods in [how to find property owners in Dubai](/guides/how-to-find-property-owners-in-dubai), and with a script — see our [real estate cold calling scripts](/guides/real-estate-cold-calling-scripts) guide — because JVC is won on call volume done well.",
         ],
       },
@@ -1675,7 +1675,7 @@ const CORE_GUIDES: readonly Guide[] = [
         heading: "Getting Downtown Dubai owners' contact details",
         paragraphs: [
           "Owner details are not published in Dubai, and the Dubai Land Department's verification service runs from an identified person to their property rather than from a unit to its owner — our guide to the [Dubai Land Department owner search](/guides/dubai-land-department-owner-search) sets out what it will and will not tell you.",
-          "Brokers working Downtown generally combine a verified owner list with close transaction tracking and relationships with building management and concierge teams. Our [Dubai Property Owner Database](/products/owner-database) includes Downtown Dubai among its 200+ communities, with direct mobile numbers and the community and property type on every record, so you can filter to Downtown apartments and build a tower-by-tower list. $300 one-time, delivered as a CRM-ready Excel file within 10 minutes.",
+          "Brokers working Downtown generally combine a verified owner list with close transaction tracking and relationships with building management and concierge teams. Our [Dubai Property Owner Database](/products/owner-database) includes Downtown Dubai among its 200+ communities, with direct mobile numbers and the community and property type on every record, so you can filter to Downtown apartments and build a tower-by-tower list. $200 one-time, delivered as a CRM-ready Excel file within 10 minutes.",
         ],
       },
       {
@@ -1808,7 +1808,7 @@ const CORE_GUIDES: readonly Guide[] = [
         heading: "Where to get numbers to call",
         paragraphs: [
           "A script needs a list. For owner prospecting in Dubai, contact details are not public and the Dubai Land Department cannot be searched by unit — see [Dubai Land Department owner search](/guides/dubai-land-department-owner-search).",
-          "Our [Dubai Property Owner Database](/products/owner-database) gives you 1,000,000+ verified owners across 200+ communities with direct mobile numbers, filterable by community and property type — so you can build a calling list for one building type in one community and work Script 1 or 2 against it. $300 one-time, CRM-ready Excel, delivered within 10 minutes. On the buyer side we publish [buyer datasets](/products) for Dubai, Miami, California and the UK for Script 4.",
+          "Our [Dubai Property Owner Database](/products/owner-database) gives you 1,000,000+ verified owners across 200+ communities with direct mobile numbers, filterable by community and property type — so you can build a calling list for one building type in one community and work Script 1 or 2 against it. $200 one-time, CRM-ready Excel, delivered within 10 minutes. On the buyer side we publish [buyer datasets](/products) for Dubai, Miami, California and the UK for Script 4.",
         ],
       },
       {
