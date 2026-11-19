@@ -1,7 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import QRCode from "qrcode";
+import { CryptoCheckout } from "@/components/CryptoCheckout";
 import { LeadCaptureForm } from "@/components/LeadCaptureForm";
+import { CRYPTO_WALLETS } from "@/lib/crypto";
 import { SheetPreview } from "@/components/SheetPreview";
 import { SampleRequestForm } from "@/components/SampleRequestForm";
 import { DUBAI_COMMUNITY_LINKS, communityGuideSlug } from "@/lib/community-guides";
@@ -16,7 +19,7 @@ import { GaEvent } from "@/components/GaEvent";
 import { getGuideForProduct } from "@/lib/guides";
 import { MetaPixelTracker } from "@/components/MetaPixelTracker";
 import { SITE_NAME, SITE_URL, faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
-import { ArrowLeft, Check, FileSpreadsheet, Lock, ShieldCheck, Zap } from "lucide-react";
+import { ArrowLeft, Check, FileSpreadsheet, Lock, ShieldCheck, Wallet, Zap } from "lucide-react";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -58,6 +61,17 @@ export default async function ProductPage({ params }: Props) {
 
   const guide = getGuideForProduct(product.slug);
   const others = PRODUCTS.filter((p) => p.slug !== product.slug);
+  // QR codes are drawn at build time; only plain data goes to the client.
+  const cryptoWallets = await Promise.all(
+    CRYPTO_WALLETS.map(async ({ id, coin, network, address, stablecoin }) => ({
+      id,
+      coin,
+      network,
+      address,
+      stablecoin,
+      qrSvg: await QRCode.toString(address, { type: "svg", margin: 1, errorCorrectionLevel: "M" }),
+    }))
+  );
   const url = `${SITE_URL}/products/${product.slug}`;
 
   return (
@@ -278,6 +292,13 @@ export default async function ProductPage({ params }: Props) {
               <LeadCaptureForm product={product} />
 
               <a
+                href="#pay-crypto"
+                className="mt-3 flex h-12 w-full items-center justify-center gap-2 rounded-full border border-line-strong text-sm font-semibold text-ivory transition-colors hover:border-brand/50"
+              >
+                <Wallet className="h-4 w-4 text-brand" /> Pay with crypto now · USDT, BTC, ETH, SOL
+              </a>
+
+              <a
                 href="#sample"
                 className="mt-4 block text-center text-sm font-semibold text-brand hover:text-brand-pale"
               >
@@ -289,7 +310,7 @@ export default async function ProductPage({ params }: Props) {
                   { icon: Zap, text: "Delivered within 10 minutes" },
                   { icon: FileSpreadsheet, text: "CRM-ready Excel (.xlsx)" },
                   { icon: ShieldCheck, text: "7-day quality guarantee" },
-                  { icon: Lock, text: "Pay by card or USDT via a secure link" },
+                  { icon: Lock, text: "Card via a secure link, or crypto directly" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-center gap-3 text-sand">
                     <item.icon className="h-4 w-4 text-brand" /> {item.text}
@@ -300,6 +321,23 @@ export default async function ProductPage({ params }: Props) {
           </aside>
         </div>
       </div>
+
+      {/* Direct crypto payment */}
+      <section id="pay-crypto" className="section scroll-mt-20 border-t border-line">
+        <div className="container">
+          <SectionHeading
+            eyebrow="Pay with crypto"
+            title={
+              <>
+                Pay now, get the file <em className="text-brand-gradient">in 10 minutes.</em>
+              </>
+            }
+            description={`Send ${product.price.toLocaleString("en-US")} USDT (or the same value in BTC, ETH or SOL) to the address below, then attach a screenshot of the payment. We check it and email you the ${product.name}.`}
+            className="mb-10"
+          />
+          <CryptoCheckout product={product} wallets={cryptoWallets} />
+        </div>
+      </section>
 
       {/* How it works */}
       <section className="section border-t border-line bg-ink-2">
