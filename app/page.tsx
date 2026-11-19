@@ -79,7 +79,7 @@ export default function Home() {
                 This is the file. <em className="text-brand-gradient">Real columns, real format.</em>
               </>
             }
-            description="Every dataset is one clean Excel file. Switch tabs to see each one. Names are masked here; your free sample shows real records."
+            description="Every dataset is one clean Excel file. Switch tabs to see each one. Names and numbers are masked here; the full file has them all."
             align="center"
             className="mb-12"
           />
@@ -87,8 +87,8 @@ export default function Home() {
             <SheetPreview products={PRODUCTS} autoCycle />
           </Reveal>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="/free-sample" className={buttonVariants({ size: "lg" })}>
-              Get a free sample <ArrowRight className="h-4 w-4" />
+            <Link href="/products/owner-database#buy" className={buttonVariants({ size: "lg" })}>
+              Buy the Dubai owner database <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/products" className={buttonVariants({ variant: "secondary", size: "lg" })}>
               See datasets &amp; prices
@@ -123,7 +123,7 @@ export default function Home() {
         <div className="container">
           <SectionHeading
             eyebrow="How it works"
-            title="From free sample to outreach in three steps."
+            title="From order to outreach in three steps."
             align="center"
             className="mb-14"
           />

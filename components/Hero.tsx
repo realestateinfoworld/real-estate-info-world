@@ -1,14 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Check } from "lucide-react";
-import { SampleRequestForm } from "@/components/SampleRequestForm";
+import { ArrowRight, Check, MessageCircle } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-import { HOMEPAGE_STATS, LATEST_RELEASE, PRODUCTS, formatMarketList } from "@/lib/constants";
+import { HOMEPAGE_STATS, LATEST_RELEASE, PRODUCTS, formatMarketList, getProduct } from "@/lib/constants";
+import { purchaseWhatsappUrl } from "@/lib/whatsapp";
 
 const lowestPrice = Math.min(...PRODUCTS.map((p) => p.price));
+// The best seller, offered straight from the hero.
+const ownerDb = getProduct("owner-database")!;
+const buyerLeadsFrom = Math.min(...PRODUCTS.filter((p) => p.type === "buyer").map((p) => p.price));
+
+const OWNER_DB_POINTS = [
+  "1,000,000+ owners across 200+ communities",
+  "Building, unit, owner name, phone, mobile & email",
+  "Excel file, delivered within 10 minutes",
+  "Card or USDT · 7-day refund policy",
+];
 
 const PROMISES = [
-  "Free sample before you buy",
+  "1M+ verified Dubai owners",
   "Pay by card or USDT",
   "Full file delivered in 10 minutes",
   "7-day quality guarantee",
@@ -16,8 +26,8 @@ const PROMISES = [
 
 /**
  * Homepage hero. The copy is static server HTML (the H1 is the LCP element);
- * the free-sample form sits beside it so the lowest-commitment action is
- * above the fold.
+ * the owner database's buy card sits beside it, so buying is the action above
+ * the fold.
  */
 export function Hero() {
   return (
@@ -49,18 +59,17 @@ export function Hero() {
               Dubai Property Owner Database &amp; Miami, California Buyer Leads
             </span>
             Verified owners &amp; buyers.{" "}
-            <em className="text-brand-gradient">See the data before you pay.</em>
+            <em className="text-brand-gradient">Reach them before they list.</em>
           </h1>
 
           <p className="mt-7 max-w-xl text-lg leading-relaxed text-sand">
             Property owner databases and high-intent buyer leads for brokers and agencies in{" "}
-            {formatMarketList()}. Check a free sample first, then get the full CRM-ready Excel file
-            from ${lowestPrice}.
+            {formatMarketList()}. Get the full CRM-ready Excel file today, from ${lowestPrice}.
           </p>
 
-          {/* Phones: the form is a scroll away, so offer the jump straight after the pitch */}
-          <a href="#hero-sample" className={buttonVariants({ size: "lg", className: "mt-8 w-full lg:hidden" })}>
-            Get a free sample <ArrowRight className="h-4 w-4" />
+          {/* Phones: the buy card is a scroll away, so offer the jump straight after the pitch */}
+          <a href="#hero-buy" className={buttonVariants({ size: "lg", className: "mt-8 w-full lg:hidden" })}>
+            Get the owner database · ${ownerDb.price} <ArrowRight className="h-4 w-4" />
           </a>
 
           <ul className="mt-8 grid max-w-xl gap-x-6 gap-y-3 text-[15px] text-sand sm:grid-cols-2">
@@ -82,18 +91,48 @@ export function Hero() {
           </Link>
         </div>
 
-        {/* Free-sample form */}
-        <div id="hero-sample" className="relative min-w-0 scroll-mt-28">
+        {/* Buy card for the owner database */}
+        <div id="hero-buy" className="relative min-w-0 scroll-mt-28">
           <div className="absolute -inset-6 rounded-[2.5rem] bg-brand-deep/15 blur-3xl" aria-hidden="true" />
           <div className="brand-frame relative rounded-3xl bg-surface p-7 shadow-[0_40px_90px_-40px_rgb(10_22_40_/_0.35)] md:p-8">
             <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand-pale">
-              FREE · NO CARD NEEDED
+              BEST SELLER · ONE-TIME PAYMENT
             </div>
-            <h2 className="mt-4 font-display text-2xl leading-tight text-ivory">Get a free sample</h2>
-            <p className="mt-2 mb-6 text-sm leading-relaxed text-sand">
-              Real records from the current file, in the same Excel layout. Contacts come with the full file.
-            </p>
-            <SampleRequestForm source="hero" />
+            <h2 className="mt-4 font-display text-2xl leading-tight text-ivory">{ownerDb.name}</h2>
+            <div className="mt-4 flex items-baseline gap-2">
+              <span className="stat-number font-display text-5xl text-ivory">${ownerDb.price.toLocaleString()}</span>
+              <span className="text-sm text-stone">USD · no subscription</span>
+            </div>
+            <ul className="mt-6 space-y-3 text-[15px] text-sand">
+              {OWNER_DB_POINTS.map((point) => (
+                <li key={point} className="flex items-start gap-2.5">
+                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand/15">
+                    <Check className="h-3 w-3 text-brand" strokeWidth={3.5} />
+                  </span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={`/products/${ownerDb.slug}#buy`}
+              className={buttonVariants({ size: "lg", className: "mt-7 w-full" })}
+            >
+              Buy now <ArrowRight className="h-4 w-4" />
+            </Link>
+            <a
+              href={purchaseWhatsappUrl(ownerDb)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ variant: "secondary", size: "lg", className: "mt-3 w-full" })}
+            >
+              <MessageCircle className="h-4 w-4" /> Buy on WhatsApp
+            </a>
+            <Link
+              href="/products"
+              className="mt-5 block text-center text-sm font-semibold text-brand hover:text-brand-pale"
+            >
+              Buyer leads for Miami, California, Dubai &amp; UK from ${buyerLeadsFrom.toLocaleString()} →
+            </Link>
           </div>
         </div>
       </div>

@@ -940,8 +940,8 @@ export function formatMarketList(): string {
 /** How a purchase works, shown on the homepage and every product page. */
 export const PURCHASE_STEPS = [
   {
-    title: "Check a free sample",
-    body: "Request a sample of any dataset and see real records, in the real Excel columns, before you spend anything.",
+    title: "Choose your dataset",
+    body: "Pick the Dubai owner database or buyer leads for your market. Every dataset is one CRM-ready Excel file.",
   },
   {
     title: "Pay by card or USDT",

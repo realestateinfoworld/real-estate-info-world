@@ -65,8 +65,8 @@ export function Navbar() {
         </div>
 
         <div className="hidden lg:block">
-          <Link href="/free-sample" className={buttonVariants({ size: "sm", className: "h-10 px-5" })}>
-            Free sample <ArrowUpRight className="h-4 w-4" />
+          <Link href="/products" className={buttonVariants({ size: "sm", className: "h-10 px-5" })}>
+            Buy now <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
 
@@ -97,11 +97,11 @@ export function Navbar() {
               </Link>
             ))}
             <Link
-              href="/free-sample"
+              href="/products"
               onClick={() => setMobileOpen(false)}
               className={buttonVariants({ size: "lg", className: "mt-8 w-full" })}
             >
-              Get a free sample <ArrowUpRight className="h-4 w-4" />
+              See datasets &amp; buy <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
