@@ -201,7 +201,7 @@ export const PRODUCTS: readonly Product[] = [
     type: "owner",
     market: "dubai",
     version: "October 2026",
-    price: 200,
+    price: 300,
     premium: false,
     shortDescription:
       "Verified Dubai property owners with direct contacts across prime communities.",
@@ -246,7 +246,7 @@ export const PRODUCTS: readonly Product[] = [
     seo: {
       title: "Dubai Property Owner Database 2026 | 1M+ Verified Owners",
       description:
-        "Dubai property owner database: 1,000,000+ verified owners with direct mobiles in 200+ communities. Dubai real estate database for brokers. $200. Free sample.",
+        "Dubai property owner database: 1,000,000+ verified owners with direct mobiles in 200+ communities. Dubai real estate database for brokers. $300. Free sample.",
       keywords: [
         "Dubai Property Owner Database",
         "Dubai Property Owner Leads",
@@ -302,7 +302,7 @@ export const PRODUCTS: readonly Product[] = [
       {
         question: "How much does the Dubai owner database cost?",
         answer:
-          "$200 USD as a one-time payment for the full file — no subscription. It is delivered within 10 minutes of payment confirmation.",
+          "$300 USD as a one-time payment for the full file — no subscription. It is delivered within 10 minutes of payment confirmation.",
       },
       {
         question: "Which Dubai communities does the owner data cover?",
@@ -322,7 +322,7 @@ export const PRODUCTS: readonly Product[] = [
       {
         question: "Can I get the owners of just one Dubai community?",
         answer:
-          "The file covers all 200+ communities for one price of $200. Filter the Community column in Excel or your CRM to work just Dubai Marina, JVC, Dubai Hills Estate or any other area.",
+          "The file covers all 200+ communities for one price of $300. Filter the Community column in Excel or your CRM to work just Dubai Marina, JVC, Dubai Hills Estate or any other area.",
       },
       {
         question: "Can I use the owner data to find off-market property in Dubai?",
