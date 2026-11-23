@@ -7,7 +7,7 @@ import { CryptoSection, PaymentChooser, PaymentMethodProvider } from "@/componen
 import { CRYPTO_WALLETS } from "@/lib/crypto";
 import { SheetPreview } from "@/components/SheetPreview";
 import { SampleRequestForm } from "@/components/SampleRequestForm";
-import { DUBAI_COMMUNITY_LINKS, communityGuideSlug } from "@/lib/community-guides";
+import { DUBAI_COMMUNITY_LINKS, FEATURED_COMMUNITY_LINKS, communityGuideSlug } from "@/lib/community-guides";
 import { Badge } from "@/components/ui/badge";
 import { ProductCard } from "@/components/ProductCard";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -238,10 +238,22 @@ export default async function ProductPage({ params }: Props) {
               <div>
                 <h2 className="eyebrow">Dubai property owners by community</h2>
                 <p className="mt-4 text-[15px] leading-relaxed text-sand">
-                  How to reach owners and win listings in each community, with the owner data filtered to it:
+                  How to reach owners and win listings in each community, with the owner data filtered to it. Start
+                  with the{" "}
+                  <Link href={`/guides/${FEATURED_COMMUNITY_LINKS[0].slug}`} className="text-brand underline underline-offset-4 hover:text-brand-pale">
+                    {FEATURED_COMMUNITY_LINKS[0].name} property owners
+                  </Link>{" "}
+                  and{" "}
+                  <Link href={`/guides/${FEATURED_COMMUNITY_LINKS[1].slug}`} className="text-brand underline underline-offset-4 hover:text-brand-pale">
+                    {FEATURED_COMMUNITY_LINKS[1].name} property owners
+                  </Link>{" "}
+                  guides, or pick your area:
                 </p>
                 <ul className="mt-5 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
-                  {DUBAI_COMMUNITY_LINKS.map((community) => (
+                  {[
+                    ...FEATURED_COMMUNITY_LINKS,
+                    ...DUBAI_COMMUNITY_LINKS.filter((c) => !FEATURED_COMMUNITY_LINKS.includes(c)),
+                  ].map((community) => (
                     <li key={community.slug}>
                       <Link
                         href={`/guides/${community.slug}`}

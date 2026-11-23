@@ -986,6 +986,20 @@ export const DUBAI_COMMUNITY_LINKS: readonly { name: string; slug: string; alias
   })),
 ];
 
+/**
+ * Community guides to feature first. These rank near the top of Google for
+ * their owner searches (Search Console, Nov 2026), so links from the homepage
+ * and the owner database page help them climb.
+ */
+export const FEATURED_COMMUNITY_LINKS = [
+  "dubai-hills-estate-property-owners",
+  "palm-jumeirah-property-owners",
+  "dubai-marina-property-owners",
+  "downtown-dubai-property-owners",
+  "business-bay-property-owners",
+  "jvc-property-owners",
+].map((slug) => DUBAI_COMMUNITY_LINKS.find((c) => c.slug === slug)!);
+
 /** Guide slug for an area name such as "Dubai Hills Estate", if there is one. */
 export function communityGuideSlug(area: string): string | undefined {
   return DUBAI_COMMUNITY_LINKS.find((c) => c.name === area || c.aliases?.includes(area))?.slug;

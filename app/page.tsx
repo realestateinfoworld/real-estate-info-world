@@ -18,6 +18,7 @@ import {
   formatMarketList,
   getProductsByMarket,
 } from "@/lib/constants";
+import { FEATURED_COMMUNITY_LINKS } from "@/lib/community-guides";
 import { GUIDES } from "@/lib/guides";
 import { TOOLS } from "@/lib/tools";
 import { faqPageSchema, jsonLd, pageMetadata } from "@/lib/seo";
@@ -310,6 +311,22 @@ export default function Home() {
           </div>
 
           <div className="mt-12 flex flex-col gap-4 border-t border-line pt-10 md:flex-row md:items-baseline md:gap-8">
+            <h3 className="shrink-0 text-sm font-semibold text-ivory">Dubai owners by community</h3>
+            <ul className="flex flex-wrap gap-2">
+              {FEATURED_COMMUNITY_LINKS.map((community) => (
+                <li key={community.slug}>
+                  <Link
+                    href={`/guides/${community.slug}`}
+                    className="inline-block rounded-full border border-line-strong px-3.5 py-1.5 text-sm text-sand transition-colors hover:border-brand/40 hover:text-ivory"
+                  >
+                    {community.name} property owners
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-baseline md:gap-8">
             <h3 className="shrink-0 text-sm font-semibold text-ivory">Free calculators</h3>
             <ul className="flex flex-wrap gap-2">
               {TOOLS.map((tool) => (
