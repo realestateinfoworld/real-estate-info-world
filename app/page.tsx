@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Database, FileSpreadsheet, MessageCircle, Quote, RotateCcw, ShieldCheck, Zap } from "lucide-react";
 import { Hero } from "@/components/Hero";
+import { MiamiSpotlight } from "@/components/MiamiSpotlight";
 import { AreasMarquee } from "@/components/AreasMarquee";
 import { ProductGrid } from "@/components/ProductGrid";
 import { SheetPreview } from "@/components/SheetPreview";
@@ -97,6 +98,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <MiamiSpotlight />
 
       {/* DATASETS */}
       <section className="section">

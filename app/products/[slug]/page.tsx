@@ -15,6 +15,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { FaqList } from "@/components/FaqList";
 import { MARKETS, MARKET_ORDER, PRODUCTS, getProduct, getMarket, getFaqs, getUnitPriceLabel } from "@/lib/constants";
 import { MobileBuyBar } from "@/components/MobileBuyBar";
+import { MIAMI_LINKS } from "@/components/MiamiSpotlight";
 import { GaEvent } from "@/components/GaEvent";
 import { getGuideForProduct } from "@/lib/guides";
 import { MetaPixelTracker } from "@/components/MetaPixelTracker";
@@ -260,6 +261,27 @@ export default async function ProductPage({ params }: Props) {
                         className="text-sm text-brand underline-offset-4 hover:text-brand-pale hover:underline"
                       >
                         {community.name} property owners
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {product.market === "miami" && (
+              <div>
+                <h2 className="eyebrow">Miami guides &amp; tools</h2>
+                <p className="mt-4 text-[15px] leading-relaxed text-sand">
+                  Where Miami agents find serious buyers, and how to work this file once you have it:
+                </p>
+                <ul className="mt-5 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+                  {MIAMI_LINKS.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-brand underline-offset-4 hover:text-brand-pale hover:underline"
+                      >
+                        {link.label}
                       </Link>
                     </li>
                   ))}

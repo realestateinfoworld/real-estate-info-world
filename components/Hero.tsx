@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Check, MessageCircle } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import { HeroBuyCard, type HeroOffer } from "@/components/HeroBuyCard";
 import { buttonVariants } from "@/components/ui/button";
 import { HOMEPAGE_STATS, LATEST_RELEASE, PRODUCTS, formatMarketList, getProduct } from "@/lib/constants";
 import { purchaseWhatsappUrl } from "@/lib/whatsapp";
@@ -8,6 +9,7 @@ import { purchaseWhatsappUrl } from "@/lib/whatsapp";
 const lowestPrice = Math.min(...PRODUCTS.map((p) => p.price));
 // The best seller, offered straight from the hero.
 const ownerDb = getProduct("owner-database")!;
+const miamiLeads = getProduct("miami-buyer-leads")!;
 const buyerLeadsFrom = Math.min(...PRODUCTS.filter((p) => p.type === "buyer").map((p) => p.price));
 
 const OWNER_DB_POINTS = [
@@ -15,6 +17,36 @@ const OWNER_DB_POINTS = [
   "Building, unit, owner name, phone, mobile & email",
   "Excel file, delivered within 10 minutes",
   "Card or USDT · 7-day refund policy",
+];
+
+const MIAMI_POINTS = [
+  "1,500+ Miami-Dade buyers, sourced this month",
+  "Verified email, phone, budget & timeframe",
+  "Excel file, delivered within 10 minutes",
+  "Card or USDT · 7-day refund policy",
+];
+
+const OFFERS: HeroOffer[] = [
+  {
+    id: "dubai",
+    tab: "Dubai owners",
+    badge: "BEST SELLER · ONE-TIME PAYMENT",
+    name: ownerDb.name,
+    price: ownerDb.price,
+    points: OWNER_DB_POINTS,
+    buyHref: `/products/${ownerDb.slug}#buy`,
+    whatsappHref: purchaseWhatsappUrl(ownerDb),
+  },
+  {
+    id: "miami",
+    tab: "Miami buyers",
+    badge: "FOR MIAMI AGENTS",
+    name: miamiLeads.name,
+    price: miamiLeads.price,
+    points: MIAMI_POINTS,
+    buyHref: `/products/${miamiLeads.slug}#buy`,
+    whatsappHref: purchaseWhatsappUrl(miamiLeads),
+  },
 ];
 
 const PROMISES = [
@@ -91,49 +123,20 @@ export function Hero() {
           </Link>
         </div>
 
-        {/* Buy card for the owner database */}
+        {/* Buy card: Dubai owner database or Miami buyer leads */}
         <div id="hero-buy" className="relative min-w-0 scroll-mt-28">
           <div className="absolute -inset-6 rounded-[2.5rem] bg-brand-deep/15 blur-3xl" aria-hidden="true" />
-          <div className="brand-frame relative rounded-3xl bg-surface p-7 shadow-[0_40px_90px_-40px_rgb(10_22_40_/_0.35)] md:p-8">
-            <div className="inline-flex rounded-full bg-brand/10 px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-brand-pale">
-              BEST SELLER · ONE-TIME PAYMENT
-            </div>
-            <h2 className="mt-4 font-display text-2xl leading-tight text-ivory">{ownerDb.name}</h2>
-            <div className="mt-4 flex items-baseline gap-2">
-              <span className="stat-number font-display text-5xl text-ivory">${ownerDb.price.toLocaleString()}</span>
-              <span className="text-sm text-stone">USD · no subscription</span>
-            </div>
-            <ul className="mt-6 space-y-3 text-[15px] text-sand">
-              {OWNER_DB_POINTS.map((point) => (
-                <li key={point} className="flex items-start gap-2.5">
-                  <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand/15">
-                    <Check className="h-3 w-3 text-brand" strokeWidth={3.5} />
-                  </span>
-                  {point}
-                </li>
-              ))}
-            </ul>
-            <Link
-              href={`/products/${ownerDb.slug}#buy`}
-              className={buttonVariants({ size: "lg", className: "mt-7 w-full" })}
-            >
-              Buy now <ArrowRight className="h-4 w-4" />
-            </Link>
-            <a
-              href={purchaseWhatsappUrl(ownerDb)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={buttonVariants({ variant: "secondary", size: "lg", className: "mt-3 w-full" })}
-            >
-              <MessageCircle className="h-4 w-4" /> Buy on WhatsApp
-            </a>
-            <Link
-              href="/products"
-              className="mt-5 block text-center text-sm font-semibold text-brand hover:text-brand-pale"
-            >
-              Buyer leads for Miami, California, Dubai &amp; UK from ${buyerLeadsFrom.toLocaleString()} →
-            </Link>
-          </div>
+          <HeroBuyCard
+            offers={OFFERS}
+            footer={
+              <Link
+                href="/products"
+                className="mt-5 block text-center text-sm font-semibold text-brand hover:text-brand-pale"
+              >
+                Buyer leads for California, Dubai &amp; UK from ${buyerLeadsFrom.toLocaleString()} →
+              </Link>
+            }
+          />
         </div>
       </div>
 
