@@ -1,0 +1,83 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Plus Jakarta Sans", Arial, sans-serif; background: #ccc; }
+  .s { width: 1080px; height: 1350px; padding: 96px 88px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+  .dark { background: radial-gradient(circle at 85% 0%, #0f5c46 0%, #0a1628 58%); color: #fff; }
+  .light { background: #f5f8f7; color: #0b1424; }
+  .green { background: linear-gradient(150deg, #10b981 0%, #047857 60%, #065f46 100%); color: #fff; }
+  .brand { font-size: 26px; letter-spacing: 6px; font-weight: 800; opacity: .85; }
+  .brand span { color: #10b981; }
+  .dark .brand span { color: #6ee7b7; } .green .brand span { color: #d1fae5; }
+  .eyebrow { margin-top: 60px; font-size: 30px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: #047857; }
+  .dark .eyebrow { color: #6ee7b7; } .green .eyebrow { color: #d1fae5; }
+  h1 { font-size: 80px; line-height: 1.04; font-weight: 800; letter-spacing: -2.5px; margin-top: 26px; }
+  h1 em { font-style: normal; color: #10b981; } .dark h1 em { color: #34d399; } .green h1 em { color: #d1fae5; }
+  .lead { font-size: 35px; line-height: 1.36; margin-top: 28px; font-weight: 500; color: #475467; }
+  .dark .lead { color: #cbd5e1; } .green .lead { color: #ecfdf5; }
+  .list { margin-top: 38px; display: flex; flex-direction: column; gap: 18px; }
+  .item { display: flex; gap: 26px; align-items: flex-start; border-radius: 28px; padding: 24px 30px; font-size: 32px; font-weight: 700; line-height: 1.3; }
+  .light .item { background: #fff; box-shadow: 0 18px 44px -30px rgba(10,22,40,.45); }
+  .dark .item { background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.13); }
+  .green .item { background: rgba(255,255,255,.14); }
+  .num { flex: none; width: 60px; height: 60px; border-radius: 18px; background: #10b981; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 800; }
+  .green .num { background: #fff; color: #047857; }
+  .item small { display: block; font-size: 27px; font-weight: 500; margin-top: 6px; opacity: .75; }
+  .quote { margin-top: 46px; background: #fff; color: #0b1424; border-radius: 30px; padding: 40px 44px; font-size: 36px; line-height: 1.4; font-weight: 600; box-shadow: 0 24px 60px -34px rgba(0,0,0,.6); }
+  .quote b { color: #047857; }
+  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; }
+  .foot .site { font-size: 28px; font-weight: 700; opacity: .7; }
+  .pill { background: #10b981; color: #fff; padding: 22px 36px; border-radius: 999px; font-size: 30px; font-weight: 800; }
+  .green .pill { background: #fff; color: #065f46; }
+  .big { font-size: 150px; letter-spacing: -6px; font-weight: 800; line-height: 1; margin-top: 30px; }
+  .cols { margin-top: 44px; border-radius: 26px; overflow: hidden; background: #fff; border: 2px solid #e4e9f0; box-shadow: 0 24px 60px -34px rgba(10,22,40,.5); }
+  .cols .bar { background: #107c41; color: #fff; padding: 20px 28px; font-size: 25px; font-weight: 700; }
+  .cols table { width: 100%; border-collapse: collapse; font-size: 23px; white-space: nowrap; color: #0b1424; }
+  .cols th { background: #f1f5f4; text-align: left; padding: 18px 18px; color: #475467; }
+  .cols td { padding: 20px 18px; border-top: 2px solid #eef2f1; font-weight: 600; }
+  .cols td.m { color: #047857; font-weight: 800; }
+
+  .ocean { background: radial-gradient(circle at 90% 0%, #0e7490 0%, #0a1628 60%); color: #fff; }
+  .ocean .brand span, .ocean .eyebrow, .ocean h1 em { color: #67e8f9; }
+  .ocean .lead { color: #cbd5e1; }
+  .ocean .item { background: rgba(255,255,255,.07); border: 2px solid rgba(255,255,255,.13); }
+  .ocean .num { background: #06b6d4; }
+  .ocean .pill { background: #06b6d4; }
+  .leads { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; }
+  .lc { background: #fff; color: #0b1424; border-radius: 26px; padding: 24px 30px; box-shadow: 0 18px 44px -30px rgba(10,22,40,.45); display: grid; grid-template-columns: 1fr auto; row-gap: 8px; column-gap: 20px; }
+  .lc .n { font-size: 30px; font-weight: 800; }
+  .lc .b { font-size: 32px; font-weight: 800; color: #047857; text-align: right; }
+  .lc .d { font-size: 25px; font-weight: 500; color: #475467; }
+  .lc .t { font-size: 24px; font-weight: 700; color: #0e7490; text-align: right; }
+  .lock { margin-top: 22px; font-size: 27px; font-weight: 600; color: #475467; }
+  .dark .lock, .ocean .lock { color: #cbd5e1; }
+</style></head><body><div id="root"></div>
+<script>
+const BRAND = '<div class="brand">REAL ESTATE <span>INFO.WORLD</span></div>';
+const FOOT = (cta = 'DM "MIAMI"') => `<div class="foot"><span class="site">realestate-info.world</span><span class="pill">${cta}</span></div>`;
+const items = (arr) => `<div class="list">${arr.map((x, i) => `<div class="item"><span class="num">${i + 1}</span><div>${x[0]}${x[1] ? `<small>${x[1]}</small>` : ""}</div></div>`).join("")}</div>`;
+const ROWS = [
+  ["Ryan D****", "Canada", "Brickell · Townhouse", "$3,400,000", "Immediate (0–30 days)"],
+  ["Daniel S****", "Canada", "Edgewater · Single-family", "$7,100,000", "Immediate (0–30 days)"],
+  ["Noora Al M*******", "UAE", "Bal Harbour · Luxury condo", "$13,000,000", "Immediate (0–30 days)"],
+  ["James A*******", "United States", "Coconut Grove · Townhouse", "$12,100,000", "1–3 months"],
+];
+const leads = (rows) => `<div class="leads">${rows.map(r => `<div class="lc"><div class="n">${r[0]}</div><div class="b">${r[3]}</div><div class="d">${r[1]} · ${r[2]}</div><div class="t">${r[4]}</div></div>`).join("")}</div>`;
+
+const POSTS = [
+  { theme: "ocean", html: `${BRAND}<div class="eyebrow">Miami Buyer Leads</div><h1 style="font-size:72px">1,500+ buyers searching <em>Miami-Dade</em> right now.</h1><p class="lead">Sourced this month from Google and social media campaigns. Not a recycled list.</p>${items([["Verified email + phone on every lead"], ["Country, target area, property type, bedrooms"], ["Estimated budget (USD) + purchase timeframe"], ["CRM-ready Excel, delivered in 10 minutes"]])}${FOOT()}` },
+  { theme: "light", html: `${BRAND}<div class="eyebrow">What's in the file?</div><h1>Buyers with a <em>budget</em> and a <em>timeframe.</em></h1>${leads(ROWS)}<p class="lock">🔒 Phone and email come with the full file.</p>${FOOT()}` },
+  { theme: "dark", html: `${BRAND}<div class="eyebrow">Miami agent tip</div><h1>Speed wins <em>buyer leads.</em></h1>${items([["Start with \"Immediate (0–30 days)\" buyers", "Call and email them the same day"], ["Then the \"1–3 months\" group", "Send 3 listings that match budget and area"], ["Drip the rest", "Be the agent they remember when they're ready"], ["Screen against the DNC Registry", "Follow TCPA rules for calls and texts"]])}${FOOT()}` },
+  { theme: "light", html: `${BRAND}<div class="eyebrow">Neighborhood spotlight</div><h1>Brickell &amp; Edgewater <em>buyers</em></h1><p class="lead">Condos, townhouses and new towers on the bay. Buyers compare fast, so the agent who answers first gets the showing.</p>${items([["Filter by area and bedrooms", "Brickell 1–2 beds, Edgewater family units"], ["Lead with 3 listings in their budget", "Not a generic newsletter"], ["Offer a video tour", "Many buyers are still out of town"]])}${FOOT()}` },
+  { theme: "ocean", html: `${BRAND}<div class="eyebrow">International buyers</div><h1>Miami buyers come from <em>everywhere.</em></h1><p class="lead">The file has US and international buyers, with the buyer's country on every lead.</p>${items([["Message in their time zone", "A 9am call in Miami is evening in Dubai"], ["WhatsApp works abroad", "Many international buyers prefer it to calls"], ["Be ready for financing questions", "Cash vs. foreign-national mortgages"]])}${FOOT()}` },
+  { theme: "light", html: `${BRAND}<div class="eyebrow">Neighborhood spotlight</div><h1>Sunny Isles &amp; Bal Harbour <em>luxury condos</em></h1><p class="lead">Oceanfront towers and branded residences. High budgets, and buyers who expect a specialist.</p>${items([["Sort the file by budget", "Your top buyers in seconds"], ["Know each tower's amenities and fees", "That's what luxury buyers ask first"], ["Offer private previews", "Including off-market units"]])}${FOOT()}` },
+  { theme: "dark", html: `${BRAND}<div class="eyebrow">Work the file</div><h1>One Excel file. <em>Three lists.</em></h1>${items([["Hot: Immediate (0–30 days)", "Call today"], ["Warm: 1–3 months", "Listings + a call every week"], ["Nurture: 3+ months & browsing", "Monthly email with new listings"]])}<p class="lock">Imports straight into Follow Up Boss, kvCORE, HubSpot or Salesforce.</p>${FOOT()}` },
+  { theme: "green", html: `${BRAND}<div class="eyebrow">See it before you buy</div><h1>Get a <em>masked preview</em> of the Miami file.</h1><p class="lead">Real buyers from this month's file: area, property type, budget and timeframe. Phone and email come with the full file.</p>${items([["DM \"MIAMI\""], ["Get the preview"], ["Like it? The full file arrives by email in 10 minutes"]])}${FOOT('DM "MIAMI"')}` },
+  // DM preview image (not posted)
+  { theme: "light", html: `${BRAND}<div class="eyebrow">Miami Buyer Leads · Preview</div><h1>1,500+ buyers like these, <em>this month.</em></h1>${leads([["Shaikha Al K****", "UAE", "South Beach · Single-family", "$14,000,000", "Just browsing"], ...ROWS.slice(0, 3)])}<p class="lock">🔒 Masked preview. The full file has each buyer's phone, email and bedrooms.</p>${FOOT('Full file in 10 min')}` },
+];
+document.getElementById("root").innerHTML = POSTS.map((p, i) => `<section class="s ${p.theme}" id="p${i + 1}">${p.html}</section>`).join("");
+window.POST_COUNT = POSTS.length;
+</script></body></html>
