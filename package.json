@@ -1,0 +1,40 @@
+{
+  "name": "real-estate-info-world",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "deploy": "npx vercel --prod",
+    "indexnow": "node scripts/indexnow.mjs"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "libphonenumber-js": "^1.12.10",
+    "lucide-react": "^1.18.0",
+    "next": "^16.4.6",
+    "qrcode": "^1.5.4",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-hot-toast": "^2.6.0",
+    "resend": "^6.12.4",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.6.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^16.4.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

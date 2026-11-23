@@ -1,0 +1,436 @@
+@import "tailwindcss";
+
+/* ================================================================== */
+/* THEME                                                               */
+/* Light throughout: white pages, soft mint bands (.theme-tint) behind  */
+/* the hero and page headers, navy text and an emerald accent that     */
+/* keeps every call to action unmistakable.                            */
+/* ================================================================== */
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-jakarta);
+  --font-wordmark: var(--font-cinzel);
+}
+
+@theme {
+  /* Token names are roles: "ink" is the page background, "ivory" the main text,
+     "sand" body copy and "stone" muted copy. */
+  --color-ink: #ffffff;
+  --color-ink-2: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f4f8;
+  --color-line: #e4e9f0;
+  --color-line-strong: #cdd5e0;
+
+  --color-ivory: #0b1424;
+  --color-sand: #475467;
+  --color-stone: #667085;
+
+  /* Emerald accent: text/links, hover, and the bright tone for glows */
+  --color-brand: #047857;
+  --color-brand-pale: #065f46;
+  --color-brand-deep: #10b981;
+
+  /* Primary buttons */
+  --color-brand-from: #10b981;
+  --color-brand-via: #059669;
+  --color-brand-to: #047857;
+  --color-on-brand: #ffffff;
+
+  --animate-marquee: marquee 60s linear infinite;
+  --animate-pulse-dot: pulse-dot 2.4s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgb(16 185 129 / 0.55); }
+    50% { box-shadow: 0 0 0 6px rgb(16 185 129 / 0); }
+  }
+}
+
+/* Soft mint-to-white band behind the hero and page headers: sets those
+   sections apart from the white page without a dark block. */
+.theme-tint {
+  background: linear-gradient(180deg, #ecf8f2 0%, #f6fbf9 55%, #ffffff 100%);
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-geist-sans);
+  background-color: var(--color-ink);
+  color: var(--color-ivory);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgb(16 185 129 / 0.25);
+  color: var(--color-ivory);
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Headlines use a heavy geometric sans; emphasis is colour, not italics. */
+.font-display {
+  font-weight: 750;
+  letter-spacing: -0.025em;
+}
+
+h1 em, h2 em, h3 em {
+  font-style: normal;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* === LAYOUT === */
+@utility container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@layer components {
+.section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+/* === TYPE === */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-brand);
+}
+
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-brand));
+}
+
+.text-brand-gradient {
+  background: linear-gradient(100deg, var(--color-brand-deep) 0%, var(--color-brand) 55%, var(--color-brand-pale) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* === SURFACES === */
+.glass {
+  background: color-mix(in oklab, var(--color-surface) 92%, transparent);
+  border: 1px solid var(--color-line);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 30px 80px -30px rgb(10 22 40 / 0.35);
+}
+
+/* A hairline emerald gradient border on any rounded element */
+.brand-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.brand-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(140deg, rgb(16 185 129 / 0.8), rgb(16 185 129 / 0.15) 40%, rgb(16 185 129 / 0.06) 60%, rgb(16 185 129 / 0.55));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Soft emerald light behind a section */
+.brand-glow {
+  background:
+    radial-gradient(60% 50% at 50% 0%, rgb(16 185 129 / 0.14), transparent 70%);
+}
+
+.grid-lines {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--color-ivory) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-ivory) 5%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+}
+
+/* === FORMS === */
+.input {
+  width: 100%;
+  border: 1px solid var(--color-line-strong);
+  background-color: var(--color-surface);
+  border-radius: 0.75rem;
+  padding: 0.75rem 0.95rem;
+  font-size: 0.9375rem;
+  color: var(--color-ivory);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 3px rgb(16 185 129 / 0.15);
+}
+
+.input::placeholder {
+  color: var(--color-stone);
+}
+
+/* === MASKED PREVIEW CELLS === */
+.blurred-cell {
+  filter: blur(5px);
+  user-select: none;
+}
+
+/* === SPREADSHEET PREVIEW (components/SheetPreview.tsx) === */
+.sheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-geist-mono);
+  font-size: 0.8rem;
+  color: var(--color-sand);
+}
+
+.sheet-table th,
+.sheet-table td {
+  border-right: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.6rem 0.9rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sheet-table tr > :last-child {
+  border-right: none;
+}
+
+/* Row numbers and column letters: the grey gutters of a spreadsheet */
+.sheet-table tr > th:first-child,
+.sheet-table .sheet-letters th {
+  background: var(--color-surface-2);
+  color: var(--color-stone);
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 0.3rem 0.6rem;
+}
+
+.sheet-table tr > th:first-child {
+  width: 2.25rem;
+}
+
+.sheet-table .sheet-header th:not(:first-child) {
+  background: #e8f5ee;
+  color: #0b5a34;
+  font-family: var(--font-geist-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.sheet-table tbody tr:hover td {
+  background: rgb(16 185 129 / 0.06);
+}
+
+.sheet-table tbody tr:last-child > * {
+  border-bottom: none;
+}
+
+.animate-sheet-in {
+  animation: sheet-in 0.35s ease both;
+}
+
+@keyframes sheet-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+.animate-card-in {
+  animation: card-in 0.3s ease both;
+}
+
+@keyframes card-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+/* === FAQ (native details/summary) === */
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* === LEGAL / LONG-FORM COPY === */
+.legal {
+  color: var(--color-sand);
+  line-height: 1.75;
+}
+
+.legal h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-jakarta);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--color-ivory);
+}
+
+.legal p + p {
+  margin-top: 1rem;
+}
+
+.legal ul {
+  margin-top: 0.75rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.legal li {
+  margin-top: 0.4rem;
+}
+
+.legal li::marker {
+  color: var(--color-brand);
+}
+
+.legal a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* === HERO === */
+.hero-bg-image {
+  object-position: 62% 40%;
+}
+
+/* Film grain to keep large flat areas from banding */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* === SCROLL REVEAL (components/Reveal.tsx) === */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* === FLOATING CHAT + MOBILE BUY BAR === */
+/* MobileBuyBar sets html[data-buy-bar] on product pages; below lg the chat
+   buttons rise above the bar only while it shows, and the footer keeps its
+   last line clear of it. */
+.floating-whatsapp,
+.floating-telegram {
+  transition: bottom 0.3s ease;
+}
+
+.floating-whatsapp {
+  bottom: 1.5rem;
+}
+
+.floating-telegram {
+  bottom: 6rem;
+}
+
+@media (max-width: 1023px) {
+  html[data-buy-bar="visible"] .floating-whatsapp {
+    bottom: 6rem;
+  }
+
+  html[data-buy-bar="visible"] .floating-telegram {
+    bottom: 10.5rem;
+  }
+
+  html[data-buy-bar] footer {
+    padding-bottom: 5rem;
+  }
+}
+
+/* === MARQUEE === */
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+
+/* === TOAST (sonner) === */
+.sonner-toast {
+  font-family: var(--font-geist-sans);
+}
+
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
